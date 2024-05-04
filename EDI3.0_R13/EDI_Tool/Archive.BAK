@@ -1,0 +1,41 @@
+Lparameters lcFileName, txt_comp_path, txtOutgoing,txt_comp_name
+
+MESSAGEBOX("lcFileName"+lcFileName)
+MESSAGEBOX("txt_comp_path"+txt_comp_path)
+MESSAGEBOX("txtOutgoing"+txtOutgoing)
+MESSAGEBOX("txt_comp_name"+txt_comp_name)
+
+
+
+lcEDILIBHD = Addbs(Alltrim(txt_comp_path))+'edilibhd'
+If File(lcEDILIBHD+'.dbf')
+	If !Used('edilibhd')
+		lcEDILIBHD = Addbs(Alltrim(txt_comp_path))+'edilibhd'
+		Use &lcEDILIBHD. Shared In 0 Order FILEPATH
+		Select EDILIBHD
+	Else
+		Select EDILIBHD
+		Set Order To FILEPATH
+	Endif
+
+	If Type("lcFileName") = "C" .And. !Empty(lcFileName)
+		Local lcOutFileNamePath , lcOutFileCode , lcDistFile
+
+		lcOutFileNamePath = Addbs(Alltrim(txtOutgoing))+lcFileName
+
+		If File(lcOutFileNamePath) .And.;
+				SEEK("S" + Padr("OUTBOX\" , 60) + Upper(Padr(lcFileName , 12)) , "EDILIBHD" , "FILEPATH")
+
+			lcOutFileCode = EDILIBHD.cFileCode
+			Replace cEDIFilNam With Alltrim(txt_comp_name) + lcOutFileCode +'.'+Justext(lcFileName),;
+				cFilePath  With Alltrim(cFilePath) + "ARCHIVE\" In EDILIBHD
+
+			lcDistFile = Addbs(Alltrim(txtOutgoing)) + "ARCHIVE\" +;
+				ALLTRIM(txt_comp_name) + lcOutFileCode +'.'+Justext(lcFileName)
+
+			Copy File &lcOutFileNamePath. To &lcDistFile.
+			Delete File &lcOutFileNamePath.
+
+		Endif
+	Endif
+Endif
