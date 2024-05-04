@@ -1,0 +1,1 @@
+Server=ARIATESTING\ARIASQL;Database=GMA10_LDB01;User Id=sa;cccccccccccccccc

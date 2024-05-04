@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{999738BF-5F26-4152-8BAC-E9CB78F6A2E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Freeway</RootNamespace>
+    <AssemblyName>Freeway</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AriaConnection.cs" />
+    <Compile Include="AriaEnviroment\AriaDatabaseTypes.cs" />
+    <Compile Include="AriaEnviroment\AriaEnviromentVariables.cs" />
+    <Compile Include="AriaEnviroment\DatabaseServerLoginTypes.cs" />
+    <Compile Include="DataClasses\VFPTables.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VFPTables.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="enum.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recieve\ReceiveFile.cs" />
+    <Compile Include="Recieve\RECEIVE850.cs" />
+    <Compile Include="Send\Send810.cs" />
+    <Compile Include="Send\Send856.cs" />
+    <Compile Include="Send\SENDTRANSACTIONS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Send\SendTranslator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataClasses\EDIACPRT.xml" />
+    <Content Include="DataClasses\EDIERORD.xml" />
+    <Content Include="DataClasses\EDIERORH.xml" />
+    <Content Include="DataClasses\EDILIBDT.xml" />
+    <Content Include="DataClasses\EDILIBHD.xml" />
+    <Content Include="DataClasses\EDINET.xml" />
+    <Content Include="DataClasses\EDINOTE.xml" />
+    <Content Include="DataClasses\EDIPD.xml" />
+    <Content Include="DataClasses\EDIPH.xml" />
+    <Content Include="DataClasses\edipkinf.xml" />
+    <Content Include="DataClasses\EDISODT.xml" />
+    <Content Include="DataClasses\EDISOHD.xml" />
+    <Content Include="DataClasses\orderchg.xml" />
+    <Content Include="DataClasses\ORDHDR.xml" />
+    <Content Include="DataClasses\ORDLINE.xml" />
+    <Content Include="DataClasses\PO_ADDRESS_T.xml" />
+    <Content Include="DataClasses\PO_CHARGES_T.xml" />
+    <Content Include="DataClasses\PO_HEADER_T.xml" />
+    <Content Include="DataClasses\PO_ITEMS_T.xml" />
+    <Content Include="DataClasses\PO_ITEM_DISTENTION_T.xml" />
+    <Content Include="DataClasses\PO_MESSAGES_T.xml" />
+    <Content Include="DataClasses\PO_SUBLINE_ITEM_T.xml" />
+    <Content Include="DataClasses\PO_TERMS_T.xml" />
+    <Content Include="DataClasses\sequence.xml" />
+    <Content Include="DataClasses\SHIPMENT_CONTAINERS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_DETAILS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_HEADER_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ITEMS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ITEM_CONTAINERS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ROUTING_T.xml" />
+    <Content Include="DataClasses\SYCCOMP.xml" />
+    <Content Include="DataClasses\SYCEDILH.xml" />
+    <Content Include="DataClasses\SYCEDITR.xml" />
+    <Content Include="DataClasses\SYCINST.xml" />
+    <Content Include="DataClasses\TRANSACTION_MAP_T.xml" />
+    <Content Include="DataClasses\TRANSACTION_SEGMENTS_T.xml" />
+    <Content Include="DataClasses\WAREHOUS.xml" />
+    <Content Include="Send810.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Send856.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionsCore\TransactionsCore.csproj">
+      <Project>{C18C4BAD-182E-49C6-9AC0-772811E3F0EE}</Project>
+      <Name>TransactionsCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses\VFPTables.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VFPTables.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

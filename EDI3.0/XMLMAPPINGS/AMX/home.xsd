@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!-- Revision="$Revision: 1.23 $" -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ 
+    <!--
+    $Date: 2006/12/22 19:26:05 $
+
+    AMAZON.COM CONFIDENTIAL.  This document and the information contained in it are
+    confidential and proprietary information of Amazon.com and may not be reproduced, 
+    distributed or used, in whole or in part, for any purpose other than as necessary 
+    to list products for sale on the www.amazon.com web site pursuant to an agreement 
+    with Amazon.com.
+    -->
+
+    <xsd:include schemaLocation="amzn-base.xsd"/>
+ 
+    <!--
+    Please read the corresponding documentation that contains the recommended values for elements
+    of type StringNotNull.
+    -->
+
+    <xsd:element name="Home">
+        <xsd:complexType>
+            <xsd:sequence>
+ 
+                <xsd:element name="VariationData" minOccurs="0">
+                    <xsd:complexType>
+                        <xsd:sequence>
+
+                            <xsd:element name="Parentage">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="parent"/>
+                                        <xsd:enumeration value="child"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+
+                            <xsd:element name="VariationTheme" minOccurs="0">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="Size"/>
+                                        <xsd:enumeration value="Color"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+
+                            <xsd:element name="Size" type="StringNotNull" minOccurs="0"/>
+                            <xsd:element name="Color" type="StringNotNull" minOccurs="0"/>
+
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element ref="ColorMap" minOccurs="0"/>
+
+
+                <xsd:element name="VolumeCapacity" type="VolumeIntegerDimension" minOccurs="0"/>
+
+		<xsd:element name="Material" type="StringNotNull" minOccurs="0"/>
+
+		<xsd:element name="ThreadCount" type="xsd:positiveInteger" minOccurs="0"/>
+
+		<xsd:element name="NumberOfItemsInPackage" type="xsd:positiveInteger" minOccurs="0"/>
+
+		<xsd:element name="Wattage" type="xsd:positiveInteger" minOccurs="0"/>	
+		
+		<xsd:element name="Length"   type="LengthDimension" minOccurs="0"/>
+		<xsd:element name="Width"    type="LengthDimension" minOccurs="0"/>
+		<xsd:element name="Height"   type="LengthDimension" minOccurs="0"/>
+		<xsd:element name="Depth"    type="LengthDimension" minOccurs="0"/>
+		<xsd:element name="Diameter" type="LengthDimension" minOccurs="0"/>
+
+		<xsd:element name="Weight" type="WeightDimension" minOccurs="0"/>
+
+		<xsd:element name="Spread" type="LengthDimension" minOccurs="0"/>
+
+    		<xsd:element name="SunlightExposure" minOccurs="0">
+        	    <xsd:simpleType>
+            		<xsd:restriction base="xsd:string">
+			    <xsd:enumeration value="shade"/>
+			    <xsd:enumeration value="partial-shade"/>
+      			    <xsd:enumeration value="partial-sun"/>
+			    <xsd:enumeration value="full-sun"/>
+		        </xsd:restriction>
+		    </xsd:simpleType>
+		</xsd:element>
+
+    		<xsd:element name="MoistureNeeds" minOccurs="0">
+        	    <xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+                	    <xsd:enumeration value="little-to-no-watering"/>
+			    <xsd:enumeration value="moderate-watering"/>
+                	    <xsd:enumeration value="regular-watering"/>
+                	    <xsd:enumeration value="constant-watering"/>
+            		</xsd:restriction>
+        	    </xsd:simpleType>
+    		</xsd:element>
+
+    		<xsd:element name="USDAHardinessZone" minOccurs="0">
+        	    <xsd:simpleType>
+            		<xsd:restriction base="xsd:positiveInteger">
+                	    <xsd:minInclusive value="1"/>
+                	    <xsd:maxInclusive value="11"/>
+            		</xsd:restriction>
+        	    </xsd:simpleType>
+    		</xsd:element>
+
+    		<xsd:element name="SunsetClimateZone" minOccurs="0">
+        	    <xsd:simpleType>
+            		<xsd:restriction base="xsd:positiveInteger">
+                	    <xsd:minInclusive value="1"/>
+                	    <xsd:maxInclusive value="24"/>
+            		</xsd:restriction>
+        	    </xsd:simpleType>
+    		</xsd:element>
+
+		<xsd:element name="NumberOfSets" type="xsd:positiveInteger" minOccurs="0"/>
+
+                <xsd:element name="NumberOfPieces" type="xsd:positiveInteger" minOccurs="0"/>
+
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
+

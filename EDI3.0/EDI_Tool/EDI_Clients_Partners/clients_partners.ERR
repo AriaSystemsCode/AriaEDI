@@ -1,0 +1,29 @@
+Visual Class Library c:\users\hassan.i.aria\desktop\newfolder\main.vcx has the following errors:
+    Unknown GFSUBSTR - Undefined
+    Unknown GFGENFLT - Undefined
+    Unknown GFDOTRIGER - Undefined
+    Unknown GFDATABASEPROP - Undefined
+    File TBTOP.BMP - Undefined
+    File TBBACK.BMP - Undefined
+    File TBNEXT.BMP - Undefined
+    File TBEND.BMP - Undefined
+    File TBNEW.BMP - Undefined
+    File OPEN.BMP - Undefined
+    File TBPRINT.BMP - Undefined
+    Form BROWSE - Undefined
+    File BROW1.BMP - Undefined
+    File EDIT1.BMP - Undefined
+    File DELETE.BMP - Undefined
+    File TASKLST.BMP - Undefined
+    File CALEND.BMP - Undefined
+    File CALC.BMP - Undefined
+    File CLOSE.BMP - Undefined
+    Unknown GFTEMPNAME - Undefined
+    Visual Class Library UTILITY - Undefined
+    Unknown LFOPEN_SQL_FILE - Undefined
+    Unknown GFUSERLIST - Undefined
+    Proc./Func. GFMENUBAR - Undefined
+    Proc./Func. GPEXIT - Undefined
+    Unknown GFGETTIME - Undefined
+    Program SYACTKEY - Undefined
+

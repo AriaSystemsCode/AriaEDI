@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xdoc>
+<ftp_info>
+	<row>
+		<cftp>208.74.30.119</cftp>
+		<cusername>AHMED.R</cusername>
+		<cpassword>Aria_12345</cpassword>
+		<cincoming>D:\EDI3TEST\EDI\INBOX\</cincoming>
+		<coutgoing>D:\EDI3TEST\EDI\OUTBOX\</coutgoing>
+		<chistory>D:\EDI3TEST\</chistory>
+		<cmailboxad>/share/ahmed.r/</cmailboxad>
+		<cbatch>d:\ftp_tool\ftp.bat</cbatch>
+		<ccomp>99</ccomp>
+		<cufile>OUT.EDI</cufile>
+		<cmailboxou>/share/ahmed.r/</cmailboxou>
+		<cfileskt>f13.ms3</cfileskt>
+        	<nmsg>6</nmsg>
+                <ccompath>D:\EDI3TEST\DBFS\99\</ccompath>
+                <cSYSpath>D:\EDI3TEST\SYSFILES\</cSYSpath>
+                <cgxs></cgxs>
+                <cftphist>DDD</cftphist>
+                <cftpcstd>CCC</cftpcstd>
+
+	</row>
+</ftp_info>
+
+</xdoc>
+

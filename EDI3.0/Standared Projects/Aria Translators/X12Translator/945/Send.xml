@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Header>
+    <DateFormat></DateFormat>
+    <FileSegments></FileSegments>
+  </Header>
+  <TransactionType>945</TransactionType>
+  <MostParentTable>ShippingOrderHeader_T</MostParentTable>
+  <MostChildTable>ShippingOrderItem_T</MostChildTable>
+  <Relations>
+    <Source>
+      <Add>
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderAddress_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderReference_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>DoumentContacts_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderDates_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+				
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderNotes_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+				
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderCarton_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+				
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderLocation_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+				
+        <Relation>
+          <ParentTable>ShippingOrderHeader_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderItem_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+          </ChildColumns>
+        </Relation>
+		
+		
+		<Relation>
+          <ParentTable>ShippingOrderItem_T</ParentTable>
+          <ParentColumns>
+            <Column>ShippingOrder</Column>
+			<Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderLineReference_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+			<Column>ShippingOrderItem</Column>
+          </ChildColumns>
+        </Relation>
+		
+			
+		<Relation>
+          <ParentTable>ShippingOrderItem_T</ParentTable>
+          <ParentColumns>
+            <Column>ShippingOrder</Column>
+			<Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderLineDates_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+			<Column>ShippingOrderItem</Column>
+          </ChildColumns>
+        </Relation>
+		
+		
+		<Relation>
+          <ParentTable>ShippingOrderItem_T</ParentTable>
+          <ParentColumns>
+            <Column>ShippingOrder</Column>
+			<Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingLineNotes_T</ChildTable>
+          <ChildColumns>
+            <Column>ShippingOrder</Column>
+			<Column>ShippingOrderItem</Column>
+          </ChildColumns>
+        </Relation>
+		
+		<Relation>
+          <ParentTable>ShippingOrderCarton_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderItemCartons_T</ChildTable>
+          <ChildColumns>
+            <Column>CartonID</Column>
+          </ChildColumns>
+        </Relation>
+		
+		<Relation>
+          <ParentTable>ShippingOrderItem_T</ParentTable>
+          <ParentColumns>
+            <Column>OID</Column>
+          </ParentColumns>
+          <ChildTable>ShippingOrderItemCartons_T</ChildTable>
+          <ChildColumns>
+            <Column>ItemID</Column>
+          </ChildColumns>
+        </Relation>
+			
+
+      </Add>
+    </Source>
+  </Relations>
+
+
+
+  
+  <Map>
+    <Variable>MRPTCODE</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>TransactionPurposeCode</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MPIKTKT</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>DepositorOrderNumber</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MBOL_NO</Variable>
+    <Table>ShippingOrderReference_T</Table>
+    <Column>ReferenceNo</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>ReferenceType</relatedtype>
+    <relatedtypevalue>Vics BOL</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  <Map>
+    <Variable>MMASTERBOL</Variable>
+    <Table>ShippingOrderReference_T</Table>
+    <Column>ReferenceNo</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>ReferenceType</relatedtype>
+    <relatedtypevalue>MASTER BOL</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MCUSTPO</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>PurchaseOrderNumber</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>PIKDATE</Variable>
+    <Table>ShippingOrderDates_T</Table>
+    <Column>Date</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>Type</relatedtype>
+    <relatedtypevalue>PIK</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>SHIPTONAME1</Variable>
+    <Table>ShippingOrderAddress_T</Table>
+    <Column>Name1</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>Type</relatedtype>
+    <relatedtypevalue>SHIPTO</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>SHIPDATE</Variable>
+    <Table>ShippingOrderDates_T</Table>
+    <Column>Date</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>Type</relatedtype>
+    <relatedtypevalue>Ship</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MTRANMTHOD</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>TransportationMethod</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MCARRIER</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>StandardCarrierAlphaCode</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MROUTING</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>Routing</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MSEALNO</Variable>
+    <Table>ShippingOrderReference_T</Table>
+    <Column>ReferenceNo</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>ReferenceType</relatedtype>
+    <relatedtypevalue>MSEALNO</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MTRAILER</Variable>
+    <Table>ShippingOrderReference_T</Table>
+    <Column>ReferenceNo</Column>
+    <Loop>03</Loop>
+    <Fixed></Fixed>
+	<relatedtype>ReferenceType</relatedtype>
+    <relatedtypevalue>MTRAILER</relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MASSIGNEDNUMBER</Variable>
+    <Table></Table>
+    <Column></Column>
+    <Loop>04</Loop>
+    <Fixed>'1'</Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>XBOX_SER</Variable>
+    <Table>ShippingOrderCarton_T</Table>
+    <Column>CartonSerialNumber</Column>
+    <Loop>04</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MITEMDIFFQTY</Variable>
+    <Table></Table>
+    <Column></Column>
+    <Loop>05</Loop>
+    <Fixed>0</Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MITEMORDQTY</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>QuantityOrdered</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MItemCartQty</Variable>
+    <Table>ShippingOrderItemCartons_T</Table>
+    <Column>QTY</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MITEMDIFFQTY</Variable>
+    <Table></Table>
+    <Column></Column>
+    <Loop>05</Loop>
+    <Fixed>0</Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+   <Map>
+    <Variable>MUOM</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>QuantityUOMCode</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MUPC</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>ItemUPC</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MSTYLE</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>VendorStyleNumber</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MITEMWEIGHT</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>GrossWeight</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MITEMWEGHTUOM</Variable>
+    <Table>ShippingOrderItem_T</Table>
+    <Column>WeightUnitCode</Column>
+    <Loop>05</Loop>
+    <Fixed></Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  <Map>
+    <Variable>MORDTOTSHPQTY</Variable>
+    <Table></Table>
+    <Column></Column>
+    <Loop>06</Loop>
+    <Fixed>0</Fixed>
+	<relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+  
+  <Map>
+    <Variable>MORDTOTSHPQTY</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>Weight</Column>
+    <Loop>06</Loop>
+    <Fixed>0</Fixed>
+    <relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+    
+  <Map>
+    <Variable>MWGHTUOM</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>WeightUOMCode</Column>
+    <Loop>06</Loop>
+    <Fixed>0</Fixed>
+    <relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+      
+  <Map>
+    <Variable>MORDVOLUME</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>Volume</Column>
+    <Loop>06</Loop>
+    <Fixed>0</Fixed>
+    <relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+   
+  <Map>
+    <Variable>MVOLUOM</Variable>
+    <Table>ShippingOrderHeader_T</Table>
+    <Column>VolumeUOMCode</Column>
+    <Loop>06</Loop>
+    <Fixed>0</Fixed>
+    <relatedtype></relatedtype>
+    <relatedtypevalue></relatedtypevalue>
+    <Condition></Condition>
+  </Map>
+
+  
+  
+  <Tables945>
+
+	<Table945>
+	<TableName>ShippingOrderHeader_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderAddress_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderReference_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderLineReference_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>DoumentContacts_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderDates_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderLineDates_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderNotes_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderLineNotes_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderCarton_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderItem_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderLocation_T</TableName>
+	<Identifier>OID</Identifier>
+	</Table945>
+	<Table945>
+	<TableName>ShippingOrderItemCartons_T</TableName>
+	<Identifier>Packno</Identifier>
+	</Table945>
+	
+  </Tables945>
+</Root>

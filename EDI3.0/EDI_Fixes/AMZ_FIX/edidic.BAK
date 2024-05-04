@@ -1,0 +1,124 @@
+*:***********************************************************************************************************
+*: Program file  : fixsqldic
+*: Program desc. : Update SQL Mapppings Dictionary 
+*:                                       SYCDICDC.DBF
+*:										 SYCDICEL.DBF
+*:										 SYCDICLP.DBF
+*:										 SYCDICPR.DBF
+*:										 SYCDICQL.DBF
+*:										 SYCDICST.DBF
+*:        System : Aria Advantage Series.
+*:        Module : (EDI).
+*:     Developer : Mostafa Hessin (MOH)
+*:          Date : 06/05/2008
+*:***********************************************************************************************************
+
+_SCREEN.CAPTION ='Update SQL Mapppings Dictionary'
+_SCREEN.WINDOWSTATE = 2
+SET DELETE ON
+CLOSE DATA
+* Get Aria SystemFiles Path
+= MESSAGEBOX("Please select the System Files Directory.",64,'Update SQL Mapppings Dictionary')
+lcSysDir = GETDIR()
+IF !FILE(lcSysDir+'SYDFILES.DBF')
+  =MESSAGEBOX("This is not the System Files Directory. Cannot proceed.",16,'Update SQL Mapppings Dictionary')
+  RETURN
+ENDIF
+
+* Set The default path to program Path
+lcCurrentProcedure= UPPER(SYS(16,1))
+lnPathStart        = AT(":",lcCurrentProcedure)- 1
+lnLenOfPath        = RAT("\", lcCurrentProcedure) - (lnPathStart)
+lcCurPath          = SUBSTR(lcCurrentProcedure, lnPathStart, lnLenofPath)
+SET DEFAULT TO (lcCurPath)
+
+* Array to hold FoxPro DBF files names to insert them into SQL
+DECLARE FileNames[6]
+FileNames[1] = 'SYCDICDC'
+FileNames[2] = 'SYCDICEL'
+FileNames[3] = 'SYCDICLP'
+FileNames[4] = 'SYCDICPR'
+FileNames[5] = 'SYCDICQL'
+FileNames[6] = 'SYCDICST'
+
+* Get the SQL Connection Settings(Server name , DB Name , User Name , Password) for each company
+USE lcSysDir+"SYCCOMP" SHARE IN 0
+SELECT  SYCCOMP
+SCAN
+  lcServName = ALLT(cconserver)
+  lcDBasName = ALLT(ccondbname)
+  lcUserName = ALLT(cconuserid)
+  lcPassWord = ALLT(cconpaswrd)
+  lnHand=SQLSTRINGCONNECT("driver={SQL Server};server="+lcServName+";DATABASE="+lcDBasName+";uid="+lcUserName+";pwd="+lcPassWord)
+   if(lnHand > 0)
+    xx=  FILETOSTR("c:\xml.sql")
+ 
+		* Loop for each FoxPro DBF files to insert it in SQL
+*!*			FOR i=1 TO ALEN(FileNames)
+*!*				USE FileNames[i] SHARED IN 0
+*!*				SELECT FileNames[i] 
+*!*				* Use MBuildString Function to get sql insert command for the selected table 
+*!*				SQLCommand = mbuildstring(FileNames[i])
+*!*				* Delete whole data in SQL Table before inserting 
+*!*				WAIT WINDOW "Truncate Table " + FileNames[i] nowait
+*!*				
+*!*				lnRes=SQLEXEC(lnHand,"Truncate Table " + FileNames[i] )
+*!*				if(lnRes > 0)
+*!*					* Insert row by row in SQL Table from the FoxPro DBF
+*!*					SCAN
+*!*	 				WAIT WINDOW "Update Table " + FileNames[i] nowait
+*!*						SCATTER memv memo
+*!*						lnRes=SQLEXEC(lnHand,SQLCommand )
+*!*					ENDSCAN
+*!*				ELSE
+*!*					MESSAGEBOX("Couldn't Find Table  : " + FileNames[i],0,"Update SQL Mapppings Dictionary")
+*!*				ENDIF
+*!*				USE IN FileNames[i] 
+*!*			ENDFOR
+       
+
+
+	ELSE
+		MESSAGEBOX("Couldn't Connect to Data Base : " + lcDBasName ,0,"Update SQL Mapppings Dictionary")
+		RETURN
+	ENDIF
+
+ENDSCAN
+		
+=MESSAGEBOX('Updating SQL Mapppings Dictionary Done',64,'Update SQL Mapppings Dictionary')
+
+CLOSE DATA
+
+
+**********************************************************************************************************************
+
+*Function take DBF File as paramter and returns full sql in insert command that reads the data from memvar
+*EX: MBuildString(FoxProDBFName)
+*Ex: Insert into SQLTableName (Field1,Field2,...) Values (m.Value1,m.Value2,...)
+
+FUNCTION mbuildstring
+	PARAMETERS lcfileName
+	LOCAL lcStr
+	lcStr = ""    && Default return string by empty string.
+	lcStr = "INSERT INTO " +lcfileName 
+	STORE "" TO lcStr1,lcStr2
+	*--Loop on the cursor fields.
+	FOR lnI=1 TO FCOUNT()
+	  *--Read field in variable.
+	  lcCField = FIELD(lnI)
+	  lcCFldDType = TYPE(lcCField)
+	  lcStr1 = lcStr1 +"["+lcCField+"],"
+	  IF UPPER(lcCField) = "REC_NO"
+    	 lcStr2 = lcStr2 +"newid(),"
+  	  ELSE
+	  	 lcStr2 = lcStr2 +"?m."+lcCField+","
+	  ENDIF
+	ENDFOR
+
+	*--Remove last comma,
+	lcStr1 = SUBSTR(lcStr1,1,LEN(lcStr1)-1)
+	lcStr2 = SUBSTR(lcStr2,1,LEN(lcStr2)-1)
+	lcStr  = lcStr + " ( "+lcStr1+" ) VALUES ( "+lcStr2+" )"
+	RETURN lcStr
+ENDFUNC
+

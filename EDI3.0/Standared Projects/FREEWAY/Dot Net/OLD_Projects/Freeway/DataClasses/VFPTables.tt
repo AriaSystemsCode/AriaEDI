@@ -1,0 +1,418 @@
+﻿<#@ template hostspecific="True" debug="True" #>
+<#@ output extension="cs" #>
+<#@ import namespace="System" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System.Xml" #>
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Reflection;
+using System.Data.SqlClient;
+using System.Data.Common;
+using System.Data.Odbc;
+using System.Data.OleDb;
+
+<#
+string[] xmlFiles = getAllFiles();
+XmlDocument xmlDoc = new XmlDocument();
+foreach(string file in xmlFiles)
+{
+	XmlDocument xmlDocument = new XmlDocument();
+	xmlDocument.Load(file);
+	if(xmlDocument.ChildNodes.Count > 1)
+	{
+        XmlNode TableNameNode = xmlDocument.DocumentElement.SelectSingleNode("//TABLE_NAME");
+        if (TableNameNode != null)
+        {
+            var ClassName = TableNameNode.InnerText;
+      
+#>
+public class <#=  ClassName #>
+{
+<# 
+			this.PushIndent("    ");
+			this.WriteLine("#region Properties");
+			this.WriteLine("");
+		    foreach (XmlNode node in  xmlDocument.DocumentElement.SelectNodes("//Columns"))
+            {
+				string DataType = node["DATA_TYPE"].InnerText;
+				string DotNetType = null;
+				if(node["TABLE_SCHEMA"] == null)
+				{
+                	int IntDataType = 0;
+                    int.TryParse(DataType, out IntDataType);
+                    DotNetType = GetOLEDBDataType(Enum.GetName(new System.Data.OleDb.OleDbType().GetType(), IntDataType));
+					if(DotNetType == "string" && node["CHARACTER_MAXIMUM_LENGTH"] != null && node["CHARACTER_MAXIMUM_LENGTH"].InnerText =="1")
+						DotNetType = "char";
+                }
+				else
+					DotNetType = GetSQLDataType(DataType);
+				
+				this.WriteLine("public " + DotNetType + " " + node["COLUMN_NAME"].InnerText + " { get; set; }");
+				this.WriteLine("");
+            }
+			this.WriteLine("#endregion");
+			this.PopIndent();
+			#>
+
+	#region Methods
+
+	public static <#=  ClassName #> Create(DataRow row)
+    {
+        <#=  ClassName #> newRow = new <#=  ClassName #>();
+        foreach (PropertyInfo property in newRow.GetType().GetProperties())
+        {
+            if (property.CanWrite && row.Table.Columns.Contains(property.Name))
+            {
+			    if (property.PropertyType == typeof(char) && row.Table.Columns[property.Name].DataType == typeof(string))
+                    property.SetValue(newRow,Convert.ToChar(row[property.Name]), null);
+                else
+                property.SetValue(newRow, row[property.Name], null);
+            }
+        }
+        return newRow;
+    }
+
+    public static List<<#=  ClassName #>> Create(DataTable Table)
+    {
+        List<<#=  ClassName #>> <#=  ClassName #>list = new List<<#=  ClassName #>>();
+        foreach (DataRow row in Table.Rows)
+        {
+            <#=  ClassName #> newObject = Create(row);
+            <#=  ClassName #>list.Add(newObject);
+        }
+        return <#=  ClassName #>list;
+    }
+	
+	public int ExecuteSqlInsert(SqlConnection con)
+	{
+		string Fields = string.Empty, Values = string.Empty;
+		foreach (PropertyInfo property in new <#=  ClassName #>().GetType().GetProperties())
+		{
+			bool valueUsed = false;
+			object Value = property.GetValue(this, null);
+			if (Value == null) continue;
+
+			if (Value.GetType() == typeof(string))
+            {
+                Value = Value.ToString().Replace("'", "''");
+                Values += "'" + Value.ToString() + "'";
+				valueUsed = true;
+            }
+            else if (Value.GetType() == typeof(char) && ((char)Value) != 0)
+            {
+                Value = Value.ToString().Replace("'", "''");
+                Values += "'" + Value.ToString() + "'";
+				valueUsed = true;
+            }
+			else if (Value.GetType() == typeof(int) || Value.GetType() == typeof(decimal) || Value.GetType() == typeof(double) || Value.GetType() == typeof(Int64) ||Value.GetType() == typeof(Int16) )
+			{
+			    Values += Value;
+				valueUsed = true;
+			}
+			else if (Value.GetType() == typeof(DateTime))
+			{
+			    Values += "'" + ((DateTime)Value).ToString("MM/dd/yyyy") + "'";
+				valueUsed = true;
+			}
+			else if (Value.GetType() == typeof(bool))
+			{
+			    Values += (bool)Value ? 1 : 0;
+				valueUsed = true;
+			}
+			else if (Value.GetType() == typeof(Guid))
+			{
+			    if (((Guid)Value) == Guid.Empty)
+			        Values += "NEWID()";
+			    else
+			        Values += "'" + ((Guid)Value).ToString() + "'";
+				valueUsed = true;
+			}
+			if (valueUsed)
+			{
+			    Fields += "[" + property.Name + "],";
+			    Values += ",";
+			}
+		}
+		Values = Values.Length > 0 ? Values.Remove(Values.Length - 1) : Values;
+		Fields = Fields.Length > 0 ? Fields.Remove(Fields.Length - 1) : Fields;
+		string sql = "Insert into <#=  ClassName #> (" + Fields + ") values(" + Values + ")";
+		SqlCommand cmd = con.CreateCommand();
+        cmd.CommandText = sql;
+        if (con.State == ConnectionState.Closed)
+            con.Open();		
+		int count = cmd.ExecuteNonQuery();
+        con.Close();
+		return count;		
+		}
+		
+	public int ExecuteVFPnsert(DbConnection con)
+	{
+		string Fields = string.Empty, Values = string.Empty;
+		foreach (PropertyInfo property in new <#=  ClassName #>().GetType().GetProperties())
+		{
+			bool valueUsed = false;
+			object Value = property.GetValue(this, null);
+			if (Value == null) continue;
+
+ 			if (Value.GetType() == typeof(string))
+            {
+                Value = Value.ToString().Replace("'", "''");
+                Values += "'" + Value.ToString() + "'";
+				valueUsed = true;
+            }
+            else if (Value.GetType() == typeof(char) && ((char)Value) != 0)
+            {
+                Value = Value.ToString().Replace("'", "''");
+                Values += "'" + Value.ToString() + "'";
+				valueUsed = true;
+            }
+            else if (Value.GetType() == typeof(int) || Value.GetType() == typeof(decimal) || Value.GetType() == typeof(double))
+            {
+                Values += Value;
+				valueUsed = true;
+            }
+            else if (Value.GetType() == typeof(DateTime))
+            {
+                Values += "'" + ((DateTime)Value).ToString("{^yyyy-MM-dd}") + "'";
+				valueUsed = true;
+            }
+            else if (Value.GetType() == typeof(bool))
+            {
+                Values += (bool)Value ? ".T." : ".F.";
+				valueUsed = true;
+            }
+			if (valueUsed)
+			{
+			    Fields += "[" + property.Name + "],";
+			    Values += ",";
+			}
+		}
+		Values = Values.Length > 0 ? Values.Remove(Values.Length - 1) : Values;
+		Fields = Fields.Length > 0 ? Fields.Remove(Fields.Length - 1) : Fields;
+		string sql = "Insert into <#=  ClassName #> (" + Fields + ") values(" + Values + ")";
+		DbCommand cmd = con.CreateCommand();
+        cmd.CommandText = sql;
+        if (con.State == ConnectionState.Closed)
+            con.Open();
+        int count = cmd.ExecuteNonQuery();
+        con.Close();
+        return count;
+	}		
+			
+	public static int Delete(DbConnection con,string Wherecondition)
+	{
+	     DbCommand deleteCommand = con.CreateCommand();
+	    deleteCommand.CommandText = "Delete from <#=  ClassName #> ";
+	    if (Wherecondition != null && Wherecondition.Trim()!= "")
+	    {
+	        if (Wherecondition.Trim().ToLower().StartsWith("where"))
+	            deleteCommand.CommandText += Wherecondition;
+	        else
+	            deleteCommand.CommandText += " Where " + Wherecondition;
+	    }
+	  if (deleteCommand.Connection.State == ConnectionState.Closed || deleteCommand.Connection.State == ConnectionState.Broken)
+            deleteCommand.Connection.Open();
+        var x = deleteCommand.ExecuteNonQuery();
+        deleteCommand.Connection.Close();
+        return x;
+	}
+	
+	public static List<<#=  ClassName #>> Select(DbConnection con, string Wherecondition)
+    {
+        DbCommand cmd = con.CreateCommand();
+        cmd.CommandText = "Select * from <#=  ClassName #> ";
+        if (Wherecondition != null && Wherecondition.Trim() != "")
+        {
+            if (Wherecondition.Trim().ToLower().StartsWith("where"))
+                cmd.CommandText += Wherecondition;
+            else
+                cmd.CommandText += " Where " + Wherecondition;
+        }
+        DataTable dt = new DataTable("Results");
+        DbDataAdapter dad = new SqlDataAdapter();
+        if (con is OdbcConnection)
+            dad = new OdbcDataAdapter((OdbcCommand)cmd);
+        else if (con is OleDbConnection)
+            dad = new OleDbDataAdapter((OleDbCommand)cmd);
+        else if (con is SqlConnection)
+            dad = new SqlDataAdapter((SqlCommand)cmd);
+        dad.Fill(dt);
+        return Create(dt);
+    }
+	
+	public DataRow GetAsDataRow(DataTable parentTable)
+    {
+        DataRow row = parentTable.NewRow();
+        foreach (DataColumn column in parentTable.Columns)
+        {
+            PropertyInfo property = this.GetType().GetProperty(column.ColumnName);
+            if (property != null  && property.GetValue(this, null) != null)
+            {
+                row[column] = property.GetValue(this, null);
+            }
+        }
+        return row;
+    }
+
+	#endregion
+}
+
+<#
+		}
+	}
+
+}
+#>
+<#+ 
+private string[] getAllFiles()
+{
+ string path=	Path.GetDirectoryName(this.Host.TemplateFile);
+ return	Directory.GetFiles(path,"*.xml");
+}
+#>
+<#+
+   public string GetOLEDBDataType(string OLEDBDataType)
+        {
+            string DataType = "";
+            switch (OLEDBDataType)
+            {
+                case "SmallInt":
+                    DataType = "short?";
+                    break;
+                case "Integer":
+                    DataType = "int?";
+                    break;
+                case "Single":
+                    DataType = "Single?";
+                    break;
+                case "Double":
+                    DataType = "double?";
+                    break;
+                case "Currency":
+                case "Numeric":
+                case "Decimal":
+                case "VarNumeric":
+                    DataType = "decimal?";
+                    break;
+                case "Date":
+                case "DBDate":
+                case "DBTimeStamp":
+                case "Filetime":
+                    DataType = "DateTime?";
+                    break;
+                case "Error":
+                    DataType = "Exception";
+                    break;
+                case "Boolean":
+                    DataType = "bool?";
+                    break; 
+                case "IDispatch":
+                case "Variant":
+                case "IUnknown":
+                case "PropVariant":
+                    DataType = "object";
+                    break;
+                case "TinyInt":
+                    DataType = "SByte?";
+                    break;
+                case "UnsignedTinyInt":
+                case "VarBinary":
+                case "LongVarBinary":
+                    DataType = "Byte?";
+                    break;
+                case "UnsignedSmallInt":
+                    DataType = "UInt16?";
+                    break;
+                case "UnsignedInt":
+                case "BigInt":
+                    DataType = "UInt32?";
+                    break;
+                case "UnsignedBigInt":
+                    DataType = "UInt64?";
+                    break;
+                case "Guid":
+                    DataType = "Guid?";
+                    break;
+                case "Binary":
+                    DataType = "Array";
+                    break;
+                case "BSTR":
+                case "Char":
+                case "WChar":
+                case "VarChar":
+                case "LongVarChar":
+                case "VarWChar":
+                case "LongVarWChar":
+                    DataType = "string";
+                    break;
+                case "DBTime":
+                    DataType = "TimeSpan?";
+                    break;
+            }
+            return DataType;
+        }
+		
+		 public string GetSQLDataType(string SQLDataType)
+        {
+            string DataType = "";
+            switch (SQLDataType.ToLower())
+            {
+                case "char":
+                case "text":
+                case "varchar":
+                case "ntext":
+                case "nchar":
+                case "nvarchar":
+                    DataType = "string";
+                    break;
+                case "bigint":
+                    DataType = "Int64?";
+                    break;
+				case "image":
+                case "binary":
+                case "timestamp":
+                case "varbinary":
+                    DataType = "Byte[]";
+                    break;
+                case "bit":
+                    DataType = "bool?";
+                    break; 
+				case "smalldatetime":
+                case "datetime":
+                    DataType = "DateTime?";
+                    break;
+                case "float":
+                    DataType = "Double?";
+                    break;
+                case "int":
+                    DataType = "int?";
+                    break;
+                case "money":
+                case "decimal":
+                case "numeric": 
+                case "smallmoney":
+                    DataType = "decimal?";
+                    break;
+                case "real":
+                    DataType = "Single?";
+                    break;
+                case "smallint":
+                    DataType = "short?";
+                    break;
+                case "sql_variant":
+                    DataType = "Object *";
+                    break;
+                case "tinyint":
+                    DataType = "Byte?";
+                    break;
+                case "uniqueidentifier":
+                    DataType = "Guid?";
+                    break;
+            }
+            return DataType;
+        }
+#>

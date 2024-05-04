@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding="Windows-1252" standalone="yes"?>
+<VFPData>
+	<SystemMaster>
+	     <Server>ARIATesting\ARIASQL</Server>
+                <Database>System.Master</Database>
+                <UID>sa</UID>
+                <PWD>aria_123</PWD>
+				<ONLYFOR>GMA10</ONLYFOR>
+	</SystemMaster>
+</VFPData>
