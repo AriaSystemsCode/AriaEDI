@@ -6,6 +6,7 @@
 #DEFINE cdoSMTPServer "http://schemas.microsoft.com/cdo/configuration/smtpserver"
 #DEFINE cdoSMTPServerPort "http://schemas.microsoft.com/cdo/configuration/smtpserverport"
 #DEFINE cdoSMTPUseSSL "http://schemas.microsoft.com/cdo/configuration/smtpusessl"
+
 #DEFINE cdoURLGetLatestVersion "http://schemas.microsoft.com/cdo/configuration/urlgetlatestversion"
 #DEFINE cdoAnonymous 0	&& Perform no authentication (anonymous)
 #DEFINE cdoBasic 1	&& Use the basic (clear text) authentication mechanism.
