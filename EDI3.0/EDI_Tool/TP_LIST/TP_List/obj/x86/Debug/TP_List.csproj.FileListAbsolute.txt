@@ -1,9 +1,0 @@
-E:\Work\DeskTop_Projects\TP_List\TP_List\bin\Debug\TP_List.exe
-E:\Work\DeskTop_Projects\TP_List\TP_List\bin\Debug\TP_List.pdb
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\ResolveAssemblyReference.cache
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\TP_List.Form1.resources
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\TP_List.Properties.Resources.resources
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\GenerateResource.read.1.tlog
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\GenerateResource.write.1.tlog
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\TP_List.exe
-E:\Work\DeskTop_Projects\TP_List\TP_List\obj\x86\Debug\TP_List.pdb

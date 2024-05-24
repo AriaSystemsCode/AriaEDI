@@ -1,1 +1,0 @@
-regsvr32.exe /s IDAutomationLinear5.dll
