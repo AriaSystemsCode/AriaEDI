@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurations>
+  <DatabaseSetup>
+    <ServerName>AriaSQL\AriaSQLServer</ServerName>
+    <ServerLoginType>SqlServerAuthentication</ServerLoginType>
+    <UserName>sa</UserName>
+    <Password>aria_123</Password>
+  </DatabaseSetup>
+  <OpenRowSetServer>
+    <ServerName>ARIAAPP1\SQLEXPRESS</ServerName>
+    <ServerLoginType>SqlServerAuthentication</ServerLoginType>
+    <UserName>sa</UserName>
+    <Password>aria_123</Password>
+  </OpenRowSetServer>
+  <FileServer>
+    <Aria40SharedPath>D:\Shared\ARIA4XP\</Aria40SharedPath>
+    <DebugMode>Enabled</DebugMode>
+  </FileServer>
+  <RequestServer>
+    <Port>1500</Port>
+    <MaxRecordsPerAgent>17</MaxRecordsPerAgent>
+    <MaxRecordsPerReport>1000</MaxRecordsPerReport>
+    <MaxExecutionTimePerRequest>300</MaxExecutionTimePerRequest>
+    <ExceedLimitNotificationEmail>AriaRBTest@gmail.com</ExceedLimitNotificationEmail>
+  </RequestServer>
+</configurations>

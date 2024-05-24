@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FA3EDAA-41D3-4A8C-8079-60BF50B1980A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>X12Translator</RootNamespace>
+    <AssemblyName>X12Translator</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>dlls\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AriaConnection.cs" />
+    <Compile Include="AriaEnviroment\AriaDatabaseTypes.cs" />
+    <Compile Include="AriaEnviroment\AriaEnviromentVariables.cs" />
+    <Compile Include="AriaEnviroment\DatabaseServerLoginTypes.cs" />
+    <Compile Include="DataClasses\VFPTables.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VFPTables.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="enum.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recieve\HelperClass.cs" />
+    <Compile Include="Recieve\RECEIVE.cs" />
+    <Compile Include="Recieve\ReceiveFile.cs" />
+    <Compile Include="Send\Send812.cs" />
+    <Compile Include="Send\Send852.cs" />
+    <Compile Include="Send\Send943.cs" />
+    <Compile Include="Send\Send944.cs" />
+    <Compile Include="Send\Send945.cs" />
+    <Compile Include="Send\SENDTRANSACTIONS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Send\SendTranslator.cs" />
+    <Compile Include="SqlLite.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="810\loops.xml" />
+    <Content Include="810\Receive.xml" />
+    <Content Include="812\loops.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="812\Send.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="812\sendmap.sql" />
+    <Content Include="852\852 Receive.sql" />
+    <Content Include="852\loops.xml" />
+    <Content Include="852\map.txt" />
+    <Content Include="852\Receive.xml" />
+    <Content Include="852\Send.xml" />
+    <Content Include="852\sendmap.sql" />
+    <Content Include="852\sycsegdt.txt" />
+    <Content Include="852\sycseghd.txt" />
+    <Content Include="852\sycvics.txt" />
+    <Content Include="943\943-Send-Mapping.sql" />
+    <Content Include="943\943-Receive-Mapping.sql" />
+    <Content Include="943\loops.xml" />
+    <Content Include="943\Receive.xml" />
+    <Content Include="943\Send.xml" />
+    <Content Include="944\944-Receive-Mapping.sql" />
+    <Content Include="944\944-Send-Mapping.sql" />
+    <Content Include="944\loops.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="944\Receive.xml" />
+    <Content Include="944\Send.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="945\loops.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="945\Receive.xml" />
+    <Content Include="945\Send.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config_Live.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config_test.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataClasses\EDIACPRT.xml" />
+    <Content Include="DataClasses\EDIERORD.xml" />
+    <Content Include="DataClasses\EDIERORH.xml" />
+    <Content Include="DataClasses\EDILIBDT.xml" />
+    <Content Include="DataClasses\EDILIBHD.xml" />
+    <Content Include="DataClasses\EDINET.xml" />
+    <Content Include="DataClasses\EDINOTE.xml" />
+    <Content Include="DataClasses\EDIPD.xml" />
+    <Content Include="DataClasses\EDIPH.xml" />
+    <Content Include="DataClasses\edipkinf.xml" />
+    <Content Include="DataClasses\EDISODT.xml" />
+    <Content Include="DataClasses\EDISOHD.xml" />
+    <Content Include="DataClasses\orderchg.xml" />
+    <Content Include="DataClasses\ORDHDR.xml" />
+    <Content Include="DataClasses\ORDLINE.xml" />
+    <Content Include="DataClasses\PO_ADDRESS_T.xml" />
+    <Content Include="DataClasses\PO_CHARGES_T.xml" />
+    <Content Include="DataClasses\PO_HEADER_T.xml" />
+    <Content Include="DataClasses\PO_ITEMS_T.xml" />
+    <Content Include="DataClasses\PO_ITEM_DISTENTION_T.xml" />
+    <Content Include="DataClasses\PO_MESSAGES_T.xml" />
+    <Content Include="DataClasses\PO_SUBLINE_ITEM_T.xml" />
+    <Content Include="DataClasses\PO_TERMS_T.xml" />
+    <Content Include="DataClasses\sequence.xml" />
+    <Content Include="DataClasses\SHIPMENT_CONTAINERS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_DETAILS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_HEADER_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ITEMS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ITEM_CONTAINERS_T.xml" />
+    <Content Include="DataClasses\SHIPMENT_ROUTING_T.xml" />
+    <Content Include="DataClasses\SYCCOMP.xml" />
+    <Content Include="DataClasses\SYCEDILH.xml" />
+    <Content Include="DataClasses\SYCEDITR.xml" />
+    <Content Include="DataClasses\SYCINST.xml" />
+    <Content Include="DataClasses\TRANSACTION_MAP_T.xml" />
+    <Content Include="DataClasses\TRANSACTION_SEGMENTS_T.xml" />
+    <Content Include="DataClasses\WAREHOUS.xml" />
+    <Content Include="940\loops.xml" />
+    <Content Include="940\Receive.xml" />
+    <Content Include="dlls\System.Data.SQLite.dll" />
+    <Content Include="Docs\Checks.txt" />
+    <Content Include="UpdateMapClientMaster\script.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses\VFPTables.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VFPTables.cs</LastGenOutput>
+    </None>
+    <None Include="UpdateMapClientMaster\updateclients.prg" />
+    <None Include="X12Translator Digrams\Receive_Digram.dgml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionsCore\TransactionsCore.csproj">
+      <Project>{c18c4bad-182e-49c6-9ac0-772811e3f0ee}</Project>
+      <Name>TransactionsCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

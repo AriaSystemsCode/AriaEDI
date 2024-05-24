@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+<ClientConfig>
+<Email>EDI_Support@Ariany.com</Email>
+<Password>Smart@Edi</Password>
+<To>EDI_Support@Ariany.com</To>
+</ClientConfig>
+</DocumentElement>

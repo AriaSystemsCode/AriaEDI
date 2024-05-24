@@ -1,0 +1,12 @@
+<?xml version = "1.0" encoding="Windows-1252" standalone="yes"?>
+<VFPData>
+	<connections>
+		<sorcservnam>62.68.240.36,1433\edisql</sorcservnam>
+		<sorcusrnam>sa</sorcusrnam>
+		<sorcpass>aria_123</sorcpass>
+		<istest>false</istest>
+		<destservnam>AriaSQL\AriaSQLServer</destservnam>
+		<destusrnam>sa</destusrnam>
+		<destpass>aria_123</destpass>
+	</connections>
+</VFPData>

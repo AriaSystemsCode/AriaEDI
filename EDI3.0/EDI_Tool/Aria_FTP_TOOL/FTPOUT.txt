@@ -1,0 +1,6 @@
+USERNAME
+PASSWORD
+bin
+mput *.*
+close
+quit

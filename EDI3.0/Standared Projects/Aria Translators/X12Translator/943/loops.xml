@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+<MostParent>W06</MostParent>
+<MostChild></MostChild>
+<looporder>03,04,05</looporder>
+<MostParentLoop>03</MostParentLoop>
+<Loop>
+ <ParentLoop></ParentLoop>
+ <ID>03</ID>
+ <ChildLoop>04,05</ChildLoop>
+ <Description>Header</Description>
+ <SegId>W06</SegId>
+ <Repeatble>FALSE</Repeatble>
+ <ParentTable>ShippingHeader_T</ParentTable> 
+ <ParentTable></ParentTable>
+ <ParentTableColumn></ParentTableColumn>
+ <ChildTable></ChildTable>
+ <ChildTableColumn></ChildTableColumn>
+ <RelatedColumn></RelatedColumn>
+ <RelatedValue></RelatedValue>
+</Loop>
+<Loop>
+    <ParentLoop>03</ParentLoop>
+    <ID>04</ID>
+	<ChildLoop></ChildLoop>
+    <Description>Detail</Description>
+    <Repeatble>TRUE</Repeatble>
+    <SegId>W04</SegId>
+	<ParentTable>ShippingItem_T</ParentTable> 
+    <ParentTable></ParentTable>
+    <ParentTableColumn></ParentTableColumn>
+    <ChildTable></ChildTable>
+    <ChildTableColumn></ChildTableColumn>
+    <RelatedColumn></RelatedColumn>
+    <RelatedValue></RelatedValue>
+  </Loop>
+<Loop>
+ <ParentLoop>03</ParentLoop>
+ <ID>05</ID>
+ <ChildLoop></ChildLoop>
+ <Description>Summary</Description>
+ <SegId>W03</SegId>
+ <Repeatble>FALSE</Repeatble>
+ <ParentTable>ShippingHeader_T</ParentTable> 
+ <ParentTable></ParentTable>
+ <ParentTableColumn></ParentTableColumn>
+ <ChildTable></ChildTable>
+ <ChildTableColumn></ChildTableColumn>
+ <RelatedColumn></RelatedColumn>
+ <RelatedValue></RelatedValue>
+</Loop>
+</Root>

@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph DataVirtualized="True" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="10" Category="Comment" Bounds="-3192.63412462271,-1338.54491037632,50,25.96" UseManualLocation="True" />
+    <Node Id="11" Category="Comment" Bounds="-4431.02181993521,-1287.95140451695,50,25.96" Label="1" UseManualLocation="True" />
+    <Node Id="2-1" Category="Comment" Bounds="-1524.6047056774,-1154.31114572789,50,25.96" UseManualLocation="True" />
+    <Node Id="2-2" Category="Comment" Bounds="-1516.89169298209,-1022.59059519078,50,25.96" UseManualLocation="True" />
+    <Node Id="2-3" Category="Comment" Bounds="-1485.53201280631,-910.670246069684,50,25.96" UseManualLocation="True" />
+    <Node Id="2-4" Category="Comment" Bounds="-1517.86508165396,-784.350238745465,50,25.96" UseManualLocation="True" />
+    <Node Id="202c4460-c1ff-44ab-8ba9-a72bc0e6fee91" Category="Comment" Bounds="-1537.31017605501,-1626.80554758336,234.863333333333,89.8" Label="Paramaters:N/A                                                                                                                                            Objective:                                                        1-Delete Current Segment from the temporary Sqlite database if exist with in the same Loop id." />
+    <Node Id="21" Category="Comment" Bounds="-3209.86019884146,-1999.70164865757,50,25.96" Label="2" UseManualLocation="True" />
+    <Node Id="3" Category="Comment" Bounds="-3207.19955431021,-1448.25236887242,50,25.96" UseManualLocation="True" />
+    <Node Id="3-1" Category="Comment" Bounds="-1678.22738634146,-1907.86131662632,50,25.96" UseManualLocation="True" />
+    <Node Id="3-2" Category="Comment" Bounds="-1211.61337266959,-1749.53844064976,50,25.96" UseManualLocation="True" />
+    <Node Id="3-3" Category="Comment" Bounds="-1654.69857774771,-1616.96641916539,50,25.96" UseManualLocation="True" />
+    <Node Id="3-4" Category="Comment" Bounds="-1889.97335802115,-1372.04344553257,50.0000000000002,25.96" UseManualLocation="True" />
+    <Node Id="3-5" Category="Comment" Bounds="-1694.51986681021,-1338.1579474857,50,25.96" UseManualLocation="True" />
+    <Node Id="3497707e-3181-473c-847b-2a0236ec278a1" Category="Comment" Bounds="-1224.4404059541,-1633.08435617711,234.756666666667,89.8000000000002" Label="Paramaters                                                             1-Value Expression(Select Statment)                                                                                                                                                                                              Objective:                                                        1-Apply the Select statment to the Sqlite database and return the value." />
+    <Node Id="4" Category="Comment" Bounds="-3244.19760118521,-1840.41472238804,50,25.96" UseManualLocation="True" />
+    <Node Id="4eff1705-6dce-423a-9c59-9416f53ca8a01" Category="Comment" Bounds="-2238.90806993521,-959.582830298199,238.46,89.8" Label="Paramaters:N/A                                                                                       Objective:                                                        1-Create a new temporary memory Sqlite database with a table with a predefined structure.                                    " />
+    <Node Id="4f8354ac-052b-4195-a38a-440d7b539d3f1" Category="Comment" Bounds="-1558.43177110709,-1424.36546213414,249.17,121.72" Label="Paramaters:                                                    1-Cmapset               2-Cversion                                                             3-Segid                    4-Field Number                                                              5-Loop Id                 6-Transaction Map Key                                                                                    Objective:                                                        1-Check if Partner have any exception related to this record and return it." />
+    <Node Id="5" Category="Comment" Bounds="-3129.39828477896,-1001.00172800328,50,25.96" UseManualLocation="True" />
+    <Node Id="5e829f1f-dc28-4c0e-b6a8-00d72976506a1" Category="Comment" Bounds="-2043.19217963574,-1602.74654611851,247.436666666667,105.76" Label="Paramaters                                                             1-Current Segment                                                       2- Field Sperator                                                                                                                                           Objective:                                                        1-Insert Current Segment to the temporary Sqlite Database with the current loop." />
+    <Node Id="6" Category="Comment" Bounds="-3118.25277696646,-1151.81212229039,50,25.96" UseManualLocation="True" />
+    <Node Id="7" Category="Comment" Bounds="-2770.38265977896,-1288.19243234898,50,25.96" UseManualLocation="True" />
+    <Node Id="7-1" Category="Comment" Bounds="-2338.90805040396,-965.325183813824,50,25.96" Label="7-1" UseManualLocation="True" />
+    <Node Id="7-2" Category="Comment" Bounds="-2169.15243516959,-1741.77287668492,50,25.96" Label="7-3" UseManualLocation="True" />
+    <Node Id="7-21" Category="Comment" Bounds="-1795.52975450553,-1072.19737619664,50,25.96" Label="7-2" UseManualLocation="True" />
+    <Node Id="7-3" Category="Comment" Bounds="-2414.71127306021,-1021.28538889195,50,25.96" Label="7-4" UseManualLocation="True" />
+    <Node Id="7-4" Category="Comment" Bounds="-2663.73226915396,-963.165271704449,50,25.96" Label="7-5" UseManualLocation="True" />
+    <Node Id="7-5" Category="Comment" Bounds="-2779.98482676919,-1056.76150363118,50,25.96" Label="7-6" UseManualLocation="True" />
+    <Node Id="8" Category="Comment" Bounds="-3211.80062852896,-1701.37303537632,50,25.96" Label="8" UseManualLocation="True" />
+    <Node Id="8236fed8-ac47-4c71-aabd-97d52c0ec4f31" Category="Comment" Bounds="-4940.71326402158,-1716.61260001161,236.076666666667,249.4" Label="Paramaters:                                                              1-Transaction Type                                                     2- Temporary Database Name                                 3-Server Name                                                          4-User ID                                                         5-Password                                                          6-Filter Expression                                        7-Output XML Full name                                                                                                                                                Objective:                                                        1-Using the transaction number paramaters it gets all tables for this transaction.                                                            2-It Extract the given database to the output XML File using the SqlToXmlClass Component.                                " />
+    <Node Id="8d066c54-9889-4780-a443-4a2a2133c4c01" Category="Comment" Bounds="-5428.42401925718,-1854.98050425487,250,249.4" Label="Paramaters:                                                                                                                 1-Server Name                                                                  2- Temporary Database Name                                 4-User ID                                                         5-Password                                                          6-Tables Names                                                           7-Rename XML                                             8-Output XML Full name                                                 9-Sql Where Condition.                                                                                                                                             Objective:                                                        1-It Convert the SQL database into DataSet with taking consideration of any Sql Where Condition paramater.                                                2-Export this Dataset into a XML Output file.                                                                               " />
+    <Node Id="9" Category="Comment" Bounds="-3173.53012071646,-1263.3288459232,50,25.96" UseManualLocation="True" />
+    <Node Id="@23" Category="CodeSchema_Class" Bounds="-4451.02198734593,-2066.96361604039,3527.3382480585,1412.80083925781" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Label="RECEIVE940" LayoutSettings="LeftToRight" UseManualLocation="True" />
+    <Node Id="@48" Category="CodeSchema_Class" Bounds="-5468.42401925718,-1934.98070425487,330.000407471198,369.4004" CodeSchemaProperty_IsPublic="True" CommonLabel="SqlToXmlClass" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Icon="CodeSchema_Class" Label="SqlToXmlClass" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/Map/SqlToXml.cs&quot; StartLineNumber=9 StartCharacterOffset=4 EndLineNumber=9 EndCharacterOffset=4)" UseManualLocation="True" />
+    <Node Id="@50" Category="CodeSchema_Class" Bounds="-4980.71326402158,-2060.13440889833,316.076845010661,632.921979802895" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Label="TransactionsCore" UseManualLocation="True" />
+    <Node Id="@55" Category="CodeSchema_Method" Bounds="-3494.61162462271,-1670.33158752476,241.33,121.8002" CodeSchemaProperty_IsProtected="True" CommonLabel="CreateTemporaryFiles" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="CreateTemporaryFiles" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1332 StartCharacterOffset=8 EndLineNumber=1332 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@56" Category="CodeSchema_Method" Bounds="-1437.86506863313,-740.989917700543,90.9433333333336,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="currrecord" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="currrecord" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=957 StartCharacterOffset=8 EndLineNumber=957 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@57" Category="CodeSchema_Method" Bounds="-3413.34355496126,-1280.62372375523,181.253333333333,89.8802000000001" CodeSchemaProperty_IsProtected="True" CommonLabel="DeleteTempDatabase" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="DeleteTempDatabase" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1302 StartCharacterOffset=8 EndLineNumber=1302 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@58" Category="CodeSchema_Method" Bounds="-1230.4404059541,-1659.08445617711,246.756666666667,121.8002" CodeSchemaProperty_IsProtected="True" CommonLabel="ExecuteValue" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ExecuteValue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=689 StartCharacterOffset=8 EndLineNumber=689 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@59" Category="CodeSchema_Method" Bounds="-2049.19217963574,-1628.74664611851,259.436666666667,137.7602" CodeSchemaProperty_IsProtected="True" CommonLabel="insertTempRawFileLine" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="insertTempRawFileLine" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=634 StartCharacterOffset=8 EndLineNumber=634 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@60" Category="CodeSchema_Method" Bounds="-1463.13168647167,-852.909748022809,112.576666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="setforeignkeys" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="setforeignkeys" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=987 StartCharacterOffset=8 EndLineNumber=987 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@61" Category="CodeSchema_Method" Bounds="-2639.8219322399,-1410.38825988804,258.87,297.3602" CodeSchemaProperty_IsProtected="True" CommonLabel="Process" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="Process" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=381 StartCharacterOffset=8 EndLineNumber=381 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@62" Category="CodeSchema_Method" Bounds="-1477.49195258495,-966.630512182965,113.126666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="addemptydata" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="addemptydata" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=967 StartCharacterOffset=8 EndLineNumber=967 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@63" Category="CodeSchema_Method" Bounds="-1501.89315131542,-1098.35081857945,153.596666666667,25.96" CodeSchemaProperty_IsPrivate="True" CommonLabel="searchonrelatedvalues" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="searchonrelatedvalues" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=887 StartCharacterOffset=8 EndLineNumber=887 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@65" Category="CodeSchema_Method" Bounds="-2047.68588243521,-1946.96331604039,262,233.5202" CodeSchemaProperty_IsProtected="True" CommonLabel="mReadRecord" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="mReadRecord" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=517 StartCharacterOffset=8 EndLineNumber=517 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@66" Category="CodeSchema_Method" Bounds="-4351.02198734593,-1439.95001281773,260.85,185.6402" CodeSchemaProperty_IsPublic="True" CommonLabel="DO" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="DO" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=237 StartCharacterOffset=8 EndLineNumber=237 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@67" Category="CodeSchema_Method" Bounds="-4949.08173081845,-2020.13430889833,248.456666666667,233.5202" CodeSchemaProperty_IsPublic="True" CommonLabel="TempDataBaseCreator" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="TempDataBaseCreator" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/TransactionsCore/TransactionsCore.cs&quot; StartLineNumber=16 StartCharacterOffset=8 EndLineNumber=16 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@68" Category="CodeSchema_Method" Bounds="-1564.43177110709,-1450.36556213414,261.17,153.7202" CodeSchemaProperty_IsProtected="True" CommonLabel="XpChecker" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="XpChecker" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=657 StartCharacterOffset=8 EndLineNumber=657 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@69" Category="CodeSchema_Method" Bounds="-1563.73351915397,-1941.09969055211,257.69,201.6002" CodeSchemaProperty_IsProtected="True" CommonLabel="SvChecker" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="SvChecker" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=665 StartCharacterOffset=8 EndLineNumber=665 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@70" Category="CodeSchema_Method" Bounds="-4960.71326402158,-1756.61270001161,276.076666666668,309.4002" CodeSchemaProperty_IsPublic="True" CommonLabel="Extract" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="Extract" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/TransactionsCore/TransactionsCore.cs&quot; StartLineNumber=84 StartCharacterOffset=8 EndLineNumber=84 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@71" Category="CodeSchema_Method" Bounds="-5448.42401925718,-1894.98060425487,290,309.4002" CodeSchemaProperty_IsPublic="True" CommonLabel="SqlToXml" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="SqlToXml" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/Map/SqlToXml.cs&quot; StartLineNumber=25 StartCharacterOffset=8 EndLineNumber=25 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@72" Category="CodeSchema_Method" Bounds="-3408.28695665396,-780.003076782574,262,105.8402" CodeSchemaProperty_IsPublic="True" CommonLabel="ClearTempFiles" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ClearTempFiles" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=773 StartCharacterOffset=8 EndLineNumber=773 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@73" Category="CodeSchema_Method" Bounds="-1695.52976345735,-981.792713110699,70.2733333333335,25.96" CodeSchemaProperty_IsPublic="True" CommonLabel="collect" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="collect" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=783 StartCharacterOffset=8 EndLineNumber=783 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@74" Category="CodeSchema_Method" Bounds="-2520.38515326855,-965.325305884137,151.476666666667,25.96" CodeSchemaProperty_IsPublic="True" CommonLabel="collectinsertstatments" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="collectinsertstatments" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=926 StartCharacterOffset=8 EndLineNumber=926 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@75" Category="CodeSchema_Method" Bounds="-2244.90806993522,-985.582930298199,250.46,121.8002" CodeSchemaProperty_IsPublic="True" CommonLabel="CreateSqliteDB" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="CreateSqliteDB" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=716 StartCharacterOffset=8 EndLineNumber=716 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@76" Category="CodeSchema_Method" Bounds="-3536.47787462271,-1826.25150939976,262,121.8002" CodeSchemaProperty_IsProtected="True" CommonLabel="CreateTempDatabase" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="CreateTempDatabase" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1286 StartCharacterOffset=8 EndLineNumber=1286 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@77" Category="CodeSchema_Method" Bounds="-1543.31017605501,-1652.80564758336,246.863333333333,121.8002" CodeSchemaProperty_IsPublic="True" CommonLabel="DeleteLoopFromtempDataTable" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="DeleteLoopFromtempDataTable" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=726 StartCharacterOffset=8 EndLineNumber=726 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@78" Category="CodeSchema_Method" Bounds="-2643.79259304719,-907.205188696637,106.123333333333,25.96" CodeSchemaProperty_IsPublic="True" CommonLabel="ExecuteInsert" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Label="ExecuteInsert" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1047 StartCharacterOffset=8 EndLineNumber=1047 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@79" Category="CodeSchema_Method" Bounds="-3533.30753282584,-1994.01239318882,259.11,137.7602" CodeSchemaProperty_IsProtected="True" CommonLabel="ReadEdiFile" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ReadEdiFile" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1377 StartCharacterOffset=8 EndLineNumber=1377 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@80" Category="CodeSchema_Method" Bounds="-3499.20001468968,-1517.65090148961,262,153.7202" CodeSchemaProperty_IsProtected="True" CommonLabel="ReadEDIRawPOS" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ReadEDIRawPOS" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1412 StartCharacterOffset=8 EndLineNumber=1412 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@81" Category="CodeSchema_Method" Bounds="-3427.98764024771,-989.476362915387,262,121.8002" CodeSchemaProperty_IsPublic="True" CommonLabel="ReadLoops" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ReadLoops" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1088 StartCharacterOffset=8 EndLineNumber=1088 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@82" Category="CodeSchema_Method" Bounds="-3424.56698595084,-1160.74333068882,262,121.8002" CodeSchemaProperty_IsPrivate="True" CommonLabel="ReadMapXml" DelayedCrossGroupLinksState="Fetched" FunctionTypeFlags="Method" Group="Expanded" Label="ReadMapXml" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///D:/Final X12 Translator/Aria Translators/X12Translator/Recieve/RECEIVE940.cs&quot; StartLineNumber=1150 StartCharacterOffset=8 EndLineNumber=1150 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="Asdasdasd" Category="Comment" Bounds="-3421.98764024771,-963.476262915387,250,89.8" Label="Paramaters:N/A                                                                                       Objective:                                                        1-Using the transaction number class property it loads the related &quot;XML loops&quot; component into array of loops.                                     " UseManualLocation="True" />
+    <Node Id="Asdasdasdasd" Category="Comment" Bounds="-3418.56698595084,-1134.74323068882,250,89.8000000000002" Label="Paramaters:N/A                                                                                       Objective:                                                        1-Using the transaction number class property it loads the related &quot;XML Mapping&quot; component into array of Maps.                                     " UseManualLocation="True" />
+    <Node Id="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk" Category="Comment" Bounds="-2633.8219322399,-1384.38815988804,246.87,265.36" Label="Paramaters:                                                  1-Transaction segments                                                              2-Temporary Database name                                             Objective:                                                                                                          1-Loop and process each given transaction segment.                                                         -Detect if loop changed while processing segments to collect()                                                       2-After processing all transaction segments, create the needed insert statments for processed transaction by calling CollectInsertStatmens() function.                       3-call ExecuteInsert() function to insert the needed data to the temporary database.&#xD;&#xA;4-Finally Call ClearTempFile() To clear un-needed data." UseManualLocation="True" />
+    <Node Id="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk1" Category="Comment" Bounds="-3407.34355496126,-1254.62362375523,169.253333333333,57.8800000000001" Label="Paramaters: Database Name                                                                                       Objective:                                                        1-Drop the given database." UseManualLocation="True" />
+    <Node Id="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk2" Category="Comment" Bounds="-3402.28695665396,-754.002976782574,250,73.8400000000001" Label="Paramaters:N/A                                                                                       Objective:                                                        1-Close any opened connection to sqlite database.                                                                                                  " UseManualLocation="True" />
+    <Node Id="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk3" Category="Comment" Bounds="-3527.30753282584,-1968.01229318882,247.11,105.76" Label="Paramaters:N/A                                                 1-It uses a class property containing library header record to get file path.                                      Objective:                                                     1-Read the contents of the Rawfile in class property.                                              " UseManualLocation="True" />
+    <Node Id="CollectingDataBasedOnRelation" Bounds="-1715.52976345735,-1194.31124572789,388.608028157552,499.281428027344" Group="Expanded" Label="Collecting data based on relation" UseManualLocation="True" />
+    <Node Id="Create" Category="Comment" Bounds="-4943.08173081845,-1994.13420889833,236.456666666667,201.52" Label="Paramaters:                                                              1-Transaction Type                                                     2- Temporary Database Name                                 3-Server Name                                                          4-User ID                                                         5-Password                                                                                                                                                  Objective:                                                        1-Create a temporary database based on transaction number paramater.                             2-It reads the predefined Script for the corresponding Transaction number from XML.                                      " />
+    <Node Id="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks" Category="Comment" Bounds="-3493.20004259146,-1491.65080148961,250,121.72" Label="Paramaters:N/A                                                                                       Objective:                                                        1-It uses a class array property containing library detail records to loop on each transaction.                                                2-Create a new Array of strings containing each transaction raw file segments.                                              " UseManualLocation="True" />
+    <Node Id="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks1" Category="Comment" Bounds="-4345.02201524772,-1413.94991281773,248.85,153.64" Label="Paramaters:                                                  1-FileCode in edi library header                     2-Filter for targeted POS in the selected file 3-Transation number                                          Objective:                                                     1-Collect/prepare needed information for                                                 the given (Transaction number).                    2-Loop on each transaction to call the process function.                                  " UseManualLocation="True" />
+    <Node Id="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks3" Category="Comment" Bounds="-3488.61162462271,-1644.33148752476,229.33,89.8" Label="Paramaters: Database Name                                                                                       Objective:                                                        1-Extract the given database tables into XML using the Transaction core component.                                     " UseManualLocation="True" />
+    <Node Id="MainControlScreen" Category="CodeSchema_Class" Bounds="-4976.96395896309,-1310.98182169182,330.000565011621,289.6004" DelayedChildNodesState="NotFetched" Group="Expanded" Label="Main Control Screen" UseManualLocation="True" />
+    <Node Id="ProcessSegment" Bounds="-2069.19217963574,-1986.96341604039,1105.50844034831,710.31815390625" Group="Expanded" Label="Process segment" UseManualLocation="True" />
+    <Node Id="ProcessTransaction" Bounds="-2683.73226915396,-2026.96351604039,1740.04852986654,1351.93379833984" Group="Expanded" Label="Process Transaction Group" UseManualLocation="True" />
+    <Node Id="Sdv" Category="CodeSchema_Method" Bounds="-4956.96395896309,-1270.98172169182,290,229.6002" Group="Expanded" Label="DragAndDrop" UseManualLocation="True" />
+    <Node Id="a0454fa1-9949-4be2-983d-d4795cf6d2591" Category="Comment" Bounds="-4936.96395896309,-1230.98162169182,250,169.6" Label="Paramaters: N/A                                                                                                                                                                                                                                                           Objective:                                                        1-Main control screen creates the needed Transaction object from ELECTRONIC_TRANSACTIONS_T based on the current Transaction type.                                         2-It call the adapter object to get the ouput xml file.                                                               2-Call the DO Method for the created object and pass needed paramaters.                                                      " UseManualLocation="True" />
+    <Node Id="efcb77f0-404a-4cc9-ac06-b3a2d1bcb9811" Category="Comment" Bounds="-2041.68588243521,-1920.96321604039,250,201.52" Label="Paramaters:                                                  1-Segment Line                                                      2-Field Sperator                                                             3-Mapping records for given segment                                             Objective:                                                               1-Loop and evaluate all mapping records using Sqlite database.                                                    2- Create a new collection to hold (all mapping variables, Values casted to correct data type)                                                                                       3-Handle SycediSv                                                 4-Handle SycediXp                                                                                                                                    " />
+    <Node Id="f31f0352-5867-4395-91ed-a6455c41d5a61" Category="Comment" Bounds="-3530.47787462271,-1800.25140939976,250,89.8000000000002" Label="Paramaters:N/A                                                                                       Objective:                                                        1-Create a new temporary database using the transaction core component and return the database name.                                       " UseManualLocation="True" />
+    <Node Id="f65fdc82-8251-4ad9-b505-696626b3d3cb1" Category="Comment" Bounds="-1557.73351915396,-1915.09959055211,245.69,169.6" Label="Paramaters:                                                    1-CpartCode                                                     2-Cversion                                                             3-Transaction Number                                         4-Loop Id                                                          5-Segment Id                                                                                                                                              Objective:                                                        1-Check if Partner have a segment need to be saved on EdiSv or not.                                       2-Save this segment." />
+  </Nodes>
+  <Links>
+    <Link Source="11" Target="@66" Bounds="-4381.02197265625,-1293.11087616845,21.6127521504432,8.41064335863325" />
+    <Link Source="2-1" Target="@63" Bounds="-1482.27909744737,-1128.3511469216,32.7484199120718,24.5955180738604" />
+    <Link Source="2-2" Target="@62" Bounds="-1475.3886169759,-996.630596384491,30.9761100875357,24.42717164786" />
+    <Link Source="2-3" Target="@60" Bounds="-1448.42398465429,-884.710247263397,23.4313223344898,25.2084219443536" />
+    <Link Source="2-4" Target="@56" Bounds="-1467.82195093872,-760.581050094889,37.1319640775414,16.0249523889568" />
+    <Link Source="21" Target="@79" Bounds="-3265.53394221719,-1979.68746469827,55.673590654691,15.66480023549" />
+    <Link Source="3" Target="@80" Bounds="-3228.20397313999,-1436.63729019909,21.004266108735,0.623170880160842" />
+    <Link Source="3-1" Target="@69" Bounds="-1628.18425562622,-1888.6316540908,55.7624656335674,13.9398663569261" />
+    <Link Source="3-2" Target="@58" Bounds="-1179.10815717528,-1723.57844184348,32.5919776892015,56.6915228892406" />
+    <Link Source="3-3" Target="@77" Bounds="-1604.65544703247,-1602.54698370629,52.4031915236949,3.01724298413751" />
+    <Link Source="3-4" Target="@59" Bounds="-1898.37846329737,-1482.30064946244,29.9251800257264,110.257202736152" />
+    <Link Source="3-5" Target="@68" Bounds="-1644.47673609497,-1344.91945729957,71.2714653036112,14.6150777112928" />
+    <Link Source="4" Target="@76" Bounds="-3265.93973819498,-1819.10278136995,21.7420795036669,7.24617594761526" />
+    <Link Source="5" Target="@81" Bounds="-3157.38798312474,-980.305140542954,27.9895456247386,8.63938581206162" />
+    <Link Source="6" Target="@82" Bounds="-3153.73276857364,-1133.96607210459,35.4798388861359,6.90573786023106" />
+    <Link Source="7" Target="@61" Bounds="-2720.38256835938,-1273.775798797,71.5754295992106,4.11319538560474" />
+    <Link Source="7-1" Target="@75" Bounds="-2288.908203125,-948.784698242739,35.0900440928995,4.99754738091883" />
+    <Link Source="7-2" Target="@65" Bounds="-2119.15921439166,-1768.13544640692,63.253214684642,28.1998669563429" />
+    <Link Source="7-21" Target="@73" Bounds="-1754.71673117938,-1046.23740722656,71.5540084240404,58.7344500753983" />
+    <Link Source="7-3" Target="@74" Bounds="-2425.59956040277,-995.325419921875,23.1459926793582,23.577608073263" />
+    <Link Source="7-4" Target="@78" Bounds="-2627.5984033987,-937.205302734375,19.8739086191226,23.1689335189451" />
+    <Link Source="8" Target="@55" Bounds="-3244.98964796621,-1677.84494495299,33.188866716212,14.0032078807526" />
+    <Link Source="9" Target="@57" Bounds="-3223.12195094371,-1248.24405776109,49.5916775062092,4.17526058321801" />
+    <Link Source="@23" Target="10" Category="Contains" />
+    <Link Source="@23" Target="11" Category="Contains" Bounds="221.798217773438,517.878845214844,95.7985229492188,26.1211547851563" />
+    <Link Source="@23" Target="21" Category="Contains" Bounds="195.51806640625,137.878860473633,122.078674316406,406.121139526367" />
+    <Link Source="@23" Target="3" Category="Contains" Bounds="197.693511962891,570,281.059661865234,211.760070800781" />
+    <Link Source="@23" Target="4" Category="Contains" Bounds="195.395141601563,570,283.317352294922,423" />
+    <Link Source="@23" Target="5" Category="Contains" Bounds="195.139984130859,49.8788642883301,122.456756591797,494.12113571167" />
+    <Link Source="@23" Target="6" Category="Contains" Bounds="220.909957885742,570,96.6733856201172,26.49462890625" />
+    <Link Source="@23" Target="7" Category="Contains" Bounds="196.391784667969,265,282.320709228516,279" />
+    <Link Source="@23" Target="7-5" Category="Contains" />
+    <Link Source="@23" Target="8" Category="Contains" Bounds="196.272674560547,570,282.450042724609,301.378601074219" />
+    <Link Source="@23" Target="9" Category="Contains" Bounds="198.497100830078,570,280.215393066406,159" />
+    <Link Source="@23" Target="@50" Bounds="-4655.77786801742,-1713.72948673807,204.755880671491,36.7364134404997" />
+    <Link Source="@23" Target="@55" Category="Contains" Bounds="195.821792602539,570,473.877914428711,347" FetchingParent="@23" />
+    <Link Source="@23" Target="@57" Category="Contains" Bounds="200.258117675781,570,472.18798828125,163.40966796875" FetchingParent="@23" />
+    <Link Source="@23" Target="@66" Category="Contains" Bounds="203.387176513672,469,273.595336914063,75" />
+    <Link Source="@23" Target="@72" Category="Contains" Bounds="223.336761474609,233.241348266602,720.296783447266,310.758651733398" FetchingParent="@23" />
+    <Link Source="@23" Target="@76" Category="Contains" Bounds="195.621994018555,570,444.537185668945,406.847900390625" FetchingParent="@23" />
+    <Link Source="@23" Target="@79" Category="Contains" Bounds="195.256958007813,89,471.411437988281,455" FetchingParent="@23" />
+    <Link Source="@23" Target="@80" Category="Contains" Bounds="196.613677978516,570,456.086761474609,247.972961425781" FetchingParent="@23" />
+    <Link Source="@23" Target="@81" Category="Contains" Bounds="194.958953857422,1,478.947662353516,543" FetchingParent="@23" />
+    <Link Source="@23" Target="@82" Category="Contains" Bounds="245.310836791992,557,416.158584594727,5.5516357421875" FetchingParent="@23" />
+    <Link Source="@23" Target="ProcessTransaction" Category="Contains" />
+    <Link Source="@48" Target="@71" Category="Contains" FetchingParent="@48" />
+    <Link Source="@50" Target="@67" Category="Contains" Bounds="784.265199194225,1052,151.178249215292,32.5508339078353" FetchingParent="@50" />
+    <Link Source="@50" Target="@70" Category="Contains" Bounds="746.901916503906,934.525939941406,213.11376953125,91.4740600585938" FetchingParent="@50" />
+    <Link Source="@55" Target="@70" Category="CodeSchema_Calls" Bounds="-4675.63659256686,-1608.80526025231,1181.02481522311,6.12958683837223" Weight="1" />
+    <Link Source="@55" Target="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks3" Category="Contains" Bounds="799.010821098997,855.399162773631,72.1352800572331,10.5813112243669" />
+    <Link Source="@57" Target="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk1" Category="Contains" Bounds="773.777569582595,691.230889387485,172.149016758442,44.7890800949364" />
+    <Link Source="@58" Target="3497707e-3181-473c-847b-2a0236ec278a1" Category="Contains" />
+    <Link Source="@59" Target="5e829f1f-dc28-4c0e-b6a8-00d72976506a1" Category="Contains" />
+    <Link Source="@61" Target="@65" Category="CodeSchema_Calls" Bounds="-2380.95196289063,-1707.21867224896,335.828599535545,321.570830316085" Weight="1" />
+    <Link Source="@61" Target="@72" Category="CodeSchema_Calls" Bounds="-3193.99210998632,-1171.47572883272,554.170147095693,386.325716683029" Weight="1" />
+    <Link Source="@61" Target="@73" Category="CodeSchema_Calls" Bounds="-2380.95196289063,-1217.10667908179,677.587602432749,233.486682555894" Weight="2" />
+    <Link Source="@61" Target="@74" Category="CodeSchema_Calls" Bounds="-2478.79220689404,-1113.02817272937,29.5163437130486,138.899408983079" Weight="1" />
+    <Link Source="@61" Target="@75" Category="CodeSchema_Calls" Bounds="-2380.95196289063,-1150.05765784035,183.858356720349,158.596195621826" Weight="1" />
+    <Link Source="@61" Target="@78" Category="CodeSchema_Calls" Bounds="-2585.97068877791,-1113.02796884766,43.0773518827023,197.030434238887" Weight="1" />
+    <Link Source="@61" Target="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk" Category="Contains" Bounds="761.853336181641,255.475440409339,111.42708000189,19.005361949631" />
+    <Link Source="@65" Target="@58" Category="CodeSchema_Calls" Bounds="-1785.64282226563,-1793.8916015625,546.611938476563,156.834106445313" Weight="1" />
+    <Link Source="@65" Target="@59" Category="CodeSchema_Calls" Bounds="-1918.62764863889,-1713.4431172341,0.780649178643898,75.6969795076038" Weight="1" />
+    <Link Source="@65" Target="@68" Category="CodeSchema_Calls" Bounds="-1793.19943184488,-1713.4431172341,271.597632670992,256.893086021151" Weight="1" />
+    <Link Source="@65" Target="@69" Category="CodeSchema_Calls" Bounds="-1785.64287379028,-1837.41098028805,212.954369394735,4.46258216926276" Weight="1" />
+    <Link Source="@65" Target="@77" Category="CodeSchema_Calls" Bounds="-1785.64287379028,-1767.36800503627,235.166913445422,112.799716856883" Weight="1" />
+    <Link Source="@65" Target="efcb77f0-404a-4cc9-ac06-b3a2d1bcb9811" Category="Contains" />
+    <Link Source="@66" Target="@55" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1569.38476068578,586.963271279064,181.84771005001" Weight="1" />
+    <Link Source="@66" Target="@57" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1330.94138221045,667.896905746331,82.9004425990117" Weight="2" />
+    <Link Source="@66" Target="@61" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1340.61545246862,1441.36116666773,71.9933670257951" Weight="1" />
+    <Link Source="@66" Target="@72" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1261.4002923659,724.853927636173,476.453705895574" Weight="1" />
+    <Link Source="@66" Target="@76" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1700.34284322051,557.991332287643,286.294393462897" Weight="1" />
+    <Link Source="@66" Target="@79" Category="CodeSchema_Calls" Bounds="-4091.5768757732,-1851.05360581223,583.13487179667,412.628561319573" Weight="1" />
+    <Link Source="@66" Target="@80" Category="CodeSchema_Calls" Bounds="-4090.17192382813,-1425.41360233271,582.025752733926,63.952638244383" Weight="1" />
+    <Link Source="@66" Target="@81" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1288.02501191803,654.993608714592,296.824632220942" Weight="1" />
+    <Link Source="@66" Target="@82" Category="CodeSchema_Calls" Bounds="-4090.17192382812,-1312.33886726431,656.909007311591,175.23152449044" Weight="1" />
+    <Link Source="@66" Target="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks1" Category="Contains" Bounds="539.442504882813,461.982696533203,51.0357055664063,6.53384399414063" />
+    <Link Source="@67" Target="Create" Category="Contains" />
+    <Link Source="@68" Target="4f8354ac-052b-4195-a38a-440d7b539d3f1" Category="Contains" />
+    <Link Source="@69" Target="@58" Category="CodeSchema_Calls" Bounds="-1306.00047985831,-1745.14147416449,109.282498850275,80.7102602673647" Weight="1" />
+    <Link Source="@69" Target="f65fdc82-8251-4ad9-b505-696626b3d3cb1" Category="Contains" />
+    <Link Source="@70" Target="8236fed8-ac47-4c71-aabd-97d52c0ec4f31" Category="Contains" />
+    <Link Source="@70" Target="@71" Category="CodeSchema_Calls" Bounds="-5149.77493367266,-1696.05763572131,189.061795651826,54.4152689359303" Weight="1" />
+    <Link Source="@71" Target="8d066c54-9889-4780-a443-4a2a2133c4c01" Category="Contains" />
+    <Link Source="@72" Target="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk2" Category="Contains" Bounds="1062.47081787109,217.151122272228,90.3381518648059,0.142513898302127" />
+    <Link Source="@73" Target="@56" Category="CodeSchema_Calls" Bounds="-1645.90408631523,-955.832714304412,232.413236575613,208.827594385089" Weight="1" />
+    <Link Source="@73" Target="@60" Category="CodeSchema_Calls" Bounds="-1634.8147067215,-955.832714304413,194.455995232631,98.8447666469039" Weight="2" />
+    <Link Source="@73" Target="@62" Category="CodeSchema_Calls" Bounds="-1625.21342147909,-966.587962351147,138.782525260104,8.78730748937119" Weight="4" />
+    <Link Source="@73" Target="@63" Category="CodeSchema_Calls" Bounds="-1634.14707780061,-1068.39584264612,174.827632346657,86.6031283417036" Weight="1" />
+    <Link Source="@75" Target="4eff1705-6dce-423a-9c59-9416f53ca8a01" Category="Contains" />
+    <Link Source="@76" Target="@67" Category="CodeSchema_Calls" Bounds="-4691.66743477518,-1890.42288397806,1155.18940743143,112.332760575114" Weight="1" />
+    <Link Source="@76" Target="f31f0352-5867-4395-91ed-a6455c41d5a61" Category="Contains" />
+    <Link Source="@77" Target="202c4460-c1ff-44ab-8ba9-a72bc0e6fee91" Category="Contains" />
+    <Link Source="@79" Target="Asdsdfsdvdfffffffffvdfvsdvsdgdfhghjhkhjkhjlkjlk;kl;hjkhjhgjhkjhkghjkfhfghfghftjughkjjkjh,hj,hj,hj,hjjg;hjf;lhkgfhfgknkokghnkg;hnk;gnk3" Category="Contains" Bounds="772.198336181641,113.867422361648,100.625760333106,10.1384090369684" />
+    <Link Source="@80" Target="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks" Category="Contains" Bounds="706.601867675781,762.932434082031,186.26220703125,29.0875244140625" />
+    <Link Source="@81" Target="Asdasdasd" Category="Contains" Bounds="771.130004882813,39.3350410461426,99.9481201171875,6.08175277709961" />
+    <Link Source="@82" Target="Asdasdasdasd" Category="Contains" Bounds="777.329956054688,567.699096679688,93.7488403320313,6.72869873046875" />
+    <Link Source="Asdasdasdasd" Target="@82" Bounds="-3293.56713867188,-1044.94323730469,6.251953125,15.0001220703125" />
+    <Link Source="CollectingDataBasedOnRelation" Target="2-1" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="2-2" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="2-3" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="2-4" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="@56" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="@60" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="@62" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="@63" Category="Contains" />
+    <Link Source="CollectingDataBasedOnRelation" Target="@73" Category="Contains" />
+    <Link Source="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks" Target="@80" Bounds="-3368.2001953125,-1369.93078613281,6.251953125,15.0001220703125" />
+    <Link Source="K,sdkjflkdsjfklsdjflksjdlkfjsdlkfjsldkjflksdjfklsdjflksdjflksdjflksjdflksjdflkjsdlkafjlksajdflkjslkfjsdlkfjal;skdjflkasjdflksjdflksjdflksdjflkjsdaflkjsadlkfjaslkfjsalkfjslkjflsajfl;sfjsjflskjflsjflkSjflkjklfKflksjfdfjskldjflks1" Target="@66" Bounds="-4220.5966796875,-1260.30993652344,6.25146484375,15.0001220703125" />
+    <Link Source="MainControlScreen" Target="@66" Bounds="-4646.96358468169,-1304.58874887153,287.335525960053,87.9198507787294" />
+    <Link Source="MainControlScreen" Target="Sdv" Category="Contains" Bounds="426.011657714844,405,22.6875,0" />
+    <Link Source="ProcessSegment" Target="3-1" Category="Contains" />
+    <Link Source="ProcessSegment" Target="3-2" Category="Contains" />
+    <Link Source="ProcessSegment" Target="3-3" Category="Contains" />
+    <Link Source="ProcessSegment" Target="3-4" Category="Contains" />
+    <Link Source="ProcessSegment" Target="3-5" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@58" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@59" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@65" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@68" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@69" Category="Contains" />
+    <Link Source="ProcessSegment" Target="@77" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="7-1" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="7-2" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="7-21" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="7-3" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="7-4" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="@61" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="@74" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="@75" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="@78" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="CollectingDataBasedOnRelation" Category="Contains" />
+    <Link Source="ProcessTransaction" Target="ProcessSegment" Category="Contains" />
+    <Link Source="Sdv" Target="a0454fa1-9949-4be2-983d-d4795cf6d2591" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Member" Label="Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Comment" Label="Comment" Description="Represents a user defined comment on the diagram" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Comments" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="Is Private" Description="Flag to indicate the scope is Private" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsProtected" Label="Is Protected" Description="Flag to indicate the scope is Protected" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DataVirtualized" Label="Data Virtualized" Description="If true, the graph can contain nodes and links that represent data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="DelayedChildNodesState" Label="Delayed Child Nodes State" Description="Unspecified if the delayed child nodes state is not specified. NotFetched if the group contains child nodes that are not fetched into the graph yet. Fetched if the group has all its delayed child nodes already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
+    <Property Id="DelayedCrossGroupLinksState" Label="Delayed Cross-Group Links State" Description="Unspecified if the delayed cross-group links state is not specified. NotFetched if delayed cross-group links on this node are not fetched into the graph yet. Fetched if all delayed cross-group links have already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="FetchingParent" DataType="Microsoft.VisualStudio.GraphModel.GraphNodeId" />
+    <Property Id="FunctionTypeFlags" Label="FunctionTypeFlags" Description="FunctionTypeFlags" DataType="System.String" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="LayoutSettings" DataType="Microsoft.VisualStudio.Diagrams.View.GroupLayoutStyle" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
+    <Property Id="Weight" Label="Weight" Description="Weight" DataType="System.Double" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="19" Uri="Assembly=$(8fa3edaa-41d3-4a8c-8079-60bf50b1980a.OutputPathUri)" />
+    <Alias n="20" Id="Namespace=X12Translator" />
+    <Alias n="22" Id="Type=RECEIVE940" />
+    <Alias n="23" Id="(@19 @20 @22)" />
+    <Alias n="25" Id="Namespace=TransactionsCore" />
+    <Alias n="26" Id="Type=TransactionsCore" />
+    <Alias n="47" Uri="Assembly=$(c6816435-6870-4254-b23c-66772622a74f.OutputPathUri)" />
+    <Alias n="48" Id="(@47 Namespace=Map Type=SqlToXmlClass)" />
+    <Alias n="49" Uri="Assembly=$(c18c4bad-182e-49c6-9ac0-772811e3f0ee.OutputPathUri)" />
+    <Alias n="50" Id="(@49 @25 @26)" />
+    <Alias n="51" Uri="Assembly=$(FxRootUri)/v2.0.50727/mscorlib.dll" />
+    <Alias n="52" Id="Namespace=System" />
+    <Alias n="53" Id="(@51 @52 Type=String)" />
+    <Alias n="54" Id="OverloadingParameters=[@53]" />
+    <Alias n="55" Id="(@19 @20 @22 Member=(Name=CreateTemporaryFiles @54))" />
+    <Alias n="56" Id="(@19 @20 @22 Member=(Name=currrecord @54))" />
+    <Alias n="57" Id="(@19 @20 @22 Member=(Name=DeleteTempDatabase @54))" />
+    <Alias n="58" Id="(@19 @20 @22 Member=(Name=ExecuteValue @54))" />
+    <Alias n="59" Id="(@19 @20 @22 Member=(Name=insertTempRawFileLine OverloadingParameters=[@53,(@51 @52 Type=Char)]))" />
+    <Alias n="60" Id="(@19 @20 @22 Member=(Name=setforeignkeys OverloadingParameters=[@53,(@51 @52 Type=Int32)]))" />
+    <Alias n="61" Id="(@19 @20 @22 Member=(Name=Process OverloadingParameters=[@53,@53]))" />
+    <Alias n="62" Id="(@19 @20 @22 Member=(Name=addemptydata OverloadingParameters=[@53,@53,(@51 @52 Type=Int32)]))" />
+    <Alias n="63" Id="(@19 @20 @22 Member=(Name=searchonrelatedvalues OverloadingParameters=[@53,@53,@53]))" />
+    <Alias n="64" Uri="Assembly=$(FxReferenceAssembliesUri)/v3.5/System.Core.dll" />
+    <Alias n="65" Id="(@19 @20 @22 Member=(Name=mReadRecord OverloadingParameters=[@53,(@64 Namespace=System.Linq Type=(Name=IOrderedEnumerable GenericParameterCount=1 GenericArguments=[(@19 Type=TRANSACTION_MAP_T)])),(@51 @52 Type=Boolean),(@51 @52 Type=Char)]))" />
+    <Alias n="66" Id="(@19 @20 @22 Member=(Name=DO OverloadingParameters=[(@51 @52 Type=Boolean),@53,@53,@53]))" />
+    <Alias n="67" Id="(@49 @25 @26 Member=(Name=TempDataBaseCreator OverloadingParameters=[@53,@53,@53,@53,@53]))" />
+    <Alias n="68" Id="(@19 @20 @22 Member=(Name=XpChecker OverloadingParameters=[@53,@53,@53,@53,@53,(@51 @52 Type=Int32)]))" />
+    <Alias n="69" Id="(@19 @20 @22 Member=(Name=SvChecker OverloadingParameters=[@53,@53,@53,@53,@53,@53]))" />
+    <Alias n="70" Id="(@49 @25 @26 Member=(Name=Extract OverloadingParameters=[@53,@53,@53,@53,@53,@53,@53]))" />
+    <Alias n="71" Id="(@47 Namespace=Map Type=SqlToXmlClass Member=(Name=SqlToXml OverloadingParameters=[@53,@53,@53,@53,@53,@53,@53,@53]))" />
+    <Alias n="72" Id="(@19 @20 @22 Member=ClearTempFiles)" />
+    <Alias n="73" Id="(@19 @20 @22 Member=collect)" />
+    <Alias n="74" Id="(@19 @20 @22 Member=collectinsertstatments)" />
+    <Alias n="75" Id="(@19 @20 @22 Member=CreateSqliteDB)" />
+    <Alias n="76" Id="(@19 @20 @22 Member=CreateTempDatabase)" />
+    <Alias n="77" Id="(@19 @20 @22 Member=DeleteLoopFromtempDataTable)" />
+    <Alias n="78" Id="(@19 @20 @22 Member=ExecuteInsert)" />
+    <Alias n="79" Id="(@19 @20 @22 Member=ReadEdiFile)" />
+    <Alias n="80" Id="(@19 @20 @22 Member=ReadEDIRawPOS)" />
+    <Alias n="81" Id="(@19 @20 @22 Member=ReadLoops)" />
+    <Alias n="82" Id="(@19 @20 @22 Member=ReadMapXml)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
+      <Condition Expression="HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFBCFFBE" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#FF094167" />
+      <Setter Property="Stroke" Value="#FF094167" />
+      <Setter Property="Icon" Value="CodeSchema_Assembly" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Namespace" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF0E619A" />
+      <Setter Property="Stroke" Value="#FF0E619A" />
+      <Setter Property="Icon" Value="CodeSchema_Namespace" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Interface" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Interface" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Struct" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Struct')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Struct" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enumeration" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Enum" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Delegate" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Delegate')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Delegate" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Class" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Class" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Property')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Property" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Method" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Method') Or HasCategory('CodeSchema_CallStackUnresolvedMethod')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Method" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Event" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Event')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Event" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Field')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Field" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Out Parameter" ValueLabel="Has category">
+      <Condition Expression="CodeSchemaProperty_IsOut = 'True'" />
+      <Setter Property="Icon" Value="CodeSchema_OutParameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Parameter" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Parameter')" />
+      <Setter Property="Icon" Value="CodeSchema_Parameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Local Variable" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_LocalExpression')" />
+      <Setter Property="Icon" Value="CodeSchema_LocalExpression" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Externals" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FF424242" />
+      <Setter Property="Stroke" Value="#FF424242" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="Has category">
+      <Condition Expression="HasCategory('InheritsFrom')" />
+      <Setter Property="Stroke" Value="#FF00A600" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Implements')" />
+      <Setter Property="Stroke" Value="#8000A600" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Calls" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Calls')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Function Pointer" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_FunctionPointer')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Field Reference" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_FieldReference')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('InheritsFrom') And Target.HasCategory('CodeSchema_Class')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('Implements') And Target.HasCategory('CodeSchema_Interface')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Field Read" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Target.HasCategory('CodeSchema_Field') And HasCategory('CodeSchema_FieldRead')" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Comment Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Source.HasCategory('Comment')" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Cursor Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCursorLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Disabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="DisabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="EnabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Instruction Pointer Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsInstructionPointerLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Callstack Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCurrentCallstackFrame" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="8fa3edaa-41d3-4a8c-8079-60bf50b1980a.OutputPath" Value="D:\Final X12 Translator\Aria Translators\X12Translator\bin\Debug\X12Translator.dll" />
+    <Path Id="8fa3edaa-41d3-4a8c-8079-60bf50b1980a.OutputPathUri" Value="file:///D:/Final X12 Translator/Aria Translators/X12Translator/bin/Debug/X12Translator.dll" />
+    <Path Id="c18c4bad-182e-49c6-9ac0-772811e3f0ee.OutputPath" Value="D:\Final X12 Translator\Aria Translators\TransactionsCore\bin\Debug\TransactionsCore.dll" />
+    <Path Id="c18c4bad-182e-49c6-9ac0-772811e3f0ee.OutputPathUri" Value="file:///D:/Final X12 Translator/Aria Translators/TransactionsCore/bin/Debug/TransactionsCore.dll" />
+    <Path Id="c6816435-6870-4254-b23c-66772622a74f.OutputPathUri" Value="file:///D:/Final X12 Translator/Aria Translators/Map/bin/Debug/Map.dll" />
+    <Path Id="FxReferenceAssemblies" Value="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="FxRoot" Value="C:\Windows\Microsoft.NET\Framework" />
+    <Path Id="FxRootUri" Value="file:///C:/Windows/Microsoft.NET/Framework" />
+  </Paths>
+</DirectedGraph>

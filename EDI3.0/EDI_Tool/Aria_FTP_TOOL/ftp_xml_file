@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<xdoc>
+<ftp_info>
+	<row>
+		<cftp>208.74.30.119</cftp>
+		<cusername>HASSAN.I</cusername>
+		<cpassword>mbgb_2@123</cpassword>
+		<cincoming>D:\EDI3\EDI\INBOX\</cincoming>
+		<coutgoing>D:\EDI3\EDI\OUTBOX\</coutgoing>
+		<chistory>D:\EDI3\</chistory>
+		<cmailboxad>/share/hassan.I/</cmailboxad>
+		<cbatch>d:\ftp_tool\ftp.bat</cbatch>
+		<ccomp>99</ccomp>
+		<cdfile>EXPOUT.EDI</cdfile>
+		<cmailboxou>/share/hassan.I/</cmailboxou>
+	</row>
+</ftp_info>
+
+</xdoc>
+

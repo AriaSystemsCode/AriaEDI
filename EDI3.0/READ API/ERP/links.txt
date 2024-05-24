@@ -1,0 +1,32 @@
+ 
+ 
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTables?userid=admin&password=aria_123&clientID=SHA13
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTableStructure?userid=admin&password=aria_123&clientID=SHA13&tableName=ORDHDR
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=SHA13&CompanyID=S2&tableName=ORDHDR&whereCondition=(CORDTYPE='O' AND ORDER='073619' AND ACCOUNT='COLMI')&fields=ORDER,ACCOUNT,STATUS,APPRAMT,ENTERED,START 
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=SHA13&CompanyID=S2&tableName=POSHDR&whereCondition=(po='163193')
+
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTables?userid=admin&password=aria_123&clientID=ABN10
+http://ra.ariaonline.net/app.publish/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=ABN10&CompanyID=01&tableName=ORDHDR&whereCondition=(CORDTYPE='O' AND ORDER='073619' AND ACCOUNT='COLMI')&fields=ORDER,ACCOUNT,STATUS,APPRAMT,ENTERED,START 
+
+http://localhost:1894/Api/DictionaryTable/GetTables?userid=admin&password=aria_123&clientID=SHA13
+http://localhost:1894/Api/DictionaryTable/GetTableType?userid=admin&password=aria_123&clientID=ABN10&tableName=ORDHDR
+http://localhost:1894/Api/DictionaryTable/GetTableStructure?userid=admin&password=aria_123&clientID=SHA13&tableName=ORDHDR
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=SHA13&CompanyID=S2&tableName=ORDHDR&whereCondition=(CORDTYPE='O' AND ORDER='073619' AND ACCOUNT='COLMI')&fields=ORDER,ACCOUNT,STATUS,APPRAMT,ENTERED,START 
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=SHA13&CompanyID=S2&tableName=POSHDR&whereCondition=(po='163193')
+
+
+http://localhost:1894/Api/DictionaryTable/GetTableStructure?userid=admin&password=aria_123&clientID=ABN10&tableName=ORDHDR
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=ABN10&CompanyID=01&tableName=ORDHDR&whereCondition=(CORDTYPE='O' AND ORDER='073619' AND ACCOUNT='COLMI')&fields=ORDER,ACCOUNT,STATUS,APPRAMT,ENTERED,START 
+
+
+
+************************************************************************************************************************
+http://localhost:1894/Api/DictionaryTable/GetTables?userid=admin&password=aria_123&clientID=GMA10
+http://localhost:1894/Api/DictionaryTable/GetTableType?userid=admin&password=aria_123&clientID=GMA10&tableName=ORDHDR
+http://localhost:1894/Api/DictionaryTable/GetTableStructure?userid=admin&password=aria_123&clientID=GMA10&tableName=ORDHDR
+http://localhost:1894/Api/DictionaryTable/GetTableStructure?userid=admin&password=aria_123&clientID=GMA10&tableName=POSHDR
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=GMA10&CompanyID=01&tableName=ORDHDR&whereCondition=(CORDTYPE='O' AND ORDER='030003' AND ACCOUNT='JCP10')&fields=ORDER,ACCOUNT,STATUS,APPRAMT,ENTERED,START 
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=GMA10&CompanyID=01&tableName=ITEM&whereCondition=(CSTYMAJOR='NEEDLE')
+
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=GMA10&CompanyID=01&tableName=ordhdr,ordline&whereCondition=(ordhdr.order%20=%20ordline.order)&fields=ordline.Order,ordline.style,ordhdr.account
+http://localhost:1894/Api/DictionaryTable/GetTableData?userid=admin&password=aria_123&clientID=GMA10&CompanyID=01&tableName=POSHDR,POSLN&whereCondition=(POSHDR.PO=POSLN.PO)&fields=POSHDR.PO,POSLN.STYLE

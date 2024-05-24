@@ -1,0 +1,44 @@
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\bin\Debug\TransactionsCore.dll
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\bin\Debug\TransactionsCore.pdb
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\obj\Debug\TransactionsCore.dll
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\obj\Debug\TransactionsCore.pdb
+F:\MyWork\FreeWay\Im_Ex_tran_data\TransactionsCore\TransactionsCore\bin\Debug\TransactionsCore.tlb
+E:\Freeway\TransactionsCore\bin\Debug\TransactionsCore.dll
+E:\Freeway\TransactionsCore\bin\Debug\TransactionsCore.pdb
+E:\Freeway\TransactionsCore\bin\Debug\TransactionsCore.tlb
+E:\Freeway\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+E:\Freeway\TransactionsCore\obj\Debug\TransactionsCore.dll
+E:\Freeway\TransactionsCore\obj\Debug\TransactionsCore.pdb
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.dll
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.pdb
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.tlb
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.dll
+E:\Mostafa\Aria\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.pdb
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.dll
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.pdb
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.tlb
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.dll
+E:\FreeWay 30-09-2011 19-12-28\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.pdb
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\846Schema.xml
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\850Schema.xml
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\856Schema.xml
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\Transactions.xml
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.dll
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.pdb
+E:\FreeWay\Freeway\TransactionsCore\bin\Debug\TransactionsCore.tlb
+E:\FreeWay\Freeway\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+E:\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.dll
+E:\FreeWay\Freeway\TransactionsCore\obj\Debug\TransactionsCore.pdb
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\846Schema.xml
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\850Schema.xml
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\856Schema.xml
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\Transactions.xml
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\TransactionsCore.dll
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\TransactionsCore.pdb
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\bin\Debug\TransactionsCore.tlb
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\obj\Debug\ResolveAssemblyReference.cache
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\obj\Debug\TransactionsCore.dll
+D:\My Wrok\FreeWay Work\02-22-2012\DCC 2122012\DCC 2122012\Projects\Freeway19022012 151336\Freeway\TransactionsCore\obj\Debug\TransactionsCore.pdb
