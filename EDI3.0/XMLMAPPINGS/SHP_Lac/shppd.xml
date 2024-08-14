@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Root>
+<MainSrc>INVENTORY_HEADER_T</MainSrc>
+<MainDest>inventory_adjustment</MainDest>
+<Relations>
+	<Source>
+		<Add>
+			<Relation>
+				<ParentTable>INVENTORY_HEADER_T</ParentTable>
+				<ParentColumns>
+					<Column>PARTNER_ID</Column>
+					<Column>INVINTORY_ADVICE_ID</Column>
+				</ParentColumns>
+				<ChildTable>INVENTORY_DETAILS_T</ChildTable>
+				<ChildColumns>
+					<Column>PARTNER_ID</Column>
+					<Column>INVINTORY_ADVICE_ID</Column>
+				</ChildColumns>
+			</Relation>	
+		</Add>
+	</Source>
+</Relations>
+<Map>
+    <SrcTable>INVENTORY_DETAILS_T</SrcTable>
+    <SrcField>BUYER_STYLE</SrcField>
+    <DestTable>inventory_adjustment</DestTable>
+    <DestField>inventory_item_id</DestField>
+	<Fixed></Fixed>
+	<Condition></Condition>
+  </Map> 
+  <Map>
+    <SrcTable>INVENTORY_DETAILS_T</SrcTable>
+    <SrcField>Stock_Quantity</SrcField>
+    <DestTable>inventory_adjustment</DestTable>
+    <DestField>available</DestField>
+	<Fixed></Fixed>
+	<Condition></Condition>
+  </Map> 
+  <Map>
+    <SrcTable>INVENTORY_HEADER_T</SrcTable>
+    <SrcField>INVENTORY_CODE</SrcField>
+    <DestTable>inventory_adjustment</DestTable>
+    <DestField>location_id</DestField>
+	<Fixed></Fixed>
+	<Condition></Condition>
+  </Map>      
+</Root>

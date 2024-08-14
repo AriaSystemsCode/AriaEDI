@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="order">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:unsignedLong" />
+        <xs:element name="admin-graphql-api-id" type="xs:string" />
+        <xs:element name="app-id" type="xs:unsignedInt" />
+        <xs:element name="browser-ip" type="xs:string" />
+        <xs:element name="buyer-accepts-marketing" type="xs:boolean" />
+        <xs:element name="cancel-reason" />
+        <xs:element name="cancelled-at" />
+        <xs:element name="cart-token" type="xs:string" />
+        <xs:element name="checkout-id" type="xs:unsignedLong" />
+        <xs:element name="checkout-token" type="xs:string" />
+        <xs:element name="client-details">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accept-language" type="xs:string" />
+              <xs:element name="browser-height" type="xs:unsignedShort" />
+              <xs:element name="browser-ip" type="xs:string" />
+              <xs:element name="browser-width" type="xs:unsignedShort" />
+              <xs:element name="session-hash" />
+              <xs:element name="user-agent" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="closed-at" />
+        <xs:element name="company" />
+        <xs:element name="confirmation-number" type="xs:string" />
+        <xs:element name="confirmed" type="xs:boolean" />
+        <xs:element name="contact-email" type="xs:string" />
+        <xs:element name="created-at" type="xs:dateTime" />
+        <xs:element name="currency" type="xs:string" />
+        <xs:element name="current-subtotal-price" type="xs:decimal" />
+        <xs:element name="current-subtotal-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="current-total-additional-fees-set" />
+        <xs:element name="current-total-discounts" type="xs:decimal" />
+        <xs:element name="current-total-discounts-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="current-total-duties-set" />
+        <xs:element name="current-total-price" type="xs:decimal" />
+        <xs:element name="current-total-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="current-total-tax" type="xs:decimal" />
+        <xs:element name="current-total-tax-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="customer-locale" type="xs:string" />
+        <xs:element name="device-id" />
+        <xs:element name="email" type="xs:string" />
+        <xs:element name="estimated-taxes" type="xs:boolean" />
+        <xs:element name="financial-status" type="xs:string" />
+        <xs:element name="fulfillment-status" />
+        <xs:element name="landing-site" type="xs:string" />
+        <xs:element name="landing-site-ref" />
+        <xs:element name="location-id" />
+        <xs:element name="merchant-of-record-app-id" />
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="note" />
+        <xs:element name="number" type="xs:unsignedShort" />
+        <xs:element name="order-number" type="xs:unsignedShort" />
+        <xs:element name="order-status-url" type="xs:string" />
+        <xs:element name="original-total-additional-fees-set" />
+        <xs:element name="original-total-duties-set" />
+        <xs:element name="payment-gateway-names" type="xs:string" />
+        <xs:element name="phone" />
+        <xs:element name="po-number" />
+        <xs:element name="presentment-currency" type="xs:string" />
+        <xs:element name="processed-at" type="xs:dateTime" />
+        <xs:element name="reference" />
+        <xs:element name="referring-site" type="xs:string" />
+        <xs:element name="source-identifier" />
+        <xs:element name="source-name" type="xs:string" />
+        <xs:element name="source-url" />
+        <xs:element name="subtotal-price" type="xs:decimal" />
+        <xs:element name="subtotal-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tags" />
+        <xs:element name="tax-exempt" type="xs:boolean" />
+        <xs:element name="taxes-included" type="xs:boolean" />
+        <xs:element name="test" type="xs:boolean" />
+        <xs:element name="token" type="xs:string" />
+        <xs:element name="total-discounts" type="xs:decimal" />
+        <xs:element name="total-discounts-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total-line-items-price" type="xs:decimal" />
+        <xs:element name="total-line-items-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total-outstanding" type="xs:decimal" />
+        <xs:element name="total-price" type="xs:decimal" />
+        <xs:element name="total-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total-shipping-price-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total-tax" type="xs:decimal" />
+        <xs:element name="total-tax-set">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="shop-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="presentment-money">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:decimal" />
+                    <xs:element name="currency-code" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total-tip-received" type="xs:decimal" />
+        <xs:element name="total-weight" type="xs:unsignedShort" />
+        <xs:element name="updated-at" type="xs:dateTime" />
+        <xs:element name="user-id" />
+        <xs:element name="billing-address">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="first-name" type="xs:string" />
+              <xs:element name="address1" type="xs:string" />
+              <xs:element name="phone" />
+              <xs:element name="city" type="xs:string" />
+              <xs:element name="zip" type="xs:unsignedInt" />
+              <xs:element name="province" type="xs:string" />
+              <xs:element name="country" type="xs:string" />
+              <xs:element name="last-name" type="xs:string" />
+              <xs:element name="address2" />
+              <xs:element name="company" />
+              <xs:element name="latitude" type="xs:decimal" />
+              <xs:element name="longitude" type="xs:decimal" />
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="country-code" type="xs:string" />
+              <xs:element name="province-code" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="customer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:unsignedLong" />
+              <xs:element name="email" type="xs:string" />
+              <xs:element name="created-at" type="xs:dateTime" />
+              <xs:element name="updated-at" type="xs:dateTime" />
+              <xs:element name="first-name" type="xs:string" />
+              <xs:element name="last-name" type="xs:string" />
+              <xs:element name="state" type="xs:string" />
+              <xs:element name="note" />
+              <xs:element name="verified-email" type="xs:boolean" />
+              <xs:element name="multipass-identifier" />
+              <xs:element name="tax-exempt" type="xs:boolean" />
+              <xs:element name="phone" />
+              <xs:element name="email-marketing-consent">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="state" type="xs:string" />
+                    <xs:element name="opt-in-level" type="xs:string" />
+                    <xs:element name="consent-updated-at" type="xs:dateTime" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sms-marketing-consent" />
+              <xs:element name="tags" />
+              <xs:element name="currency" type="xs:string" />
+              <xs:element name="accepts-marketing" type="xs:boolean" />
+              <xs:element name="accepts-marketing-updated-at" type="xs:dateTime" />
+              <xs:element name="marketing-opt-in-level" type="xs:string" />
+              <xs:element name="admin-graphql-api-id" type="xs:string" />
+              <xs:element name="default-address">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:unsignedLong" />
+                    <xs:element name="customer-id" type="xs:unsignedLong" />
+                    <xs:element name="first-name" type="xs:string" />
+                    <xs:element name="last-name" type="xs:string" />
+                    <xs:element name="company" />
+                    <xs:element name="address1" type="xs:string" />
+                    <xs:element name="address2" />
+                    <xs:element name="city" type="xs:string" />
+                    <xs:element name="province" type="xs:string" />
+                    <xs:element name="country" type="xs:string" />
+                    <xs:element name="zip" type="xs:unsignedInt" />
+                    <xs:element name="phone" />
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="province-code" type="xs:string" />
+                    <xs:element name="country-code" type="xs:string" />
+                    <xs:element name="country-name" type="xs:string" />
+                    <xs:element name="default" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="line-item">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:unsignedLong" />
+              <xs:element name="admin-graphql-api-id" type="xs:string" />
+              <xs:element name="fulfillable-quantity" type="xs:unsignedByte" />
+              <xs:element name="fulfillment-service" type="xs:string" />
+              <xs:element name="fulfillment-status" />
+              <xs:element name="gift-card" type="xs:boolean" />
+              <xs:element name="grams" type="xs:unsignedShort" />
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="pre-tax-price" type="xs:decimal" />
+              <xs:element name="pre-tax-price-set">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shop-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="presentment-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="price" type="xs:decimal" />
+              <xs:element name="price-set">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shop-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="presentment-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="product-exists" type="xs:boolean" />
+              <xs:element name="product-id" type="xs:unsignedLong" />
+              <xs:element name="quantity" type="xs:unsignedByte" />
+              <xs:element name="requires-shipping" type="xs:boolean" />
+              <xs:element name="sku" type="xs:string" />
+              <xs:element name="tax-code" type="xs:string" />
+              <xs:element name="taxable" type="xs:boolean" />
+              <xs:element name="title" type="xs:string" />
+              <xs:element name="total-discount" type="xs:decimal" />
+              <xs:element name="total-discount-set">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shop-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="presentment-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="variant-id" type="xs:unsignedLong" />
+              <xs:element name="variant-inventory-management" type="xs:string" />
+              <xs:element name="variant-title" type="xs:string" />
+              <xs:element name="vendor" type="xs:string" />
+              <xs:element name="tax-lines">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="channel-liable" type="xs:boolean" />
+                    <xs:element name="price" type="xs:decimal" />
+                    <xs:element name="price-set">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="shop-money">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="amount" type="xs:decimal" />
+                                <xs:element name="currency-code" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="presentment-money">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="amount" type="xs:decimal" />
+                                <xs:element name="currency-code" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="rate" type="xs:unsignedByte" />
+                    <xs:element name="title" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="payment-terms" />
+        <xs:element name="shipping-address">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="first-name" type="xs:string" />
+              <xs:element name="address1" type="xs:string" />
+              <xs:element name="phone" />
+              <xs:element name="city" type="xs:string" />
+              <xs:element name="zip" type="xs:unsignedInt" />
+              <xs:element name="province" type="xs:string" />
+              <xs:element name="country" type="xs:string" />
+              <xs:element name="last-name" type="xs:string" />
+              <xs:element name="address2" />
+              <xs:element name="company" />
+              <xs:element name="latitude" type="xs:decimal" />
+              <xs:element name="longitude" type="xs:decimal" />
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="country-code" type="xs:string" />
+              <xs:element name="province-code" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="shipping-lines">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:unsignedLong" />
+              <xs:element name="carrier-identifier" />
+              <xs:element name="code" type="xs:string" />
+              <xs:element name="discounted-price" type="xs:decimal" />
+              <xs:element name="discounted-price-set">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shop-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="presentment-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="phone" />
+              <xs:element name="price" type="xs:decimal" />
+              <xs:element name="price-set">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shop-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="presentment-money">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="amount" type="xs:decimal" />
+                          <xs:element name="currency-code" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="requested-fulfillment-service-id" />
+              <xs:element name="source" type="xs:string" />
+              <xs:element name="title" type="xs:string" />
+              <xs:element name="tax-lines">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="channel-liable" type="xs:boolean" />
+                    <xs:element name="price" type="xs:decimal" />
+                    <xs:element name="price-set">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="shop-money">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="amount" type="xs:decimal" />
+                                <xs:element name="currency-code" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="presentment-money">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="amount" type="xs:decimal" />
+                                <xs:element name="currency-code" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="rate" type="xs:unsignedByte" />
+                    <xs:element name="title" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
