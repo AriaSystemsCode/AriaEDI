@@ -356,6 +356,22 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
+		<SrcField>total-discounts</SrcField>
+		<DestTable>PO_HEADER_T</DestTable>
+		<DestField>total_discounts</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>subtotal-price</SrcField>
+		<DestTable>PO_HEADER_T</DestTable>
+		<DestField>total_shipping</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
 		<SrcField>NAME</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>CONTRACT_NUMBER</DestField>
@@ -364,9 +380,25 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
+		<SrcField>subtotal-price</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>total_shipping</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>	
+	<Map>
+		<SrcTable>Order</SrcTable>
 		<SrcField>processed-at</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>Entered</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+		<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>total-discounts</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>total_discounts</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>

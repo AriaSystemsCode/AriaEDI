@@ -6,7 +6,7 @@
 	   <xs:sequence>
         <xs:element name="inventory_item_id" type="xs:string" />
         <xs:element name="location_id" type="xs:string" />
-        <xs:element name="available" type="xs:string" />
+        <xs:element name="available" type="xs:integer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
