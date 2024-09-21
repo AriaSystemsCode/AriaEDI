@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Orders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="result">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="totalCount" type="xs:unsignedByte" />
+              <xs:element maxOccurs="unbounded" name="order">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="creationTime" type="xs:dateTime" />
+                    <xs:element name="entityObjectStatusCode" type="xs:string" />
+                    <xs:element name="sellerCode" type="xs:string" />
+                    <xs:element name="buyerCode" type="xs:string" />
+                    <xs:element name="paymentDiscount" type="xs:unsignedByte" />
+                    <xs:element name="discountDays" type="xs:unsignedByte" />
+                    <xs:element name="eomDays" type="xs:unsignedByte" />
+                    <xs:element name="eom" type="xs:boolean" />
+                    <xs:element name="netDueDays" type="xs:unsignedByte" />
+                    <xs:element name="lastRecord" type="xs:boolean" />
+                    <xs:element name="firstRecord" type="xs:boolean" />
+                    <xs:element name="enteredDate" type="xs:dateTime" />
+                    <xs:element name="creatorUserId" type="xs:unsignedShort" />
+                    <xs:element name="enteredByUserRole" />
+                    <xs:element name="buyerCompanySSIN" type="xs:string" />
+                    <xs:element name="buyerCompanyName" type="xs:string" />
+                    <xs:element name="sellerId" />
+                    <xs:element name="sellerCompanyName" type="xs:string" />
+                    <xs:element name="buyerContactEMailAddress" type="xs:string" />
+                    <xs:element name="languageId" type="xs:unsignedByte" />
+                    <xs:element name="languageCode" type="xs:string" />
+                    <xs:element name="currencyId" type="xs:unsignedShort" />
+                    <xs:element name="currencyCode" type="xs:string" />
+                    <xs:element name="sellerContactEMailAddress" type="xs:string" />
+                    <xs:element name="buyerContactPhoneNumber" type="xs:unsignedLong" />
+                    <xs:element name="sellerContactPhoneNumber" type="xs:string" />
+                    <xs:element name="buyerContactName" type="xs:string" />
+                    <xs:element name="sellerContactName" type="xs:string" />
+                    <xs:element name="priceLevel" type="xs:string" />
+                    <xs:element name="buyerContactSSIN" type="xs:string" />
+                    <xs:element name="sellerContactSSIN" type="xs:string" />
+                    <xs:element name="transactionType" type="xs:unsignedByte" />
+                    <xs:element name="entityStatusCode" />
+                    <xs:element name="completeDate" type="xs:dateTime" />
+                    <xs:element name="sellerCompanySSIN" type="xs:string" />
+                    <xs:element name="startDate" type="xs:dateTime" />
+                    <xs:element name="availableDate" type="xs:dateTime" />
+                    <xs:element name="shipViaId" />
+                    <xs:element name="shipViaCode" />
+                    <xs:element name="paymentTermsId" />
+                    <xs:element name="paymentTermsCode" />
+                    <xs:element name="buyerDepartment" />
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="appTransactionsDetails">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="transactionCode" type="xs:unsignedByte" />
+                          <xs:element name="lineNo" type="xs:unsignedByte" />
+                          <xs:element name="quantity" type="xs:unsignedByte" />
+                          <xs:element name="grossPrice" type="xs:decimal" />
+                          <xs:element name="netPrice" type="xs:decimal" />
+                          <xs:element name="discount" type="xs:unsignedByte" />
+                          <xs:element name="amount" type="xs:unsignedShort" />
+                          <xs:element name="itemId" type="xs:unsignedByte" />
+                          <xs:element name="itemCode" type="xs:string" />
+                          <xs:element name="itemDescription" type="xs:string" />
+                          <xs:element name="note" />
+                          <xs:element name="ssin" type="xs:string" />
+                          <xs:element name="manufacturerCode" />
+                          <xs:element name="id" type="xs:unsignedInt" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="appTransactionContacts">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="transactionId" type="xs:unsignedInt" />
+                          <xs:element name="contactSSIN" />
+                          <xs:element name="contactName" type="xs:string" />
+                          <xs:element name="companyName" type="xs:string" />
+                          <xs:element name="contactEmail" type="xs:string" />
+                          <xs:element name="contactPhoneNumber" type="xs:string" />
+                          <xs:element name="contactRole" type="xs:unsignedByte" />
+                          <xs:element name="branchName" />
+                          <xs:element name="companySSIN" type="xs:string" />
+                          <xs:element name="branchSSIN" />
+                          <xs:element name="contactPhoneTypeName" />
+                          <xs:element name="contactPhoneTypeId" type="xs:string" />
+                          <xs:element name="contactAddressId" type="xs:unsignedInt" />
+                          <xs:element name="contactAddressCode" />
+                          <xs:element name="contactAddressDetail">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="code" type="xs:string" />
+                                <xs:element name="tenantId" type="xs:unsignedShort" />
+                                <xs:element name="accountId" type="xs:unsignedByte" />
+                                <xs:element name="name" type="xs:string" />
+                                <xs:element name="addressLine1" type="xs:string" />
+                                <xs:element name="addressLine2" type="xs:string" />
+                                <xs:element name="city" type="xs:string" />
+                                <xs:element name="state" type="xs:string" />
+                                <xs:element name="postalCode" type="xs:unsignedInt" />
+                                <xs:element name="countryId" type="xs:unsignedShort" />
+                                <xs:element name="countryCode" type="xs:string" />
+                                <xs:element name="countryIdName" />
+                                <xs:element name="useDTOTenant" type="xs:boolean" />
+                                <xs:element name="id" type="xs:unsignedInt" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="id" type="xs:unsignedShort" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="buyerStore" />
+                    <xs:element name="totalQuantity" type="xs:unsignedByte" />
+                    <xs:element name="totalAmount" type="xs:unsignedByte" />
+                    <xs:element name="lFromPlaceOrder" type="xs:boolean" />
+                    <xs:element name="currencyExchangeRate" type="xs:unsignedByte" />
+                    <xs:element name="tenantId" type="xs:unsignedShort" />
+                    <xs:element name="attachmentSourceTenantId" />
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="code" type="xs:string" />
+                    <xs:element name="notes" />
+                    <xs:element name="isHostRecord" type="xs:boolean" />
+                    <xs:element name="addFromAttachments" type="xs:boolean" />
+                    <xs:element name="relatedEntityId" />
+                    <xs:element name="entityObjectTypeId" type="xs:unsignedShort" />
+                    <xs:element name="entityObjectTypeCode" type="xs:string" />
+                    <xs:element name="entityObjectStatusId" type="xs:unsignedByte" />
+                    <xs:element name="objectId" type="xs:unsignedByte" />
+                    <xs:element name="appEntityTypes" type="xs:unsignedByte" />
+                    <xs:element name="ssin" />
+                    <xs:element name="tenantOwner" type="xs:unsignedShort" />
+                    <xs:element name="id" type="xs:unsignedInt" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="targetUrl" />
+        <xs:element name="success" type="xs:boolean" />
+        <xs:element name="error" />
+        <xs:element name="unAuthorizedRequest" type="xs:boolean" />
+        <xs:element name="abp" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
