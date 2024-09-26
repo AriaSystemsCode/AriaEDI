@@ -31,6 +31,7 @@
 *B612325 ,1 Sara.N seek for full 6 digit of partcode [T20210105.0018]
 *B612352,1 HIA, restore quialifier option in lfread [T20210212.0001]
 *B612649,1 HIA, Call lfread using 860-POC if 860-PO1 failed [T20220907.0001]
+*E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004]
 ***************************************************************
 ***************************************************************
 
@@ -250,7 +251,7 @@ Return(Iif(lnChkDigit=0,'0',Str(Int(10-lnChkDigit),1)))
 *!     		   	LEVEL      :THE lcPROCESSLEVEL (detail, header)
 *!     	        cTran_type :THE TRANSACTION (WE NEED TO GET FROM ) TYPE (850, 860)
 *!     	        lcSegId    :THE Segment  (WE NEED TO GET FROM ) TYPE (PO1, POC)
-*!     	        cKey_Value1:THE TRANSACTION (WE NEED TO GET FROM ) TYPE 
+*!     	        cKey_Value1:THE TRANSACTION (WE NEED TO GET FROM ) TYPE
 *!              lLastTransaction: If True search latest 860 POC then 850 PO1
 *!**************************************************************************
 *! Returns   : The field value (OR THE FIRST FIELD VALUE IN CASE OF ALL SEG)
@@ -258,7 +259,7 @@ Return(Iif(lnChkDigit=0,'0',Str(Int(10-lnChkDigit),1)))
 *! Example   : = lfRead(nFld_no,cKey_Value,PROCESSLEVEL,cTran_type)
 *!**************************************************************************
 *:->
- Function lfREAD
+Function lfREAD
 
 Lparameters nFld_No        ,;
   cKey_Value     ,;
@@ -286,7 +287,7 @@ Else
   ret = lpfread(nFld_No, cKey_Value, lcProcessLevel, cTran_Type, lcSegId, cKey_Value1)
 Endif
 Return ret
-**B612649,1 HIA, Call lfread using 860-POC if 860-PO1 failed [T20220907.0001] [End]  
+**B612649,1 HIA, Call lfread using 860-POC if 860-PO1 failed [T20220907.0001] [End]
 **********************************************************************************
 *!**************************************************************************
 *! Name      : lpfRead
@@ -307,7 +308,7 @@ Return ret
 *! Example   : = lfRead(nFld_no,cKey_Value,PROCESSLEVEL,cTran_type)
 *!**************************************************************************
 *:->
-Function lpfREAD
+Function lpfread
 *B605568,1 HIA 2/15/2002 Read in segment other than the picked one [Begin].
 *!*	LPARAM nFld_no     ,;
 *!*	       cKey_Value     ,;
@@ -715,7 +716,7 @@ Case lnCRTSEQ_SETUP = '5'
   *! E302998,1 HES 27/11/2011 Change the way of getting the UCC9 while saving the P\L -Add these info within the EDICRTSQ also if doesn't exist- [BEGIN]
   lcAlias = Alias()
   Select EDICRTSQ
-
+ 
   *B609965,1 HES 06/18/2012 Fix bugs happened in scenario of creating the same P\L with the same ID [BEGIN]
   Set Deleted On
   *B609965,1 HES 06/18/2012 Fix bugs happened in scenario of creating the same P\L with the same ID [END  ]
@@ -725,17 +726,32 @@ Case lnCRTSEQ_SETUP = '5'
   If !Seek(lcPACKNO+Str(lcBOX_SER,6))
     *E302998,2 HES 27/11/2011 Make the lfGetUCC9 function works without the lADD new parameter [END  ]
     *! E302998,1 HES 27/11/2011 Change the way of getting the UCC9 while saving the P\L -Add these info within the EDICRTSQ also if doesn't exist- [END  ]
-
+ 
     *B609965,1 HES 06/18/2012 Fix bugs happened in scenario of creating the same P\L with the same ID [BEGIN]
     If !llFrmShp
+ 
       Set Deleted Off
       If !Seek(lcPACKNO+Str(lcBOX_SER,6))
         *B609965,1 HES 06/18/2012 Fix bugs happened in scenario of creating the same P\L with the same ID [END  ]
-
-
+ 
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [BEGIN]
         *!*	     lcUCC9 = RIGHT(PADL(ALLTRIM(lcPACKNO),6,'0'),5)             +PADL(lcBOX_SER,4,'0')
-        lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+        *lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+        *lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+        * lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+        Do Case
+        Case lnUCCMNFLEN > 7
+          lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),(12-lnUCCMNFLEN ))+Padl(lcBOX_SER,4,'0')
+         
+        Otherwise
+          *old code as it
+          lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+        Endcase
+		
+		 
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
 
         *! E302998,1 HES 27/11/2011 Change the way of getting the UCC9 while saving the P\L -Add these info within the EDICRTSQ also if doesn't exist- [BEGIN]
@@ -802,7 +818,21 @@ Case lnCRTSEQ_SETUP = '6'
 
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [BEGIN]
         *!*	        lcUCC9 = RIGHT(PADL(ALLTRIM(lcPACKNO),6,'0'),6)+PADL(lcBOX_SER,3,'0')
-        lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,13,12)-lnUCCMNFLEN)+Padl(lcBOX_SER,3,'0')
+
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+        *  lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,13,12)-lnUCCMNFLEN)+Padl(lcBOX_SER,3,'0')
+
+        *  lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,12,11)-lnUCCMNFLEN)+Padl(lcBOX_SER,4,'0')
+
+        Do Case
+        Case lnUCCMNFLEN > 7
+          lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),(13-lnUCCMNFLEN ))+Padl(lcBOX_SER,3,'0')
+        Otherwise
+          *old code as it
+          lcUCC9 = Right(Padl(Alltrim(lcPACKNO),6,'0'),Iif(lnUCCMNFLEN = 7,13,12)-lnUCCMNFLEN)+Padl(lcBOX_SER,3,'0')
+        Endcase
+
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
 
         *! E302998,1 HES 27/11/2011 Change the way of getting the UCC9 while saving the P\L -Add these info within the EDICRTSQ also if doesn't exist- [BEGIN]
@@ -862,7 +892,19 @@ Case lnCRTSEQ_SETUP = '9'
     Select EDICRTSQ
     *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [BEGIN]
     *!*	        lcUCC9 = PADL(ALLTRIM(EDICRTSQ.Ucc9),9,'0')
-    lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+
+    *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+    *lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+    Do Case
+    Case lnUCCMNFLEN > 7
+      lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),16-lnUCCMNFLEN,'0')
+    Otherwise
+      *old code as it
+      lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+    Endcase
+
+    *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
+
     *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
     *B609151,1 WAM Add sequence number for this carton
   Else
@@ -875,7 +917,22 @@ Case lnCRTSEQ_SETUP = '9'
         Recall
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [BEGIN]
         *!*	            lcUCC9 = PADL(ALLTRIM(EDICRTSQ.Ucc9),9,'0')
-        lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+
+
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+        *lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+        Do Case
+        Case lnUCCMNFLEN > 7
+          lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),16-lnUCCMNFLEN,'0')
+        Otherwise
+          *old code as it
+          lcUCC9 = Padr(Alltrim(EDICRTSQ.Ucc9),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+        Endcase
+
+        *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
+
+
+
         *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
       Else
         *B609965,1 HES 06/18/2012 Fix bugs happened in scenario of creating the same P\L with the same ID [END  ]
@@ -935,7 +992,24 @@ Case lnCRTSEQ_SETUP = '9'
           *!*	            lcUCC9 = PADL(lnUcc9,9,"0")
           *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
           *!*	        lnUCC9 = PADR(lnUCC9,IIF(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
-          lnUcc9 = Padl(lnUcc9,Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+
+
+
+
+          *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+          *lnUcc9 = Padl(lnUcc9,Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+          Do Case
+          Case lnUCCMNFLEN > 7
+            lcUCC9 = Padr(lnUcc9,16-lnUCCMNFLEN,'0')
+          Otherwise
+            *old code as it
+            lnUcc9 = Padl(lnUcc9,Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+          Endcase
+
+          *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
+
+
+
           *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
           Insert Into 'EDICRTSQ' (Pack_No,ACCOUNT,cart_no,Ucc9);
             VALUES (lcPACKNO,lcAccount,lcBOX_SER,Alltrim(lnUcc9))
@@ -971,7 +1045,21 @@ Case lnCRTSEQ_SETUP = '9'
             *!*	              lcUCC9 = '000000001'
             *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
             *!*							lcUCC9 = Padr('000000001',Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
-            lcUCC9 = Padl('000000001',Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            
+
+            *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+            *lcUCC9 = Padl('000000001',Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            Do Case
+            Case lnUCCMNFLEN > 7
+              lcUCC9 = Padr('000000001',16-lnUCCMNFLEN,'0')
+            Otherwise
+              *old code as it
+              lcUCC9 = Padl('000000001',Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            Endcase
+
+            *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
+
+
             *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
             *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
             *! E302998,1 HES 27/11/2011 Change the way of getting the UCC9 while saving the P\L [BEGIN]
@@ -990,7 +1078,21 @@ Case lnCRTSEQ_SETUP = '9'
             *!*	              lcUCC9 = PADL(ALLTRIM(STR(VAL(EDICRTSQ.UCC9)+1,9,0)),9,'0')
             *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
             *!*							lcUCC9 = Padr(Alltrim(Str(Val(EDICRTSQ.Ucc9)+1,9,0)),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
-            lcUCC9 = Padl(Alltrim(Str(Val(EDICRTSQ.Ucc9)+1,9,0)),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            
+            
+            
+            *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [Begin]
+            *lcUCC9 = Padl(Alltrim(Str(Val(EDICRTSQ.Ucc9)+1,9,0)),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            Do Case
+            Case lnUCCMNFLEN > 7
+              lcUCC9 = Padr(Alltrim(Str(Val(EDICRTSQ.Ucc9)+1,9,0)),16-lnUCCMNFLEN,'0')
+            Otherwise
+              *old code as it
+              lcUCC9 = Padl(Alltrim(Str(Val(EDICRTSQ.Ucc9)+1,9,0)),Iif(lnUCCMNFLEN = 7,16,15)-lnUCCMNFLEN,'0')
+            Endcase
+
+            *E303999,1 HIA, Support 8-10 manuf_id [T20240918.0004] [End]
+            
             *B611631,1  , BYM, 2018-07-31 Modify Seeking in edicrtnsq to seek with UCC9 only not with account+UCC9 and change PadR() to PadL()[End]
             *E303191,1 HES Make the UCC manf IF to be more flexiable regarding its length from 6 to 9 [END  ]
             Set Order To &lcOrd
