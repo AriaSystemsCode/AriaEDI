@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopify_Converter", "Shopif
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopify_Archive", "Shopify_Archive\Shopify_Archive.csproj", "{9ABF3F25-3C71-4855-A71C-99EA90A9CAC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopify_Converter_Cross_ref", "Shopify_Converter_cross_ref\Shopify_Converter_Cross_ref.csproj", "{04710F54-A88C-4875-A85D-ED00C10CE5B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9ABF3F25-3C71-4855-A71C-99EA90A9CAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABF3F25-3C71-4855-A71C-99EA90A9CAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABF3F25-3C71-4855-A71C-99EA90A9CAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04710F54-A88C-4875-A85D-ED00C10CE5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04710F54-A88C-4875-A85D-ED00C10CE5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04710F54-A88C-4875-A85D-ED00C10CE5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04710F54-A88C-4875-A85D-ED00C10CE5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

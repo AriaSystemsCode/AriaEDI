@@ -1,0 +1,38 @@
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.exe.config
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.exe
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\MainWindow.baml
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\MainWindow.g.cs
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\App.g.cs
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN_MarkupCompile.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.g.resources
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.Properties.Resources.resources
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.GenerateResource.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.exe
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\bin\Debug\Newtonsoft.Json.xml
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.exe.config
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.exe
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN.pdb
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN_LIB.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\Newtonsoft.Json.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\EDI_VAN_LIB.pdb
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\bin\Debug\Newtonsoft.Json.xml
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csprojAssemblyReference.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\MainWindow.baml
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\MainWindow.g.cs
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\App.g.cs
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN_MarkupCompile.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.g.resources
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.Properties.Resources.resources
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.GenerateResource.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.CoreCompileInputs.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.csproj.CopyComplete
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.exe
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN\obj\Debug\EDI_VAN.pdb

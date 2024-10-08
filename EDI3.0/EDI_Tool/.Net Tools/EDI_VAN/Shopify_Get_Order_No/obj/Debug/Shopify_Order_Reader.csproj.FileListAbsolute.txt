@@ -1,0 +1,12 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.dll
+C:\Users\Hassan\Desktop\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.dll
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csprojAssemblyReference.cache

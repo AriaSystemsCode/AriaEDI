@@ -1,0 +1,26 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe.config
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csprojAssemblyReference.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Form1.resources
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Properties.Resources.resources
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.GenerateResource.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CopyComplete
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.exe
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe.config
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.dll
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Form1.resources
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Properties.Resources.resources
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.GenerateResource.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.pdb

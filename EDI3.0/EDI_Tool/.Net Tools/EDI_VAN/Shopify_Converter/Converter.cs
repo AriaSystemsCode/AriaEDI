@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -115,7 +116,51 @@ namespace Shopify_Converter
                 #endregion loop on api record file sketolen, in outgoing folder.
             }
 
-            static void WriteLog(string logString)
+        static string serverName = @"ARIASQL\ARIASQLSERVER";
+        static string userName = "sa";
+        static string password = "aria_123";
+        static string dbName = "lac99_ldb01";
+
+        static void WriteToDB()
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand com = new SqlCommand();
+            SqlDataAdapter dt = new SqlDataAdapter();
+            con.ConnectionString = @"data source='" + Converter.serverName.Trim() + "';initial catalog='" + Converter.dbName.Trim() +
+             "'; integrated security=False;User ID='" + Converter.userName.Trim() + "';Password='" + Converter.password.Trim() + "'";
+
+            String SKU = Converter.xmlnode.SelectSingleNode("inventory_item_id").InnerText.Trim();
+            if (String.IsNullOrEmpty(SKU) == false)
+            {
+                com.Connection = con;
+                com.CommandText = "Select inventory_item_id from stycrsref where external_sku='"
+                       + SKU + "'"
+                      ;
+
+
+                try
+                {
+                    con.Open();
+                    var ret = com.ExecuteScalar();
+                    Converter.xmlnode.SelectSingleNode("inventory_item_id").InnerText = (ret!=null)?ret.ToString(): Converter.xmlnode.SelectSingleNode("inventory_item_id").InnerText;
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    con.Close();
+                    // WindowsLog.WindowsLog.WriteLog("Application", "EDI VAN NetWrok:" + ex.Message.ToString(), 103, 0);
+                }
+                finally
+                {
+                    con.Close();
+
+                }
+            }
+
+
+        }
+        static void WriteLog(string logString)
             {
                 string path = Converter.outBoxFolder + "Shopify_Converter_log.txt";
                 if (Converter.logWriteFlag == "Y")
@@ -134,7 +179,13 @@ namespace Shopify_Converter
                     FileInfo[] filesInDir = Converter.GetFiles(Converter.inBoxFolder, Converter.productFileName);
                     if (filesInDir.Length > 0)
                     {
-                        string tempProductFileName = Converter.inBoxFolder + filesInDir[filesInDir.Length - 1].Name;
+                    //string tempProductFileName = Converter.inBoxFolder + filesInDir[filesInDir.Length - 1].Name;
+                    bool lfound = false;
+                    foreach (var fileName in filesInDir)
+                    {
+                        if (lfound) { break; }
+                        //string tempProductFileName = Converter.inBoxFolder + filesInDir[filesInDir.Length - 1].Name;
+                        string tempProductFileName = Converter.inBoxFolder + fileName.Name;
 
 
                         String SKU = Converter.xmlnode.SelectSingleNode("inventory_item_id").InnerText.Trim();
@@ -153,6 +204,7 @@ namespace Shopify_Converter
                                     if (xmlnodelist[i].SelectSingleNode("sku").InnerText.Trim() == SKU)
                                     {
                                         Converter.xmlnode.SelectSingleNode("inventory_item_id").InnerText = xmlnodelist[i].SelectSingleNode("inventory-item-id").InnerText.Trim();
+                                        lfound = true;
                                         break;
                                     }
                                 }
@@ -162,6 +214,7 @@ namespace Shopify_Converter
                         {
                             Converter.WriteLog("Missing SKU");
                         }
+                    }
                     }
                     else
                     {
@@ -215,7 +268,8 @@ namespace Shopify_Converter
                     Converter.xmlnode = xmlnode;
                     if (Converter.networkOutGoingFileName == "inventory_adjustment")
                     {
-                        Converter.GetInventoryItemID();
+                    //Converter.GetInventoryItemID();
+                    Converter.WriteToDB();
                     }
                     Converter.GetLocationID();
                     string contentString = "";
