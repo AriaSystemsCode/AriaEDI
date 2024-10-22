@@ -240,10 +240,10 @@ namespace EDI_VAN
                     CancelButton.IsEnabled = true;
                     ResetButton.IsEnabled = true;
 
-                    //if (!string.IsNullOrEmpty(SelectedProfile.ErrorMessageString) )
-                    //{ MessageBox.Show(SelectedProfile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + SelectedProfile.ErrorMessageString); }
-                    //else
-                    //{ MessageBox.Show(SelectedProfile.SiteName + " " + this.DoneCorrectlyMessage); }
+                    if (!string.IsNullOrEmpty(SelectedProfile.ErrorMessageString))
+                    { MessageBox.Show(SelectedProfile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + SelectedProfile.ErrorMessageString); }
+                    else
+                    { MessageBox.Show(SelectedProfile.SiteName + " " + this.DoneCorrectlyMessage); }
                     SelectedProfile.ErrorMessageString = "";
                 }
                 else
@@ -259,10 +259,10 @@ namespace EDI_VAN
                         RunButton.IsEnabled = true;
                         CancelButton.IsEnabled = true;
                         ResetButton.IsEnabled = true;
-                        //if (!string.IsNullOrEmpty(SelectedProfile.ErrorMessageString) && false)
-                        //{ MessageBox.Show(Profile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + Profile.ErrorMessageString); }
-                        //else
-                        //{ MessageBox.Show(Profile.SiteName + " " + this.DoneCorrectlyMessage); }
+                        if (!string.IsNullOrEmpty(SelectedProfile.ErrorMessageString))
+                        { MessageBox.Show(Profile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + Profile.ErrorMessageString); }
+                        else
+                        { MessageBox.Show(Profile.SiteName + " " + this.DoneCorrectlyMessage); }
                         Profile.ErrorMessageString = "";
                     }
                 }
@@ -278,14 +278,14 @@ namespace EDI_VAN
                 CancelButton.IsEnabled = true;
                 ResetButton.IsEnabled = true;
 
-                //if (!string.IsNullOrEmpty(Profile.ErrorMessageString))
-                //{ MessageBox.Show(Profile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + Profile.ErrorMessageString); }
-                //else
-                //{ MessageBox.Show(Profile.SiteName + " " + this.DoneCorrectlyMessage); }
+                if (!string.IsNullOrEmpty(Profile.ErrorMessageString))
+                { MessageBox.Show(Profile.SiteName + " " + this.DoneWithErrorsMessage + System.Environment.NewLine + Profile.ErrorMessageString); }
+                else
+                { MessageBox.Show(Profile.SiteName + " " + this.DoneCorrectlyMessage); }
                 Profile.ErrorMessageString = "";
             }
-
-            MessageBox.Show("Calling is done", this.Title);
+            // 
+            //MessageBox.Show("Calling is done",this.Title);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

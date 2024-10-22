@@ -1,0 +1,12 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.exe
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.exe
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csprojAssemblyReference.cache

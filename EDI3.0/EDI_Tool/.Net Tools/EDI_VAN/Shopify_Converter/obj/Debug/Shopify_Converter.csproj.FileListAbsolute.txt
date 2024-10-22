@@ -1,0 +1,27 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csprojAssemblyReference.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CopyComplete
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.exe
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.exe
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.exe
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.exe
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csprojAssemblyReference.cache

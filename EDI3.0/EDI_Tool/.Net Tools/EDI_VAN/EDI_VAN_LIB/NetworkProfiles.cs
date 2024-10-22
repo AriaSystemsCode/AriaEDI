@@ -12,6 +12,9 @@ using System.Net;
 using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace EDI_VAN_LIB
 {
@@ -255,7 +258,7 @@ namespace EDI_VAN_LIB
             get { return _downloadedFileName; }
             set { _downloadedFileName = value; }
         }
-
+        public string token { get; set; }
         #region Methods
         public NetworkProfiles()
         { }
@@ -680,36 +683,106 @@ namespace EDI_VAN_LIB
 
         public void ApiConnectGet()
         {
+            ////get token area
             StillHasData = false;
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri(URL);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password);
-            string val = System.Convert.ToBase64String(plainTextBytes);
-            client.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
-
-            // List data response.
-            string requestURI = NetworkOutboxFolder;
-            //if (string.IsNullOrEmpty(NetworkInboxFolder) == false)
-            //{
-            //   requestURI = String.Format(NetworkOutboxFolder + "{0}{1}", "?since_id" , NetworkInboxFolder);
-            //}
-            if (string.IsNullOrEmpty(PreTransferCommand) == false)
+            HttpResponseMessage response=null;
+            string dataObjects = "";
+            if (UserName.Contains("token"))
             {
-                string firstParameter = "?";
-                if (NetworkOutboxFolder.Contains("?"))
-                    firstParameter = "&";
-                requestURI = String.Format(NetworkOutboxFolder + "{0}{1}", firstParameter, PreTransferCommand);
+                UserName = UserName.Split(',')[0];
+                string TenantId = Password.Split(',')[2];
+                string TenantName = Password.Split(',')[1];
+                Password = Password.Split(',')[0];
+                 
+                HttpClient clientToken = new HttpClient();
+                var AuthURL = URL.Replace("/services", "") + "/TokenAuth/Authenticate";
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, AuthURL);
+
+                request.Headers.Add("accept", "text/plain");
+                request.Headers.Add("Abp.TenantId", TenantId);
+                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName + "\",\"tenancyName\":\"" + TenantName+ "\",\"password\":\"" + Password + "\"}");
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
+                HttpResponseMessage responseToken = clientToken.SendAsync(request).Result;
+
+                responseToken.EnsureSuccessStatusCode();
+                string responseBody = responseToken.Content.ReadAsStringAsync().Result;
+                dynamic json = JsonConvert.DeserializeObject(responseBody);
+                token = json["result"]["accessToken"].ToString();
+
+                /******************************/
+
+                HttpClient clientToken2 = new HttpClient();
+                var AuthURL2 = URL + NetworkOutboxFolder.Trim();
+                if (string.IsNullOrEmpty(PreTransferCommand) == false)
+                {if (AuthURL2.Contains("?"))
+                    {
+                        AuthURL2 = AuthURL2 + "&" + PreTransferCommand.Trim();
+                    }
+                    else
+                    {
+                      AuthURL2 = AuthURL2 + "?" + PreTransferCommand.Trim();
+                    }
+                }
+                    HttpRequestMessage response22 = new HttpRequestMessage(HttpMethod.Get, AuthURL2);
+
+                clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                response = clientToken2.GetAsync(AuthURL2).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseData = response.Content.ReadAsStringAsync().Result;
+                    string responseDataBody = response.Content.ReadAsStringAsync().Result;
+                    dynamic jsonData = JsonConvert.DeserializeObject(responseDataBody);
+                    dataObjects = jsonData["result"]["items"].ToString();
+                    dataObjects = responseDataBody;
+
+                    Console.WriteLine(responseData); // Output the result
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                }
+
+
             }
-            HttpResponseMessage response = client.GetAsync(requestURI).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            else
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                HttpClient client = new HttpClient();
+
+                client.BaseAddress = new Uri(URL);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
+
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password);
+                string val = System.Convert.ToBase64String(plainTextBytes);
+                client.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
+
+                // List data response.
+                string requestURI = NetworkOutboxFolder;
+                //if (string.IsNullOrEmpty(NetworkInboxFolder) == false)
+                //{
+                //   requestURI = String.Format(NetworkOutboxFolder + "{0}{1}", "?since_id" , NetworkInboxFolder);
+                //}
+                if (string.IsNullOrEmpty(PreTransferCommand) == false)
+                {
+                    string firstParameter = "?";
+                    if (NetworkOutboxFolder.Contains("?"))
+                        firstParameter = "&";
+                    requestURI = String.Format(NetworkOutboxFolder + "{0}{1}", firstParameter, PreTransferCommand);
+                }
+                response = client.GetAsync(requestURI).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+                dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+
+            }// to be removed
+      
+            
+            
             if (response.IsSuccessStatusCode)
             {
                 //Parse the response body.
-                string dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                
 
                 string path = DateTime.Now.ToString("yyyyMMddHHmmss");
                 Directory.CreateDirectory(Path.Combine(this.EDIFTPHistoryPath + "\\IN\\", path));
@@ -728,22 +801,39 @@ namespace EDI_VAN_LIB
                 newfilename += Path.GetExtension(InComingFileName);
 
 
-                Boolean writeToFile = true;
 
-                if (NetworkOutboxFolder.ToUpper().Contains("JSON"))
+                Boolean writeToFile = true;
+                //XNode node = JsonConvert.DeserializeXNode(dataObjects, "Root");
+                //string xx = node.ToString().Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
+                //dataObjects = xx.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
+                
+                
+                //dataObjects = File.ReadAllText(@"C:\Users\Hassan\Desktop\Siiwii_integration\response_123.json");
+
+                if (NetworkOutboxFolder.ToUpper().Contains("JSON") || InComingFileName.ToUpper().Contains(".JSON"))
                 {
-                    XNode node = JsonConvert.DeserializeXNode(dataObjects, "Root");
+                    XNode node;
+                    if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
+                    {  node = JsonConvert.DeserializeXNode(dataObjects,"Root"); }
+                    else {  node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
+                    
                     string nodeString = node.ToString();
                     if (NetworkOutboxFolder.ToUpper().Contains("ORDERS"))
                     {
                         nodeString = nodeString.Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
                         dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
                     }
-
+                    
                     if (NetworkOutboxFolder.ToUpper().Contains("VARIANTS"))
                     {
                         dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<products>").Replace("</Root>", "</products>");
                     }
+
+                    if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
+                    {
+                        dataObjects = nodeString.Replace("_", "-").Replace("<items>","<order>").Replace("</items>", "</order>").Replace("<--abp>", "<abp>").Replace("</--abp>", "</abp>").Replace("<Root>", "<Orders>").Replace("</Root>", "</Orders>");
+                    }
+
                 }
 
                 if (!string.IsNullOrEmpty(NetworkInboxFolder) && NetworkInboxFolder.Contains(','))
@@ -777,6 +867,8 @@ namespace EDI_VAN_LIB
 
             }
             client.Dispose();
+
+        
         }
 
         /// <summary>

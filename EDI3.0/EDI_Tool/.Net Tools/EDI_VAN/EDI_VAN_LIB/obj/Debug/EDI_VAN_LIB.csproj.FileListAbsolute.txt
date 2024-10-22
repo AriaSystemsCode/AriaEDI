@@ -1,0 +1,56 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+C:\Users\hassan.i\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+D:\Shared\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+D:\Shared\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+D:\Shared\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+D:\Shared\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+D:\Shared\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+D:\Shared\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+D:\Shared\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+D:\Shared\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hassan\Desktop\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csprojAssemblyReference.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.xml
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csprojAssemblyReference.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+D:\EDI_TFS\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb

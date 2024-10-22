@@ -1,0 +1,9 @@
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csprojAssemblyReference.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.CoreCompileInputs.cache
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.CopyComplete
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Shopify_Converter_Cross_Ref.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Shopify_Converter_Cross_Ref.pdb
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.exe
+C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.pdb

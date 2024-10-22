@@ -1,0 +1,6 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\bin\Debug\Shopify-Product-Reader.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\bin\Debug\Shopify-Product-Reader.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify-Product-Reader.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify-Product-Reader.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify-Product-Reader.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify-Product-Reader.csprojAssemblyReference.cache
