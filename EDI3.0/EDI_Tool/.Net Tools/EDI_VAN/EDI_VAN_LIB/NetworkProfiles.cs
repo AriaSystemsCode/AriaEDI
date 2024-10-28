@@ -1099,7 +1099,7 @@ namespace EDI_VAN_LIB
             else
             {
                 //MessageBox.Show("There is no file " + (path) + " at this moment on your outbox folder.", "Uploading Error");
-                this.ErrorMessageString = "There is no file " + (path) + " at this moment on your outbox folder." + System.Environment.NewLine;
+                //this.ErrorMessageString = "There is no file " + (path) + " at this moment on your outbox folder." + System.Environment.NewLine;
                 return false;
             }
 
