@@ -41,43 +41,66 @@
 						<Column>RETAILER_PO</Column>
 					</ChildColumns>
 				</Relation>
-				<Relation>
-					<ParentTable>Po_Items_T</ParentTable>
-					<ParentColumns>
-						<Column>PARTNER_ID</Column>
-						<Column>RETAILER_PO</Column>
-						<Column>ITEM_LINE_NO</Column>
-					</ParentColumns>
-					<ChildTable>Po_Messages_T</ChildTable>
-					<ChildColumns>
-						<Column>PARTNER_ID</Column>
-						<Column>RETAILER_PO</Column>
-						<Column>ITEM_LINE_NO</Column>
-					</ChildColumns>
-				</Relation>
+				<!-- <Relation> -->
+					<!-- <ParentTable>Po_Items_T</ParentTable> -->
+					<!-- <ParentColumns> -->
+						<!-- <Column>PARTNER_ID</Column> -->
+						<!-- <Column>RETAILER_PO</Column> -->
+						<!-- <Column>ITEM_LINE_NO</Column> -->
+					<!-- </ParentColumns> -->
+					<!-- <ChildTable>Po_Messages_T</ChildTable> -->
+					<!-- <ChildColumns> -->
+						<!-- <Column>PARTNER_ID</Column> -->
+						<!-- <Column>RETAILER_PO</Column> -->
+						<!-- <Column>ITEM_LINE_NO</Column> -->
+					<!-- </ChildColumns> -->
+				<!-- </Relation> -->
 			</Add>
 		</Destination>
 	</Relations>
 	<Map>
-		<SrcTable></SrcTable>
-		<SrcField></SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactRole</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>Address_Type</DestField>
-		<Fixed>BT</Fixed>
+		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-	
+	<Map>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>branchName</SrcField>
+		<DestTable>PO_ADDRESS_T</DestTable>
+		<DestField>name</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>BranchCode</SrcField>
+		<DestTable>PO_ADDRESS_T</DestTable>
+		<DestField>Location_Code</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactRole</SrcField>
+		<DestTable>PO_ADDRESS_T</DestTable>
+		<DestField>Address_Type</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
 	<Map>
 		<SrcTable>order</SrcTable>
-		<SrcField>code</SrcField>
+		<SrcField>reference</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>name</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactEmail</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>Email_address</DestField>
 		<Fixed></Fixed>
@@ -92,73 +115,72 @@
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>name</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactPhoneNumber</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>Phone</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>Name</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressName</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>name</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>addressLine1</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressLine1</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>address_line_1</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>addressLine2</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressLine2</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>address_line_2</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>city</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressCity</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>city</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>countryCode</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressCountryCode</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>country</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>state</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressState</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>state</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>contactAddressDetail</SrcTable>
-		<SrcField>postalcode</SrcField>
+		<SrcTable>appTransactionContacts</SrcTable>
+		<SrcField>contactAddressPostalCode</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>ZIP_CODE</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-	 
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>code</SrcField>
+		<SrcField>reference</SrcField>
 		<DestTable>PO_ITEMS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
@@ -166,7 +188,7 @@
 	</Map>
 	<Map>
 		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>id</SrcField>
+		<SrcField>lineNo</SrcField>
 		<DestTable>PO_ITEMS_T</DestTable>
 		<DestField>Item_line_no</DestField>
 		<Fixed></Fixed>
@@ -188,17 +210,9 @@
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-		<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>itemCode</SrcField>
-		<DestTable>PO_ITEMS_T</DestTable>
-		<DestField>upc_number</DestField>
-		<Fixed></Fixed>
-		<Condition></Condition>
-	</Map>
 	<Map>
 		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>itemCode</SrcField>
+		<SrcField>manufacturerCode</SrcField>
 		<DestTable>PO_ITEMS_T</DestTable>
 		<DestField>Vendor_style</DestField>
 		<Fixed></Fixed>
@@ -206,7 +220,7 @@
 	</Map>
 	<Map>
 		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>ssin</SrcField>
+		<SrcField>itemCode</SrcField>
 		<DestTable>PO_ITEMS_T</DestTable>
 		<DestField>Vendor_Item</DestField>
 		<Fixed></Fixed>
@@ -252,12 +266,51 @@
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>code</SrcField>
+		<SrcField>reference</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>startDate</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>Entered</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+		<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>Notes</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>Notes</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>buyerDepartment</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>DEPARTMENT</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>completeDate</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>CANCEL_AFTER</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>	
+	<Map>
+		<SrcTable>order</SrcTable>
+		<SrcField>buyerCode</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>BUYER</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
@@ -269,7 +322,14 @@
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-	
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>shipViaName</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>FULFILLMENTSERVICELEVEL</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
 		<SrcField>ID</SrcField>
@@ -296,7 +356,7 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>creationTime</SrcField>
+		<SrcField>enteredDate</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>Entered</DestField>
 		<Fixed></Fixed>
@@ -304,7 +364,7 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>creationTime</SrcField>
+		<SrcField>startDate</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>SHIP_NOT_BEFORE</DestField>
 		<Fixed></Fixed>
@@ -312,7 +372,7 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>creationTime</SrcField>
+		<SrcField>completeDate</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>CANCEL_AFTER</DestField>
 		<Fixed></Fixed>
@@ -344,7 +404,7 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>code</SrcField>
+		<SrcField>reference</SrcField>
 		<DestTable>PO_TERMS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
@@ -352,50 +412,74 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField></SrcField>
+		<SrcField>paymentDiscount</SrcField>
 		<DestTable>PO_TERMS_T</DestTable>
-		<DestField>DISCOUNT_PERCENT</DestField>
-		<Fixed>0</Fixed>
+		<DestField>Discount_Amount</DestField>
+		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>code</SrcField>
-		<DestTable>Po_Messages_T</DestTable>
-		<DestField>RETAILER_PO</DestField>
+		<SrcField>netDueDays</SrcField>
+		<DestTable>PO_TERMS_T</DestTable>
+		<DestField>Discount_Days_Due</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>	
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>discountDays</SrcField>
+		<DestTable>PO_TERMS_T</DestTable>
+		<DestField>Net_Days</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>id</SrcField>
-		<DestTable>Po_Messages_T</DestTable>
-		<DestField>Item_line_no</DestField>
+		<SrcTable>Order</SrcTable>
+		<SrcField>EOM</SrcField>
+		<DestTable>PO_TERMS_T</DestTable>
+		<DestField>EOM</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
-	</Map>
-	<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField></SrcField>
-		<DestTable>Po_Messages_T</DestTable>
-		<DestField>Partner_ID</DestField>
-		<Fixed>Siiwii</Fixed>
-		<Condition></Condition>
-	</Map>
-	<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>itemDescription</SrcField>
-		<DestTable>Po_Messages_T</DestTable>
-		<DestField>Message</DestField>
-		<Fixed></Fixed>
-		<Condition></Condition>
-	</Map>
-	<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField></SrcField>
-		<DestTable>Po_Messages_T</DestTable>
-		<DestField>MESSAGE_TITLE</DestField>
-		<Fixed>Siiwii Line ID</Fixed>
-		<Condition></Condition>
-	</Map>
+	</Map>	
+	<!-- <Map> -->
+		<!-- <SrcTable>Order</SrcTable> -->
+		<!-- <SrcField>code</SrcField> -->
+		<!-- <DestTable>Po_Messages_T</DestTable> -->
+		<!-- <DestField>RETAILER_PO</DestField> -->
+		<!-- <Fixed></Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionsDetails</SrcTable> -->
+		<!-- <SrcField>id</SrcField> -->
+		<!-- <DestTable>Po_Messages_T</DestTable> -->
+		<!-- <DestField>Item_line_no</DestField> -->
+		<!-- <Fixed></Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionsDetails</SrcTable> -->
+		<!-- <SrcField></SrcField> -->
+		<!-- <DestTable>Po_Messages_T</DestTable> -->
+		<!-- <DestField>Partner_ID</DestField> -->
+		<!-- <Fixed>Siiwii</Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionsDetails</SrcTable> -->
+		<!-- <SrcField>itemDescription</SrcField> -->
+		<!-- <DestTable>Po_Messages_T</DestTable> -->
+		<!-- <DestField>Message</DestField> -->
+		<!-- <Fixed></Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionsDetails</SrcTable> -->
+		<!-- <SrcField></SrcField> -->
+		<!-- <DestTable>Po_Messages_T</DestTable> -->
+		<!-- <DestField>MESSAGE_TITLE</DestField> -->
+		<!-- <Fixed>Siiwii Line ID</Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
 </Root>
