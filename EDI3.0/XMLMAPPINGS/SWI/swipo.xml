@@ -68,17 +68,17 @@
 	</Map>
 	<Map>
 		<SrcTable>appTransactionContacts</SrcTable>
-		<SrcField>branchName</SrcField>
+		<SrcField>BranchCode</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
-		<DestField>name</DestField>
+		<DestField>Location_Code</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
 	<Map>
 		<SrcTable>appTransactionContacts</SrcTable>
-		<SrcField>BranchCode</SrcField>
+		<SrcField>branchName</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
-		<DestField>Location_Code</DestField>
+		<DestField>name</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
@@ -92,12 +92,11 @@
 	</Map>
 	<Map>
 		<SrcTable>order</SrcTable>
-		<SrcField>reference</SrcField>
+		<SrcField>id</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
-	</Map>
 	<Map>
 		<SrcTable>appTransactionContacts</SrcTable>
 		<SrcField>contactEmail</SrcField>
@@ -180,20 +179,20 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>reference</SrcField>
+		<SrcField>id</SrcField>
 		<DestTable>PO_ITEMS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-	<Map>
-		<SrcTable>appTransactionsDetails</SrcTable>
-		<SrcField>lineNo</SrcField>
-		<DestTable>PO_ITEMS_T</DestTable>
-		<DestField>Item_line_no</DestField>
-		<Fixed></Fixed>
-		<Condition></Condition>
-	</Map>
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionsDetails</SrcTable> -->
+		<!-- <SrcField>lineNo</SrcField> -->
+		<!-- <DestTable>PO_ITEMS_T</DestTable> -->
+		<!-- <DestField>Item_line_no</DestField> -->
+		<!-- <Fixed></Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
 	<Map>
 		<SrcTable></SrcTable>
 		<SrcField></SrcField>
@@ -268,12 +267,21 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>reference</SrcField>
+		<SrcField>id</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
+	</Map>
+		<Map>
+		<SrcTable>order</SrcTable>
+		<SrcField>reference</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>BLANKET_NUMBER</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>	
 	<Map>
 		<SrcTable>Order</SrcTable>
 		<SrcField>startDate</SrcField>
@@ -404,7 +412,7 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
-		<SrcField>reference</SrcField>
+		<SrcField>id</SrcField>
 		<DestTable>PO_TERMS_T</DestTable>
 		<DestField>RETAILER_PO</DestField>
 		<Fixed></Fixed>
