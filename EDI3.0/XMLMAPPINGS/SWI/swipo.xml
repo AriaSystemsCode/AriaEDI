@@ -273,6 +273,14 @@
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>code</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>Promotion_Code</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
 	</Map>
 		<Map>
 		<SrcTable>order</SrcTable>
