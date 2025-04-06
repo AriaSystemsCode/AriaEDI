@@ -170,7 +170,7 @@ public class SqlTableCreator
         switch (type.ToString())
         {
             case "System.String":
-                return "VARCHAR(" + ((columnSize == -1) ? 255 : columnSize) + ")";
+                return "VARCHAR(" + ((columnSize == -1 || columnSize == 0) ? 255 : columnSize) + ")";
 
             case "System.Decimal":
                 if (numericScale > 0)

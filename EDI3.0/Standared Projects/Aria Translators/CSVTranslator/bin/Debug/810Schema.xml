@@ -1,0 +1,131 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="INVOICE_CHARGES_T">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="INVOICE_HEADER_KEY" type="xs:int" minOccurs="0" />
+                <xs:element name="PARTNER_ID" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_NUMBER" type="xs:string" minOccurs="0" />                
+                <xs:element name="SERVICE_TYPE" type="xs:string" minOccurs="0" />
+                <xs:element name="SERVICE_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="SERVICE_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="AMOUNT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PERCENT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="HANDLING_METHOD" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_CHARGES_KEY" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="INVOICE_DETAILS_T">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="INVOICE_HEADER_KEY" type="xs:int" minOccurs="0" />
+                <xs:element name="PARTNER_ID" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_ITEM" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_STYLE" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_COLOR" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_SIZE" type="xs:string" minOccurs="0" />
+                <xs:element name="ITEM_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="COLOR_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="SIZE_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="BUYER_ITEM" type="xs:string" minOccurs="0" />
+                <xs:element name="BUYER_STYLE" type="xs:string" minOccurs="0" />
+                <xs:element name="BUYER_COLOR" type="xs:string" minOccurs="0" />
+                <xs:element name="BUYER_SIZE" type="xs:string" minOccurs="0" />
+                <xs:element name="COLOR_NRF" type="xs:string" minOccurs="0" />
+                <xs:element name="SIZE_NRF" type="xs:string" minOccurs="0" />
+                <xs:element name="UPC_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="QUANTITY_INVOICED" type="xs:int" minOccurs="0" />
+                <xs:element name="PACK" type="xs:int" minOccurs="0" />
+                <xs:element name="INNER_PACK" type="xs:int" minOccurs="0" />
+                <xs:element name="UOM" type="xs:string" minOccurs="0" />
+                <xs:element name="UNIT_PRICE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="GROSS_PRICE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DISCOUNT_PERCENT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="RETAIL_PRICE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="UNIT_COST" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CATALOG_PRICE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PROMOTIONAL_PRICE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="INVOICE_DETAILS_KEY" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="INVOICE_HEADER_T">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SENDER_ID" type="xs:string" minOccurs="0" />
+                <xs:element name="PARTNER_ID" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="SHIP_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="RETAILER_PO" type="xs:string" minOccurs="0" />
+                <xs:element name="RETAILER_PO_RELEASE" type="xs:string" minOccurs="0" />
+                <xs:element name="RETAILER_PO_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="CONSOLIDATED_INVOICE" type="xs:string" minOccurs="0" />
+                <xs:element name="BOL" type="xs:string" minOccurs="0" />
+                <xs:element name="PURCHASER_CURRENCY" type="xs:string" minOccurs="0" />
+                <xs:element name="SELLING_CURRENCY" type="xs:string" minOccurs="0" />
+                <xs:element name="EXCHANGE_RATE" type="xs:decimal" minOccurs="0" />
+                <xs:element name="EFFECTIVE_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="CONTRACT_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="DEPARTMENT" type="xs:string" minOccurs="0" />
+                <xs:element name="PROMOTION_CODE" type="xs:string" minOccurs="0" />
+                <xs:element name="MERCHANDISE_TYPE" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_ORDER" type="xs:string" minOccurs="0" />
+                <xs:element name="VENDOR_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="TERMS_DISCOUNT_PERCENT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="TERMS_DISCOUNT_AMOUNT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="TERMS_DISCOUNT_DUE_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TERMS_DISCOUNT_DAYS_DUE" type="xs:int" minOccurs="0" />
+                <xs:element name="TERMS_NET_DUE_DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TERMS_NET_DAYS" type="xs:int" minOccurs="0" />
+                <xs:element name="TERMS_DESCRIPTION" type="xs:string" minOccurs="0" />
+                <xs:element name="CARTONS" type="xs:int" minOccurs="0" />
+                <xs:element name="PIECES" type="xs:int" minOccurs="0" />
+                <xs:element name="WEIGHT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="WEIGHT_UOM" type="xs:string" minOccurs="0" />
+                <xs:element name="VOLUME" type="xs:decimal" minOccurs="0" />
+                <xs:element name="VOLUME_UOM" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_AMOUNT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SHIP_AMOUNT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="TRANSPORTATION" type="xs:string" minOccurs="0" />
+                <xs:element name="EQUIPMENT_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="ROUTING" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_HEADER_KEY" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="INVOICE_LOCATIONS_T">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="INVOICE_HEADER_KEY" type="xs:int" minOccurs="0" />
+                <xs:element name="PARTNER_ID" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_NUMBER" type="xs:string" minOccurs="0" />                
+                <xs:element name="LOCATION_TYPE" type="xs:string" minOccurs="0" />
+                <xs:element name="LOCATION" type="xs:string" minOccurs="0" />
+                <xs:element name="GLN_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="DUNS_NUMBER" type="xs:string" minOccurs="0" />
+                <xs:element name="NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="ADDRESS_1" type="xs:string" minOccurs="0" />
+                <xs:element name="ADDRESS_2" type="xs:string" minOccurs="0" />
+                <xs:element name="CITY" type="xs:string" minOccurs="0" />
+                <xs:element name="STATE" type="xs:string" minOccurs="0" />
+                <xs:element name="ZIP" type="xs:string" minOccurs="0" />
+                <xs:element name="COUNTRY" type="xs:string" minOccurs="0" />
+                <xs:element name="CONTACT" type="xs:string" minOccurs="0" />
+                <xs:element name="PHONE" type="xs:string" minOccurs="0" />
+                <xs:element name="FAX" type="xs:string" minOccurs="0" />
+                <xs:element name="INVOICE_LOCATIONS_KEY" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

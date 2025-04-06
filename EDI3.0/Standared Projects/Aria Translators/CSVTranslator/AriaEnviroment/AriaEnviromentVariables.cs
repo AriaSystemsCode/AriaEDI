@@ -219,30 +219,30 @@
                 dataAdapter.Fill(row);
                 if (row.Rows.Count == 0)
                 {
-                    throw new Exception("Couldn't Find Aria4 Email settings for company " + companyID);
+                    //throw new Exception("Couldn't Find Aria4 Email settings for company " + companyID);
                 }
                 this._smtpServer = row.Select("cFld_Name = 'M_SMTPSRVR'")[0]["mdata_def"].ToString();
                 if (this._smtpServer.Trim() == "")
                 {
-                    throw new Exception("Couldn't Find Aria4 Email settings (SMTP Server) for company " + companyID);
+                    //throw new Exception("Couldn't Find Aria4 Email settings (SMTP Server) for company " + companyID);
                 }
                 this._ariaSMTPHost = this._smtpServer;
                 if (row.Select("cFld_Name = 'M_SMTPPORT'")[0]["mdata_def"].ToString().Trim() == "")
                 {
-                    throw new Exception("Couldn't Find Aria4 Email settings (SMTP Port) for company " + companyID);
+                    //throw new Exception("Couldn't Find Aria4 Email settings (SMTP Port) for company " + companyID);
                 }
                 this._smtpPort = int.Parse(row.Select("cFld_Name = 'M_SMTPPORT'")[0]["mdata_def"].ToString());
                 this._ariaSMTPPort = this._smtpPort;
                 this._smtpUserName = row.Select("cFld_Name = 'M_SMTPUSER'")[0]["mdata_def"].ToString();
                 if (this._smtpUserName.Trim() == "")
                 {
-                    throw new Exception("Couldn't Find Aria4 Email settings (SMTP UserName) for company " + companyID);
+                   // throw new Exception("Couldn't Find Aria4 Email settings (SMTP UserName) for company " + companyID);
                 }
                 this._ariaSMTPUserName = this._smtpUserName;
                 this._smtpUserPassword = row.Select("cFld_Name = 'M_SMTPPSS '")[0]["mdata_def"].ToString();
                 if (this._smtpUserPassword.Trim() == "")
                 {
-                    throw new Exception("Couldn't Find Aria4 Email settings (SMTP Password) for company " + companyID);
+                    //throw new Exception("Couldn't Find Aria4 Email settings (SMTP Password) for company " + companyID);
                 }
                 this._ariaSMTPPassword = this._smtpUserPassword;
                 this._senderName = row.Select("cFld_Name = 'M_SNDRNME '")[0]["mdata_def"].ToString();
@@ -442,6 +442,21 @@
                         }
                     }
                 }
+                if (documentElement.ChildNodes[index].Name == "FileServer")
+                {
+                    xmlNode = null;
+                    childIndex = 0;
+                    while (childIndex < documentElement.ChildNodes[index].ChildNodes.Count)
+                    {
+                        xmlNode = documentElement.ChildNodes[index].ChildNodes[childIndex];
+                        if (xmlNode.Name == "Aria40SharedPath")
+                        {
+                            this.Aria40SharedPath = xmlNode.InnerText;
+                        }
+                        childIndex++;
+                    }
+                }
+
             }
         }
 
@@ -723,7 +738,7 @@
                 this._customConnection = value;
             }
         }
-
+        public string Aria40SharedPath { get; set; }
         public bool Ssl
         {
             get

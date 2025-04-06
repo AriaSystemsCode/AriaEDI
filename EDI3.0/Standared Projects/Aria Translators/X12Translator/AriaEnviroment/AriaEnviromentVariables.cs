@@ -442,6 +442,21 @@
                         }
                     }
                 }
+                if (documentElement.ChildNodes[index].Name == "FileServer")
+                {
+                    xmlNode = null;
+                    childIndex = 0;
+                    while (childIndex < documentElement.ChildNodes[index].ChildNodes.Count)
+                    {
+                        xmlNode = documentElement.ChildNodes[index].ChildNodes[childIndex];
+                        if (xmlNode.Name == "Aria40SharedPath")
+                        {
+                            this.Aria40SharedPath = xmlNode.InnerText;
+                        }
+                        childIndex++;
+
+                    }
+                }
             }
         }
 
@@ -724,6 +739,7 @@
             }
         }
 
+        public string Aria40SharedPath { get; set; }
         public bool Ssl
         {
             get

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using CSVTranslator.Send;
 
 namespace CSVTranslator
 {
@@ -15,12 +16,25 @@ namespace CSVTranslator
 
         }
 
-        public void WriteOutGoingFile(string lcTransactionFile, string MapSet, string MapVersion, string FileFormat, string OutgoingFile, string ClientId, string ActiveCompany, string cpartcode, string transaction_No, string ErrorLogFile)
+        public void WriteOutGoingFile(string lcTransactionFile,
+            string MapSet, string MapVersion, string FileFormat,
+            string OutgoingFile, string ClientId, string ActiveCompany,
+            string cpartcode, string transaction_No, string ErrorLogFile)
         {
-            needDataSetOnly = true;
-            if (ImportToSql(lcTransactionFile, "STY", ClientId, ActiveCompany))
+            if (FileFormat == "XML")
             {
-                Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "SendSTY.xml", "STY");
+                XMLTranslator xmlTranslator = new XMLTranslator();
+
+                xmlTranslator.SendXML(lcTransactionFile, OutgoingFile, "STY", MapSet);
+
+            }
+            else
+            {
+                needDataSetOnly = true;
+                if (ImportToSql(lcTransactionFile, "STY", ClientId, ActiveCompany))
+                {
+                    Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "SendSTY.xml", "STY");
+                }
             }
         }
         public void WriteOutGoingFile(string lcTransactionFile, string MapSet, string MapVersion, string FileFormat, string OutgoingFile, string ClientId, string ActiveCompany)

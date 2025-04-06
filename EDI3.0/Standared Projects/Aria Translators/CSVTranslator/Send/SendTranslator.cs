@@ -49,7 +49,7 @@ namespace CSVTranslator
                 //System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class 2 ");
 
 
-                // Hassan test
+
                 if (this.needDataSetOnly == false)
                 { ReadAriaXml(AriaXmlPath); }
                 else
@@ -259,7 +259,7 @@ namespace CSVTranslator
                             }
                             catch (Exception ex) { }
                             if ((loop.ToString().ToUpper().Trim() == mostParentLoop.ToString().ToUpper().Trim()) ||
-                      (currentLoop.Keys.Contains(segmentTables.First()) && currentLoop[segmentTables.First()].Count() > 0))
+                                (currentLoop.Keys.Contains(segmentTables.First()) && currentLoop[segmentTables.First()].Count() > 0))
                             {
                                 VariablesDictionary.Clear();
                                 foreach (var segment in _segmentsList.Where(_segment => _segment.LOOP_ID == loop))
@@ -279,7 +279,7 @@ namespace CSVTranslator
                                         if (VariablesDictionary.ContainsKey(segmentMaping.VALUE)) continue;
                                         var xmlMapItems1 = xmlMapList.Where(xmlmap => xmlmap.Variable == segmentMaping.VALUE);
                                         var aa = xmlMapItems1.ToList();
-                                        var xmlMapItems2 = xmlMapList.Where(xmlmap => xmlmap.Variable == segmentMaping.VALUE && xmlmap.Loop == loop) ;
+                                        var xmlMapItems2 = xmlMapList.Where(xmlmap => xmlmap.Variable == segmentMaping.VALUE && xmlmap.Loop == loop);
                                         var bb = xmlMapItems2.ToList();
                                         var xmlMapItems = from xmlMap in xmlMapList where (xmlMap.Variable == segmentMaping.VALUE + "_TempData1" || xmlMap.Variable == segmentMaping.VALUE + "_TempData2" || xmlMap.Variable == segmentMaping.VALUE + "_TempData3" || xmlMap.Variable == segmentMaping.VALUE) && xmlMap.Loop == loop select xmlMap;  // xmlMapList.Where(xmlmap => xmlmap.Variable == segmentMaping.VALUE);
                                         var cc = xmlMapItems.ToList();
@@ -618,6 +618,7 @@ namespace CSVTranslator
                 }
                 catch (Exception)
                 {
+                    string x = "";
                 }
 
                 //Derby - Read RelatedType & RelatedTypeValue from XML File.[End]

@@ -30,8 +30,6 @@ namespace CSVTranslator
                 Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "SendCST.xml", "CST");
             }
         }
-
-
         public bool ImportToSql(string XMLfile, string TransType, string ClientID, string ActiveCompany)
         {
 
@@ -58,5 +56,6 @@ namespace CSVTranslator
             }
             return true;
         }
+    
     }
 }

@@ -230,11 +230,20 @@ namespace EDI_VAN_LIB
         }
 
         private string _PreTransferCommand;
+    
         public string PreTransferCommand
         {
             get { return _PreTransferCommand; }
             set { _PreTransferCommand = value; }
         }
+        private string _Ids;
+
+        public string IDs
+        {
+            get { return _Ids; }
+            set { _Ids = value; }
+        }
+
 
         private string _NetworkOutGoingFileName;
 
@@ -451,6 +460,11 @@ namespace EDI_VAN_LIB
                     {
                         ProcessSuccessed = false;
                         ApiConnectGet();
+
+                        //re-Import
+                        if(!string.IsNullOrEmpty(IDs))
+                        APIReImportById();
+
                         if (!string.IsNullOrEmpty(InComingEmail))
                         {
                             //SendEmail(appSettings, "Download");
@@ -512,6 +526,13 @@ namespace EDI_VAN_LIB
                 string sqlStr = "Update networkProfiles  set PreTransferCommand='since_id' where networkid='" + this.NetWorkID + "' AND PreTransferCommand LIKE '%since_id%'";
                 Connecttodb.DoQuery(sqlStr);
                 PreTransferCommand = "since_id";
+            }
+
+            if (IDs.Contains("at_id"))
+            {
+                string sqlStr = "Update networkProfiles  set PreTransferCommand='at_id' where networkid='" + this.NetWorkID + "' AND PreTransferCommand LIKE '%at_id%'";
+                Connecttodb.DoQuery(sqlStr);
+                PreTransferCommand = "at_id";
             }
             return true;
         }
@@ -689,10 +710,10 @@ namespace EDI_VAN_LIB
             string dataObjects = "";
             if (UserName.Contains("token"))
             {
-                UserName = UserName.Split(',')[0];
+                //UserName = UserName.Split(',')[0];
                 string TenantId = Password.Split(',')[2];
                 string TenantName = Password.Split(',')[1];
-                Password = Password.Split(',')[0];
+                //Password = Password.Split(',')[0];
                  
                 HttpClient clientToken = new HttpClient();
                 var AuthURL = URL.Replace("/services", "") + "/TokenAuth/Authenticate";
@@ -700,7 +721,7 @@ namespace EDI_VAN_LIB
 
                 request.Headers.Add("accept", "text/plain");
                 request.Headers.Add("Abp.TenantId", TenantId);
-                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName + "\",\"tenancyName\":\"" + TenantName+ "\",\"password\":\"" + Password + "\"}");
+                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName.Split(',')[0] + "\",\"tenancyName\":\"" + TenantName+ "\",\"password\":\"" + Password.Split(',')[0] + "\"}");
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
                 HttpResponseMessage responseToken = clientToken.SendAsync(request).Result;
 
@@ -870,6 +891,167 @@ namespace EDI_VAN_LIB
 
         
         }
+
+        public void APIReImportById()
+        {
+            ////get token area
+            StillHasData = false;
+            HttpResponseMessage response = null;
+            string dataObjects = "";
+            if (UserName.Contains("token"))
+            {
+                //UserName = UserName.Split(',')[0];
+                string TenantId = Password.Split(',')[2];
+                string TenantName = Password.Split(',')[1];
+                //Password = Password.Split(',')[0];
+
+                HttpClient clientToken = new HttpClient();
+                var AuthURL = URL.Replace("/services", "") + "/TokenAuth/Authenticate";
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, AuthURL);
+
+                request.Headers.Add("accept", "text/plain");
+                request.Headers.Add("Abp.TenantId", TenantId);
+                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName.Split(',')[0] + "\",\"tenancyName\":\"" + TenantName + "\",\"password\":\"" + Password.Split(',')[0] + "\"}");
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
+                HttpResponseMessage responseToken = clientToken.SendAsync(request).Result;
+
+                responseToken.EnsureSuccessStatusCode();
+                string responseBody = responseToken.Content.ReadAsStringAsync().Result;
+                dynamic json = JsonConvert.DeserializeObject(responseBody);
+                token = json["result"]["accessToken"].ToString();
+
+                /******************************/
+
+                HttpClient clientToken2 = new HttpClient();
+                var AuthURL2 = URL + NetworkOutboxFolder.Trim();
+                if (string.IsNullOrEmpty(PreTransferCommand) == false)
+                {
+                    if (AuthURL2.Contains("?"))
+                    {
+                        AuthURL2 = AuthURL2 + "&" + IDs.Trim();
+                    }
+                    else
+                    {
+                        AuthURL2 = AuthURL2 + "?" + IDs.Trim();
+                    }
+                }
+                HttpRequestMessage response22 = new HttpRequestMessage(HttpMethod.Get, AuthURL2);
+
+                clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                response = clientToken2.GetAsync(AuthURL2).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseData = response.Content.ReadAsStringAsync().Result;
+                    string responseDataBody = response.Content.ReadAsStringAsync().Result;
+                    dynamic jsonData = JsonConvert.DeserializeObject(responseDataBody);
+                    dataObjects = jsonData["result"]["items"].ToString();
+                    dataObjects = responseDataBody;
+
+                    Console.WriteLine(responseData); // Output the result
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                }
+
+
+            }
+           
+
+            if (response.IsSuccessStatusCode)
+            {
+                //Parse the response body.
+
+
+                string path = DateTime.Now.ToString("yyyyMMddHHmmss");
+                Directory.CreateDirectory(Path.Combine(this.EDIFTPHistoryPath + "\\IN\\", path));
+
+                System.IO.File.WriteAllText(this.EDIFTPHistoryPath + "\\in\\" + path + "\\" + InComingFileName, dataObjects);
+
+                string partialName = Path.GetFileNameWithoutExtension(InComingFileName);
+                DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(EDIClientPath + @"\EDI\INBOX\");
+
+
+                FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
+                string newfilename = partialName;
+                if (filesInDir.Length > 0)
+                { newfilename += "_" + filesInDir.Length.ToString().PadLeft(3, '0'); }
+
+                newfilename += Path.GetExtension(InComingFileName);
+
+
+
+                Boolean writeToFile = true;
+                //XNode node = JsonConvert.DeserializeXNode(dataObjects, "Root");
+                //string xx = node.ToString().Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
+                //dataObjects = xx.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
+
+
+                //dataObjects = File.ReadAllText(@"C:\Users\Hassan\Desktop\Siiwii_integration\response_123.json");
+
+                if (NetworkOutboxFolder.ToUpper().Contains("JSON") || InComingFileName.ToUpper().Contains(".JSON"))
+                {
+                    XNode node;
+                    if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
+                    { node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
+                    else { node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
+
+                    string nodeString = node.ToString();
+                    if (NetworkOutboxFolder.ToUpper().Contains("ORDERS"))
+                    {
+                        nodeString = nodeString.Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
+                        dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
+                    }
+
+                    if (NetworkOutboxFolder.ToUpper().Contains("VARIANTS"))
+                    {
+                        dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<products>").Replace("</Root>", "</products>");
+                    }
+
+                    if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
+                    {
+                        dataObjects = nodeString.Replace("_", "-").Replace("<items>", "<order>").Replace("</items>", "</order>").Replace("<--abp>", "<abp>").Replace("</--abp>", "</abp>").Replace("<Root>", "<Orders>").Replace("</Root>", "</Orders>");
+                    }
+
+                }
+
+                if (!string.IsNullOrEmpty(NetworkInboxFolder) && NetworkInboxFolder.Contains(','))
+                {
+                    XmlDocument xml = new XmlDocument();
+
+                    //xml.Load(EDIClientPath + @"\EDI\INBOX\" + newfilename);
+                    xml.LoadXml(dataObjects);
+                    XmlNodeList nodes = xml.SelectNodes(NetworkInboxFolder.Split(',')[0]);
+                    if (nodes != null && nodes.Count.ToString() == NetworkInboxFolder.Split(',')[1])
+                    {//loop again as we sill have data
+                        StillHasData = true;
+                        // UpdateDownloadedOrderNumber(nodes);
+                    }
+                    if (nodes != null && nodes.Count > 0)
+                    {   //update id
+                        //UpdateDownloadedOrderNumber(nodes);
+                        UpdateDownloadedOrderArray(nodes);
+                    }
+
+                    if (nodes != null && nodes.Count == 0)
+                    {//not write the file
+                        writeToFile = false;
+                    }
+
+                }
+                if (writeToFile)
+                {
+                    DownloadedFileName = EDIClientPath + @"\EDI\INBOX\" + newfilename;
+                    System.IO.File.WriteAllText(EDIClientPath + @"\EDI\INBOX\" + newfilename, dataObjects);
+                }
+
+            }
+            client.Dispose();
+        }
+
+
 
         /// <summary>
         /// get all files on outgoing folder, with same prefix, , which comes from networkprofile table.
@@ -1099,11 +1281,45 @@ namespace EDI_VAN_LIB
             else
             {
                 //MessageBox.Show("There is no file " + (path) + " at this moment on your outbox folder.", "Uploading Error");
-                //this.ErrorMessageString = "There is no file " + (path) + " at this moment on your outbox folder." + System.Environment.NewLine;
+                this.ErrorMessageString = "There is no file " + (path) + " at this moment on your outbox folder." + System.Environment.NewLine;
                 return false;
             }
 
         }
+
+        public void UpdateDownloadedOrderArray(XmlNodeList nodes)
+        {
+            string orderid = "0";
+            orderid = nodes[nodes.Count - 1].SelectNodes("id")[0].InnerText.ToString();
+            var orderidList = nodes[nodes.Count - 1].SelectNodes("id");
+            //var xx = orderidList[0].InnerText.ToString();
+
+            //string[] ids = nodes.Cast<XmlNode>()
+            //        .Select(node => node.Attributes["ID"]?.Value)
+            //        .Where(id => id != null)
+            //        .ToArray();
+
+            var ids = orderidList.Cast<XmlNode>().Select(e => e.InnerText.ToString()).ToList();
+            string ClientMasterDbName = this.ClientID.Trim() + ".Master";
+            EDI_VAN_LIB.DB Connecttodb = new EDI_VAN_LIB.DB(this.ServerName, this.ServerUserName, this.ServerPassword, ClientMasterDbName);
+            if ( !string.IsNullOrEmpty(IDs))
+            {
+                var idsString = IDs;
+                foreach (string id in ids)
+                {
+                    idsString = idsString.Replace(id, "");
+                    idsString = idsString.Replace(",,", ",");
+                    idsString = idsString.Replace("=,", "=");
+
+                    string sqlStr = "Update NetworkProfiles set Ids ='" + idsString + "' where companyid='"+CompanyID+"' and clientid='" + this.ClientID + "' and networkid='" + this.NetWorkID + "'";
+                    Connecttodb.DoQuery(sqlStr);
+                    IDs = idsString;
+                     
+                }
+            }
+
+        }
+
 
         public void UpdateDownloadedOrderNumber(XmlNodeList nodes)
         {

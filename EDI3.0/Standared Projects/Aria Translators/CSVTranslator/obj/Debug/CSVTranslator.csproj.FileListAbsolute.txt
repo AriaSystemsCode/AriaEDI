@@ -1,0 +1,56 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Send810.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Send856.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\810Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\846Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\850Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\856Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Transactions.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Smo.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Map.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Map.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csprojAssemblyReference.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CopyComplete
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.tlb
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Send846.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\SendSTY.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\SendVND.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Send810.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Send856.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\810Schema.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\846Schema.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\850Schema.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\856Schema.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Transactions.xml
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.pdb
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.tlb
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Smo.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Map.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.pdb
+D:\SHARED\Aria Translators\CSVTranslator\bin\Debug\Map.pdb
+D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csprojAssemblyReference.cache
+D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CoreCompileInputs.cache
+D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CopyComplete
+D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.dll
+D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.pdb

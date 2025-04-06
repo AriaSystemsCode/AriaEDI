@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using CSVTranslator.Send;
 
 namespace CSVTranslator
 {
@@ -16,10 +17,19 @@ namespace CSVTranslator
 
         public void WriteOutGoingFile(string lcTransactionFile, string MapSet, string MapVersion, string FileFormat, string OutgoingFile, string ClientId, string ActiveCompany)
         {
-            base.BeforeReadingRelations += new SendTranslator.delegates.BeforeReadingRelations(beforeReadingRelations);
-            if (ImportToSql(lcTransactionFile, "810", ClientId, ActiveCompany))
+            if (FileFormat == "XML")
             {
-                Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "Send810.xml","810");
+                XMLTranslator xmlTranslator = new XMLTranslator();
+                xmlTranslator.SendXML(lcTransactionFile, OutgoingFile, "810", MapSet);
+
+            }
+            else
+            {
+                base.BeforeReadingRelations += new SendTranslator.delegates.BeforeReadingRelations(beforeReadingRelations);
+                if (ImportToSql(lcTransactionFile, "810", ClientId, ActiveCompany))
+                {
+                    Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "Send810.xml", "810");
+                }
             }
         }
 

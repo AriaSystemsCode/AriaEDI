@@ -1,0 +1,14 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.csprojAssemblyReference.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.tlb
+D:\SHARED\Aria Translators\Map\bin\Debug\Map.dll
+D:\SHARED\Aria Translators\Map\bin\Debug\Map.pdb
+D:\SHARED\Aria Translators\Map\bin\Debug\Map.tlb
+D:\SHARED\Aria Translators\Map\obj\Debug\Map.csproj.CoreCompileInputs.cache
+D:\SHARED\Aria Translators\Map\obj\Debug\Map.dll
+D:\SHARED\Aria Translators\Map\obj\Debug\Map.pdb
+D:\SHARED\Aria Translators\Map\obj\Debug\Map.csprojAssemblyReference.cache

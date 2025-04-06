@@ -1,0 +1,50 @@
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\810Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\846Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\850Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\856Schema.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Transactions.xml
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\System.Data.SQLite.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\TransactionsCore.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Smo.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Map.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\TransactionsCore.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Map.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csprojAssemblyReference.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CoreCompileInputs.cache
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CopyComplete
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.dll
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.pdb
+C:\Users\Hassan.I\source\Workspaces\Workspace\EDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.tlb
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\810Schema.xml
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\846Schema.xml
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\850Schema.xml
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\856Schema.xml
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Transactions.xml
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\X12Translator.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\X12Translator.pdb
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\X12Translator.tlb
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\System.Data.SQLite.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\TransactionsCore.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Smo.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Map.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\TransactionsCore.pdb
+D:\SHARED\Aria Translators\X12Translator\bin\Debug\Map.pdb
+D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.csprojAssemblyReference.cache
+D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CoreCompileInputs.cache
+D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CopyComplete
+D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.dll
+D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.pdb

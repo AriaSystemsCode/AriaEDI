@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.IO;
 using System.Globalization;
 using CSVTranslator.Recieve;
+using CSVTranslator.Send;
 
 namespace CSVTranslator
 {
@@ -113,8 +114,32 @@ namespace CSVTranslator
                 this.MappingCode = _tempEdiPd[0].cmapset.Trim();
                 this.Version = _tempEdiPd[0].cversion.Trim();
 
-                // MSH Check If File Is CSV
-                if (Path.GetExtension(_TempRowFilePath).ToUpper() == ".CSV")
+                // check if type XML
+                if (Path.GetExtension(_TempRowFilePath).ToUpper() == ".XML")
+                {
+                    AriaOutXMlFile = GetEDIBasePath() + "Work\\";
+                    if (!Directory.Exists(AriaOutXMlFile))
+                    {
+                        // Adding Boolean To Check If Error Exist - [20/06/2017] [MSH][Start]
+                        HasError = true;
+                        // Adding Boolean To Check If Error Exist - [20/06/2017] [MSH][End]
+                        ErrorMsg = "Couldn't find work path " + AriaOutXMlFile + " to save Ariaxml to it!";
+                        _continue = false;
+                        return;
+                    }
+
+                    AriaOutXMlFile += "AriaXMl" + Path.GetRandomFileName().Replace(".", "") + ".xml";
+
+                    XMLTranslator xmlTranslator = new XMLTranslator();
+
+                    xmlTranslator.ReceiveXML(_TempRowFilePath, AriaOutXMlFile, "945", MappingCode);
+
+                    return;
+                }
+
+
+                    // MSH Check If File Is CSV
+                    if (Path.GetExtension(_TempRowFilePath).ToUpper() == ".CSV")
                 {
                     _formatType = FreeWayFileFormat.CSV;
                 }

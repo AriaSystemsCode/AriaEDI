@@ -26,7 +26,7 @@ namespace Map
         public DataSet dataSetSource = new DataSet();
         List<string> SourceUsedTables = new List<string>();
         SqlConnection connection = new SqlConnection();
-        public string MainSrcTable, MainDestTable, SqlTablesSuffix = "", MainSourceWhere, XSLTFile;
+        public string MainSrcTable, MainDestTable, SqlTablesSuffix = "", SourceWhere,MainSourceWhere, XSLTFile;
         bool HasMapping, HasSchema, HasXSLT = false;
         Dictionary<string, object> RowDataDictionary = new Dictionary<string, object>();
 
@@ -42,7 +42,7 @@ namespace Map
         /// <param name="Password">SQL Server Password</param>
         /// <param name="Tables_Prefix">Prefix string to add to SQL server tables names</param>
         /// <param name="where">SQL where statment to filter output SQL tables </param>
-        public void XmlToSql(string XMLmappingFile, string XSDFile, string XMLSource, string SqlServer, string DataBase, string UserName, string Password, string Tables_Suffix, string where)
+        public void XmlToSql(string XMLmappingFile, string XSDFile, string XMLSource, string SqlServer, string DataBase, string UserName, string Password, string Tables_Suffix, string where, string sourceWhere="")
         {
 
             try
@@ -51,6 +51,7 @@ namespace Map
                 HasMapping = XMLmappingFile != null && XMLmappingFile.Trim() != "";
                 SqlTablesSuffix = (Tables_Suffix != null && Tables_Suffix.Trim() != "") ? Tables_Suffix : "";
                 MainSourceWhere = where;
+                SourceWhere = sourceWhere;
                 FillFromXSD(dataSetSource, XSDFile, XMLSource);
 
                 connection = GetSqlConnection(SqlServer, DataBase, UserName, Password);
@@ -84,6 +85,23 @@ namespace Map
                 SqlConnection.ClearAllPools();
             }
         }
+
+        //public  object ExecuteCommandAsync(string commandText)
+        //{
+        //    try
+        //    {
+        //        // Use Roslyn C# Scripting API to evaluate the command dynamically
+        //        var result = await CSharpScript.EvaluateAsync(commandText, ScriptOptions.Default
+        //            .WithReferences(AppDomain.CurrentDomain.GetAssemblies()) // Add all current assemblies as references
+        //            .WithImports("System", "System.Math", "System.Linq"));   // Add common namespaces
+
+        //        return result;
+        //    }
+        //    catch (CompilationErrorException e)
+        //    {
+        //        return $"Compilation Error: {string.Join(Environment.NewLine, e.Diagnostics)}";
+        //    }
+        //}
 
         public void ContinueCheck()
         {
@@ -433,14 +451,16 @@ namespace Map
                             ChildAdded.Add(dicEntry);
                         }
                         NewRowFromDictionary(targetDataTable);
+
                         foreach (string removeItem in ChildAdded)
                             RowDataDictionary.Remove(removeItem);
                     }
                 }
 
                 Dictionary<string, string> CurrentFilters = GetCurrentFiltersState(dataSetSource);
-                foreach (DataRelation relation in targetDataTable.ChildRelations)
-                    FillData(relation.ChildTable);
+                for (int i = 0 ;  i<targetDataTable.ChildRelations.Count; i++)
+                    FillData(targetDataTable.ChildRelations[i].ChildTable);
+                //FillData(relation.ChildTable);
 
                 foreach (string removeItem in ParentAdded)
                     RowDataDictionary.Remove(removeItem);
@@ -487,16 +507,16 @@ namespace Map
                 #endregion
 
                 //Apply condition on source
-                //if (MainSourceWhere.Trim() != "")
-                //{
-                //    if (!filters.Keys.Contains(MainSrcTable))
-                //        filters.Add(MainSrcTable, new List<string>());
-                //    if (!filters[MainSrcTable].Contains(MainSourceWhere))
-                //    {
-                //        filters[MainSrcTable].Add(MainSourceWhere);
-                //        NotFinished = true;
-                //    }
-                //}
+                if (!string.IsNullOrEmpty(SourceWhere))
+                {  
+                    if (!filters.Keys.Contains(MainSrcTable))
+                        filters.Add(MainSrcTable, new List<string>());
+                    if (!filters[MainSrcTable].Contains(SourceWhere))
+                    {
+                        filters[MainSrcTable].Add(SourceWhere);
+                        NotFinished = true;
+                    }
+                }
 
                 foreach (DataTable table in dsSource.Tables)
                 {
@@ -1035,16 +1055,18 @@ namespace Map
         private string GetColumnValue(DataRow row, string column)
         {
             string Name = column.ToString();
+            
             object Value = row[Name];
             string Values = "";
+             
             //Derby - Handling GUID Data Type[Start]
             //if (Value.GetType() == typeof(string) || Value.GetType() == typeof(char))
-            if (Value.GetType() == typeof(string) || Value.GetType() == typeof(char) || Value.GetType() == typeof(Guid))
+            if (Value.GetType() == typeof(string) || Value.GetType() == typeof(System.SByte) || Value.GetType() == typeof(char) || Value.GetType() == typeof(Guid))
             {
                 Values += "'" + Escape(Value.ToString()) + "'";
             }
             //Derby - Handling GUID Data Type[End]
-            else if (Value.GetType() == typeof(int) || Value.GetType() == typeof(UInt64) ||
+            else if (Value.GetType() == typeof(int)  || Value.GetType() == typeof(UInt64) ||
                 Value.GetType() == typeof(UInt32) || Value.GetType() == typeof(UInt16) ||
                 Value.GetType() == typeof(Single) || Value.GetType() == typeof(Int64) ||
                 Value.GetType() == typeof(Int32) || Value.GetType() == typeof(Int16) ||
@@ -1060,7 +1082,10 @@ namespace Map
             {
                 Values += (bool)Value ? 1 : 0;
             }
-
+            if( String.IsNullOrEmpty(Values) && ( Name == "RETAILER_PO" || Name == "Item_line_no"))
+            {
+                Values += "'" + Escape(Value.ToString()) + "'";
+            }
             return Values;
         }
 

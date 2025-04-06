@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSVTranslator.Send;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -17,9 +18,19 @@ namespace CSVTranslator
 
         public void WriteOutGoingFile(string lcTransactionFile, string MapSet, string MapVersion, string FileFormat, string OutgoingFile, string ClientId, string ActiveCompany, string cpartcode, string transaction_No, string ErrorLogFile)
         {
-            if (ImportToSql(lcTransactionFile, "940", ClientId, ActiveCompany))
+            if (FileFormat == "XML")
             {
-                Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "Send940.xml", "940");
+                XMLTranslator xmlTranslator = new XMLTranslator();
+
+                xmlTranslator.SendXML(lcTransactionFile, OutgoingFile, "940", MapSet);
+
+            }
+            else
+            {
+                if (ImportToSql(lcTransactionFile, "940", ClientId, ActiveCompany))
+                {
+                    Translate(lcTransactionFile, MapSet, MapVersion, FileFormat, OutgoingFile, ClientId, ActiveCompany, "Send940.xml", "940");
+                }
             }
         }
         public void WriteOutGoingFile(string lcTransactionFile, string MapSet, string MapVersion, string FileFormat, string OutgoingFile, string ClientId, string ActiveCompany)

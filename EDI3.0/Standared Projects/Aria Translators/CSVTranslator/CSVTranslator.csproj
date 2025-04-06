@@ -71,6 +71,7 @@
     <Compile Include="Send\Send810.cs" />
     <Compile Include="Send\Send856.cs" />
     <Compile Include="Send\Send846.cs" />
+    <Compile Include="Send\Send943.cs" />
     <Compile Include="Send\SendSTY.cs" />
     <Compile Include="Send\SendVND.cs" />
     <Compile Include="Send\SendCST.cs" />
@@ -79,6 +80,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Send\SendTranslator.cs" />
+    <Compile Include="Send\XMLTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config_Live.xml" />

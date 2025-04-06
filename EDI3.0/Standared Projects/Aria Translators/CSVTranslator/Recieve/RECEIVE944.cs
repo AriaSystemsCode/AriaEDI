@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.IO;
 using System.Globalization;
 using CSVTranslator.Recieve;
+using CSVTranslator.Send;
 
 namespace CSVTranslator
 {
@@ -284,6 +285,28 @@ namespace CSVTranslator
                     return;
                 }
                 MACCOUNT = _tempEdiAcPrt[0].cpartner.Trim();
+                // check if type XML
+                if (Path.GetExtension(_TempRowFilePath).ToUpper() == ".XML")
+                {
+                    AriaOutXMlFile = GetEDIBasePath() + "Work\\";
+                    if (!Directory.Exists(AriaOutXMlFile))
+                    {
+                        // Adding Boolean To Check If Error Exist - [20/06/2017] [MSH][Start]
+                        HasError = true;
+                        // Adding Boolean To Check If Error Exist - [20/06/2017] [MSH][End]
+                        ErrorMsg = "Couldn't find work path " + AriaOutXMlFile + " to save Ariaxml to it!";
+                        _continue = false;
+                        return;
+                    }
+
+                    AriaOutXMlFile += "AriaXMl" + Path.GetRandomFileName().Replace(".", "") + ".xml";
+
+                    XMLTranslator xmlTranslator = new XMLTranslator();
+
+                    xmlTranslator.ReceiveXML(_TempRowFilePath, AriaOutXMlFile, "944", MappingCode);
+
+                    return;
+                }
 
                 ReadEdiFile();
                 if (!_continue)
