@@ -12,3 +12,10 @@ D:\SHARED\Aria Translators\Map\obj\Debug\Map.csproj.CoreCompileInputs.cache
 D:\SHARED\Aria Translators\Map\obj\Debug\Map.dll
 D:\SHARED\Aria Translators\Map\obj\Debug\Map.pdb
 D:\SHARED\Aria Translators\Map\obj\Debug\Map.csprojAssemblyReference.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\bin\Debug\Map.tlb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.csproj.CoreCompileInputs.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\Map\obj\Debug\Map.csprojAssemblyReference.cache

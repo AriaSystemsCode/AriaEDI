@@ -21,7 +21,7 @@ namespace CSVTranslator
             if (FileFormat == "XML")
             {
                 XMLTranslator xmlTranslator = new XMLTranslator();
-
+                
                 xmlTranslator.SendXML(lcTransactionFile, OutgoingFile, "940", MapSet);
 
             }

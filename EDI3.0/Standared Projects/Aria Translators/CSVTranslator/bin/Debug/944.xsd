@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Custom type for strings max length 200 -->
+  <xs:simpleType name="string200">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Custom type for numeric(18,2) -->
+  <xs:simpleType name="numeric18_2">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="ShippingHeader_T">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SenderID" type="string200"/>
+        <xs:element name="PartnerID" type="string200"/>
+        <xs:element name="ShippingID" type="string200"/>
+        <xs:element name="TransactionPurpose" type="string200"/>
+        <xs:element name="DepositorOrderNumber" type="string200"/>
+        <xs:element name="PurchaseOrderNumber" type="string200"/>
+        <xs:element name="EquipmentTypeCode" type="string200"/>
+        <xs:element name="EquipmentType" type="string200" minOccurs="0"/>
+        <xs:element name="QuantityOrdered" type="numeric18_2"/>
+        <xs:element name="Weight" type="numeric18_2"/>
+        <xs:element name="WarehouseReceiptId" type="string200"/>
+
+        <xs:element name="ShippingItem_T" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ShippingID" type="string200"/>
+              <xs:element name="SenderID" type="string200"/>
+              <xs:element name="PartnerID" type="string200"/>
+              <xs:element name="Shipping" type="string200"/>
+              <xs:element name="AssignedNumber" type="numeric18_2"/>
+              <xs:element name="QuantityOrdered" type="numeric18_2"/>
+              <xs:element name="QuantityUOMCode" type="string200" minOccurs="0"/>
+              <xs:element name="FreightClassCode" type="string200" minOccurs="0"/>
+              <xs:element name="Pack" type="string200" minOccurs="0"/>
+              <xs:element name="PackSize" type="string200" minOccurs="0"/>
+              <xs:element name="PackUOM" type="string200" minOccurs="0"/>
+              <xs:element name="Volume" type="string200" minOccurs="0"/>
+              <xs:element name="ItemUPC" type="string200"/>
+              <xs:element name="VendorItemNumber" type="string200" minOccurs="0"/>
+              <xs:element name="PurchaseOrderNumber" type="string200"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

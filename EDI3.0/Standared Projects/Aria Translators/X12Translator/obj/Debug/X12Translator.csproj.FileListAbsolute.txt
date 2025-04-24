@@ -48,3 +48,28 @@ D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CoreComp
 D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CopyComplete
 D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.dll
 D:\SHARED\Aria Translators\X12Translator\obj\Debug\X12Translator.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\810Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\846Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\850Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\856Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Transactions.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\X12Translator.tlb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\System.Data.SQLite.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\TransactionsCore.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Smo.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Map.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\TransactionsCore.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\bin\Debug\Map.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csprojAssemblyReference.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CoreCompileInputs.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.csproj.CopyComplete
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\X12Translator\obj\Debug\X12Translator.pdb
