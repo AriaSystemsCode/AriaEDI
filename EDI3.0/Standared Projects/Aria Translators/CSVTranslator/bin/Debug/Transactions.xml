@@ -606,7 +606,8 @@ CREATE TABLE [dbo].[ShippingOrderHeader_T](
     [MERCHANDISECHARGE] DECIMAL(5,2) NULL,
     [CARRIERCODE] VARCHAR(4) NULL,
     [CARRIER] VARCHAR(20) NULL,
-	[INCLUDEFREIGHTCHARGES] BIT NULL
+	[INCLUDEFREIGHTCHARGES] BIT NULL,
+	[CORDERCAT] [varchar](30) NULL
 	
 ) ON [PRIMARY]
 
@@ -956,7 +957,9 @@ CREATE TABLE [dbo].[ShippingOrderHeader_T](
     [MERCHANDISECHARGE] DECIMAL(5,2) NULL,
     [CARRIERCODE] VARCHAR(4) NULL,
     [CARRIER] VARCHAR(20) NULL,
-	[INCLUDEFREIGHTCHARGES] BIT NULL
+	[INCLUDEFREIGHTCHARGES] BIT NULL,
+	[CORDERCAT] [varchar](30) NULL
+	
 ) ON [PRIMARY]
 
 SET ANSI_PADDING OFF
@@ -2817,7 +2820,27 @@ CREATE TABLE [dbo].[ShippingItem_T](
 	[CompanyNumber] [varchar] (30) NULL,
 	[DivisionNumber] [varchar] (30) NULL,
 	[PurchaseOrderNumber] [varchar] (30) NULL,
-	[SequenceNumber] [numeric] (9,0) NULL
+	[SequenceNumber] [numeric] (9,0) NULL,
+	[ProfileName1] [varchar](35) NULL,
+	[ProfileValue1] [varchar](35) NULL,
+		[ProfileName2] [varchar](35) NULL,
+	[ProfileValue2] [varchar](35) NULL,
+		[ProfileName3] [varchar](35) NULL,
+	[ProfileValue3] [varchar](35) NULL,
+		[ProfileName4] [varchar](35) NULL,
+	[ProfileValue4] [varchar](35) NULL,
+		[ProfileName5] [varchar](35) NULL,
+	[ProfileValue5] [varchar](35) NULL,
+		[ProfileName6] [varchar](35) NULL,
+	[ProfileValue6] [varchar](35) NULL,
+		[ProfileName7] [varchar](35) NULL,
+	[ProfileValue7] [varchar](35) NULL,
+		[ProfileName8] [varchar](35) NULL,
+	[ProfileValue8] [varchar](35) NULL,
+		[ProfileName9] [varchar](35) NULL,
+	[ProfileValue9] [varchar](35) NULL,
+		[ProfileName10] [varchar](35) NULL,
+	[ProfileValue10] [varchar](35) NULL
 ) ON [PRIMARY]
 
 
