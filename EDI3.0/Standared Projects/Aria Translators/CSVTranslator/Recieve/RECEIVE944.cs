@@ -285,6 +285,7 @@ namespace CSVTranslator
                     return;
                 }
                 MACCOUNT = _tempEdiAcPrt[0].cpartner.Trim();
+                ReadEdiFile();
                 // check if type XML
                 if (Path.GetExtension(_TempRowFilePath).ToUpper() == ".XML")
                 {
@@ -308,7 +309,7 @@ namespace CSVTranslator
                     return;
                 }
 
-                ReadEdiFile();
+                
                 if (!_continue)
                     return;
                 //foda end

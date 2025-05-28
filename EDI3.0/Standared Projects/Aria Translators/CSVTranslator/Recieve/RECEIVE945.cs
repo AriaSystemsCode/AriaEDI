@@ -56,6 +56,10 @@ namespace CSVTranslator
         /// <param name="notused">NOT Used paramter -- just for EDI compatibility like old EDI Code</param>
         public override void DO(bool notused, string lcFileCode, string lcFilter, string trans_no)
         {
+             
+            Aria.Environment.AriaEnviromentVariables AriaDLLPath = new Aria.Environment.AriaEnviromentVariables();
+            string xsltPath = @AriaDLLPath.Aria40SharedPath + "DLLS\\";
+
             try
             {
                 _continue = true;

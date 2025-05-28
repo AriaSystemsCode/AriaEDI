@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="ShippingOrderHeader_T">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="OID">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="36"/>
+              <!-- UUID is 36 characters including hyphens -->
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="SenderID">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PartnerID">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="ShippingOrder">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="TransactionPurposeCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="TransactionPurpose">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="DepositorOrderNumber" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="22"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PurchaseOrderNumber" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="22"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="EquipmentTypeCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="2"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="EquipmentType" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="Temperature1" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="4"/>
+              <xs:fractionDigits value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="Temperature2" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="4"/>
+              <xs:fractionDigits value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PaymentMethodCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PaymentMethod" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="TransportationMethodCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="TransportationMethod" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PalletExchangeCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="PalletExchangeInstruction" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="UnitLoadOptionCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="UnitLoadOption" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="Routing" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="CODPaymentMethod" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="CODAmount" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="15"/>
+              <xs:fractionDigits value="0"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="StandardCarrierAlphaCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="4"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="QuantityOrdered" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="15"/>
+              <xs:fractionDigits value="0"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="Weight" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="10"/>
+              <xs:fractionDigits value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="WeightUOMCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="2"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="Volume" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:totalDigits value="8"/>
+              <xs:fractionDigits value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="VolumeUOMCode" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="2"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+  <xs:element name="CPUA" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CSEAL_NO" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CFCHRGTRM" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="TRAILER_NO" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CPRO_NO" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CARRAUTHNO" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BOLNO_STD" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+
+
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShippingOrderLocation_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier (assume UUID format, 36 chars) -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrderItem: varchar(20) -->
+      <xs:element name="ShippingOrderItem">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- LocationType: varchar(80), nullable -->
+      <xs:element name="LocationType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Location: varchar(80), nullable -->
+      <xs:element name="Location" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Quantity: numeric(15,0), nullable -->
+      <xs:element name="Quantity" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- UnitBasisforMeasurementCode: varchar(2), nullable -->
+      <xs:element name="UnitBasisforMeasurementCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  <xs:element name="ShippingOrderNotes_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrderItem: varchar(20), nullable -->
+      <xs:element name="ShippingOrderItem" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Type: varchar(30) -->
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Code: varchar(30) -->
+      <xs:element name="Code">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Note: varchar(250) -->
+      <xs:element name="Note">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  <xs:element name="ShippingOrderReference_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ReferenceType: varchar(30), nullable -->
+      <xs:element name="ReferenceType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ReferenceNo: varchar(30), nullable -->
+      <xs:element name="ReferenceNo" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  <xs:element name="ShippingOrderItem_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="SenderID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="PartnerID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="ShippingorderID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="AssignedNumber">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="QuantityOrdered" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="QuantityUOMCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="FreightClassCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="CommodityCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Commodity" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="PalletBlockandTiers" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="WarehouseLotNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="ItemDescription" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="45"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="AmountQualifierCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="MonetaryAmount" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="18"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Pack" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="PackSize" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="8"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="PackUOM" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="GrossWeight" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="8"/>
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="WeightUnitCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="UnitWeight" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="8"/>
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Volume" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="8"/>
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="VolumeUOM" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="ItemUPC" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="GTIN" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="VendorItemNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="VendorStyleNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="VendorColor" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="VendorSizeCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="SizeNRFCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="BuyerItemNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="BuyerStyleNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="BuyerColor" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="BuyerSizeCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="ColorNRFCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  <xs:element name="ShippingOrderLineReference_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrderItem: uniqueidentifier, nullable -->
+      <xs:element name="ShippingOrderItem" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ReferenceType: varchar(30), nullable -->
+      <xs:element name="ReferenceType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ReferenceNo: varchar(30), nullable -->
+      <xs:element name="ReferenceNo" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="ShippingOrderLineDates_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrderItem: uniqueidentifier -->
+      <xs:element name="ShippingOrderItem">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Type: varchar(30), nullable -->
+      <xs:element name="Type" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Date: date, nullable -->
+      <xs:element name="Date" type="xs:date" minOccurs="0"/>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="ShippingOrderLineNotes_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrderItem: uniqueidentifier, nullable -->
+      <xs:element name="ShippingOrderItem" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Type: varchar(30) -->
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Code: varchar(30) -->
+      <xs:element name="Code">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Note: varchar(250) -->
+      <xs:element name="Note">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="ShippingOrderAddress_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Type: varchar(30) -->
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Name1: varchar(55) -->
+      <xs:element name="Name1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Name2: varchar(55), nullable -->
+      <xs:element name="Name2" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Name3: varchar(55), nullable -->
+      <xs:element name="Name3" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Address1: varchar(55) -->
+      <xs:element name="Address1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Address2: varchar(55), nullable -->
+      <xs:element name="Address2" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- City: varchar(30), nullable -->
+      <xs:element name="City" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- State: varchar(30), nullable -->
+      <xs:element name="State" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- PostalCode: varchar(15), nullable -->
+      <xs:element name="PostalCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Country: varchar(3), nullable -->
+      <xs:element name="Country" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- LocationType: varchar(3), nullable -->
+      <xs:element name="LocationType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Location: varchar(80), nullable -->
+      <xs:element name="Location" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="ShippingOrderCarton_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier -->
+      <xs:element name="ShippingOrder">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- SenderID: varchar(20) -->
+      <xs:element name="SenderID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- PartnerID: varchar(20) -->
+      <xs:element name="PartnerID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingorderID: varchar(20) -->
+      <xs:element name="ShippingorderID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- CartonSerialNumber: varchar(48) -->
+      <xs:element name="CartonSerialNumber">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="48"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- CartonUPC: varchar(48), nullable -->
+      <xs:element name="CartonUPC" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="48"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- LocationType: varchar(80), nullable -->
+      <xs:element name="LocationType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Location: varchar(80), nullable -->
+      <xs:element name="Location" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="DoumentContacts_T">
+  <xs:complexType>
+    <xs:sequence>
+
+      <!-- OID: uniqueidentifier -->
+      <xs:element name="OID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ShippingOrder: uniqueidentifier, nullable -->
+      <xs:element name="ShippingOrder" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="36"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ContactType: varchar(30), nullable -->
+      <xs:element name="ContactType" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ContactName: varchar(80), nullable -->
+      <xs:element name="ContactName" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- ElectronicMail: varchar(2), nullable -->
+      <xs:element name="ElectronicMail" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Facsimile: varchar(2), nullable -->
+      <xs:element name="Facsimile" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Telephone: varchar(2), nullable -->
+      <xs:element name="Telephone" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+ 
+ <xs:element name="ShippingOrderDates_T">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- OID: uniqueidentifier -->
+                <xs:element name="OID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="36"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- ShippingOrder: uniqueidentifier -->
+                <xs:element name="ShippingOrder">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="36"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- Type: varchar(30) -->
+                <xs:element name="Type" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="30"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- Date: date -->
+                <xs:element name="Date" minOccurs="0" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+ 
+
+<xs:element name="ShippingOrderItemCartons_T">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Packno: uniqueidentifier -->
+                <xs:element name="Packno">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="36"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- CartonID: uniqueidentifier -->
+                <xs:element name="CartonID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="36"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- ItemID: uniqueidentifier -->
+                <xs:element name="ItemID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="36"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <!-- QTY: numeric(15, 0) -->
+                <xs:element name="QTY" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:decimal">
+                            <xs:totalDigits value="15"/>
+                            <xs:fractionDigits value="0"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -12,12 +12,16 @@ namespace CSVTranslator.Send
     {
         public void SendXML(string ariaXMLFile, string OutgoingFile, string Transaction, string MapSet)
         {
-
+             
             string inputXmlPath = ariaXMLFile; // Input XML file
             //string xsltPath = "D:\\SHARED\\ARIA4XP\\DLLS\\transform"+ Transaction+"_"+MapSet + ".xsl"; // XSLT file
             
-            Aria.Environment.AriaEnviromentVariables AriaConnection = new Aria.Environment.AriaEnviromentVariables();
-            string xsltPath = @AriaConnection.Aria40SharedPath+"DLLS\\transform" + Transaction + "_" + MapSet + ".xsl"; // XSLT file
+            //Aria.Environment.AriaEnviromentVariables AriaConnection = new Aria.Environment.AriaEnviromentVariables();
+            //string xsltPath = @AriaConnection.Aria40SharedPath+"DLLS\\transform" + Transaction + "_" + MapSet + ".xsl"; // XSLT file
+
+            string dllLocation = Path.GetDirectoryName(GetType().Assembly.Location);
+            string xsltPath = dllLocation + "\\" + "transform" + Transaction + "_" + MapSet + ".xsl"; // XSLT file
+
             if (MapSet == "PTG") {
                 string originalPath = OutgoingFile;
                 string directory = Path.GetDirectoryName(originalPath); // Get the directory path
@@ -62,12 +66,22 @@ namespace CSVTranslator.Send
         {
             System.Xml.Xsl.XslCompiledTransform xslt = new System.Xml.Xsl.XslCompiledTransform();
             xslt.Load(xsltPath);
+            var settings = new XmlWriterSettings
+            {
+                Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false), // 👈 No BOM
+                Indent = xslt.OutputSettings.Indent,
+                OmitXmlDeclaration = xslt.OutputSettings.OmitXmlDeclaration
+            };
 
             using (XmlReader reader = XmlReader.Create(inputXml))
-            using (XmlWriter writer = XmlWriter.Create(outputXml, xslt.OutputSettings))
+            using (XmlWriter writer = XmlWriter.Create(outputXml, settings))
             {
                 xslt.Transform(reader, null, writer);
             }
+            //using (XmlWriter writer = XmlWriter.Create(outputXml, xslt.OutputSettings))
+            //{
+            //    xslt.Transform(reader, null, writer);
+            //}
         }
 
         public void ExtractErrorsFromOutput(string outputXml, string errorOutput)
@@ -95,7 +109,12 @@ namespace CSVTranslator.Send
             }
 
             // Save the cleaned output file
-            doc.Save(outputXml);
+            //doc.Save(outputXml);
+            using (var writer = new StreamWriter(outputXml, false, new UTF8Encoding(false))) // false = no BOM
+            {
+                doc.Save(writer);
+            }
+
 
             // Save errors to a separate error file if there are any
             if (root.HasChildNodes)
@@ -108,8 +127,12 @@ namespace CSVTranslator.Send
         { 
             string inputXmlPath = InComingFile; // Input XML file
             //string xsltPath = "D:\\SHARED\\ARIA4XP\\DLLS\\transform"+ Transaction+"_"+ MappingCode + ".xsl"; // XSLT file
-            Aria.Environment.AriaEnviromentVariables AriaConnection = new Aria.Environment.AriaEnviromentVariables();
-            string xsltPath = @AriaConnection.Aria40SharedPath + "DLLS\\transform" + Transaction + "_" + MappingCode + ".xsl"; // XSLT file
+            //Aria.Environment.AriaEnviromentVariables AriaConnection = new Aria.Environment.AriaEnviromentVariables();
+            //string xsltPath = @AriaConnection.Aria40SharedPath + "DLLS\\transform" + Transaction + "_" + MappingCode + ".xsl"; // XSLT file
+
+
+            string dllLocation = Path.GetDirectoryName(GetType().Assembly.Location);
+            string xsltPath = dllLocation + "\\" + "transform" + Transaction + "_" + MappingCode + ".xsl"; // XSLT file
 
             string validOutputPath = AriaXML; // Valid output
             string errorOutputPath = AriaXML.Replace(".", "_ERROR."); // Error log

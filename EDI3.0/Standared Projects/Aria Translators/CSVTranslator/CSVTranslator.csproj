@@ -146,12 +146,25 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Send940.xml" />
+    <Content Include="transform810_PTG.xsl" />
+    <Content Include="transform832_PTG.xsl" />
+    <Content Include="transform940_PTG.xsl" />
+    <Content Include="transform943_PTG.xsl" />
+    <Content Include="transform944_PTG.xsl" />
+    <Content Include="transform945_PTG.xsl" />
+    <Content Include="transformSTY_SWI.xsl" />
     <Content Include="UpdateMapClientMaster\script.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="944.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="945.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataClasses\VFPTables.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VFPTables.cs</LastGenOutput>

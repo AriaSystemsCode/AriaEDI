@@ -54,3 +54,33 @@ D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CoreComp
 D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CopyComplete
 D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.dll
 D:\SHARED\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Send846.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\SendSTY.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\SendVND.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Send810.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Send856.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\810Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\846Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\850Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\856Schema.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Transactions.xml
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\CSVTranslator.tlb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Smo.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Map.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.Dmf.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Map.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csprojAssemblyReference.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CoreCompileInputs.cache
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.csproj.CopyComplete
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.pdb

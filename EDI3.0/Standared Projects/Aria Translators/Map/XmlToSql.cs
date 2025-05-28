@@ -44,6 +44,13 @@ namespace Map
         /// <param name="where">SQL where statment to filter output SQL tables </param>
         public void XmlToSql(string XMLmappingFile, string XSDFile, string XMLSource, string SqlServer, string DataBase, string UserName, string Password, string Tables_Suffix, string where, string sourceWhere="")
         {
+            //XSDFile = "D:\\SHARED\\ARIA4XP\\DLLS\\944.xsd";
+            if(!string.IsNullOrEmpty(XSDFile) && !XSDFile.Contains(":")  && (XSDFile.Contains("944") || XSDFile.Contains("945") ) )
+            {
+                //XSDFile = "D:\\SHARED\\ARIA4XP\\DLLS\\" + XSDFile;
+                string dllLocation = Path.GetDirectoryName(GetType().Assembly.Location);
+                XSDFile = dllLocation + "\\" + XSDFile;
+            }
 
             try
             {
