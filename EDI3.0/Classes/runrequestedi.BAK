@@ -117,7 +117,7 @@ set procedure to "d:\shared\aria3edi\prgs\sy\aria3edi.fxp"
 Set Step On
 
 Debug
-oAriaApplication.ActiveCompanyid=lcRequestCompany
+oAriaApplication.ActiveCompanyid='lcRequestCompany
 oAriaApplication.DataDir = "X:\ARIA4XP\DBFS\"+lcRequestCompany+"\"
 
 *oAriaApplication.IsRemoteComp = .t.
