@@ -27,7 +27,7 @@ namespace EDI_VAN_LIB
         public string ServerName;
         public string ServerUserName;
         public string ServerPassword;
-        
+
         public string ErrorMessageString = "";
 
         private String NewFileName;
@@ -58,7 +58,7 @@ namespace EDI_VAN_LIB
         {
             get { return (_addDatetime != null) ? _addDatetime : ""; }
             set
-            { _addDatetime = value;  
+            { _addDatetime = value;
             }
         }
 
@@ -230,7 +230,7 @@ namespace EDI_VAN_LIB
         }
 
         private string _PreTransferCommand;
-    
+
         public string PreTransferCommand
         {
             get { return _PreTransferCommand; }
@@ -305,6 +305,7 @@ namespace EDI_VAN_LIB
 
             DataSet ClientNetworks = Connecttodb.SelectQuery(sqlStr);
             //Assembly.LoadFrom
+
             return ClientNetworks;
         }
 
@@ -374,7 +375,7 @@ namespace EDI_VAN_LIB
                     prop.SetValue(this, (row[table.Columns.IndexOf(cl)].ToString()) == "" ? false : (row[table.Columns.IndexOf(cl)]), null);
                 }
                 else
-                {   
+                {
 
                     prop.SetValue(this, (row[table.Columns.IndexOf(cl)]) is null ? "" : (row[table.Columns.IndexOf(cl)]).ToString(), null);
                 }
@@ -428,17 +429,17 @@ namespace EDI_VAN_LIB
                 this.NewFileName = this.NetworkOutGoingFileName;
 
                 if (!string.IsNullOrEmpty(this.AddDatetime) && this.AddDatetime == "Y")
-                { 
+                {
                     //if (string.IsNullOrEmpty(this.ToFileName))
                     { this.ToFileName = this.OutGoingFileName; }
 
-                    if (!string.IsNullOrEmpty(this.ToFileName) && this.ToFileName.Contains(".") )
-                    {   
+                    if (!string.IsNullOrEmpty(this.ToFileName) && this.ToFileName.Contains("."))
+                    {
                         this.ToFileName = this.ToFileName.Replace(".", '_' + DateTime.Now.ToString("yyyyMMddhhmmss") + ".");
                     }
                     else
                     { this.ToFileName = this.ToFileName + '_' + DateTime.Now.ToString("yyyyMMddhhmmss"); }
-                      
+
                 }
             }
             StillHasData = true;
@@ -462,8 +463,8 @@ namespace EDI_VAN_LIB
                         ApiConnectGet();
 
                         //re-Import
-                        if(!string.IsNullOrEmpty(IDs))
-                        APIReImportById();
+                        if (!string.IsNullOrEmpty(IDs))
+                            APIReImportById();
 
                         if (!string.IsNullOrEmpty(InComingEmail))
                         {
@@ -650,8 +651,8 @@ namespace EDI_VAN_LIB
                         System.IO.File.Delete(newOutgoingFile);
                     }
                 }
-                    //-------------Update PH------------
-                    if (_continue == false && count == 4)
+                //-------------Update PH------------
+                if (_continue == false && count == 4)
                 {
                     string str = "";
                     if (File.Exists(this.EDIClientPath + @"\log.log"))
@@ -706,7 +707,7 @@ namespace EDI_VAN_LIB
         {
             ////get token area
             StillHasData = false;
-            HttpResponseMessage response=null;
+            HttpResponseMessage response = null;
             string dataObjects = "";
             if (UserName.Contains("token"))
             {
@@ -714,14 +715,14 @@ namespace EDI_VAN_LIB
                 string TenantId = Password.Split(',')[2];
                 string TenantName = Password.Split(',')[1];
                 //Password = Password.Split(',')[0];
-                 
+
                 HttpClient clientToken = new HttpClient();
                 var AuthURL = URL.Replace("/services", "") + "/TokenAuth/Authenticate";
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, AuthURL);
 
                 request.Headers.Add("accept", "text/plain");
                 request.Headers.Add("Abp.TenantId", TenantId);
-                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName.Split(',')[0] + "\",\"tenancyName\":\"" + TenantName+ "\",\"password\":\"" + Password.Split(',')[0] + "\"}");
+                request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName.Split(',')[0] + "\",\"tenancyName\":\"" + TenantName + "\",\"password\":\"" + Password.Split(',')[0] + "\"}");
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
                 HttpResponseMessage responseToken = clientToken.SendAsync(request).Result;
 
@@ -735,16 +736,16 @@ namespace EDI_VAN_LIB
                 HttpClient clientToken2 = new HttpClient();
                 var AuthURL2 = URL + NetworkOutboxFolder.Trim();
                 if (string.IsNullOrEmpty(PreTransferCommand) == false)
-                {if (AuthURL2.Contains("?"))
+                { if (AuthURL2.Contains("?"))
                     {
                         AuthURL2 = AuthURL2 + "&" + PreTransferCommand.Trim();
                     }
                     else
                     {
-                      AuthURL2 = AuthURL2 + "?" + PreTransferCommand.Trim();
+                        AuthURL2 = AuthURL2 + "?" + PreTransferCommand.Trim();
                     }
                 }
-                    HttpRequestMessage response22 = new HttpRequestMessage(HttpMethod.Get, AuthURL2);
+                HttpRequestMessage response22 = new HttpRequestMessage(HttpMethod.Get, AuthURL2);
 
                 clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -797,13 +798,13 @@ namespace EDI_VAN_LIB
                 dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
 
             }// to be removed
-      
-            
-            
+
+
+
             if (response.IsSuccessStatusCode)
             {
                 //Parse the response body.
-                
+
 
                 string path = DateTime.Now.ToString("yyyyMMddHHmmss");
                 Directory.CreateDirectory(Path.Combine(this.EDIFTPHistoryPath + "\\IN\\", path));
@@ -827,24 +828,24 @@ namespace EDI_VAN_LIB
                 //XNode node = JsonConvert.DeserializeXNode(dataObjects, "Root");
                 //string xx = node.ToString().Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
                 //dataObjects = xx.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
-                
-                
+
+
                 //dataObjects = File.ReadAllText(@"C:\Users\Hassan\Desktop\Siiwii_integration\response_123.json");
 
                 if (NetworkOutboxFolder.ToUpper().Contains("JSON") || InComingFileName.ToUpper().Contains(".JSON"))
                 {
                     XNode node;
                     if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
-                    {  node = JsonConvert.DeserializeXNode(dataObjects,"Root"); }
-                    else {  node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
-                    
+                    { node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
+                    else { node = JsonConvert.DeserializeXNode(dataObjects, "Root"); }
+
                     string nodeString = node.ToString();
                     if (NetworkOutboxFolder.ToUpper().Contains("ORDERS"))
                     {
                         nodeString = nodeString.Replace("<orders>", "<order>").Replace("</orders>", "</order>").Replace("<line_items>", "<line_item>").Replace("</line_items>", "</line_item>");
                         dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<orders>").Replace("</Root>", "</orders>");
                     }
-                    
+
                     if (NetworkOutboxFolder.ToUpper().Contains("VARIANTS"))
                     {
                         dataObjects = nodeString.Replace("_", "-").Replace("<Root>", "<products>").Replace("</Root>", "</products>");
@@ -852,7 +853,7 @@ namespace EDI_VAN_LIB
 
                     if (NetworkOutboxFolder.ToUpper().Contains("GETALL"))
                     {
-                        dataObjects = nodeString.Replace("_", "-").Replace("<items>","<order>").Replace("</items>", "</order>").Replace("<--abp>", "<abp>").Replace("</--abp>", "</abp>").Replace("<Root>", "<Orders>").Replace("</Root>", "</Orders>");
+                        dataObjects = nodeString.Replace("_", "-").Replace("<items>", "<order>").Replace("</items>", "</order>").Replace("<--abp>", "<abp>").Replace("</--abp>", "</abp>").Replace("<Root>", "<Orders>").Replace("</Root>", "</Orders>");
                     }
 
                 }
@@ -882,6 +883,17 @@ namespace EDI_VAN_LIB
                 }
                 if (writeToFile)
                 {
+                    // loop on all nodes of type order
+                    // get the order ID
+                    // seek at edilibdt.cintchgseq = Order ID and cpartcode = 'SIIWII'
+                    // IF NOT FOUND KEEP IT AND NOTHING TO DO
+                    // IF found, cut from the current file and replace at the edilibhd.cedifilnam ( seek by edilibdt.cfilecode at edilibhd)
+                    // be sure before replace the order if order processed or updated but has not packing list and no pickticket and no invoice
+
+                    // after loop if all orders are removed from that file then delete it, elese keep it 
+
+
+
                     DownloadedFileName = EDIClientPath + @"\EDI\INBOX\" + newfilename;
                     System.IO.File.WriteAllText(EDIClientPath + @"\EDI\INBOX\" + newfilename, dataObjects);
                 }
@@ -889,9 +901,43 @@ namespace EDI_VAN_LIB
             }
             client.Dispose();
 
-        
-        }
 
+        }
+        public void LoopOrdersSiiwii(string xmlString)
+        {
+            //string xmlString = @"[your XML string here]"; // Replace with your actual XML
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xmlString);
+
+            XmlNodeList orderNodes = doc.SelectNodes("//result/order");
+
+            if (orderNodes != null)
+            {
+                foreach (XmlNode orderNode in orderNodes.Cast<XmlNode>().ToList())
+                {
+                    XmlNode idNode = orderNode.SelectSingleNode("id");
+                    if (idNode != null)
+                    {
+                        string idValue = idNode.InnerText.Trim();
+                        if (findInFiles(idValue))
+                        {
+                            orderNode.ParentNode.RemoveChild(orderNode);
+                        }
+                    }
+                }
+            }
+
+            // Output the resulting XML
+            Console.WriteLine(doc.OuterXml);
+        }
+        // Example: findInFiles function
+        public bool findInFiles(string id)
+        {
+            //DB dB = new DB();
+            // Simulate that ID "658401" exists in files
+            return id == "658401";
+        }
         public void APIReImportById()
         {
             ////get token area
@@ -958,7 +1004,7 @@ namespace EDI_VAN_LIB
 
 
             }
-           
+
 
             if (response.IsSuccessStatusCode)
             {
@@ -1068,9 +1114,137 @@ namespace EDI_VAN_LIB
             {
                 foreach (FileInfo fileInfo in filesInDir)
                 {
-                    APISendContent(System.IO.File.ReadAllText(fileInfo.FullName), fileInfo.Extension);
+                    if (UserName.Contains("token"))
+                    {
+                        APIWithTokenSendContent(System.IO.File.ReadAllText(fileInfo.FullName), fileInfo.Extension);
+                    }
+                    else
+                    {
+                        APISendContent(System.IO.File.ReadAllText(fileInfo.FullName), fileInfo.Extension);
+                    }
                     fileInfo.Delete();
                 }
+            }
+
+        }
+        public void APIWithTokenSendContent12(string contentstring, string contenttype)
+        {
+ 
+
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://app.testing.siiwii.net:4001/api/services/app/Accounts/ImportContact");
+
+        request.Headers.Add("accept", "text/plain");
+         request.Headers.Add("X-XSRF-TOKEN", token);
+
+       request.Content = new StringContent("[{\"rowNumber\":0,\"priceLevel\":\"string\",\"recordType\":\"string\",\"parentCode\":\"string\",\"parentId\":0,\"accountId\":0,\"code\":\"string\",\"name\":\"string\",\"language\":\"string\",\"emailAddress\":\"string\",\"phone1Type\":\"string\",\"phone1Code\":\"string\",\"phone1Number\":\"string\",\"phone1Ext\":\"string\",\"phone2Type\":\"string\",\"phone2Code\":\"string\",\"phone2Number\":\"string\",\"phone2Ext\":\"string\",\"phone3Type\":\"string\",\"phone3Code\":\"string\",\"phone3Number\":\"string\",\"phone3Ext\":\"string\",\"firstName\":\"string\",\"lastName\":\"string\",\"title\":\"string\",\"tradeName\":\"string\",\"accountType\":\"string\",\"aboutus\":\"string\",\"currency\":\"string\",\"website\":\"string\",\"businessClassification1\":\"string\",\"businessClassification2\":\"string\",\"businessClassification3\":\"string\",\"department1\":\"string\",\"department2\":\"string\",\"department3\":\"string\",\"address1Type\":\"string\",\"address1Code\":\"string\",\"address1Name\":\"string\",\"address1Line1\":\"string\",\"address1Line2\":\"string\",\"address1City\":\"string\",\"address1State\":\"string\",\"address1PostalCode\":\"string\",\"address1Country\":\"string\",\"address2Type\":\"string\",\"address2Code\":\"string\",\"address2Name\":\"string\",\"address2Line1\":\"string\",\"address2Line2\":\"string\",\"address2City\":\"string\",\"address2State\":\"string\",\"address2PostalCode\":\"string\",\"address2Country\":\"string\",\"address3Type\":\"string\",\"address3Code\":\"string\",\"address3Name\":\"string\",\"address3Line1\":\"string\",\"address3Line2\":\"string\",\"address3City\":\"string\",\"address3State\":\"string\",\"address3PostalCode\":\"string\",\"address3Country\":\"string\",\"address4Type\":\"string\",\"address4Code\":\"string\",\"address4Name\":\"string\",\"address4Line1\":\"string\",\"address4Line2\":\"string\",\"address4City\":\"string\",\"address4State\":\"string\",\"address4PostalCode\":\"string\",\"address4Country\":\"string\",\"image1Type\":\"string\",\"image1FileName\":\"string\",\"image1Guid\":\"string\",\"image2Type\":\"string\",\"image2FileName\":\"string\",\"image2Guid\":\"string\",\"image3Type\":\"string\",\"image3FileName\":\"string\",\"image3Guid\":\"string\",\"image4Type\":\"string\",\"image4FileName\":\"string\",\"image4Guid\":\"string\",\"image5Type\":\"string\",\"image5FileName\":\"string\",\"image5Guid\":\"string\"}]");
+        request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        HttpResponseMessage response =  client.PostAsync("https://app.testing.siiwii.net:4001/api/services/app/Accounts/ImportContact", request.Content).Result;
+        response.EnsureSuccessStatusCode();
+        string responseBody = response.Content.ReadAsStringAsync().Result;
+
+         }
+
+    public void APIWithTokenSendContent(string contentstring, string contenttype)
+        {
+            string NewNetworkOutboxFolder = NetworkOutboxFolder;
+            HttpClient clientToken2 = new HttpClient();
+            string AuthURL2 = URL + NetworkOutboxFolder.Trim();
+
+            if (!string.IsNullOrEmpty(PreTransferCommand))
+            {
+                AuthURL2 += AuthURL2.Contains("?") ? "&" + PreTransferCommand.Trim() : "?" + PreTransferCommand.Trim();
+            }
+
+            clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            clientToken2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string cleanContentType = contenttype.TrimStart('.');
+            var content = new StringContent(contentstring, Encoding.UTF8, "application/" + cleanContentType);
+
+            // DEBUG LOG
+            Console.WriteLine("POST to: " + AuthURL2);
+            Console.WriteLine("Token: " + token);
+            Console.WriteLine("Content-Type: application/" + cleanContentType);
+            Console.WriteLine("Payload:\n" + contentstring);
+
+            try
+            {
+                Newtonsoft.Json.Linq.JToken.Parse(contentstring); // validate JSON
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Invalid JSON: " + ex.Message);
+                return;
+            }
+
+            HttpResponseMessage response;
+            string methodname = NetworkInboxFolder;
+            if (!string.IsNullOrEmpty(methodname) && methodname.Trim().ToUpper() == "PUT")
+            {
+                response = clientToken2.PutAsync(AuthURL2, content).Result;
+            }
+            else
+            {
+                response = clientToken2.PostAsync(AuthURL2, content).Result;
+            }
+
+            string responseContent = response.Content.ReadAsStringAsync().Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("✅ Success: " + responseContent);
+            }
+            else
+            {
+                Console.WriteLine($"❌ Error: {response.StatusCode} {response.ReasonPhrase}");
+                Console.WriteLine("Response content:\n" + responseContent);
+            }
+        }
+
+
+        public void APIWithTokenSendContentOld(string contentstring, string contenttype)
+        {
+             
+            string NewNetworkOutboxFolder = NetworkOutboxFolder;
+            HttpClient clientToken2 = new HttpClient();
+            var AuthURL2 = URL + NetworkOutboxFolder.Trim();
+            if (string.IsNullOrEmpty(PreTransferCommand) == false)
+            {
+                if (AuthURL2.Contains("?"))
+                {
+                    AuthURL2 = AuthURL2 + "&" + PreTransferCommand.Trim();
+                }
+                else
+                {
+                    AuthURL2 = AuthURL2 + "?" + PreTransferCommand.Trim();
+                }
+            }
+             
+            clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            string cleanContentType = contenttype.TrimStart('.');
+            var content = new StringContent(contentstring, Encoding.UTF8, "application/" + cleanContentType);
+
+            string methodname = NetworkInboxFolder;
+            HttpResponseMessage response = new HttpResponseMessage();
+            if (!String.IsNullOrEmpty(methodname) && methodname.Trim().ToUpper() == "PUT")
+            {
+                response = clientToken2.PutAsync(AuthURL2, content).Result;
+                // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            }
+            else
+            { response = clientToken2.PostAsync(AuthURL2, content).Result; }
+
+            if (response.IsSuccessStatusCode)
+            {
+                string dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+            }
+            else
+            {
+                //WindowsLog.WindowsLog.WriteLog("Application", "EDI VAN NetWrok: " + response.StatusCode + " " + response.ReasonPhrase, 103, 0);
             }
 
         }
@@ -1136,6 +1310,36 @@ namespace EDI_VAN_LIB
         /// add user name and password, which comes from networkprofile table.
         /// </summary>
         public void APIPrepareChannel()
+        {
+            if (UserName.Contains("token"))
+            { GetSiiwiiToken(); }
+             else
+            { GetToken(); }
+        }
+        public void GetSiiwiiToken()
+        {
+            //UserName = UserName.Split(',')[0];
+            string TenantId = Password.Split(',')[2];
+            string TenantName = Password.Split(',')[1];
+            //Password = Password.Split(',')[0];
+
+            HttpClient clientToken = new HttpClient();
+            var AuthURL = URL.Replace("/services", "") + "/TokenAuth/Authenticate";
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, AuthURL);
+
+            request.Headers.Add("accept", "text/plain");
+            request.Headers.Add("Abp.TenantId", TenantId);
+            request.Content = new StringContent("{\"userNameOrEmailAddress\":\"" + UserName.Split(',')[0] + "\",\"tenancyName\":\"" + TenantName + "\",\"password\":\"" + Password.Split(',')[0] + "\"}");
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
+            HttpResponseMessage responseToken = clientToken.SendAsync(request).Result;
+
+            responseToken.EnsureSuccessStatusCode();
+            string responseBody = responseToken.Content.ReadAsStringAsync().Result;
+            dynamic json = JsonConvert.DeserializeObject(responseBody);
+            token = json["result"]["accessToken"].ToString();
+
+        }
+        public void GetToken()
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             client.BaseAddress = new Uri(URL);

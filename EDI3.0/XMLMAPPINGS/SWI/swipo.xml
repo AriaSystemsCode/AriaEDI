@@ -121,14 +121,14 @@
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>
-	<Map>
-		<SrcTable>appTransactionContacts</SrcTable>
-		<SrcField>contactAddressName</SrcField>
-		<DestTable>PO_ADDRESS_T</DestTable>
-		<DestField>name</DestField>
-		<Fixed></Fixed>
-		<Condition></Condition>
-	</Map>
+	<!-- <Map> -->
+		<!-- <SrcTable>appTransactionContacts</SrcTable> -->
+		<!-- <SrcField>contactAddressName</SrcField> -->
+		<!-- <DestTable>PO_ADDRESS_T</DestTable> -->
+		<!-- <DestField>name</DestField> -->
+		<!-- <Fixed></Fixed> -->
+		<!-- <Condition></Condition> -->
+	<!-- </Map> -->
 	<Map>
 		<SrcTable>appTransactionContacts</SrcTable>
 		<SrcField>contactAddressLine1</SrcField>

@@ -24,3 +24,16 @@ C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_Imp
 C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CopyComplete
 C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.exe
 C:\Users\Hassan\Desktop\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.pdb
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe.config
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.exe
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify-ImportProduct-Test.pdb
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.dll
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\bin\Debug\Shopify_Product_Reader.pdb
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csprojAssemblyReference.cache
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Form1.resources
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.Properties.Resources.resources
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.GenerateResource.cache
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CoreCompileInputs.cache
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify_ImportProduct_Test.csproj.CopyComplete
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.exe
+D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-ImportProduct-Test\obj\Debug\Shopify-ImportProduct-Test.pdb

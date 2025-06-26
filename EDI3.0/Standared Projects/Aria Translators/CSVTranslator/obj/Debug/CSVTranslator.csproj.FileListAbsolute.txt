@@ -84,3 +84,5 @@ D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\D
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.dll
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\obj\Debug\CSVTranslator.pdb
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\TransactionsCore.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Newtonsoft.Json.dll
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\CSVTranslator\bin\Debug\Newtonsoft.Json.xml

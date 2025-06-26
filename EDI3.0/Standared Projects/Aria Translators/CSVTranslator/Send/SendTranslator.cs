@@ -7,6 +7,10 @@ using System.Xml;
 using System.IO;
 using System.Data.SqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using System.Globalization;
+
 //using Microsoft.Office.Interop.Excel;
 
 namespace CSVTranslator
@@ -67,6 +71,10 @@ namespace CSVTranslator
                 streamWriter.Close();
                 if (FreeWayFileFormat.XLSX == this.FileFormat)
                 { CSVTOXLSX(OutgoingFile, AriaXmlPath, LcTransactionType); }
+
+                if (FreeWayFileFormat.JSON == this.FileFormat)
+                { CSVTOJSON(OutgoingFile, AriaXmlPath, LcTransactionType); }
+
                 if (!_continue) return;
             }
             catch (Exception ex)
@@ -204,7 +212,7 @@ namespace CSVTranslator
                 foreach (var loop in Loops)
                 {
                     //Derby
-                    if (FreeWayFileFormat.XLSX != this.FileFormat)
+                    if (FreeWayFileFormat.XLSX != this.FileFormat && FreeWayFileFormat.JSON != this.FileFormat)
                     { if (loop.ToString().ToUpper().Trim() == mostParentLoop.ToString().ToUpper().Trim() && LFirst) continue; }
                     LFirst = loop.ToString().ToUpper().Trim() == mostParentLoop.ToString().ToUpper().Trim() ? true : LFirst;
                     //Derby
@@ -268,7 +276,7 @@ namespace CSVTranslator
                                     if (segment.SEGMENT_ORDER == 0)
                                     {
                                         this.HeaderSegmentWritten = this.HeaderSegmentWritten + 1;
-                                        if (FreeWayFileFormat.XLSX == this.FileFormat && (this.HeaderSegmentWritten > 1))
+                                        if ((FreeWayFileFormat.XLSX == this.FileFormat || FreeWayFileFormat.JSON == this.FileFormat  ) && (this.HeaderSegmentWritten > 1))
                                         { continue; }
 
                                     }
@@ -567,6 +575,82 @@ namespace CSVTranslator
                     }
                 }
             }
+        }
+
+        public void CSVTOJSON(string OutgoingFile, string AriaXmlPath, string LcTransactionType)
+        {
+            string csvPath = OutgoingFile;
+            string ext = Path.GetExtension(OutgoingFile);
+            string jsonPath = OutgoingFile.ToUpper().Replace(ext, ".json");
+
+            if (LcTransactionType == "STY" || LcTransactionType == "CST" || LcTransactionType == "846")
+            {
+                string directory = Path.GetDirectoryName(jsonPath);
+                string filename = Path.GetFileName(jsonPath);
+                string prefixedFilename = LcTransactionType + filename;
+                jsonPath = Path.Combine(directory, prefixedFilename);
+            }
+
+            var lines = File.ReadAllLines(csvPath);
+            if (lines.Length < 2)
+            {
+                Console.WriteLine("CSV does not contain data.");
+                return;
+            }
+
+            var headers = lines[0].Split(',');
+            var camelCaseHeaders = headers
+                .Select(h => ToCamelCase(h.Trim().Trim('"')))
+                .ToArray();
+
+            var jsonList = new List<Dictionary<string, string>>();
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var values = lines[i].Split(',');
+                var obj = new Dictionary<string, string>();
+
+                for (int j = 0; j < camelCaseHeaders.Length && j < values.Length; j++)
+                {
+                    string key = camelCaseHeaders[j];
+                    string value = values[j].Trim().Trim('"');
+                    obj[key] = value;
+                }
+
+                jsonList.Add(obj);
+            }
+
+            string json = JsonConvert.SerializeObject(jsonList, Newtonsoft.Json.Formatting.Indented);
+            File.WriteAllText(jsonPath, json);
+            Console.WriteLine($"CSV converted to JSON and saved to {jsonPath}.");
+        }
+
+        private string ToCamelCase(string input)
+        {
+            // Remove dots and trim whitespace
+            input = input.Replace(".", "").Trim();
+
+            // Special case: handle "about us" in any spacing or casing
+            if (Regex.IsMatch(input, @"^about\s*us$", RegexOptions.IgnoreCase))
+            {
+                return "aboutus";
+            }
+
+            // Split on spaces, underscores, dashes
+            var parts = Regex.Split(input, @"[\s_\-]+")
+                             .Where(p => !string.IsNullOrEmpty(p))
+                             .ToArray();
+
+            if (parts.Length == 0) return "";
+
+            // Lowercase first part, capitalize the rest
+            var camel = parts[0].Substring(0, 1).ToLower() + parts[0].Substring(1);
+            for (int i = 1; i < parts.Length; i++)
+            {
+                camel += CultureInfo.InvariantCulture.TextInfo.ToTitleCase(parts[i].ToLower());
+            }
+
+            return camel;
         }
 
         private void ReadMapXml(string MapXmlPath)

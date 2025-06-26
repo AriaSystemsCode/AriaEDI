@@ -148,7 +148,7 @@ namespace CSVTranslator
             var currentLoopList = _segmentsList.Where(_segment => _segment.LOOP_ID == LoopId).ToList();
             foreach (TRANSACTION_SEGMENTS_T SegmentObj in currentLoopList)
             {
-                if (SegmentObj.SEGMENT_ORDER == 0 && FreeWayFileFormat.XLSX == this.FileFormat)
+                if (SegmentObj.SEGMENT_ORDER == 0 && (FreeWayFileFormat.XLSX == this.FileFormat || FreeWayFileFormat.JSON == this.FileFormat))
                 {
                     if (HeaderSegmentWritten>1) { continue; }
                 }
@@ -192,7 +192,7 @@ namespace CSVTranslator
             string lcFileLine = "";
             for (int i = 0; i < FieldsArray.Count; i++)
             {
-                if (FileFormat == FreeWayFileFormat.CSV || FileFormat == FreeWayFileFormat.XLSX)
+                if (FreeWayFileFormat.JSON == this.FileFormat || FileFormat == FreeWayFileFormat.CSV || FileFormat == FreeWayFileFormat.XLSX)
                 {
                     lcFileLine = lcFileLine + "\"" + FieldsArray[i] + "\"";
                 }
@@ -201,7 +201,7 @@ namespace CSVTranslator
                     lcFileLine = lcFileLine + FieldsArray[i];
                 }
 
-                if ((FileFormat == FreeWayFileFormat.COMMA || FileFormat == FreeWayFileFormat.CSV || FileFormat == FreeWayFileFormat.XLSX) && i != FieldsArray.Count - 1)
+                if ((FreeWayFileFormat.JSON == this.FileFormat || FileFormat == FreeWayFileFormat.COMMA || FileFormat == FreeWayFileFormat.CSV || FileFormat == FreeWayFileFormat.XLSX) && i != FieldsArray.Count - 1)
                 {
                     lcFileLine = lcFileLine + ",";
                 }

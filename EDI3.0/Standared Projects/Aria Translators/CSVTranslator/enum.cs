@@ -10,6 +10,7 @@ namespace CSVTranslator
         COMMA,
         CSV,
         FIXED,
-        XLSX
+        XLSX,
+        JSON
     }
 }
