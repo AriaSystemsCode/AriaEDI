@@ -64,9 +64,9 @@ D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bi
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bin\Debug\Microsoft.SqlServer.Dmf.dll
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
-D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bin\Debug\Map.pdb
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\obj\Debug\TransactionsCore.csprojAssemblyReference.cache
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\obj\Debug\TransactionsCore.csproj.CoreCompileInputs.cache
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\obj\Debug\TransactionsCore.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\obj\Debug\TransactionsCore.dll
 D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\obj\Debug\TransactionsCore.pdb
+D:\GitEDI\AriaEDI\EDI3.0\Standared Projects\Aria Translators\TransactionsCore\bin\Debug\Map.pdb

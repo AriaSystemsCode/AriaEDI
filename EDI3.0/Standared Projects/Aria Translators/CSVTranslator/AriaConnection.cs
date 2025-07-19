@@ -38,17 +38,25 @@ namespace CSVTranslator
                 ErrorMsg = "Active Company is Empty!";
                 return false;
             }
-
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -1 ");
             Aria.Environment.AriaEnviromentVariables AriaConnection = new Aria.Environment.AriaEnviromentVariables();
             AriaConnection.ClientID = ClientID;
             AriaConnection.ConnectionsRefresh();
-
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -2 ");
             string Aria27DataConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria27Data);
+
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -2-1 ");
             string Aria27SystemFilesConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria27SystemFiles);
+
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -2 -2");
             string Aria40DataConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria40Data);
+
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -3 ");
+
             string Aria40SystemFilesConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria40SystemFiles);
             string Aria50ClientConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria50ClientSystemFiles);
             string Aria50SystemFilesConnection = AriaConnection.GetConnectionString(ActiveCompany, Aria.Environment.AriaDatabaseTypes.Aria50SystemFiles);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class INIT -3 ");
 
             OdbcConnection _sysFilesConnection = new OdbcConnection(Aria27SystemFilesConnection);
 

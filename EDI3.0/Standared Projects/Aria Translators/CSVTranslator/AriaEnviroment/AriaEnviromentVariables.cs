@@ -276,6 +276,16 @@
 
         public string GetConnectionString(string companyName, AriaDatabaseTypes databaseType)
         {
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "companyName");
+
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", companyName);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.GetAria27CompanyDataConnectionString(companyName));
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.GetAria04CompanyDataConnectionString(companyName));
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.Aria27SystemFilesConnectionString);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.Aria40SystemFilesConnectionString);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.Aria50SystemFilesConnectionString);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.Aria50ClientSystemFilesConnectionString);
+
             switch (databaseType)
             {
                 case AriaDatabaseTypes.Aria27Data:

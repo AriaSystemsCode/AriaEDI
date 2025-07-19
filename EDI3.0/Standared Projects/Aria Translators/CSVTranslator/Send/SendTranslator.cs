@@ -34,7 +34,7 @@ namespace CSVTranslator
         {
             try
             {
-
+                System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class 1-3 ");
                 //Derby
                 transactionType = LcTransactionType;
                 //Derby
@@ -44,7 +44,7 @@ namespace CSVTranslator
                 streamWriter = new FileInfo(OutgoingFile).CreateText();
                 ReadMapXml(MapXmlPath);
                 //System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class ");
-
+                System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class 1-4 ");
                 if (!_continue) return;
 
                 init(ClientId, ActiveCompany);
@@ -66,9 +66,11 @@ namespace CSVTranslator
                 //System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "in class 3");
                 ReadRelations();
                 //DataDataset.WriteXml(@"D:\ariaXMl.XML", XmlWriteMode.WriteSchema);
-                WriteFile();
+                WriteFile   ();
 
                 streamWriter.Close();
+                //System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", this.FileFormat.ToString());
+
                 if (FreeWayFileFormat.XLSX == this.FileFormat)
                 { CSVTOXLSX(OutgoingFile, AriaXmlPath, LcTransactionType); }
 
@@ -108,7 +110,6 @@ namespace CSVTranslator
 
                     if (System.IO.Directory.Exists(OldDirName) == true)
                     { System.IO.Directory.Move(OldDirName, NewDirName); }
-
 
                 }
                 catch (Exception ex)
@@ -579,6 +580,8 @@ namespace CSVTranslator
 
         public void CSVTOJSON(string OutgoingFile, string AriaXmlPath, string LcTransactionType)
         {
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log.txt", "CSVTOJSON");
+
             string csvPath = OutgoingFile;
             string ext = Path.GetExtension(OutgoingFile);
             string jsonPath = OutgoingFile.ToUpper().Replace(ext, ".json");
@@ -623,6 +626,12 @@ namespace CSVTranslator
             string json = JsonConvert.SerializeObject(jsonList, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(jsonPath, json);
             Console.WriteLine($"CSV converted to JSON and saved to {jsonPath}.");
+            try
+            {
+                 
+                 File.Delete(OutgoingFile); 
+            }
+            catch (Exception ex) { }
         }
 
         private string ToCamelCase(string input)

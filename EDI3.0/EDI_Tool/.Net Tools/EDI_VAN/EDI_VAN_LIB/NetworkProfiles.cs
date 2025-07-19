@@ -1149,6 +1149,8 @@ namespace EDI_VAN_LIB
 
     public void APIWithTokenSendContent(string contentstring, string contenttype)
         {
+            System.IO.File.AppendAllText(@"D:\Shared\Archivelog.txt", "File send json correct");
+
             string NewNetworkOutboxFolder = NetworkOutboxFolder;
             HttpClient clientToken2 = new HttpClient();
             string AuthURL2 = URL + NetworkOutboxFolder.Trim();
@@ -1196,6 +1198,7 @@ namespace EDI_VAN_LIB
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("✅ Success: " + responseContent);
+                System.IO.File.AppendAllText(@"D:\Shared\Archivelog.txt", "File send json correct");
             }
             else
             {

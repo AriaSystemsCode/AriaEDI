@@ -63,7 +63,7 @@ namespace EDI_VAN
             if (args.Count() == 0)
             {
                 args = new string[4];
-                //args[0] = @"\\10.0.1.18\stc10sh\Aria4XP\SYSFILES";
+                //args[0] = @"\\10.0.1.08\Orb10sh\Aria4XP\SYSFILES";
                 args[0] = @"X:\aria4xp\sysfiles";
                 args[1] = "";
                 args[2] = "";

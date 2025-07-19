@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configurations>
   <DatabaseSetup>
-    <ServerName>AriaSQl\AriaSQLServer</ServerName>
+    <ServerName>AriaSql\AriaSQLServer</ServerName>
     <ServerLoginType>SqlServerAuthentication</ServerLoginType>
     <UserName>sa</UserName>
     <Password>aria_123</Password>
@@ -14,7 +14,7 @@
     <Password>aria_123</Password>
   </OpenRowSetServer>
   <FileServer>
-    <Aria40SharedPath>D:\Shared\ARIA4XP\</Aria40SharedPath>
+    <Aria40SharedPath>D:\Shared-Build\ARIA4XP\</Aria40SharedPath>
     <DebugMode>Enabled</DebugMode>
   </FileServer>
   <RequestServer>
