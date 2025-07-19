@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/ShippingHeader"
+           xmlns="http://example.com/ShippingHeader"
+           elementFormDefault="qualified">
+
+  <xs:element name="ShippingHeader">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Header Fields -->
+        <xs:element name="OID" type="xs:string"/>
+        <xs:element name="SenderID" type="xs:string"/>
+        <xs:element name="PartnerID" type="xs:string" minOccurs="0"/>
+        <xs:element name="ShippingID" type="xs:string"/>
+        <xs:element name="TransactionPurposeCode" type="xs:string"/>
+        <xs:element name="TransactionPurpose" type="xs:string"/>
+        <xs:element name="DepositorOrderNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="PurchaseOrderNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="EquipmentTypeCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="EquipmentType" type="xs:string" minOccurs="0"/>
+        <xs:element name="Temperature1" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="Temperature2" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="PaymentMethodCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="PaymentMethod" type="xs:string" minOccurs="0"/>
+        <xs:element name="TransportationMethodCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="TransportationMethod" type="xs:string" minOccurs="0"/>
+        <xs:element name="PalletExchangeCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="PalletExchangeInstruction" type="xs:string" minOccurs="0"/>
+        <xs:element name="UnitLoadOptionCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="UnitLoadOption" type="xs:string" minOccurs="0"/>
+        <xs:element name="Routing" type="xs:string" minOccurs="0"/>
+        <xs:element name="CODPaymentMethod" type="xs:string" minOccurs="0"/>
+        <xs:element name="CODAmount" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="StandardCarrierAlphaCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="QuantityOrdered" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="Weight" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="WeightUOMCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="Volume" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="VolumeUOMCode" type="xs:string" minOccurs="0"/>
+        <xs:element name="WarehouseReceiptId" type="xs:string" minOccurs="0"/>
+        <xs:element name="WarehouseReceiptDate" type="xs:date" minOccurs="0"/>
+
+        <!-- Child Items -->
+        <xs:element name="ShippingItem" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OID" type="xs:string"/>
+              <xs:element name="ShippingID" type="xs:string"/>
+              <xs:element name="SenderID" type="xs:string"/>
+              <xs:element name="PartnerID" type="xs:string" minOccurs="0"/>
+              <xs:element name="Shipping" type="xs:string"/>
+              <xs:element name="AssignedNumber" type="xs:decimal"/>
+              <xs:element name="QuantityOrdered" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="QuantityUOMCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="FreightClassCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="CommodityCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="Commodity" type="xs:string" minOccurs="0"/>
+              <xs:element name="PalletBlockandTiers" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="WarehouseLotNumber" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="ItemDescription" type="xs:string" minOccurs="0"/>
+              <xs:element name="AmountQualifierCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="MonetaryAmount" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="Pack" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="PackSize" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="PackUOM" type="xs:string" minOccurs="0"/>
+              <xs:element name="GrossWeight" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="WeightUnitCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="UnitWeight" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="Volume" type="xs:decimal" minOccurs="0"/>
+              <xs:element name="VolumeUOM" type="xs:string" minOccurs="0"/>
+              <xs:element name="ItemUPC" type="xs:string" minOccurs="0"/>
+              <xs:element name="GTIN" type="xs:string" minOccurs="0"/>
+              <xs:element name="VendorItemNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="VendorStyleNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="VendorColor" type="xs:string" minOccurs="0"/>
+              <xs:element name="VendorSizeCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="SizeNRFCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="BuyerItemNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="BuyerStyleNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="BuyerColor" type="xs:string" minOccurs="0"/>
+              <xs:element name="BuyerSizeCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="ColorNRFCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="CompanyNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="DivisionNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="PurchaseOrderNumber" type="xs:string" minOccurs="0"/>
+              <xs:element name="SequenceNumber" type="xs:decimal" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

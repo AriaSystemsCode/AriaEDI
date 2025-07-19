@@ -203,6 +203,5 @@ Dimension lcTransactions[1]
 Dimension lcPartners[1] = lcrpPartner
 lcTransactions[1] = lcrpKey
 lcPartners[1] = lcrpPartner
-Lsilent = .t.
 objEDI.SENDingpipeline(loAgent,lcRequestID,ClientId,      'S', lcrpTrnTyp, 'D', @lcPartners, @lcTransactions )
 *                       loAgent,lcRequestID,lcClientId, lcType, lcEdiTrnTyp, lcPartnerType, lcTransactions, llAll

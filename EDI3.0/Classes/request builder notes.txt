@@ -1,0 +1,28 @@
+Iteration 46  Request builder EDI
+
+* Account number issue >> Sam
+* Abdo RU0710 PO not found
+
+
+ 
+Code files:
+D:\Shared-Build\Aria3EDI\Classes\edi_dll.vcx
+D:\Shared-Build\Aria3EDI\Classes\edi_dll.vct
+D:\Shared-Build\Aria3EDI\Classes\edi.vcx
+D:\Shared-Build\Aria3EDI\Classes\edi.vct
+D:\Shared-Build\Aria3EDI\Classes\globals.vc*
+D:\Shared-Build\Aria3EDI\Classes\main.vc*
+
+D:\Shared-Build\Aria4XP\PRGs\SM\runrequestedi.prg
+D:\Shared-Build\Aria4XP\PRGs\SM\smeditr.prg
+D:\Shared-Build\Aria4XP\Sysfiles >> records related to option grid and request builder server actionKey
+
+
+Modify data:
+VFP SYCCOMP.cCom_DDir and all fields
+VFP EDINET should refer to JSON type
+
+SQL: System Master >> all fields should not has "X:"
+Client Master >> network table, each pipeline should have one records 
+Client company >> e_file types table, add record for type Json 
+Client company >> Electronic transactions table, cst, sty, 846 should refer to Json type and fix the adapeter path to no have X:
