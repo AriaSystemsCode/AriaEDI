@@ -19,9 +19,10 @@
                     <!-- Lines belonging to this PO -->
                     <xsl:for-each select="key('linesByPO', PurchaseOrderNumber)">
                         <LINE>
-                            <RECEIPT_LINE>
-                                <xsl:value-of select="concat(AssignedNumber, SequenceNumber)" />
-                            </RECEIPT_LINE>
+								<RECEIPT_LINE>
+								  <xsl:value-of select="concat('1', format-number(AssignedNumber, '000'), SequenceNumber)" />
+								</RECEIPT_LINE>
+
                             <xsl:if test="string(ProfileValue1)">
                                 <INV_TYPE>
                                     <xsl:value-of select="ProfileValue1"/>

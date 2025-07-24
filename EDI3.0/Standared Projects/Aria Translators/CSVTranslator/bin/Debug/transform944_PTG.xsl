@@ -33,7 +33,10 @@
                         <SenderID><xsl:value-of select="../WAREHOUSE_ID"/></SenderID>
                         <PartnerID><xsl:value-of select="../WAREHOUSE_ID"/></PartnerID>
                         <Shipping><xsl:value-of select="../VENDOR_ORDER"/></Shipping>
-						<AssignedNumber><xsl:value-of select="substring(translate(RECEIPT_LINE, translate(RECEIPT_LINE, '0123456789', ''), ''), 1, 1)" /></AssignedNumber>
+						<AssignedNumber>
+						  <xsl:value-of select="substring(translate(RECEIPT_LINE, translate(RECEIPT_LINE, '0123456789', ''), ''), 2, 3)" />
+						</AssignedNumber>
+
                         <QuantityOrdered><xsl:value-of select="PIECES_RECEIVED"/></QuantityOrdered>
                         <QuantityUOMCode><xsl:value-of select="USR_UOM"/></QuantityUOMCode>
                         <FreightClassCode><xsl:value-of select="FREIGHT_COSTS"/></FreightClassCode>
