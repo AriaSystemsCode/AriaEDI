@@ -7,6 +7,9 @@
 
     <xsl:template match="/NewDataSet">
         <RECEIPTDOWNLOAD>
+		  <!-- Only generate HEADERs and LINEs if ALL INV_TYPE are present -->
+            <xsl:if test="not(ShippingItem_T[normalize-space(ProfileValue1) = ''])">
+			
             <!-- Group by distinct PO -->
             <xsl:for-each select="ShippingItem_T[generate-id() = generate-id(key('linesByPO', PurchaseOrderNumber)[1])]">
                 <HEADER>
@@ -41,7 +44,7 @@
                     </xsl:for-each>
                 </HEADER>
             </xsl:for-each>
-
+    </xsl:if>
             <!-- Error Handling Block -->
             <ERRORS>
                 <!-- If PO is empty, log error -->

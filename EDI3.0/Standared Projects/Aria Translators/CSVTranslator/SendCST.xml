@@ -1028,7 +1028,7 @@
 		<Column>BTNAME</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">BTNAME_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1137,7 +1137,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>Main</Fixed>
+		<Fixed>Business</Fixed>
 		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE1TYPE_CUSTOMER_03_TempData1 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1178,7 +1178,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>WORK</Fixed>
+		<Fixed>Office</Fixed>
 		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE2TYPE_CUSTOMER_03_TempData1 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1805,7 +1805,7 @@
 		<Column>CADDRESS1</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS1_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1815,7 +1815,7 @@
 		<Column>CADDRESS3</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS3_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1825,7 +1825,7 @@
 		<Column>CADDRESS4</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS4_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1835,7 +1835,7 @@
 		<Column>CADDRESS5</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS5_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1855,7 +1855,7 @@
 		<Column>CADDRESS12</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS12_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1865,7 +1865,7 @@
 		<Column>CADDRESS22</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS22_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1875,7 +1875,7 @@
 		<Column>CADDRESS32</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS32_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1885,7 +1885,7 @@
 		<Column>CADDRESS42</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS42_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1895,7 +1895,7 @@
 		<Column>CADDRESS52</Column>
 		<Loop>03</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="-">CADDRESS52_CUSTOMER_03 != </Condition>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -3411,7 +3411,7 @@
 		<Column>CADDRESS62</Column>
 		<Loop>05</Loop>
 		<Fixed></Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="USA">CADDRESS62_CUSTOMER_03 != </Condition>
+		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map" Default="USA">CADDRESS62_Store_04 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>

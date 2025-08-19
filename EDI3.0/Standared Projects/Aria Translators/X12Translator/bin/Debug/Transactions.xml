@@ -570,6 +570,7 @@ SET ANSI_PADDING ON
 
 CREATE TABLE [dbo].[ShippingOrderHeader_T](
 	 [OID] [uniqueidentifier] NOT NULL,
+	 [CCARIACCNO] [varchar](30) NOT NULL,
 	[SenderID] [varchar](20) NOT NULL,
 	[PartnerID] [varchar](20) NOT NULL,
 	[ShippingOrder] [varchar](20) NOT NULL,
@@ -927,6 +928,7 @@ CREATE TABLE [dbo].[ShippingOrderHeader_T](
 	 [OID] [uniqueidentifier] NOT NULL,
 	[SenderID] [varchar](20) NOT NULL,
 	[PartnerID] [varchar](20) NOT NULL,
+	[CCARIACCNO] [varchar](30) NOT NULL,
 	[ShippingOrder] [varchar](20) NOT NULL,
 	[TransactionPurposeCode] [varchar](10) NOT NULL,
 	[TransactionPurpose] [varchar](35) NOT NULL,

@@ -64,7 +64,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>Available Qty</Fixed>
+		<Fixed>Stock Available</Fixed>
 		<Condition> </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>

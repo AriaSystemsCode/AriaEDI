@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configurations>
   <DatabaseSetup>
-    <ServerName>AriaSql\AriaSQLServer</ServerName>
+    <ServerName>AriaTesting\AriaSQLServer</ServerName>
     <ServerLoginType>SqlServerAuthentication</ServerLoginType>
     <UserName>sa</UserName>
     <Password>aria_123</Password>
