@@ -1579,55 +1579,17 @@ Endfunc
 *!**************************************************************************
 *:->
 *N000649,1 WLD Open SQL File 08/02/2010
-*!*	Function lfOpen_SQL_File
-*!*	Lparameters lcSelString,lcFile_name,lcIndex_expr,lcTagName
-
-*!*	lnConnectionHandlar = 0
-*!*	If oAriaApplication.isRemoteComp  And !Empty(lcSelString)
-*!*	  lcSetClass = Set('CLASSLIB')
-*!*	  Set Classlib To (oAriaApplication.lcAria4Class+"MAIN.VCX"),(oAriaApplication.lcAria4Class+"UTILITY.VCX")
-*!*	  lnConnectionHandlar = oAriaApplication.RemoteCompanyData.sqlrun(lcSelString ,lcFile_name,lcFile_name,;
-*!*	    oAriaApplication.ActiveCompanyConStr,3,'BROWSE',Set("DATASESSION"))
-
-*!*	  Set Classlib To &lcSetClass.
-*!*	  If lnConnectionHandlar = 1
-*!*	    Select (lcFile_name)
-*!*	    =CursorSetProp("Buffering" ,3,lcFile_name)
-*!*	    If !Empty(lcIndex_expr)
-*!*	      If Type('lcTagName') = 'C' And !Empty(lcTagName)
-*!*	        lcIndex_expr = 'INDEX ON '+lcIndex_expr + ' TAG '+ lcTagName
-*!*	      Else
-*!*	        lcIndex_expr = 'INDEX ON '+lcIndex_expr + ' TAG '+lcFile_name
-*!*	      Endif
-*!*	      &lcIndex_expr.
-*!*	    Endif
-*!*	    =CursorSetProp("Buffering" ,5,lcFile_name)
-*!*	  Else
-*!*	    lcResult = oAriaApplication.RemoteCompanyData.CheckRetResult('Execute',lnConnectionHandlar,.F.)
-*!*	  Endif
-*!*	Endif
-*!*	Return Alltrim(Str(lnConnectionHandlar,2))
-*!*	Endfunc
 Function lfOpen_SQL_File
 Lparameters lcSelString,lcFile_name,lcIndex_expr,lcTagName
-*Mariam
-LOCAL lnConnHandler ,lnUpSt 
-lnConnHandler = 0
-lnConnectionHandlar = 0
-*Mariam
+
 lnConnectionHandlar = 0
 If oAriaApplication.isRemoteComp  And !Empty(lcSelString)
   lcSetClass = Set('CLASSLIB')
   Set Classlib To (oAriaApplication.lcAria4Class+"MAIN.VCX"),(oAriaApplication.lcAria4Class+"UTILITY.VCX")
   lnConnectionHandlar = oAriaApplication.RemoteCompanyData.sqlrun(lcSelString ,lcFile_name,lcFile_name,;
-    oAriaApplication.ActiveCompanyConStr,3,'BROWSE',Set("DATASESSION"),.T., @lnConnHandler)
+    oAriaApplication.ActiveCompanyConStr,3,'BROWSE',Set("DATASESSION"))
 
   Set Classlib To &lcSetClass.
-  *Mariam
-  IF lnConnectionHandlar > 0
-    SQLCOMMIT(lnConnHandler)
-  ENDIF  
-  *Mariam
   If lnConnectionHandlar = 1
     Select (lcFile_name)
     =CursorSetProp("Buffering" ,3,lcFile_name)
@@ -1646,7 +1608,6 @@ If oAriaApplication.isRemoteComp  And !Empty(lcSelString)
 Endif
 Return Alltrim(Str(lnConnectionHandlar,2))
 Endfunc
-
 *******************************************************************************************************************
 
 ***************************************************************
