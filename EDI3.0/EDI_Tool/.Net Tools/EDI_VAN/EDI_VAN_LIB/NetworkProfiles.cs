@@ -1147,7 +1147,7 @@ namespace EDI_VAN_LIB
 
          }
 
-    public void APIWithTokenSendContent(string contentstring, string contenttype)
+    public async void APIWithTokenSendContent(string contentstring, string contenttype)
         {
             System.IO.File.AppendAllText(@"D:\Shared\Archivelog.txt", "File send json correct");
 
@@ -1186,14 +1186,15 @@ namespace EDI_VAN_LIB
             string methodname = NetworkInboxFolder;
             if (!string.IsNullOrEmpty(methodname) && methodname.Trim().ToUpper() == "PUT")
             {
-                response = clientToken2.PutAsync(AuthURL2, content).Result;
+                response = await clientToken2.PutAsync(AuthURL2, content);
             }
             else
             {
-                response = clientToken2.PostAsync(AuthURL2, content).Result;
+                response = await clientToken2.PostAsync(AuthURL2, content);
             }
+            string responseContent = await response.Content.ReadAsStringAsync();
 
-            string responseContent = response.Content.ReadAsStringAsync().Result;
+          //  string responseContent = response.Content.ReadAsStringAsync().Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1204,6 +1205,7 @@ namespace EDI_VAN_LIB
             {
                 Console.WriteLine($"❌ Error: {response.StatusCode} {response.ReasonPhrase}");
                 Console.WriteLine("Response content:\n" + responseContent);
+                
             }
         }
 
