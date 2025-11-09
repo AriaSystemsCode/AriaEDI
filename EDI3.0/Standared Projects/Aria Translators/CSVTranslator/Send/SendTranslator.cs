@@ -595,6 +595,8 @@ namespace CSVTranslator
             }
 
             var lines = File.ReadAllLines(csvPath);
+            var xx = File.ReadAllText(csvPath);
+            System.IO.File.AppendAllText(@"d:\shared\aria3edi\edi\outbox\log1.txt", xx);
             if (lines.Length < 2)
             {
                 Console.WriteLine("CSV does not contain data.");

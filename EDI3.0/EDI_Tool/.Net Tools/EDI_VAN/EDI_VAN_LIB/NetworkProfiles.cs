@@ -268,7 +268,7 @@ namespace EDI_VAN_LIB
             set { _downloadedFileName = value; }
         }
         public string token { get; set; }
-        #region Methods
+           #region Methods
         public NetworkProfiles()
         { }
 
@@ -745,9 +745,21 @@ namespace EDI_VAN_LIB
                         AuthURL2 = AuthURL2 + "?" + PreTransferCommand.Trim();
                     }
                 }
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls12;
+
+
                 HttpRequestMessage response22 = new HttpRequestMessage(HttpMethod.Get, AuthURL2);
 
                 clientToken2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                clientToken2.DefaultRequestHeaders.AcceptLanguage.Clear();
+                clientToken2.DefaultRequestHeaders.AcceptLanguage.Add(
+                    new System.Net.Http.Headers.StringWithQualityHeaderValue("en-US")
+                );
+
+                //clientToken2.DefaultRequestHeaders.Accept.Clear();
+                clientToken2.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+
 
                 response = clientToken2.GetAsync(AuthURL2).Result;
 
