@@ -1117,7 +1117,7 @@
 		<Table>CUSTOMER</Table>
 		<Column>PHONE1</Column>
 		<Loop>03</Loop>
-		<Fixed Type="String" lhsSource="Dictionary" rhsSource="Map" param1="0" param2="10">Substring()</Fixed>
+		<Fixed></Fixed>
 		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1125,10 +1125,10 @@
 	<Map>
 		<Variable>PHONE1EXT_CUSTOMER_03</Variable>
 		<Table>CUSTOMER</Table>
-		<Column>PHONE1</Column>
+		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed Type="String" lhsSource="Dictionary" rhsSource="Map" param1="10">Substring()</Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE1TYPE_CUSTOMER_03_TempData1 != </Condition>
+		<Fixed> </Fixed>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1137,7 +1137,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>Business</Fixed>
+		<Fixed>WORK</Fixed>
 		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE1TYPE_CUSTOMER_03_TempData1 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1158,7 +1158,7 @@
 		<Table>CUSTOMER</Table>
 		<Column>PHONE2</Column>
 		<Loop>03</Loop>
-		<Fixed Type="String" lhsSource="Dictionary" rhsSource="Map" param1="0" param2="10">Substring()</Fixed>
+		<Fixed></Fixed>
 		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1168,8 +1168,8 @@
 		<Table>CUSTOMER</Table>
 		<Column>PHONE2</Column>
 		<Loop>03</Loop>
-		<Fixed Type="String" lhsSource="Dictionary" rhsSource="Map" param1="10">Substring()</Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE2TYPE_CUSTOMER_03_TempData1 != </Condition>
+		<Fixed> </Fixed>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1178,7 +1178,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>Office</Fixed>
+		<Fixed>WORK</Fixed>
 		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE2TYPE_CUSTOMER_03_TempData1 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1210,8 +1210,8 @@
 		<Table>CUSTOMER</Table>
 		<Column>FAX</Column>
 		<Loop>03</Loop>
-		<Fixed Type="String" lhsSource="Dictionary" rhsSource="Map" param1="10">Substring()</Fixed>
-		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE3TYPE_CUSTOMER_03_TempData1 != </Condition>
+		<Fixed> </Fixed>
+		<Condition></Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
@@ -1220,7 +1220,7 @@
 		<Table></Table>
 		<Column></Column>
 		<Loop>03</Loop>
-		<Fixed>WORK-FAX</Fixed>
+		<Fixed>WORK</Fixed>
 		<Condition Type="String" lhsSource="Dictionary" rhsSource="Map">PHONE3TYPE_CUSTOMER_03_TempData1 != </Condition>
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
@@ -1235,8 +1235,6 @@
 		<relatedtypevalue></relatedtypevalue>
 		<relatedtype></relatedtype>
 	</Map>
-
-
 	<Map>
 		<Variable>UPSZONE_CUSTOMER_03</Variable>
 		<Table>CUSTOMER</Table>
