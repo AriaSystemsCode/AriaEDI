@@ -846,7 +846,16 @@
 		<relatedtype></relatedtype>
 	</Map>
 
-
+	<Map>
+		<Variable>PRICELVL03</Variable>
+		<Table></Table>
+		<Column></Column>
+		<Loop>03</Loop>
+		<Fixed>Price Level</Fixed>
+		<Condition></Condition>
+		<relatedtypevalue></relatedtypevalue>
+		<relatedtype></relatedtype>
+	</Map>
 
 	<!-- customer Data -->
 	<!--region  [Customer data]-->
