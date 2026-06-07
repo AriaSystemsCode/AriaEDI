@@ -15,4 +15,3 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.exe
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.pdb
-D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csprojAssemblyReference.cache

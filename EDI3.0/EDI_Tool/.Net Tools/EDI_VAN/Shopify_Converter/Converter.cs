@@ -68,7 +68,9 @@ namespace Shopify_Converter
                 Converter.locationFileName = "SHPIV.JSON";
                 if (args.Length > 6)
                     Converter.locationFileName = args[7].ToString();
-
+                if (args.Length > 7)
+                    Converter.dbName = args[8].ToString();
+            
                 Converter.WriteLog("OutGoingFileName =" + OutGoingFileName);
                 Converter.WriteLog("EDIArchivePath =" + EDIArchivePath);
                 Converter.WriteLog("EDIOutgoingFolder =" + EDIOutgoingFolder);
@@ -90,10 +92,14 @@ namespace Shopify_Converter
                 string partialNewName = Path.GetFileNameWithoutExtension(OutGoingFileName);
                 string partialNewExtension = Path.GetExtension(OutGoingFileName);
                 string partialName = Path.GetFileNameWithoutExtension(EDIOutgoingFolder);
-
+                Converter.WriteLog("Before call getfiles" );
                 FileInfo[] filesInDirOut = Converter.GetFiles(Converter.outBoxFolder, OutGoingFileName);
+
+                
                 Converter.filesInDirOutlength = filesInDirOut.Length;
-                FileInfo[] filesInDir = Converter.GetFilesByExt(Converter.outBoxFolder, partialName, Path.GetExtension(EDIOutgoingFolder));
+            Converter.WriteLog("Found files count =" + filesInDirOut.Length);
+
+            FileInfo[] filesInDir = Converter.GetFilesByExt(Converter.outBoxFolder, partialName, Path.GetExtension(EDIOutgoingFolder));
 
                 if (filesInDir.Length > 0)
                 {
@@ -120,6 +126,8 @@ namespace Shopify_Converter
         static string userName = "sa";
         static string password = "aria_123";
         static string dbName = "lac99_ldb01";
+        //static string dbName = "DEP02_LDB02";
+        
 
         static void WriteToDB()
         {

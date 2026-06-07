@@ -29,7 +29,6 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Shopify_Converter.pdb
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\bin\Debug\Newtonsoft.Json.xml
-D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csprojAssemblyReference.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CoreCompileInputs.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter\obj\Debug\Shopify_Converter.exe

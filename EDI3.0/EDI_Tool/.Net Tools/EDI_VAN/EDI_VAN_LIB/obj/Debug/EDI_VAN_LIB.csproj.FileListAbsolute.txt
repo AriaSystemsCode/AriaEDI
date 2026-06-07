@@ -53,4 +53,3 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_V
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
-D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csprojAssemblyReference.cache

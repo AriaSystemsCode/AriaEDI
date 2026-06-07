@@ -12,7 +12,6 @@ C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Rea
 C:\Users\Hassan\Desktop\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csprojAssemblyReference.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Order_Reader.pdb
-D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csprojAssemblyReference.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.csproj.CoreCompileInputs.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Get_Order_No\obj\Debug\Shopify_Order_Reader.pdb

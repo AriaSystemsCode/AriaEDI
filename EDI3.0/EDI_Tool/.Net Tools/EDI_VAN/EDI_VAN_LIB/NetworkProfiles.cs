@@ -528,13 +528,16 @@ namespace EDI_VAN_LIB
                 Connecttodb.DoQuery(sqlStr);
                 PreTransferCommand = "since_id";
             }
-
-            if (IDs.Contains("at_id"))
+            try
             {
-                string sqlStr = "Update networkProfiles  set PreTransferCommand='at_id' where networkid='" + this.NetWorkID + "' AND PreTransferCommand LIKE '%at_id%'";
-                Connecttodb.DoQuery(sqlStr);
-                PreTransferCommand = "at_id";
+                if (IDs.Contains("at_id"))
+                {
+                    string sqlStr = "Update networkProfiles  set PreTransferCommand='at_id' where networkid='" + this.NetWorkID + "' AND PreTransferCommand LIKE '%at_id%'";
+                    Connecttodb.DoQuery(sqlStr);
+                    PreTransferCommand = "at_id";
+                }
             }
+            catch (Exception ex) { }
             return true;
         }
 
@@ -782,6 +785,46 @@ namespace EDI_VAN_LIB
             }
             else
             {
+                if (UserName.Contains("access"))
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    using (HttpClient clientx = new HttpClient())
+                    {
+                        clientx.BaseAddress = new Uri("https://w5e192-2v.myshopify.com");
+
+                        clientx.DefaultRequestHeaders.Accept.Clear();
+                        clientx.DefaultRequestHeaders.Accept.Add(
+                            new MediaTypeWithQualityHeaderValue("application/json"));
+
+                        clientx.DefaultRequestHeaders.Add(
+                            "X-Shopify-Access-Token",
+                            Password);
+
+
+
+                        // List data response.
+                        string requestURIs = NetworkOutboxFolder;
+                        if (string.IsNullOrEmpty(PreTransferCommand) == false)
+                        {
+                            string firstParameter = "?";
+                            if (NetworkOutboxFolder.Contains("?"))
+                                firstParameter = "&";
+                            requestURIs = String.Format(NetworkOutboxFolder + "{0}{1}", firstParameter, PreTransferCommand);
+                        }
+
+
+                        //string requestURIs =
+                        //    "/admin/api/2023-07/orders.json?limit=250&fulfillment_status=unshipped&status=any";
+
+                          response = clientx.GetAsync(requestURIs).Result;
+                          dataObjects = response.Content.ReadAsStringAsync().Result;
+
+
+
+                    }
+                } else { 
+
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                 HttpClient client = new HttpClient();
 
@@ -808,7 +851,7 @@ namespace EDI_VAN_LIB
                 }
                 response = client.GetAsync(requestURI).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
                 dataObjects = response.Content.ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
-
+            }
             }// to be removed
 
 
@@ -869,31 +912,34 @@ namespace EDI_VAN_LIB
                     }
 
                 }
-
-                if (!string.IsNullOrEmpty(NetworkInboxFolder) && NetworkInboxFolder.Contains(','))
+                try
                 {
-                    XmlDocument xml = new XmlDocument();
+                    if (!string.IsNullOrEmpty(NetworkInboxFolder) && NetworkInboxFolder.Contains(','))
+                    {
+                        XmlDocument xml = new XmlDocument();
 
-                    //xml.Load(EDIClientPath + @"\EDI\INBOX\" + newfilename);
-                    xml.LoadXml(dataObjects);
-                    XmlNodeList nodes = xml.SelectNodes(NetworkInboxFolder.Split(',')[0]);
-                    if (nodes != null && nodes.Count.ToString() == NetworkInboxFolder.Split(',')[1])
-                    {//loop again as we sill have data
-                        StillHasData = true;
-                        // UpdateDownloadedOrderNumber(nodes);
-                    }
-                    if (nodes != null && nodes.Count > 0)
-                    {   //update id
-                        UpdateDownloadedOrderNumber(nodes);
-                    }
+                        //xml.Load(EDIClientPath + @"\EDI\INBOX\" + newfilename);
+                        xml.LoadXml(dataObjects);
+                        XmlNodeList nodes = xml.SelectNodes(NetworkInboxFolder.Split(',')[0]);
+                        if (nodes != null && nodes.Count.ToString() == NetworkInboxFolder.Split(',')[1])
+                        {//loop again as we sill have data
+                            StillHasData = true;
+                            // UpdateDownloadedOrderNumber(nodes);
+                        }
+                        if (nodes != null && nodes.Count > 0)
+                        {   //update id
+                            UpdateDownloadedOrderNumber(nodes);
+                        }
 
-                    if (nodes != null && nodes.Count == 0)
-                    {//not write the file
-                        writeToFile = false;
-                    }
+                        if (nodes != null && nodes.Count == 0)
+                        {//not write the file
+                            writeToFile = false;
+                        }
 
-                }
-                if (writeToFile)
+                    }
+                }catch(Exception ex) { }
+
+                    if (writeToFile)
                 {
                     // loop on all nodes of type order
                     // get the order ID
@@ -1357,15 +1403,57 @@ namespace EDI_VAN_LIB
 
         }
         public void GetToken()
-        {
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            client.BaseAddress = new Uri(URL);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password);
-            string val = System.Convert.ToBase64String(plainTextBytes);
-            client.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
+        {   // handle new shopidy security version at send 
+            if (UserName.Contains("access"))
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                //using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://w5e192-2v.myshopify.com");
+
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(
+                        new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    client.DefaultRequestHeaders.Add(
+                        "X-Shopify-Access-Token",
+                        Password);
+
+
+
+                    // List data response.
+                    //string requestURIs = NetworkOutboxFolder;
+                    //if (string.IsNullOrEmpty(PreTransferCommand) == false)
+                    //{
+                    //    string firstParameter = "?";
+                    //    if (NetworkOutboxFolder.Contains("?"))
+                    //        firstParameter = "&";
+                    //    requestURIs = String.Format(NetworkOutboxFolder + "{0}{1}", firstParameter, PreTransferCommand);
+                    //}
+
+
+                    //string requestURIs =
+                    //    "/admin/api/2023-07/orders.json?limit=250&fulfillment_status=unshipped&status=any";
+
+                    //var response1 = clientx.GetAsync(requestURIs).Result;
+                    //var dataObjects1 = response1.Content.ReadAsStringAsync().Result;
+
+
+
+                }
+            }
+            else
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                client.BaseAddress = new Uri(URL);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password);
+                string val = System.Convert.ToBase64String(plainTextBytes);
+                client.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
+            }
         }
 
         public void ApiConnectPost()
