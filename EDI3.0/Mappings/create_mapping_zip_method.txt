@@ -1,6 +1,6 @@
 PROCEDURE CreateMappingZip
 LPARAMETERS tcFolder, tcMapSet
-LOCAL lcFolder, lcMapSet, lcZipFile, lcPattern, lcCommand, loShell, lnResult
+LOCAL lcFolder, lcMapSet, lcZipFile, lcConfigFile, lcCommand, loShell, lnResult
 
 lcFolder = ADDBS(ALLTRIM(tcFolder))
 lcMapSet = ALLTRIM(tcMapSet)
@@ -9,24 +9,32 @@ IF EMPTY(lcFolder) OR EMPTY(lcMapSet) OR !DIRECTORY(lcFolder)
 ENDIF
 
 lcZipFile = lcFolder + lcMapSet + ".ZIP"
-lcPattern = "*." + lcMapSet
+lcConfigFile = lcFolder + "mapping.config"
 IF FILE(lcZipFile)
   ERASE (lcZipFile)
 ENDIF
+IF FILE(lcConfigFile)
+  ERASE (lcConfigFile)
+ENDIF
+IF PEMSTATUS(THIS.Form1, "chkPublishSQL", 5) AND THIS.Form1.chkPublishSQL.Value
+  =STRTOFILE("PUBLISH_SQL=TRUE" + CHR(13) + CHR(10), lcConfigFile, 0)
+ENDIF
 
 loShell = CREATEOBJECT("WScript.Shell")
-lcCommand = "%COMSPEC% /D /C tar.exe -a -c -f " + ;
-  CHR(34) + lcZipFile + CHR(34) + " -C " + ;
-  CHR(34) + lcFolder + CHR(34) + " " + CHR(34) + lcPattern + CHR(34)
+lcCommand = "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command " + CHR(34) + ;
+  "$map='" + STRTRAN(lcMapSet, "'", "''") + "';" + ;
+  "$files=@(Get-ChildItem -LiteralPath '" + STRTRAN(lcFolder, "'", "''") + ;
+  "' | Where-Object {-not $_.PSIsContainer -and (" + ;
+  "$_.Extension -ieq ('.'+$map) -or $_.Extension -ieq '.FPT' -or " + ;
+  "$_.Name -ieq 'mapping.config' -or " + ;
+  "(( $_.Extension -ieq '.FRX' -or $_.Extension -ieq '.FRT') -and " + ;
+  "$_.BaseName -like ('*'+$map)))});" + ;
+  "if($files.Count -eq 0){exit 2};" + ;
+  "Compress-Archive -LiteralPath $files.FullName -DestinationPath '" + ;
+  STRTRAN(lcZipFile, "'", "''") + "' -Force;" + ;
+  "if(Test-Path -LiteralPath '" + STRTRAN(lcZipFile, "'", "''") + ;
+  "'){$files | Remove-Item -Force}else{exit 3}" + CHR(34)
 lnResult = loShell.Run(lcCommand, 0, .T.)
-
-IF lnResult <> 0 OR !FILE(lcZipFile)
-  lcCommand = "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command " + CHR(34) + ;
-    "Compress-Archive -LiteralPath (Get-ChildItem -LiteralPath '" + ;
-    STRTRAN(lcFolder, "'", "''") + "' -Filter '" + STRTRAN(lcPattern, "'", "''") + ;
-    "').FullName -DestinationPath '" + STRTRAN(lcZipFile, "'", "''") + "' -Force" + CHR(34)
-  lnResult = loShell.Run(lcCommand, 0, .T.)
-ENDIF
 
 IF lnResult = 0 AND FILE(lcZipFile)
   RETURN 0
