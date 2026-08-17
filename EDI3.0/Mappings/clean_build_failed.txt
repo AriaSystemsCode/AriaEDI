@@ -1,0 +1,3 @@
+Error 1426: OLE error code 0x80020006: Unknown name.
+
+BUILD_CLEAN_PROJECT:34

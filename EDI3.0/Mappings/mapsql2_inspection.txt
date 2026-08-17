@@ -1,0 +1,2328 @@
+RECNO=3
+PARENT=
+OBJNAME=Formset
+CLASS=formset
+BASECLASS=formset
+PROPERTIES=DataSession = 1
+AutoRelease = .T.
+WindowType = 0
+div_str = 
+div_str2 = .F.
+lcpartner = .F.
+lnhandlife = ''
+Name = "Formset"
+
+METHODS=PROCEDURE mgetmappings
+lcPartCode = ALLTRIM(THISFORMSET.Form1.cboTransactions.Value )
+lcVersion  = ALLTRIM(THISFORMSET.Form1.cboVersion.Value)
+ 
+IF USED('sycasnhd')
+  SELECT sycasnhd
+  DELETE ALL
+ENDIF   
+
+IF USED('sycUPChd')
+  SELECT sycUPChd
+  DELETE ALL
+ENDIF 
+SELECT sycedipd
+DELETE ALL
+
+THISFORMSET.Form1.GRDTRANACTIONS.RecordSource = ''
+THISFORMSET.Form1.grdLABELS.RecordSource = ''
+THISFORMSET.Form1.grdUPCLABELS.RecordSource = ''
+lnRes=SQLEXEC(THISFORMSET.lnHand,"SELECT sycedipd.*, syceditr.ceditrnnam AS ceditrnnam,'F' AS ledit, 0 AS chk FROM sycedipd INNER JOIN syceditr ON sycedipd.ceditrntyp = syceditr.ceditrntyp WHERE cPartcode="+"'"+lcPartCode+"'"+" AND cVersion ="+"'"+lcVersion+"' ORDER BY sycedipd.CMapSEt,sycediPD.ceditrntyp","sycedipd")
+lnRes=SQLEXEC(THISFORMSET.lnHand,"SELECT sycasnhd.*,0 AS chk,'F' AS ledit FROM sycasnhd WHERE PARENT_VER LIKE '"+SUBSTR(SYCEDIPD.CMAPSET,1,3)+"%'","SYCASNHD")
+lnRes=SQLEXEC(THISFORMSET.lnHand,"SELECT sycupchd.*,0 AS chk,'F' AS ledit FROM sycupchd WHERE PARENT_VER LIKE '"+SUBSTR(SYCEDIPD.CMAPSET,1,3)+"%'","sycUPChd")
+
+
+THISFORMSET.Form1.grdUPCLABELS.RecordSource = 'SYCUPCHD'
+GO TOP IN sycUPCHD
+
+THISFORMSET.Form1.grdLABELS.RecordSource = 'SYCASNHD'
+GO TOP IN SYCASNHD
+
+THISFORMSET.Form1.GRDTRANACTIONS.RecordSource = 'sycedipd'
+GO TOP IN sycedipd
+
+THISFORMSET.maddtogrid 
+THISFORMSET.mAddcontsource 
+THISFORMSET.Form1.LockScreen = .F.
+SELECT SYCEDIPD
+THISFORMSET.Form1.GRDTRANACTIONS.Refresh
+SELECT SYCASNHD
+THISFORMSET.Form1.GRDLABELS.Refresh
+SELECT SYCUPCHD
+THISFORMSET.Form1.GRDUPCLABELS.Refresh
+
+ENDPROC
+PROCEDURE maddcontsource
+WITH THISFORMSET.Form1.GRDTRANACTIONS
+  .RECORDSOURCE = 'SYCEDIPD'
+  .column1.CONTROLSOURCE = 'CMapSEt'
+  .column1.HEADER1.CAPTION = 'Map Set'
+  .column2.CONTROLSOURCE = 'CEDITRNTYP'
+  .column2.HEADER1.CAPTION = ' # '
+  .column3.CONTROLSOURCE = 'CEDITRNNAM'
+  .column3.HEADER1.CAPTION = 'Trans. Name'
+  .column4.CONTROLSOURCE = 'cpartgsid'
+  .column4.HEADER1.CAPTION = 'GS ID'
+  .column5.CONTROLSOURCE = 'cpartid'
+  .column5.HEADER1.CAPTION = 'ISA ID'
+  .column6.CONTROLSOURCE = 'cpartqual'
+  .column6.HEADER1.CAPTION = 'Partner Qual '
+
+  .column7.CONTROLSOURCE = "IIF(ctrantype='S','Send',IIF(ctrantype='R','Receive',''))"
+  .column7.HEADER1.CAPTION = "Tran Type"
+
+  .column8.CONTROLSOURCE = "IIF(ctranactv='P','Production',IIF(ctranactv='T','Test',''))"
+  .column8.HEADER1.CAPTION = 'Tran Activ'
+
+  .column9.CONTROLSOURCE = "Cgdlnlnk"
+  .column9.HEADER1.CAPTION = 'Guideline'
+
+  .column10.CONTROLSOURCE = 'Cgdlnlnk'
+  .column10.HEADER1.CAPTION = '...'
+  .column10.HEADER1.FONTBOLD = .T.
+  .column10.SPARSE = .F.
+  
+  .column11.CONTROLSOURCE = "cGDattch"
+  .column11.HEADER1.CAPTION = 'Guidelines Attach'
+  .column12.CONTROLSOURCE = "cgdrel"
+  .column12.HEADER1.CAPTION = 'Guidelines Release'
+  .column13.CONTROLSOURCE = "cgdweb"
+  .column13.HEADER1.CAPTION = 'Guidelines WEB'
+  .column14.CONTROLSOURCE = "chk"
+  .column14.HEADER1.CAPTION = ''   
+  
+  .column15.CONTROLSOURCE = "mNotes"
+  .column15.HEADER1.CAPTION = 'Notes'   
+  
+  *FODA [BEGIN]
+  .column16.CONTROLSOURCE = "GLRevDate"
+  .column16.HEADER1.CAPTION = 'Guideline Revision'
+  *FODA [END]
+  
+ENDWITH
+
+SELECT SYCASNHD
+WITH THISFORMSET.Form1.grdLABELS
+
+  .RECORDSOURCE = 'SYCASNHD'
+  .column1.CONTROLSOURCE = "cver"
+  .column1.HEADER1.CAPTION = 'Version'
+  
+  .column2.CONTROLSOURCE = "desc1"
+  .column2.HEADER1.CAPTION = 'Description'
+  
+  .column3.CONTROLSOURCE = "IIF(ctype='Y','Visual','DOS')"
+  .column3.HEADER1.CAPTION = 'Label Type'
+  
+  .column4.CONTROLSOURCE = "IIF(LDETLABEL=.T.,'Detail Label','Master Label')"
+  .column4.HEADER1.CAPTION = 'Detail'
+  
+  .column5.CONTROLSOURCE = "Cgdlnlnk"
+  .column5.HEADER1.CAPTION = 'Guideline'
+  
+  .column6.CONTROLSOURCE = 'Cgdlnlnk'
+  .column6.HEADER1.CAPTION = '...'
+  .column6.HEADER1.FONTBOLD = .T.
+  .column6.SPARSE = .F.
+  .column7.CONTROLSOURCE = "cGDattch"
+  .column7.HEADER1.CAPTION = 'Guidelines Attach'
+  .column8.CONTROLSOURCE = "cgdrel"
+  .column8.HEADER1.CAPTION = 'Guidelines Release'
+  .column9.CONTROLSOURCE = "cgdweb"
+  .column9.HEADER1.CAPTION = 'Guidelines WEB'
+  
+  .column10.CONTROLSOURCE = "chk"
+  .column10.HEADER1.CAPTION = ''  
+  
+  .column11.CONTROLSOURCE = "IIF(ISNULL(account) OR EMPTY(account),'*****',account)"
+  .column11.HEADER1.CAPTION = 'Customer'    
+  
+  .column12.CONTROLSOURCE = "cRep_name"
+  .column12.HEADER1.CAPTION = 'Report Name'
+  
+  *FODA [BEGIN]
+  .column13.CONTROLSOURCE = "GLRevDate"
+  .column13.HEADER1.CAPTION = 'Guideline Revision'
+  *FODA [END]
+
+ENDWITH
+
+
+
+
+*UPC labels
+SELECT SYCUPCHD
+WITH THISFORMSET.Form1.grdUPCLABELS
+
+  .RECORDSOURCE = 'SYCUPCHD'
+
+  .column1.CONTROLSOURCE = "cver"
+  .column1.HEADER1.CAPTION = 'Version'
+  
+  .column2.CONTROLSOURCE = "desc1"
+  .column2.HEADER1.CAPTION = 'Description'
+  .column1.SPARSE = .T.
+    
+  .column3.CONTROLSOURCE = "IIF(ctype='Y','Visual','DOS')"
+  .column3.HEADER1.CAPTION = 'Label Type'
+  
+  .column4.CONTROLSOURCE = "cRep_name"
+  .column4.HEADER1.CAPTION = 'Report Name'
+  
+  .column5.CONTROLSOURCE = "chk"
+  .column5.HEADER1.CAPTION = ''  
+  
+  .column6.CONTROLSOURCE = "IIF(ISNULL(account) OR EMPTY(account) ,'*****',account)"
+  .column6.HEADER1.CAPTION = 'Customer'    
+  *FODA [BEGIN]
+  .column7.CONTROLSOURCE = 'Cgdlnlnk'
+  .column7.HEADER1.CAPTION = '...'
+  .column7.HEADER1.FONTBOLD = .T.
+  .column7.SPARSE = .F.
+  
+  .column8.CONTROLSOURCE = "cGDattch"
+  .column8.HEADER1.CAPTION = 'Guidelines Attach'
+  
+  .column9.CONTROLSOURCE = "GLRevDate"
+  .column9.HEADER1.CAPTION = 'Guideline Revision'
+  *FODA [END]
+ENDWITH
+=THISFORMSET.Form1.GRDTRANACTIONS.AutoFit()
+ENDPROC
+PROCEDURE maddtogrid
+SELECT sycedipd
+
+ENDPROC
+PROCEDURE mloadcursor
+
+lcServName = ALLTRIM(THISFORMSET.lcServName)
+lcDBasName = ALLTRIM(THISFORMSET.lcDBasName)
+lcUserName = ALLTRIM(THISFORMSET.lcUserName)
+lcPassWord = ALLTRIM(THISFORMSET.lcPassWord)
+
+SELECT 0
+THIS.lnHand = OpenSqlConnection(lcServName, lcDBasName, lcUserName, lcPassWord, 'mapping database')
+IF THIS.lnHand < 1
+  RETURN .F.
+ENDIF
+THIS.lnHandlife = -1
+lnRes=SQLEXEC(THIS.lnHand,"SELECT DISTINCT cpartcode, cpartname, cParentCode FROM  sycediph ORDER BY cPartCode","PARTNERS")
+
+lnRes=SQLEXEC(THIS.lnHand,"SELECT DISTINCT 0 AS chk,cpartcode, cpartname, cParentCode FROM  sycediph ORDER BY cPartCode","PPARTNERS")
+
+lcPartCode = ALLTRIM(PARTNERS.cPartCode)
+THISFORMSET.FORM1.TXTPRTNAME.Value = ALLTRIM(PARTNERS.CPARTNAME)
+THISFORMSET.FORM1.TXTPARENTCODE.Value = ALLTRIM(PARTNERS.CPARENTCODE)
+
+lnRes=SQLEXEC(THISFORMSET.lnHand,"select DISTINCT cVersion from sycedipd where cpartcode='"+lcPartCode+"'","Version")
+lcPartCode = ALLTRIM(THISFORMSET.Form1.cboTransactions.Value )
+lcVersion  = ALLTRIM(THISFORMSET.Form1.cboVersion.Value)
+
+lnRes=SQLEXEC(THISFORMSET.lnHand,"SELECT sycedipd.*, syceditr.ceditrnnam AS ceditrnnam,'F' AS ledit,0 AS chk FROM sycedipd INNER JOIN syceditr ON sycedipd.ceditrntyp = syceditr.ceditrntyp WHERE cPartcode="+"'"+lcPartCode+"'"+" AND cVersion ="+"'"+lcVersion+"' ORDER BY sycedipd.CMapSEt,sycediPD.ceditrntyp ","sycedipD")
+lnRes=SQLEXEC(THISFORMSET.lnHand,"SELECT sycasnhd.*,0 AS chk,'F' AS ledit FROM sycasnhd WHERE cVER LIKE '"+SUBSTR(SYCEDIPD.CMAPSET,1,2)+"%'","SYCASNHD")
+lnRes=SQLEXEC(THIS.lnHand,"select * from SYCEDITR ","SYCEDITR")
+THISFORMSET.mGetmappings
+
+THISFORMSET.Form1.LockScreen = .F.
+ENDPROC
+PROCEDURE mlockmap
+PARAMETERS llDisplay 
+lcTrnType = PADR(THISFORMSET.Form1.cboTransactions.VALUE,3)
+lcMapset  = PADR(MAPGRID.cMapSet,3)
+lcVersion = PADR(THISFORMSET.Form1.cboVersion.Value,12)
+lcUserID  = SYCEDIPD.CLockUser 
+lcFolder  = ALLTRIM(THISFORMSET.Form1.txtLocalFolder.Value)
+lcFolder   = ALLTRIM(lcFolder + IIF(RIGHT(lcFolder,1)<>"\","\"," "))
+lcFileHdr  = ''
+lcFileDtl  = ''
+lcEDIType  = 'S'
+lcHdrOrder = ''
+lcDtlorder = ''
+THISFORMSET.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+IF (!EMPTY(lcFileHdr) AND FILE(lcFolder+lcFileHdr+'.'+lcMapset)) OR ;
+   (!EMPTY(lcFileDtl) AND FILE(lcFolder+lcFileDtl+'.'+lcMapset))
+  lnAnsr=MESSAGEBOX("the file "+lcFolder+lcFileHdr+"."+lcMapset+" Already Exist, OverWrite",4+32, 'Error') 
+  IF lnAnsr = 7
+    RETURN
+  ENDIF
+ENDIF
+IF lcEdiType = 'R' AND !llDisplay
+   lcSqlStatmnt = "SELECT * FROM MapStats where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+ ;
+                  lcVersion+"' AND Type = 'R' AND lLocked = '1'"  
+   lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"MapStats")
+   IF lnRes = 1
+     IF !EOF('MapStats')
+      =MESSAGEBOX("There are transaction # "+MapStats.cTranType+" Locked ...Could not continue",0+16,'Error')
+      RETURN
+     ENDIF
+   ENDIF
+ENDIF
+IF !EMPTY(lcFileHdr)
+  IF lcEdiType $ 'LT'
+     lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cVer ='"+lcMapSEt+"'" 
+     IF lcEdiType = 'L'
+      lcSqlStatmnt = lcSqlStatmnt && + "AND cPrint_Id ='"+lcVersion+"'"
+     ENDIF
+     lcSqlStatmnt = lcSqlStatmnt + " ORDER BY " + lcHdrOrder 
+  ELSE
+    lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+;
+                      lcVersion+"' ORDER BY " + lcHdrOrder 
+  ENDIF
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcFileHdr")
+ENDIF
+IF !EMPTY(lcFileDtl)
+  lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+;
+                 lcVersion+"' ORDER BY " + lcDtlorder 
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcFileDtl")
+ENDIF
+IF lcEdiType = 'L'
+  lcSqlStatmnt = "SELECT * FROM SYCASNHD where cVer ='"+lcMapSEt+"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"SYCASNHD")
+  lcSqlStatmnt = "SELECT * FROM SYCASNDT where cVer ='"+lcMapSEt+"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"SYCASNDT")
+ENDIF
+
+IF lnRes = 1
+  lcSqlStatmnt = "UPDATE mapstats SET lockuser ='"+lcUserID+"',lLocked=1,lockdare =GETDATE() WHERE (ctrantype+cversion+cmapset+type='" + ;
+                 lcTrnType +"'+'"+lcVersion+"'+'"+lcMapset+"'+'"+lcEDIType+"')"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  IF USED('lcFileHdr')
+    SELECT lcFileHdr
+    COPY TO lcFolder+lcFileHdr+"."+lcMapSet
+  ENDIF
+   IF USED('lcFileDtl')
+    SELECT lcFileDtl
+    COPY TO lcFolder+lcFileDtl+"."+lcMapSet
+  ENDIF
+  IF lcEdiType = 'L'
+    IF USED('SYCASNHD')
+      SELECT SYCASNHD
+      COPY TO lcFolder+"SYCASNHD."+lcMapSet
+    ENDIF
+    IF USED('SYCASNDT')
+      SELECT SYCASNDT
+      COPY TO lcFolder+"SYCASNDT."+lcMapSet
+    ENDIF
+  ENDIF
+  IF !llDisplay
+    =MESSAGEBOX('Download Successfully          ',0+64, 'Download Mappings')
+  ENDIF
+  THISFORMSET.mgetmappings 
+ENDIF
+IF USED('MapStats')
+  USE IN MapStats
+ENDIF
+IF USED('lcFileHdr')
+  USE IN lcFileHdr
+ENDIF
+IF USED('lcFileDtl')
+  USE IN lcFileDtl
+ENDIF
+IF USED('SYCASNHD')
+  USE IN SYCASNHD
+ENDIF
+IF USED('SYCASNDT')
+  USE IN SYCASNDT
+ENDIF
+
+ENDPROC
+PROCEDURE muploadmap
+lcTrnType = PADR(THISFORMSET.Form1.cboTransactions.VALUE,3)
+lcMapset  = PADR(MAPGRID.cMapSet,3)
+lcVersion = PADR(THISFORMSET.Form1.cboVersion.Value,12)
+lcUserID  = MAPGRID.CLockUser 
+lcFolder  = ALLTRIM(THISFORMSET.Form1.txtLocalFolder.Value)
+lcFolder   = ALLTRIM(lcFolder + IIF(RIGHT(lcFolder,1)<>"\","\"," "))
+lcFileHdr  = ''
+lcFileDtl  = ''
+lcEDIType  = 'S'
+lcHdrOrder = ''
+lcDtlorder = ''
+THISFORMSET.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+IF !EMPTY(lcFileHdr) AND !FILE(lcFolder+lcFileHdr+'.'+lcMapset)
+  MESSAGEBOX("File " + lcFolder+lcFileHdr+'.'+lcMapset + "Does Not Exist",0+16,'Error')
+ENDIF
+IF !EMPTY(lcFileDtl) AND !FILE(lcFolder+lcFileDtl+'.'+lcMapset)
+  MESSAGEBOX("File " + lcFolder+lcFileHdr+'.'+lcMapset + "Does Not Exist",0+16,'Error')
+ENDIF
+lnAnser=MESSAGEBOX('Are you sur that you want to upload this map?',4+32, 'Upload Mappings')
+IF lnAnser = 7
+  RETURN
+ENDIF
+lnTotalRes = 1
+lcSqlStatmnt = "Begin Transaction"
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+
+IF !EMPTY(lcFileHdr)
+  IF lcEDIType  $ 'LT'
+     lcSqlStatmnt = "DELETE  FROM "+lcFileHdr+" where cVer ='"+lcMapSEt+"'" 
+     IF lcEdiType = 'L'
+       lcSqlStatmnt = lcSqlStatmnt  && + "AND cPrint_Id ='"+lcVersion+"'"
+     ENDIF
+  ELSE
+    lcSqlStatmnt = "DELETE  FROM "+lcFileHdr+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+lcVersion+"'"
+  ENDIF
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  IF lcEdiType = 'L'
+     lcSqlStatmnt = "DELETE  FROM SYCASNHD where cVer ='"+lcMapSEt+"'" 
+     lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+     lcSqlStatmnt = "DELETE  FROM SYCASNDT where cVer ='"+lcMapSEt+"'" 
+     lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  ENDIF
+ENDIF
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+IF !EMPTY(lcFileDtl) AND lnTotalRes = 1
+  lcSqlStatmnt = "DELETE  FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+lcVersion+"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+ENDIF
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+IF lnTotalRes = 1
+  IF !EMPTY(lcFileHdr)
+    IF !USED(lcFileHdr)
+      USE  lcFolder+lcFileHdr+'.'+lcMapSet IN 0
+    ENDIF
+    SELECT (lcFileHdr)
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  lcFileHdr + '  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString(lcFileHdr)
+      lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+    ENDSCAN
+    lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  ENDIF
+  IF !EMPTY(lcFileDtl)  AND lnTotalRes = 1
+    IF !USED(lcFileDtl)
+      USE  lcFolder+lcFileDtl+'.'+lcMapSet IN 0
+    ENDIF
+    SELECT (lcFileDtl)
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  lcFileDtl + '  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString(lcFileDtl)
+      lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+    ENDSCAN
+    lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  ENDIF
+  IF lcEdiType = 'L' AND lnTotalRes = 1
+    IF !USED('SYCASNHD')
+      USE lcFolder+'SYCASNHD.'+lcMapSet IN 0
+    ENDIF
+    SELECT SYCASNHD
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCASNHD  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCASNHD')
+      lnRes = SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+    ENDSCAN
+    lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    IF lnTotalRes = 1
+    IF !USED('SYCASNDT')
+      USE  lcFolder+'SYCASNDT.'+lcMapSet IN 0
+    ENDIF
+    SELECT SYCASNDT
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCASNDT : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCASNDT')
+      lnRes = SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+    ENDSCAN
+    lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    ENDIF
+  ENDIF
+  
+  lcRelease = PADL(ALLTRIM(STR(VAL(MAPGRID.crelaseno)+1)),6,'0')
+  lcSqlStatmnt = "UPDATE mapstats SET lockuser ='',lLocked=0,lockdare =GETDATE() ,cRelaseNo = '"+lcRelease+"' WHERE (ctrantype+cversion+cmapset+type='" + ;
+                lcTrnType +"'+'"+lcVersion+"'+'"+lcMapset+"'+'"+lcEDIType+"')"
+                
+  lcSqlStatmnt_PD = "UPDATE SYCEDIPD SET DEDIT_DATE=GETDATE() WHERE (ctrantype+cversion+cmapset+type='" + ;
+                    lcTrnType +"'+'"+lcVersion+"'+'"+lcMapset+"'+'"+lcEDIType+"')"
+
+                
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  
+  *lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt_PD)
+  *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  
+  lcSqlStatmnt = "SELECT * FROM MapHstry WHERE cTranType = '000'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,'MapHstry')
+  lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  SELECT MapHstry
+  SCATTER MEMVAR BLANK
+  
+  m.cTrantype  = lcTrnType
+  m.cVersion  = lcVersion
+  m.cMapSet   = lcMapset
+  m.cRelaseno = lcRelease
+  m.BuildNo   = MAPGRID.BuildNo
+  m.TpRevision= MAPGRID.TpRevision
+  m.modifRef  = MAPGRID.modifRef
+  m.cUserId   = lcUserID
+ lcSqlStatmnt = THISFORMSET.mBuildString('MapHstry')
+ lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+ lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+ENDIF
+IF lnTotalRes = 1
+   lcSqlStatmnt = "Commit"
+   lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+   =MESSAGEBOX('Upload Successfully          ',0+64, 'UpLoad Mappings')
+    THISFORMSET.mgetmappings 
+ELSE 
+   lcSqlStatmnt = "ROLLBACK"
+   lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  MESSAGEBOX("Couldn't Delete the original Map Records",0+16,'Error')
+  RETURN
+ENDIF
+IF USED(lcFileHdr)
+  USE IN (lcFileHdr)
+ENDIF
+IF USED(lcFileDtl)
+  USE IN (lcFileDtl)
+ENDIF
+IF USED('MapHstry')
+  USE IN MapHstry
+ENDIF
+IF USED('SYCASNHD')
+  USE IN SYCASNHD
+ENDIF
+IF USED('SYCASNDT')
+  USE IN SYCASNDT
+ENDIF
+
+ENDPROC
+PROCEDURE mgetfilesname
+PARAMETERS lcFileHdr, lcFileDtl, lcEDIType , lcHdrOrder , lcDtlorder
+DO CASE
+  CASE  '204' $ lcTrnType 
+    lcFileHdr = 'SYCEDISM'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  CASE  '753' $ lcTrnType 
+    lcFileHdr = 'SYCEDIRF'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  CASE  '754' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '810' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'  
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDIFS'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF          
+  CASE  '811' $ lcTrnType 
+    lcFileHdr = 'SYCEDIFS'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  CASE  '812' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'I'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDICD'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+  CASE  '816' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '820' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '824' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '830' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '832' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDISC'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+  CASE  '850' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDIPO'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+    
+  CASE  '180' $ lcTrnType 
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    
+  CASE  '852' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'  
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDIPA'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF      
+  CASE  '846' $ lcTrnType 
+    *N000533,1 WLD Transaction 846 [Begin]
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      *N000533,1 WLD Transaction 846 [End]
+      lcEDIType     = 'R'
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+      *N000533,1 WLD Transaction 846 [Begin]
+    ELSE
+      lcFileHdr = 'SYCEDIIB'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+    *N000533,1 WLD Transaction 846 [End]
+  CASE  '855' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDIPR'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+  CASE  '856' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDISH'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF  
+  CASE  '940' $ lcTrnType 
+    lcFileHdr = 'SYCEDIOW'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  CASE  '943' $ lcTrnType 
+    lcFileHdr = 'SYCEDIST'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  CASE  '944' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '945' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '860' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  *N000611,1 WLD Transaction 865 06/03/2008 [Begin]
+  CASE  '865' $ lcTrnType 
+    lcFileHdr = 'SYCEDICA'
+    lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+  *N000611,1 WLD  Transaction 865 06/03/2008 [End]  
+  CASE  '864' $ lcTrnType 
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDITX'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+     ENDIF
+  CASE  '869' $ lcTrnType 
+    lcEDIType     = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  '870' $ lcTrnType
+    IF SUBSTR(SYCEDIPD.CTRANTYPE,1,1)= 'R'
+      lcEDIType     = 'R' 
+      lcFileHdr  = 'SYCEDISG'
+      lcFileDtl  = 'SYCEDISF'
+      lcHdrOrder = 'cmapset+cversion+segid'
+      lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+    ELSE
+      lcFileHdr = 'SYCEDIRS'
+      lcHdrOrder= 'cmapset+cversion+loop_id+STR(f_order,2)'
+    ENDIF
+  CASE  '997' $ lcTrnType
+    lcEDIType  = 'R' 
+    lcFileHdr  = 'SYCEDISG'
+    lcFileDtl  = 'SYCEDISF'
+    lcHdrOrder = 'cmapset+cversion+segid'
+    lcDtlorder = 'cmapset+cversion+segid+STR(f_order,2)'
+  CASE  'LBL' $ lcTrnType
+    lcEDIType  = 'L' 
+    lcFileHdr  = 'SYCASNLB'
+    lcHdrOrder= 'cver+cprint_id+ceditype+STR(nseq,4)'
+  CASE  'TKT' $ lcTrnType
+    lcEDIType     = 'T' 
+    lcFileHdr  = 'SYCUPCLB'
+    lcHdrOrder= 'cver+ceditype+STR(nseq,4)'
+ENDCASE
+
+
+ENDPROC
+PROCEDURE mbuildstring
+PARAMETERS lcfileName
+LOCAL lcStr
+lcStr = ""    && Default return string by empty string.
+lcStr = "INSERT INTO " +lcfileName 
+STORE "" TO lcStr1,lcStr2
+*--Loop on the cursor fields.
+FOR lnI=1 TO FCOUNT()
+  *--Read field in variable.
+  lcCField = FIELD(lnI)
+  lcCFldDType = TYPE(lcCField)
+  lcStr1 = lcStr1 +"["+lcCField+"],"
+  IF UPPER(lcCField) = "ROWGUID"
+     lcStr2 = lcStr2 +"newid(),"
+  ELSE
+    lcStr2 = lcStr2 +"?m."+lcCField+","
+  ENDIF
+ENDFOR
+
+*--Remove last comma,
+lcStr1 = SUBSTR(lcStr1,1,LEN(lcStr1)-1)
+lcStr2 = SUBSTR(lcStr2,1,LEN(lcStr2)-1)
+lcStr  = lcStr + " ( "+lcStr1+" ) VALUES ( "+lcStr2+" )"
+RETURN lcStr
+
+
+
+ENDPROC
+PROCEDURE munlockmap
+lcTrnType = PADR(THISFORMSET.Form1.cboTransactions.VALUE,3)
+lcMapset  = PADR(SYCEDIPD.cMapSet,3)
+lcVersion = PADR(THISFORMSET.Form1.cboVersion.Value,12)
+lcUserID  = SYCEDIPD.CLockUser 
+lcFolder  = ALLTRIM(THISFORMSET.Form1.txtLocalFolder.Value)
+lcFolder   = ALLTRIM(lcFolder + IIF(RIGHT(lcFolder,1)<>"\","\"," "))
+lcFileHdr  = ''
+lcFileDtl  = ''
+lcEDIType  = 'S'
+lcHdrOrder = ''
+lcDtlorder = ''
+THISFORMSET.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+lcSqlStatmnt = "UPDATE mapstats SET lockuser ='',lLocked=0,lockdare =GETDATE() WHERE (ctrantype+cversion+cmapset+type='" + ;
+              lcTrnType +"'+'"+lcVersion+"'+'"+lcMapset+"'+'"+lcEDIType+"')"
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+THISFORMSET.mgetmappings 
+
+
+ENDPROC
+PROCEDURE mgenrtexe
+Parameters lcmapset,lcTrnType,llOverWrite
+Select sycedipd
+ 
+If !Empty(lcTrnType)
+  lcVersion = Padr(Thisformset.Form1.cboVersion.Value,12)
+
+  *lcUserID  = SYCEDIPD.CLockUser
+  lcFolder  = Alltrim(Thisformset.Form1.txtLocalFolder.Value)
+  lcFileHdr  = ''
+  lcFileDtl  = ''
+  lcEDIType  = 'S'
+  lcFolder   = Alltrim(lcFolder + Iif(Right(lcFolder,1)<>"\","\"," "))
+  lcHdrOrder = ''
+  lcDtlorder = ''
+  Thisformset.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+
+  If lcEDIType  $ 'SR'
+
+    lcSqlStatmnt = "SELECT sycediph.cpartcode+'-'+SYCEDIPH.cPartName as 'PArtName',SYCEDIPD.cPartCode  FROM sycediph INNER JOIN ;
+    sycedipd ON sycediph.cpartcode = sycedipd.cpartcode where sycedipd.cMapSet ='" ;
+      +lcmapset+"' AND sycedipd.cVersion LIKE '"+Left(lcVersion,6)+"%' AND sycedipd.cEdiTrnTyp ='"+lcTrnType+"'"
+
+    *  lcSqlStatmnt = "SELECT sycediph.cpartcode+'-'+SYCEDIPH.cPartName as 'PArtName',SYCEDIPD.cPartCode  FROM sycediph INNER JOIN ;
+    *  sycedipd ON sycediph.cpartcode = sycedipd.cpartcode where sycedipd.cMapSet ='" ;
+    *  +lcMapSEt+"' AND sycedipd.cEdiTrnTyp='"+lcTrnType+"'"
+
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"PartNers1")
+    If !llOverWrite
+      If lnRes <> 1  Or Eof('PartNers1')
+        =Messagebox("There are no Partner use this map...Could not continue",0+16,'Error')
+        Return .F.
+      Endif
+    Endif
+    Select PartNers1
+    lcPartner = ''
+    *XXX,1 HIA [Begin][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]
+    *!*	  DO FORM PRTNRINF TO lcPartner
+    *!*	  IF EMPTY(lcPartner)
+    *!*	    RETURN
+    *!*	  ENDIF
+    lcSqlStatmnt = "SELECT Distinct cnetwork from sycedipd where cmapset ='"+lcmapset+"'"
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"Networks")
+    Select PartNers1
+    If Empty(lcPartner_Network)
+      Do Form PRTNRINF To lcPartner_Network
+      If Empty(lcPartner_Network)
+        Return .F.
+      Endif
+    Endif
+    lcPartner = Substr(lcPartner_Network,1,At(',||,',lcPartner_Network)-1)
+    lcNetwork = Substr(lcPartner_Network,At(',||,',lcPartner_Network)+4,Len(lcPartner_Network))
+
+    *XXX,1 HIA [End][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]
+    *T20070625.003 WLD  Exceptions
+    *E302513 HIA [BEGIN]
+    *IF INLIST(lcTrnType,'810','856')
+    *T20120606.0004,1 HIA, Allow to generate EDi exception rows, with Receive transactions , 2012 Sep 3 [Begin]
+    *If lcEDIType = 'S'
+    If lcEDIType = 'S' OR lcEDIType = 'R'
+    *T20120606.0004,1 HIA, Allow to generate EDi exception rows, with Receive transactions , 2012 Sep 3 [End]
+      *E302513 HIA [END]
+      lcSqlStatmnt = "SELECT Distinct customer.ccustomer FROM customer,SYCEDIXP WHERE customer.ccustomer = SYCEDIXP.ccustomer and  cMapSet ='"+lcmapset+"' and CVERSION = '"+lcVersion+"' and ceditrntyp ='"+lcTrnType+"'"
+
+      lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"Customer")
+      Select Customer
+      If Empty(lcCust) And !Eof('Customer')
+        Do Form Customer To lcCust
+      Endif
+    Endif
+
+  Else
+    *  lcSqlStatmnt = "SELECT cpartcode+'-'+cPartName as 'PArtName',cPartCode  FROM sycediph  ;
+    where casnlbl1 ='" +lcMapSEt+"' OR casnlbl2 ='"+lcMapSEt+"' "
+  Endif
+
+
+  lnUserSlct = 2
+  If File(lcFolder+lcmapset+'.EXE')
+
+    If llOverWrite
+      lnUserSlct = 7
+    Else
+      lnUserSlct = Messagebox('File already exist, Overwrite.',35,_Screen.Caption)
+    Endif
+
+
+    Do Case
+    Case lnUserSlct = 6
+      Erase (lcFolder+lcmapset+'.EXE')
+    Case   lnUserSlct = 7
+      Rename (lcFolder+lcmapset+'.EXE') To (lcFolder+lcmapset+'.ZIP')
+    Otherwise
+      Return
+    Endcase
+  Endif
+
+
+
+  lnRes = 1
+  *--lcFileHdr
+  If !Empty(lcFileHdr)
+    If Used(lcFileHdr)
+      Use In (lcFileHdr)
+    Endif
+    Erase (lcFolder+lcFileHdr+".*")
+
+    If lcEDIType  $ 'SR'
+      lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cMapSet ='"+lcmapset+"' AND cVersion ='"+ ;
+        lcVersion+ "' ORDER BY "+ lcHdrOrder
+
+      *lcSqlStatmnt = "SELECT * FROM "+lcFileHDr+" where cMapSet ='"+lcMapSEt+"' ORDER BY "+ lcHdrOrder
+    Else
+      lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cVer ='"+lcmapset+"'"
+      If lcEDIType = 'L'
+        lcSqlStatmnt = lcSqlStatmnt  && + "AND cPrint_Id ='"+lcVersion+"'"
+      Endif
+      lcSqlStatmnt = lcSqlStatmnt + " ORDER BY " + lcHdrOrder
+    Endif
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcFileHDr")
+    If lnRes = 1
+      Select lcFileHdr
+      If Reccount() < 1
+        Messagebox('The file '+lcFileHdr + ' has no generated records',16,_Screen.Caption  )
+      Endif
+      Copy To lcFolder+lcFileHdr+"."+lcmapset
+    Endif
+
+  Endif
+  ***********************************************
+
+  *--lcFileDtl
+  If !Empty(lcFileDtl) And lnRes = 1
+    If Used(lcFileDtl)
+      Use In (lcFileDtl)
+    Endif
+    Erase (lcFolder+lcFileDtl+"."+lcmapset)
+    lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcmapset+"' AND cVersion ='"+ ;
+      lcVersion+"' ORDER BY "+ lcDtlorder
+    *lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' ORDER BY "+ lcDtlorder
+
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcFileDtl")
+    If lnRes = 1
+      Select lcFileDtl
+      If Reccount() < 1
+        Messagebox('The file '+lcFileHdr + ' Has no generated records',16,_Screen.Caption  )
+      Endif
+      Copy To lcFolder+lcFileDtl+"."+lcmapset
+    Endif
+  Endif
+
+
+  *****************************************
+  *--SYCEDIPH
+  If lnRes = 1 And !Inlist(lcEDIType,'L' ,'T')
+    If Used('SYCEDIPH')
+      Use In SYCEDIPH
+    Endif
+    Erase (lcFolder+'SYCEDIPH'+"."+lcmapset)
+
+    lcSqlStatmnt = "SELECT * FROM SYCEDIPH where "+ Alltrim(Thisformset.DIv_str) +" AND CVERSION LIKE '" +Left(lcVersion,6)+"%'"
+
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCPH")
+    If lnRes = 1
+      Select lcSYCPH
+      If Reccount() < 1
+        Messagebox('The file Partner Header has no generated records',16,_Screen.Caption  )
+      Endif
+      Copy To lcFolder+"SYCEDIPH."+lcmapset
+    Else
+      Messagebox('Not all divisions were attached. ' ,16,_Screen.Caption  )
+    Endif
+  Endif
+  *********************************
+  *--SYCEDIPD
+  If Used('SYCEDIPD1')
+    Use In sycedipd1
+  Endif
+  If llOverWrite
+    Erase (lcFolder+'SYCEDIPD'+"."+lcmapset)
+  Endif
+
+  *XXX,1 HIA [Begin][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]
+  *!* lcSqlStatmnt = "SELECT * FROM SYCEDIPD where cPartCode ='"+lcPartner+"' AND CVERSION LIKE'" +LEFT(lcVersion,6)+"%'"
+  *!*	     IF ISNULL(lcNetwork) OR EMPTY(lcNetwork)
+  *!*	        lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where ceditrntyp='"+lcTrnType+"' and CVERSION LIKE'" +LEFT(lcVersion,6)+"%' AND "+;
+  *!*	                          +ALLTRIM(THISFORMSET.DIV_str2 )
+  *!*	      ELSE
+  *!*	        lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where cNetwork ='"+lcNetwork + "' And ceditrntyp='"+lcTrnType+"' AND CVERSION LIKE '" +;
+  *!*	                       LEFT(lcVersion,6) +"%' AND "+ALLTRIM(THISFORMSET.DIv_str2)
+  *!*	      ENDIF
+
+
+  If Isnull(lcNetwork) Or Empty(lcNetwork)
+    *    lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where ceditrntyp='"+lcTrnType+"' and CVERSION LIKE'" +LEFT(lcVersion,6)+"%' AND "+;
+    +ALLTRIM(THISFORMSET.DIV_str2 )
+    lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where ceditrntyp " + lcTrnNo + " and CVERSION LIKE'" +Left(lcVersion,6)+"%' AND "+;
+      +Alltrim(Thisformset.DIV_str2 )
+
+
+  Else
+    *    lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where ceditrntyp='"+lcTrnType+"' and cNetwork ='"+lcNetwork + "' AND CVERSION LIKE '" +;
+    LEFT(lcVersion,6) +"%' AND "+ALLTRIM(THISFORMSET.DIV_str2)
+    lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where ceditrntyp " + lcTrnNo + " and cNetwork ='"+lcNetwork + "' AND CVERSION LIKE '" +;
+      LEFT(lcVersion,6) +"%' AND "+Alltrim(Thisformset.DIV_str2)
+
+  Endif
+  *XXX,1 HIA [End][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]
+  lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCPD")
+
+  If lnRes = 1
+    Select lcSYCPD
+    If Reccount() < 1
+      Messagebox('The file Partner Detail has no generated records',16,_Screen.Caption  )
+    Endif
+    **IF llOverWrite
+    Copy To lcFolder+"SYCEDIPD."+lcmapset
+    **ELSE
+    **  IF !USED("SYCEDIPD."+lcmapset)
+    **    USE lcFolder+"SYCEDIPD."+lcmapset IN 0
+    **  ENDIF
+    **  SELECT ("SYCEDIPD."+lcmapset)
+    **  APPEND FROM lcSYCPD
+    **  USE IN  ("SYCEDIPD."+lcmapset)
+    **ENDIF
+  Else
+    Messagebox('Not all divisions were attached. ' + '  '+ lcTrnType ,16,_Screen.Caption  )
+  Endif
+
+  *--SYCEDITR
+  Erase (lcFolder+'SYCEDITR'+"."+lcmapset)
+  lcSqlStatmnt = "SELECT * FROM SYCEDITR where ceditrntyp ='"+lcTrnType+"'"
+  lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCTR")
+  If lnRes = 1
+    Select lcSYCTR
+    Copy To lcFolder+"SYCEDITR."+lcmapset
+  Endif
+
+  *-- SYCEDISV
+  Erase (lcFolder+'SYCEDISV'+"."+lcmapset)
+  lcSqlStatmnt = "SELECT * FROM SYCEDISV WHERE "+Alltrim(Thisformset.DIV_str2)+" AND CVERSION = '"+lcVersion+"' "
+  lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCSV")
+  If lnRes = 1
+    Select lcSYCSV
+    Copy To lcFolder+"SYCEDISV."+lcmapset
+  Endif
+
+  *-- SYCEDIAK
+  Erase (lcFolder+'SYCEDIAK'+"."+lcmapset)
+  lcSqlStatmnt = "SELECT * FROM SYCEDIAK "
+  lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCAK")
+  If lnRes = 1
+    Select lcSYCAK
+    Copy To lcFolder+"SYCEDIAK."+lcmapset
+  Endif
+  *-- SYCEDIXP
+  *T20070625.003 WLD Exception
+  *E302513 HIA [Begin]
+  *IF INLIST(lcTrnType,'810','856') AND !EMPTY(lcCust)
+  *lcSqlStatmnt = "SELECT * FROM SYCEDIXP WHERE cMapSet ='"+lcmapset+"' and CVERSION = '"+lcVersion+"' and ceditrntyp ='"+lcTrnType+"' and  ccustomer ='"+lcCust+"'"
+  *T20120606.0004,1 HIA, Allow to generate EDi exception rows, with Receive transactions , 2012 Sep 3 [Begin]
+  *If Inlist(lcEDIType,'S','LBL') And !Empty(lcCust)
+  *If  lcEDIType = 'S'
+  If Inlist(lcEDIType,'R','S','LBL') And !Empty(lcCust)
+    If  lcEDIType = 'S' OR lcEDIType = 'R'
+      *T20120606.0004,1 HIA, Allow to generate EDi exception rows, with Receive transactions , 2012 Sep 3 [End]
+      lcSqlStatmnt = "SELECT * FROM SYCEDIXP WHERE cMapSet ='"+lcmapset+"' and CVERSION = '"+lcVersion+"' and ceditrntyp ='"+lcTrnType+"' and  ccustomer ='"+lcCust+"'"
+    Else
+      lcSqlStatmnt = "SELECT * FROM SYCEDIXP WHERE cMapSet ='"+lcmapset+"' and ceditrntyp ='"+lcTrnType+"' and  ccustomer ='"+lcCust+"'"
+    Endif
+    *E302513 HIA [End]
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCXP")
+    If lnRes = 1
+      Select lcSYCXP
+      If Reccount() < 1
+        Messagebox('The file SYCEDIXP has no generated records',0,_Screen.Caption  )
+      Endif
+
+      *E302513 HIA [BEGIN]
+      *!*         Copy To lcFolder+"SYCEDIXP."+lcmapset
+      *!*	      COPY TO lcFolder+"SYCEDIXP_"+lcTrnType+"."+lcmapset
+      *!*	      IF FILE(lcFolder+"SYCEDIXP."+lcmapset)
+      *!*	        *IF !EOF('lcSYCXP')
+      *!*	        IF lcTrnType= '810'
+      *!*	          IF FILE(lcFolder+"SYCEDIXP_856"+"."+lcmapset)
+      *!*	            IF !USED('SYCEDIXP')
+      *!*	              USE lcFolder+"SYCEDIXP."+lcmapset IN 0
+      *!*	            ENDIF
+      *!*	            SELECT SYCEDIXP
+      *!*	            APPEND FROM  lcFolder+"SYCEDIXP_856"+"."+lcmapset && FOR ceditrntyp = lcTrnType
+      *!*	            USE IN SYCEDIXP
+      *!*	            *Erase (lcFolder+"SYCEDIXP_856"+"."+lcmapset)
+      *!*	            *Erase (lcFolder+"SYCEDIXP_810"+"."+lcmapset)
+      *!*	          ENDIF
+      *!*	        ENDIF
+      *!*	        IF lcTrnType= '856'
+      *!*	          IF FILE(lcFolder+"SYCEDIXP_810"+"."+lcmapset)
+      *!*	            IF !USED('SYCEDIXP')
+      *!*	              USE lcFolder+"SYCEDIXP."+lcmapset IN 0
+      *!*	            ENDIF
+      *!*	            SELECT SYCEDIXP
+      *!*	            APPEND FROM  lcFolder+"SYCEDIXP_810"+"."+lcmapset
+      *!*	            USE IN SYCEDIXP
+      *!*	            *Erase (lcFolder+"SYCEDIXP_810"+"."+lcmapset)
+      *!*	            *Erase (lcFolder+"SYCEDIXP_856"+"."+lcmapset)
+      *!*	          ENDIF
+      *!*	        ENDIF
+      *!*	        *ENDIF
+
+      *!*	      ELSE
+      *!*	        *  COPY TO lcFolder+"SYCEDIXP."+lcmapset
+      *!*	      ENDIF
+
+      If !File(lcFolder+"SYCEDIXP."+lcmapset)
+        Copy To lcFolder+"SYCEDIXP."+lcmapset
+      Else
+        Copy To lcFolder+"SYCEDIXPTMP."+lcmapset
+        If !Used('SYCEDIXP')
+          Use lcFolder+"SYCEDIXP."+lcmapset In 0
+        Endif
+        If !Used('SYCEDIXPTMP')
+          Use lcFolder+"SYCEDIXPTMP."+lcmapset In 0
+        Endif
+        Select SYCEDIXP
+
+        Append From  lcFolder+"SYCEDIXPTMP"+"."+lcmapset
+        Use In  SYCEDIXPTMP
+        Erase (lcFolder+"SYCEDIXPTMP"+"."+lcmapset)
+      Endif
+
+      *E302513 HIA [END]
+    Endif
+  Endif
+  ****************
+  *-- SYCASNHD & SYCASNDT
+  If lnRes = 1 And lcEDIType = 'L'
+    If Used('SYCASNHD1')
+      Use In SYCASNHD1
+    Endif
+    Erase (lcFolder+'SYCASNHD'+"."+lcmapset)
+    lcSqlStatmnt = "SELECT * FROM SYCASNHD where cver ='" +lcmapset +"'"
+    lnRes = SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCLH")
+
+    If lnRes = 1
+      Select lcSYCLH
+      Copy To lcFolder+"SYCASNHD."+lcmapset
+    Endif
+    If Used('SYCASNDT1')
+      Use In SYCASNDT1
+    Endif
+    Erase (lcFolder+'SYCASNDT'+"."+lcmapset)
+    lcSqlStatmnt = "SELECT * FROM SYCASNDT where cver ='" +lcmapset +"'"
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCLD")
+    If lnRes = 1
+      Select lcSYCLD
+      Copy To lcFolder+"SYCASNDT."+lcmapset
+    Endif
+
+    *E302513 HIA [Begin]
+    lcSqlStatmnt = "SELECT Distinct customer.ccustomer FROM customer,SYCEDIXP WHERE customer.ccustomer = SYCEDIXP.ccustomer and  cMapSet ='"+lcmapset+"' and ceditrntyp ='"+lcTrnType+"'"
+
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"Customer")
+
+    Select Customer
+    If Empty(lcCust) And !Eof('Customer')
+      Do Form Customer To lcCust
+    Endif
+    
+    If !Empty(lcCust)
+
+      lcSqlStatmnt = "SELECT * FROM SYCEDIXP WHERE cMapSet ='"+lcmapset+"' and ceditrntyp ='"+lcTrnType+"' and  ccustomer ='"+lcCust+"'"
+      lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCXP")
+      If lnRes = 1
+        Select lcSYCXP
+
+        If Reccount() < 1
+          Messagebox('The file SYCEDIXP has no generated records',0,_Screen.Caption  )
+        Endif
+
+         
+        If !File(lcFolder+"SYCEDIXP."+lcmapset)
+
+          Copy To lcFolder+"SYCEDIXP."+lcmapset
+        Else
+          Copy To lcFolder+"SYCEDIXPTMP."+lcmapset
+          If !Used('SYCEDIXP')
+            Use lcFolder+"SYCEDIXP."+lcmapset In 0
+          Endif
+          If !Used('SYCEDIXPTMP')
+            Use lcFolder+"SYCEDIXPTMP."+lcmapset In 0
+          Endif
+          Select SYCEDIXP
+
+          Append From  lcFolder+"SYCEDIXPTMP"+"."+lcmapset
+          Use In  SYCEDIXPTMP
+          Erase (lcFolder+"SYCEDIXPTMP"+"."+lcmapset)
+        Endif
+
+        *E302513 HIA [END]
+      Endif
+    Endif
+    *E302513 HIA [End]
+  Endif
+
+  *SYCUPCHD -- SYCUPCDT ***************
+  *N000569
+  If lnRes = 1 And lcEDIType = 'T'
+    If Used('SYCUPCHD1')
+      Use In SYCUPCHD1
+    Endif
+    Erase (lcFolder+'SYCUPCHD'+"."+lcmapset)
+    lcSqlStatmnt = "SELECT * FROM SYCUPCHD where cver ='" +lcmapset +"'"
+    lnRes = SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCLH")
+
+    If lnRes = 1
+      Select lcSYCLH
+      Copy To lcFolder+"SYCUPCHD."+lcmapset
+    Endif
+    If Used('SYCUPCDT1')
+      Use In SYCUPCDT1
+    Endif
+    Erase (lcFolder+'SYCUPCDT'+"."+lcmapset)
+    lcSqlStatmnt = "SELECT * FROM SYCUPCDT where cver ='" +lcmapset +"'"
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"lcSYCLD")
+    If lnRes = 1
+      Select lcSYCLD
+      Copy To lcFolder+"SYCUPCDT."+lcmapset
+    Endif
+  Endif
+
+
+  ****************
+
+  If lnRes = 1
+    *--lcFileHdr
+    If File(lcFolder+lcFileHdr+'.'+lcmapset)    Endif
+
+
+    If File(lcFolder+lcFileHdr+'.FPT')
+    IF FILE(lcFolder+'MEM'+SUBSTR(lcFileHdr,4)+'.'+lcMapset)
+      ERASE (lcFolder+'MEM'+SUBSTR(lcFileHdr,4)+'.'+lcMapset)
+    ENDIF
+      Rename lcFolder+lcFileHdr+'.FPT' To ;
+        lcFolder+'MEM'+Substr(lcFileHdr,4)+'.'+lcmapset    Endif
+    *--lcFileDtl
+    If !Empty(lcFileDtl)    Endif
+
+    *--SYCEDIPH
+    If File(lcFolder+'SYCEDIPH.'+lcmapset)    Endif
+
+    *--SYCEDIPD
+    If File(lcFolder+'SYCEDIPD.'+lcmapset)    ENDIF
+   
+   * HES
+*!*	    If File(lcFolder+'SYCEDIPD.FPT')
+*!*	      Rename lcFolder+'SYCEDIPD.FPT' To ;
+*!*	        lcFolder+'MEMEDIPD'+'.'+lcmapset
+*!*	      lcCommand = 'PKZIPC -add '+lcFolder+lcmapset+;
+*!*	        ' '+lcFolder+'MEMEDIPD'+'.'+lcmapset+' > '+lcFolder+'Dummy.TXT'
+*!*	      !&lcCommand
+*!*	    ENDIF  
+    If File(lcFolder+'SYCEDIPD.FPT')    ENDIF
+    * HES
+    
+    *--SYCEDITR
+    If File(lcFolder+'SYCEDITR.'+lcmapset)    Endif
+
+    If File(lcFolder+'SYCEDITR.FPT')
+    IF FILE(lcFolder+'MEMEDITR.'+lcMapset)
+      ERASE (lcFolder+'MEMEDITR.'+lcMapset)
+    ENDIF
+      Rename lcFolder+'SYCEDITR.FPT' To ;
+        lcFolder+'MEMEDITR'+'.'+lcmapset    Endif
+
+    *--SYCASNHD
+    If File(lcFolder+'SYCASNHD.'+lcmapset)    Endif
+    *--SYCEDIAK
+    If File(lcFolder+'SYCEDIAK.'+lcmapset)    Endif
+    *--SYCEDISV
+    If File(lcFolder+'SYCEDISV.'+lcmapset)    Endif
+    If File(lcFolder+'SYCEDISV.FPT')    Endif
+    *--SYCASNHD.FPT
+    If File(lcFolder+'SYCASNHD.FPT')    Endif
+    *--SYCASNDT
+    If File(lcFolder+'SYCASNDT.'+lcmapset)    Endif
+    *N000569
+    *--SYCUPCHD
+    If File(lcFolder+'SYCUPCHD.'+lcmapset)    Endif
+    *--SYCUPCDT
+    If File(lcFolder+'SYCUPCDT.'+lcmapset)    Endif
+    *-- lcEDIType = 'L'
+    If lcEDIType = 'L'
+      If !Empty(Thisformset.Form1.TXTUCCLBLPATH.Value) And File(ADDBS(STRTRAN(ALLTRIM(Thisformset.Form1.TXTUCCLBLPATH.Value), CHR(34), ''))+'EBUCC'+lcmapset+'.FRX') And SYCASNHD.chk = 1 And SYCASNHD.ctype='Y'
+        Copy File ADDBS(STRTRAN(ALLTRIM(Thisformset.Form1.TXTUCCLBLPATH.Value), CHR(34), ''))+'EBUCC'+lcmapset+'.*' To lcFolder+'EBUCC'+lcmapset+'.*'
+        *--EBUCC+LCMAPSET      Else
+        =Messagebox('The label file : '+lcmapset+' Not found, and will not added to the generated mapping ZIP',16,Thisformset.Form1.Caption)
+      Endif
+    Endif
+
+    *-- lcEDIType = 'T'
+
+    If lcEDIType = 'T'
+      If !Empty(Thisformset.Form1.TXTUPCLBLPATH.Value) And File(Alltrim(Thisformset.Form1.TXTUPCLBLPATH.Value)+'EBPTK'+lcmapset+'.FRX') And SycUPCHD.chk = 1 And SycUPCHD.ctype='Y'
+        Copy File Alltrim(Thisformset.Form1.TXTUPCLBLPATH.Value)+'EBPTK'+lcmapset+'.*' To lcFolder+'EBPTK'+lcmapset+'.*'
+        *--EBUCC+LCMAPSET      Else
+        =Messagebox('The price label file :'+lcmapset+' Not found, and will not added to the generated mapping ZIP',16,Thisformset.Form1.Caption)
+      Endif
+    Endif
+    *T20070625.003 WLD Exception
+    *--SYCEDIXP
+    If File(lcFolder+'SYCEDIXP.'+lcmapset)
+      IF USED('SYCEDIXP')
+        USE IN SYCEDIXP
+      ENDIF   
+      *E302513 HIA [BEGIN]
+      *IF INLIST(lcTrnType,'810','856')
+      COPY File(lcFolder+'SYCEDIXP.'+lcmapset) TO (lcFolder+'SYCEDIXPTMP.'+lcmapset)
+        *E302513 HIA [END]      *E302513 HIA [BEGIN]        
+      *ENDIF
+       COPY File(lcFolder+'SYCEDIXPTMP.'+lcmapset) TO (lcFolder+'SYCEDIXP.'+lcmapset)
+      *E302513 HIA [END]
+    Endif
+
+    *----EXE
+    * ZIP creation is deferred until all checked rows have generated their tables.
+    *=Messagebox('Generate ZIP Successfully          ',0+64, 'Generate EXE')
+
+  Endif
+  *!*	If lnRes = 1
+  *!*	    *--lcFileHdr
+  *!*	    lcCommand = 'PKZIPC -add '+lcFolder+lcMapset+' '+lcFolder+lcFileHdr+'.'+lcMapset
+
+  *!*	    If File(lcFolder+lcFileHdr+'.FPT')
+  *!*	      Rename lcFolder+lcFileHdr+'.FPT' To ;
+  *!*	        lcFolder+'MEM'+Substr(lcFileHdr,4)+'.'+lcMapset
+  *!*	      lcCommand = lcCommand+' , ' + lcFolder+'MEM'+Substr(lcFileHdr,4)+'.'+lcMapset
+  *!*	      !&lcCommand
+  *!*	    Endif
+  *!*	    *--lcFileDtl
+  *!*	    If !Empty(lcFileDtl)
+  *!*	        lcCommand = lcCommand+' , ' +lcFolder+lcFileDtl+'.'+lcMapset
+  *!*	    Endif
+
+  *!*	    *--SYCEDIPH
+  *!*	      lcCommand = lcCommand+' , ' +lcFolder+'SYCEDIPH.'+lcMapset
+  *!*
+
+  *!*	    *--SYCEDIPD
+  *!*	      lcCommand = lcCommand+' , ' +lcFolder+'SYCEDIPD.'+lcMapset
+
+  *!*	    *--SYCEDITR
+  *!*	      lcCommand = lcCommand+' , ' +lcFolder+'SYCEDITR.'+lcMapset
+  *!*	    If File(lcFolder+'SYCEDITR.FPT')
+  *!*	      Rename lcFolder+'SYCEDITR.FPT' To ;
+  *!*	        lcFolder+'MEMEDITR'+'.'+lcMapset
+  *!*	        lcCommand = lcCommand+' , ' +lcFolder+'MEMEDITR'+'.'+lcMapset
+  *!*	    Endif
+
+  *!*	    *--SYCASNHD
+  *!*	      lcCommand = lcCommand+' , ' +lcFolder+'SYCASNHD.'+lcMapset
+
+  *!*	    *--SYCASNDT
+  *!*	      lcCommand = lcCommand+' , ' +lcFolder+'SYCASNDT.'+lcMapset+' > '+lcFolder+'Dummy.TXT'
+  *!*	      old_path = FULLPATH('')
+  *!*	      CD (lcFolder)
+  *!*	     ! &lcCommand
+  *!*
+  *!*	    *----EXE
+  *!*	    lcCommand = 'ZIP2EXE '+lcFolder+lcMapset+' '+;
+  *!*	      lcFolder+' > '+lcFolder+'Dummy.TXT'
+  *!*	    !&lcCommand
+  *!*	    Erase (lcFolder+lcMapset+'.ZIP')
+  *!*	    CD ( old_path )
+  *!*	    *=Messagebox('Generate ZIP Successfully          ',0+64, 'Generate EXE')
+
+  *!*	  ENDIF
+
+  If Used('PartNers1')
+    Use In PartNers1
+  Endif
+  If Used(lcFileHdr)
+    Use In (lcFileHdr)
+  Endif
+  If Used(lcFileDtl)
+    Use In (lcFileDtl)
+  Endif
+  If Used('SYCEDIPH1')
+    Use In SYCEDIPH1
+  Endif
+  If Used('SYCEDIPD1')
+    Use In sycedipd1
+  Endif
+  If Used('SYCASNHD1')
+    Use In SYCASNHD1
+  Endif
+  If Used('SYCASNDT1')
+    Use In SYCASNDT1
+  Endif
+  If Used('SYCUPCHD1')
+    Use In SYCUPCHD1
+  Endif
+  If Used('SYCUPCDT1')
+    Use In SYCUPCDT1
+  Endif
+
+
+  Return .T.
+Else
+  Messagebox('No transactrions selected ',64,Thisformset.Form1.Caption)
+  Return .F.
+Endif
+
+ENDPROC
+PROCEDURE maddlbltkt
+SELECT TRANTYPE
+APPEND BLANK
+REPLACE tran       WITH 'LBL-UCC128 labels' ,;
+        cEdiTrnTyp WITH 'LBL'
+ 
+APPEND BLANK
+REPLACE tran       WITH 'TKT-UPC tickets' ,;
+        cEdiTrnTyp WITH 'TKT'
+
+
+ENDPROC
+PROCEDURE maddnewtrans
+lcTrnType = PADR(THISFORMSET.Form1.cboTransactions.VALUE,3)
+lcMapset  = ''
+lcVersion = PADR(THISFORMSET.Form1.cboVersion.Value,12)
+lcUserID  = ''
+lcFolder  = ALLTRIM(THISFORMSET.Form1.txtLocalFolder.Value)
+lcFolder  = ALLTRIM(lcFolder + IIF(RIGHT(lcFolder,1)<>"\","\"," "))
+lcFileHdr  = ''
+lcFileDtl  = ''
+lcEDIType  = 'S'
+lcHdrOrder = ''
+lcDtlorder = ''
+THISFORMSET.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+DECLARE laSourceArray[4,2]
+laSourceArray[1,1] = 'Phone Number ID'
+laSourceArray[1,2] = '12'
+laSourceArray[2,1] = 'Duns ID'
+laSourceArray[2,2] = '01'
+laSourceArray[3,1] = 'Communication ID'
+laSourceArray[3,2] = '08'
+laSourceArray[4,1] = 'Mutually Defined '
+laSourceArray[4,2] = 'ZZ'
+llNewPartner = .F.
+STORE '' TO  lcPartCode    ,lcpartName     , lcNetWork ,lcUccLabel, ;
+             lcFldSepartor ,lcLineSepartor ,lcQualifier ,lcPartId ,lcpartgsid
+llReturn = .F.
+DO FORM NewTrans WITH THISFORMSET.lnHand TO llReturn
+IF !llReturn
+  RETURN
+ENDIF
+THISFORMSET.Form1.cboVersion.Value = lcVersion
+lnTotalRes = 1
+lcSqlStatmnt = "Begin Transaction"
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+lcSqlStatmnt = "select * from SYCEDIPH WHERE cPartCode='999999'"
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"SYCEDIPH")
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+SELECT SYCEDIPH
+SCATTER MEMVAR BLANK
+m.cPartCode = lcPartCode   
+m.cPartName = lcpartName     
+m.cintchgver= SUBSTR(lcVersion,1,5)
+m.cVersion  = lcVersion 
+m.cnetwork  = lcNetWork 
+m.casnlbl1  = lcUccLabel
+m.cfieldsep = lcFldSepartor 
+m.clinesep  = lcLineSepartor 
+m.cCrtnType = 'P'
+IF llNewPartner 
+  lcSqlStatmnt = THISFORMSET.mBuildString('SYCEDIPH')
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+ENDIF
+lcSqlStatmnt = "select * from SYCEDIPD WHERE cPartCode='999999'"
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"SYCEDIPD")
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+SELECT SYCEDIPD
+SCATTER MEMVAR BLANK
+m.cPartCode = lcPartCode   
+m.cEdiTrnTyp= lcTrnType 
+m.cTranactv = 'B'
+m.cVersion  = lcVersion 
+m.cPartQual = lcQualifier 
+m.cPartId   = lcPartId
+m.cMapSet   = lcMapset
+m.cpartgsid = lcpartgsid
+lcSqlStatmnt = THISFORMSET.mBuildString('SYCEDIPD')
+lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+SELECT MAPGRID 
+APPEND BLANK
+REPLACE CMapSET   WITH lcMapset  ,;
+        crelaseno WITH '000001'  ,;
+        cType     WITH IIF(lcEDIType= 'S','OutGoing','InComing') ,;
+        clocked   WITH 'NO '     
+llReturn = .F.
+
+DO FORM USERINF TO llReturn
+
+IF llReturn 
+  SELECT sycedipd
+  SCATTER MEMVAR MEMO BLANK
+  m.cTranType = lcTrnType
+  m.cVersion  = lcVersion 
+  m.cMapSET   = lcMapSET
+  m.crelaseno = MAPGRID.crelaseno 
+  m.type      = lcEDIType
+  m.llLocked  = .T.
+  m.LockUser  = MAPGRID.CLockUser
+  m.LockDate  = DATE()
+  lcSqlStatmnt = THISFORMSET.mBuildString('MAPSTATS')
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+ELSE
+  lnTotalRes = -1
+ENDIF
+
+IF lnTotalRes = 1
+   lcSqlStatmnt = "Commit"
+   lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+   =MESSAGEBOX('Add new Transaction successfully          ',0+64, 'Add New transaction')
+   =THISFORMSET.mLockmap(.T.)
+ELSE 
+   lcSqlStatmnt = "ROLLBACK"
+   lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt)
+  MESSAGEBOX("Couldn't add this transaction ",0+16,'Error')
+  RETURN
+ENDIF
+
+
+ENDPROC
+PROCEDURE mupdatepartnerdetail
+SELECT sycedipd
+lEDIT_RECORD_FOUND = .F.
+SCAN FOR ledit = 'T'
+ lEDIT_RECORD_FOUND = .T.
+ EXIT
+ENDSCAN 
+
+SELECT SYCASNHD
+SCAN FOR ledit = 'T'
+ lEDIT_RECORD_FOUND = .T.
+ EXIT
+ENDSCAN 
+ 
+IF lEDIT_RECORD_FOUND 
+  IF MESSAGEBOX('There are some updates found, Do you want to save your updates? ',16+1,_screen.caption) = 1
+    Thisformset.msavepartnerupdate
+  ENDIF
+ENDIF 
+
+SELECT sycedipd
+SCAN FOR ledit = 'T'
+ lEDIT_RECORD_FOUND = 'F'
+ENDSCAN 
+LOCATE 
+
+SELECT SYCASNHD
+SCAN FOR ledit = 'T'
+ lEDIT_RECORD_FOUND = 'F'
+ENDSCAN 
+LOCATE 
+ENDPROC
+PROCEDURE msavepartnerupdate
+
+SELECT sycedipd
+SCAN
+  IF ledit = 'T'
+    lcgdlnlnk = IIF(ISNULL(Cgdlnlnk),'',ALLTRIM(Cgdlnlnk))
+    lcgdattch = IIF(ISNULL(cGDattch),'',ALLTRIM(cGDattch))
+    lcgdrel   = IIF(ISNULL(cgdrel),'',ALLTRIM(cgdrel))
+    lcgdweb   = IIF(ISNULL(cgdweb),'',ALLTRIM(cgdweb))
+    lcmNotes  = IIF(ISNULL(mNotes),'',ALLTRIM(mNotes))    
+    lcmNotes = strtran(lcmNotes,"'","''")
+        
+    lnRes=SQLEXEC(THISFORMSET.lnHand,"UPDATE sycedipd SET mNotes = '"+lcmNotes+"', Cgdlnlnk='"+lcgdlnlnk+"', cGDattch ='" +lcgdattch+"', cgdrel='" +lcgdrel+"', cgdweb='" +lcgdweb +"' WHERE rowguid='"+ALLTRIM(SYCEDIPD.rowguid)+"'","sycedipd")
+   * lnRes=SQLEXEC(THISFORMSET.lnHand,"UPDATE sycedipd SET Cgdlnlnk='"+lcgdlnlnk+"', dTPIssDate ='" +lcgdattch+"', cgdrel='" +lcgdrel+"', cgdweb='" +lcgdweb +"' WHERE rowguid='"+ALLTRIM(SYCEDIPD.rowguid)+"'","sycedipd")
+  ENDIF
+ENDSCAN
+
+SELECT SYCASNHD
+SCAN
+  IF ledit = 'T'
+    lcgdlnlnk = IIF(ISNULL(Cgdlnlnk),'',ALLTRIM(Cgdlnlnk))
+    lcgdattch = IIF(ISNULL(cGDattch),'',ALLTRIM(cGDattch))
+    lcgdrel   = IIF(ISNULL(cgdrel),'',ALLTRIM(cgdrel))
+    lcgdweb   = IIF(ISNULL(cgdweb),'',ALLTRIM(cgdweb))
+        
+    lnRes=SQLEXEC(THISFORMSET.lnHand,"UPDATE sycasnhd SET Cgdlnlnk='"+lcgdlnlnk+"', cGDattch ='" +lcgdattch+"', cgdrel='" +lcgdrel+"', cgdweb='" +lcgdweb +"' WHERE rowguid='"+ALLTRIM(sycasnhd.rowguid)+"'","sycasnhd")
+    *lnRes=SQLEXEC(THISFORMSET.lnHand,"UPDATE sycasnhd SET Cgdlnlnk='"+lcgdlnlnk+"', dTPIssDate ='" +lcgdattch+"', cgdrel='" +lcgdrel+"', cgdweb='" +lcgdweb +"' WHERE rowguid='"+ALLTRIM(sycasnhd.rowguid)+"'","sycasnhd")
+  ENDIF
+ENDSCAN
+
+ENDPROC
+PROCEDURE mgenloop
+IF !PEMSTATUS(THIS, 'cLastGeneratedZip', 5)
+  ADDPROPERTY(THIS, 'cLastGeneratedZip', '')
+ELSE
+  THIS.cLastGeneratedZip = ''
+ENDIF
+Store '' To lcTrnType
+lloverWrite = .F.
+llDone = .F.
+lcPartner_Network = ''
+lcNetwork = ''
+lcTrnNo= ''
+lcCust = ''
+lcGeneratedMapSet = ''
+
+SELECT sycedipd
+GO top
+SELECT ceditrntyp FROM sycedipd WHERE Sycedipd.chk = 1 INTO cursor CurEdiPd
+SELECT CurEdiPd
+SCAN
+ lcTrnNo = lcTrnNo +",'"+ ALLTRIM(ceditrntyp)+"'"
+ENDSCAN
+lcTrnNo = SUBSTR(lcTrnNo,2,LEN(lcTrnNo))
+lcTrnNo = ' IN ('+ lcTrnNo +') '
+
+Select Sycedipd
+Scan
+  If Sycedipd.chk = 1
+    IF EMPTY(lcGeneratedMapSet)
+      lcGeneratedMapSet = PADR(Sycedipd.cMapSet,3)
+    ENDIF
+    llDone = Thisformset.mgenrtexe( Padr(Sycedipd.cMapSet,3), Padr(Sycedipd.ceditrntyp,3), lloverWrite)
+   
+    Select Sycedipd
+
+    If !llDone
+      Exit
+    Endif
+    lloverWrite = .T.
+  Endif
+ENDSCAN
+*E302513 HIA [BEGIN] 
+*Erase (ALLTRIM(ThisFormset.Form1.txtLocalFolder.Value)+"\SYCEDIXP*.*")
+*E302513 HIA [END] 
+Select SycASNHD
+Scan
+  If SycASNHD.chk = 1
+    IF EMPTY(lcGeneratedMapSet)
+      lcGeneratedMapSet = PADR(SycASNHD.cVER,3)
+    ENDIF
+    llDone = Thisformset.mgenrtexe( Padr(SycASNHD.cVER,3),'LBL', lloverWrite)
+
+    Select SycASNHD
+
+    If !llDone
+      Exit
+    Endif
+    lloverWrite = .T.
+  Endif
+Endscan
+
+Select SycUPCHD
+Scan
+  If SycUPCHD.chk = 1
+    IF EMPTY(lcGeneratedMapSet)
+      lcGeneratedMapSet = PADR(SycUPCHD.cVER,3)
+    ENDIF
+    llDone = Thisformset.mgenrtexe( Padr(SycUPCHD.cVER,3),'TKT', lloverWrite)
+    Select SycUPCHD
+
+    If !llDone
+      Exit
+    Endif
+    lloverWrite = .T.
+  Endif
+Endscan
+
+If llDone AND !EMPTY(lcGeneratedMapSet)
+  lcFolder = ADDBS(ALLTRIM(Thisformset.Form1.txtLocalFolder.Value))
+  lnZipResult = THIS.CreateMappingZip(lcFolder, lcGeneratedMapSet)
+  IF lnZipResult <> 0
+    MESSAGEBOX('Unable to create mapping ZIP. tar.exe exit code: ' + TRANSFORM(lnZipResult), 16, 'Generate ZIP')
+    llDone = .F.
+  ENDIF
+ENDIF
+
+If llDone
+  IF PEMSTATUS(THIS, 'cLastGeneratedZip', 5) AND !EMPTY(THIS.cLastGeneratedZip)
+    MESSAGEBOX('Successfully generated ZIP file: ' + JUSTFNAME(THIS.cLastGeneratedZip), 64, 'Generate ZIP')
+  ENDIF
+Endif
+*E302513 HIA [BEGIN]        
+lcFolder  = ADDBS(Alltrim(Thisformset.Form1.txtLocalFolder.Value))
+Erase (lcFolder+"SYCEDIXP*.*") 
+*E302513 HIA [END]
+ENDPROC
+PROCEDURE temp
+lcTrnType = PADR(THISFORMSET.Form1.cboTransactions.VALUE,3)
+lcMapset  = PADR(MAPGRID.cMapSet,3)
+lcVersion = PADR(THISFORMSET.Form1.cboVersion.VALUE,12)
+lcUserID  = MAPGRID.CLockUser
+lcFolder  = ALLTRIM(THISFORMSET.Form1.txtLocalFolder.VALUE)
+lcFileHdr  = ''
+lcFileDtl  = ''
+lcEDIType  = 'S'
+lcFolder   = ALLTRIM(lcFolder + IIF(RIGHT(lcFolder,1)<>"\","\"," "))
+lcHdrOrder = ''
+lcDtlorder = ''
+THISFORMSET.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+
+IF lcEDIType  $ 'SR'
+    lcSqlStatmnt = "SELECT sycediph.cpartcode+'-'+SYCEDIPH.cPartName as 'PArtName',SYCEDIPD.cPartCode  FROM sycediph INNER JOIN ;
+    sycedipd ON sycediph.cpartcode = sycedipd.cpartcode where sycedipd.cMapSet ='" ;
+    +lcMapset+"' AND sycedipd.cVersion LIKE '"+LEFT(lcVersion,6)+"%' AND sycedipd.cEdiTrnTyp='"+lcTrnType+"'"
+
+  *  lcSqlStatmnt = "SELECT sycediph.cpartcode+'-'+SYCEDIPH.cPartName as 'PArtName',SYCEDIPD.cPartCode  FROM sycediph INNER JOIN ;
+  *  sycedipd ON sycediph.cpartcode = sycedipd.cpartcode where sycedipd.cMapSet ='" ;
+  *  +lcMapSEt+"' AND sycedipd.cEdiTrnTyp='"+lcTrnType+"'"
+
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"PartNers")
+  IF lnRes <> 1  OR EOF('PartNers')
+    =MESSAGEBOX("There are no Partner use this map...Could not continue",0+16,'Error')
+    RETURN
+  ENDIF
+  SELECT PartNers
+  lcPartner = ''
+  *XXX,1 HIA [Begin][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]    
+  *!*	  DO FORM PRTNRINF TO lcPartner
+  *!*	  IF EMPTY(lcPartner)
+  *!*	    RETURN
+  *!*	  ENDIF
+  lcSqlStatmnt = "SELECT Distinct cnetwork from sycedipd where cmapset ='"+lcMapset+"'"  
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"Networks")
+  SELECT PartNers
+  lcPartner_Network = ''
+  lcNetwork = ''  
+  DO FORM PRTNRINF TO lcPartner_Network
+  IF EMPTY(lcPartner_Network)
+    RETURN
+  Else
+    lcPartner = Substr(lcPartner_Network,1,at(',||,',lcPartner_Network)-1)
+    lcNetwork = Substr(lcPartner_Network,at(',||,',lcPartner_Network)+4,len(lcPartner_Network))
+  ENDIF  
+  *XXX,1 HIA [End][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]    
+  
+ELSE
+  *  lcSqlStatmnt = "SELECT cpartcode+'-'+cPartName as 'PArtName',cPartCode  FROM sycediph  ;
+where casnlbl1 ='" +lcMapSEt+"' OR casnlbl2 ='"+lcMapSEt+"' "
+ENDIF
+
+
+lnUserSlct = 2
+IF FILE(lcFolder+lcMapset+'.EXE')
+  lnUserSlct = MESSAGEBOX('File already exist, Overwrite.',35,_SCREEN.CAPTION)
+
+  DO CASE
+    CASE lnUserSlct = 6
+      ERASE (lcFolder+lcMapset+'.EXE')
+    CASE   lnUserSlct = 7
+      RENAME (lcFolder+lcMapset+'.EXE') TO (lcFolder+lcMapset+'.ZIP')
+    OTHERWISE
+      RETURN
+  ENDCASE
+ENDIF
+
+
+lnRes = 1
+*--lcFileHdr
+IF !EMPTY(lcFileHdr)
+  IF USED(lcFileHdr)
+    USE IN (lcFileHdr)
+  ENDIF
+  ERASE (lcFolder+lcFileHdr+".*")
+  IF lcEDIType  $ 'SR'
+    lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cMapSet ='"+lcMapset+"' AND cVersion ='"+ ;
+      lcVersion+ "' ORDER BY "+ lcHdrOrder
+
+    *lcSqlStatmnt = "SELECT * FROM "+lcFileHDr+" where cMapSet ='"+lcMapSEt+"' ORDER BY "+ lcHdrOrder
+  ELSE
+    lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cVer ='"+lcMapset+"'"
+    IF lcEDIType = 'L'
+      lcSqlStatmnt = lcSqlStatmnt && + "AND cPrint_Id ='"+lcVersion+"'"
+    ENDIF
+    lcSqlStatmnt = lcSqlStatmnt + " ORDER BY " + lcHdrOrder
+  ENDIF
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcFileHDr")
+  IF lnRes = 1
+    SELECT lcFileHdr
+    COPY TO lcFolder+lcFileHdr+"."+lcMapset
+  ENDIF
+ENDIF
+*--lcFileDtl
+IF !EMPTY(lcFileDtl) AND lnRes = 1
+  IF USED(lcFileDtl)
+    USE IN (lcFileDtl)
+  ENDIF
+  ERASE (lcFolder+lcFileDtl+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcMapset+"' AND cVersion ='"+ ;
+    lcVersion+"' ORDER BY "+ lcDtlorder
+  *lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' ORDER BY "+ lcDtlorder
+
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcFileDtl")
+  IF lnRes = 1
+    SELECT lcFileDtl
+    COPY TO lcFolder+lcFileDtl+"."+lcMapset
+  ENDIF
+ENDIF
+*--SYCEDIPH
+IF lnRes = 1 AND !INLIST(lcEDIType,'L' ,'T')
+  IF USED('SYCEDIPH')
+    USE IN SYCEDIPH
+  ENDIF
+  ERASE (lcFolder+'SYCEDIPH'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCEDIPH where cPartCode ='"+lcPartner+"' AND CVERSION LIKE '" +LEFT(lcVersion,6)+"%'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCPH")
+  IF lnRes = 1
+    SELECT lcSYCPH
+    COPY TO lcFolder+"SYCEDIPH."+lcMapset
+  ENDIF
+  *--SYCEDIPD
+  IF USED('SYCEDIPD')
+    USE IN SYCEDIPD
+  ENDIF
+  ERASE (lcFolder+'SYCEDIPD'+"."+lcMapset)
+  *XXX,1 HIA [Begin][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]    
+  lcSqlStatmnt = "SELECT * FROM SYCEDIPD where cPartCode ='"+lcPartner+"' AND CVERSION LIKE'" +LEFT(lcVersion,6)+"%'" 
+  *IF ISNULL(lcNetwork) OR EMPTY(lcNetwork) 
+  *  lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where cPartCode ='"+lcPartner+"' AND CVERSION LIKE'" +LEFT(lcVersion,6)+"%'"    
+  *ELSE
+  *  lcSqlStatmnt = "SELECT  * FROM SYCEDIPD where cNetwork ='"+lcNetwork+"' AND cPartCode ='"+lcPartner+"' AND CVERSION LIKE'" +LEFT(lcVersion,6)+"%'"  
+  *ENDIF
+  *XXX,1 HIA [End][12/06/2005] [generate mapping W.R.T network>> select only the SYCEDIPD records for this network >> so send this netwrok ID's only]    
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCPD")
+  IF lnRes = 1
+    SELECT lcSYCPD
+    COPY TO lcFolder+"SYCEDIPD."+lcMapset
+  ENDIF
+
+  *--SYCEDITR
+  ERASE (lcFolder+'SYCEDITR'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCEDITR where ceditrntyp ='"+lcTrnType+"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCTR")
+  IF lnRes = 1
+    SELECT lcSYCTR
+    COPY TO lcFolder+"SYCEDITR."+lcMapset
+  ENDIF
+ENDIF
+****************
+*-- SYCASNHD & SYCASNDT
+IF lnRes = 1 AND lcEDIType = 'L'
+  IF USED('SYCASNHD')
+    USE IN SYCASNHD
+  ENDIF
+  ERASE (lcFolder+'SYCASNHD'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCASNHD where cver ='" +lcMapset +"'"
+  lnRes = SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCLH")
+
+  IF lnRes = 1
+    SELECT lcSYCLH
+    COPY TO lcFolder+"SYCASNHD."+lcMapset
+  ENDIF
+  IF USED('SYCASNDT')
+    USE IN SYCASNDT
+  ENDIF
+  ERASE (lcFolder+'SYCASNDT'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCASNDT where cver ='" +lcMapset +"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCLD")
+  IF lnRes = 1
+    SELECT lcSYCLD
+    COPY TO lcFolder+"SYCASNDT."+lcMapset
+  ENDIF
+ENDIF
+****************
+*SYCUPCHD -- SYCUPCDT ***************
+*N000569
+IF lnRes = 1 AND lcEDIType = 'T'
+  IF USED('SYCUPCHD')
+    USE IN SYCUPCHD
+  ENDIF
+  ERASE (lcFolder+'SYCUPCHD'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCUPCHD where cver ='" +lcMapset +"'"
+  lnRes = SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCLH")
+
+  IF lnRes = 1
+    SELECT lcSYCLH
+    COPY TO lcFolder+"SYCUPCHD."+lcMapset
+  ENDIF
+  IF USED('SYCUPCDT')
+    USE IN SYCUPCDT
+  ENDIF
+  ERASE (lcFolder+'SYCUPCDT'+"."+lcMapset)
+  lcSqlStatmnt = "SELECT * FROM SYCUPCDT where cver ='" +lcMapset +"'"
+  lnRes=SQLEXEC(THIS.lnHand,lcSqlStatmnt,"lcSYCLD")
+  IF lnRes = 1
+    SELECT lcSYCLD
+    COPY TO lcFolder+"SYCUPCDT."+lcMapset
+  ENDIF
+ENDIF
+
+IF lnRes = 1
+  *--lcFileHdr  IF FILE(lcFolder+lcFileHdr+'.FPT')
+    IF FILE(lcFolder+'MEM'+SUBSTR(lcFileHdr,4)+'.'+lcMapset)
+      ERASE (lcFolder+'MEM'+SUBSTR(lcFileHdr,4)+'.'+lcMapset)
+    ENDIF
+    RENAME lcFolder+lcFileHdr+'.FPT' TO ;
+      lcFolder+'MEM'+SUBSTR(lcFileHdr,4)+'.'+lcMapset  ENDIF
+  *--lcFileDtl
+  IF !EMPTY(lcFileDtl)  ENDIF
+
+  *--SYCEDIPH  *--SYCEDIPD  *--SYCEDITR  IF FILE(lcFolder+'SYCEDITR.FPT')
+    IF FILE(lcFolder+'MEMEDITR.'+lcMapset)
+      ERASE (lcFolder+'MEMEDITR.'+lcMapset)
+    ENDIF
+    RENAME lcFolder+'SYCEDITR.FPT' TO ;
+      lcFolder+'MEMEDITR'+'.'+lcMapset  ENDIF
+
+  *--SYCASNHD *--SYCASNHD.FPT  *--SYCASNDT*N000569
+  *--SYCUPCHD  *--SYCUPCDT  *----EXE    lnZipResult = THIS.CreateMappingZip(lcFolder, lcmapset)
+    IF lnZipResult <> 0
+      MESSAGEBOX('Unable to create mapping ZIP. tar.exe exit code: ' + TRANSFORM(lnZipResult), 16, 'Generate ZIP')
+      RETURN .F.
+    ENDIF
+ENDIF
+IF USED('PartNers')
+  USE IN PartNers
+ENDIF
+IF USED(lcFileHdr)
+  USE IN (lcFileHdr)
+ENDIF
+IF USED(lcFileDtl)
+  USE IN (lcFileDtl)
+ENDIF
+IF USED('SYCEDIPH')
+  USE IN SYCEDIPH
+ENDIF
+IF USED('SYCEDIPD')
+  USE IN SYCEDIPD
+ENDIF
+IF USED('SYCASNHD')
+  USE IN SYCASNHD
+ENDIF
+IF USED('SYCASNDT')
+  USE IN SYCASNDT
+ENDIF
+**N000569
+IF USED('SYCUPCHD')
+  USE IN SYCUPCHD
+ENDIF
+IF USED('SYCUPCDT')
+  USE IN SYCUPCDT
+ENDIF
+
+ENDPROC
+PROCEDURE documentation
+*T20120606.0004,1 HIA, Allow to generate EDi exception rows, with Receive transactions , 2012 Sep 3
+*P20170806.0001,1 FODA 08/30/2017 Allow to upload map on SQL life
+ENDPROC
+PROCEDURE mgetmap
+*P20170806.0001,1 FODA 08/30/2017 Allow to upload map on SQL life [BEGIN]
+Parameters lcmapset,lcTrnType 
+
+Select sycedipd
+
+If !Empty(lcTrnType) AND lnRes = 1
+
+  Thisformset.mGetFilesName(@lcFileHdr,@lcFileDtl,@lcEDIType,@lcHdrOrder,@lcDtlorder)
+  
+  *--lcFileHdr
+  If !Empty(lcFileHdr) And lnRes = 1
+    If Used(lcFileHdr+ "SQL")
+      Use In (lcFileHdr+ "SQL")
+    Endif
+
+    If lcEDIType  $ 'SR'
+      lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cMapSet ='"+lcmapset+"' AND cVersion ='"+ ;
+        lcVersion+ "' ORDER BY "+ lcHdrOrder
+    Else
+      lcSqlStatmnt = "SELECT * FROM "+lcFileHdr+" where cVer ='"+lcmapset+"'"
+      If lcEDIType = 'L'
+        lcSqlStatmnt = lcSqlStatmnt  && + "AND cPrint_Id ='"+lcVersion+"'"
+      Endif
+      lcSqlStatmnt = lcSqlStatmnt + " ORDER BY " + lcHdrOrder
+    Endif
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,lcFileHDr + "SQL")
+    If lnRes = 1
+      SELECT (lcFileHdr+ "SQL")
+      If Reccount() < 1
+        Messagebox('The file '+lcFileHdr + ' has no generated records',16,_Screen.Caption  )
+      Endif
+    Endif
+
+  Endif
+  ***********************************************
+
+  *--lcFileDtl
+  If !Empty(lcFileDtl) And lnRes = 1
+    If Used(lcFileDtl+ "SQL")
+      Use In (lcFileDtl+ "SQL")
+    Endif
+    lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcmapset+"' AND cVersion ='"+ ;
+      lcVersion+"' ORDER BY "+ lcDtlorder
+    *lcSqlStatmnt = "SELECT * FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' ORDER BY "+ lcDtlorder
+
+    lnRes=SQLExec(This.lnHand,lcSqlStatmnt,lcFileDtl+ "SQL")
+    If lnRes = 1
+      SELECT (lcFileDtl+ "SQL")
+      If Reccount() < 1
+        Messagebox('The file '+lcFileHdr + ' Has no generated records',16,_Screen.Caption  )
+      Endif
+    Endif
+  Endif
+
+  *-- SYCEDISV
+  If !Used("SYCEDISVSQL") And lnRes = 1 AND !llsvinserted
+	  lcSqlStatmnt = "SELECT * FROM SYCEDISV WHERE "+Alltrim(Thisformset.DIV_str2)+" AND CVERSION = '"+lcVersion+"' "
+	  lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"SYCEDISVSQL")
+	  If lnRes = 1
+	    Select SYCEDISVSQL
+	  ENDIF
+  ENDIF
+
+
+  *-- SYCASNHD & SYCASNDT
+  If lnRes = 1 And lcEDIType = 'L'
+  
+    If Used('SYCASNHDSQL')
+      Use In SYCASNHDSQL
+    Endif
+    lcSqlStatmnt = "SELECT * FROM SYCASNHD where cver ='" +lcmapset +"'"
+    lnRes = SQLExec(This.lnHand,lcSqlStatmnt,"SYCASNHDSQL")
+
+    If lnRes = 1
+      Select SYCASNHDSQL
+      If Reccount() < 1
+      	Messagebox('The file SYCASNHD has no generated records',0,_Screen.Caption  )
+      Endif
+
+      If Used('SYCASNDTSQL')
+      	Use In SYCASNDTSQL
+      Endif
+      lcSqlStatmnt = "SELECT * FROM SYCASNDT where cver ='" +lcmapset +"'"
+      lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"SYCASNDTSQL")
+      If lnRes = 1
+      	Select SYCASNDTSQL
+      	If Reccount() < 1
+      		Messagebox('The file SYCASNDT has no generated records',0,_Screen.Caption  )
+      	Endif
+      Endif
+    ENDIF
+    
+  ENDIF
+  
+  If lnRes = 1 And lcEDIType = 'T'
+    If Used('SYCUPCHDSQL')
+      Use In SYCUPCHDSQL
+    Endif
+    lcSqlStatmnt = "SELECT * FROM SYCUPCHD where cver ='" +lcmapset +"'"
+    lnRes = SQLExec(This.lnHand,lcSqlStatmnt,"SYCUPCHDSQL")
+
+    If lnRes = 1
+      Select SYCUPCHDSQL
+      If Reccount() < 1
+      	Messagebox('The file SYCUPCHD has no generated records',0,_Screen.Caption  )
+      Endif
+
+      If Used('SYCUPCDTSQL')
+      	Use In SYCUPCDTSQL
+      Endif
+      lcSqlStatmnt = "SELECT * FROM SYCUPCDT where cver ='" +lcmapset +"'"
+      lnRes=SQLExec(This.lnHand,lcSqlStatmnt,"SYCUPCDTSQL")
+      If lnRes = 1
+      	Select SYCUPCDTSQL
+      	If Reccount() < 1
+      		Messagebox('The file SYCUPCDT has no generated records',0,_Screen.Caption  )
+      	Endif
+      Endif
+    ENDIF
+    
+  Endif
+
+
+  RETURN IIF(lnRes = 1 ,.T.,.F.)
+  
+Else
+  Messagebox('No transactrions selected ',64,Thisformset.Form1.Caption)
+  Return .F.
+  
+ENDIF
+
+*P20170806.0001,1 FODA 08/30/2017 Allow to upload map on SQL life [END]
+ENDPROC
+PROCEDURE muploadsqlmap
+*P20170806.0001,1 FODA 08/30/2017 Allow to upload map on SQL life [BEGIN]
+PARAMETERS lcMapset 
+
+IF !EMPTY(lcFileHdr) AND lnRes = 1
+  IF lcEDIType  $ 'LT'
+     lcSqlStatmnt = "DELETE  FROM "+lcFileHdr+" where cVer ='"+lcMapSEt+"'" 
+     IF lcEdiType = 'L'
+       lcSqlStatmnt = lcSqlStatmnt  && + "AND cPrint_Id ='"+lcVersion+"'"
+     ENDIF
+  ELSE
+    lcSqlStatmnt = "DELETE  FROM "+lcFileHdr+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+lcVersion+"'"
+  ENDIF
+  lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+ENDIF
+*lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+IF !EMPTY(lcFileDtl) AND lnRes = 1
+  lcSqlStatmnt = "DELETE  FROM "+lcFileDtl+" where cMapSet ='"+lcMapSEt+"' AND cVersion ='"+lcVersion+"'"
+  lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+ENDIF
+*lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+IF lcEdiType = 'L' AND lnRes = 1 AND USED('SYCASNHDSQL') AND USED('SYCASNDTSQL')
+  lcSqlStatmnt = "DELETE  FROM SYCASNHD where cVer ='"+lcMapSEt+"'" 
+  lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+  IF lnRes=1
+   lcSqlStatmnt = "DELETE  FROM SYCASNDT where cVer ='"+lcMapSEt+"'" 
+   lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+  endif
+ENDIF
+*lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+IF lcEdiType = 'T' AND lnRes = 1 AND USED('SYCUPCHDSQL') AND USED('SYCUPCDTSQL')
+  lcSqlStatmnt = "DELETE  FROM SYCUPCHD where cVer ='"+lcMapSEt+"'" 
+  lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+  IF lnRes=1
+   lcSqlStatmnt = "DELETE  FROM SYCUPCDT where cVer ='"+lcMapSEt+"'" 
+   lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+  endif
+ENDIF
+*lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+IF lnRes = 1 AND USED('SYCEDISVSQL') AND !llsvinserted
+  lcSqlStatmnt = "DELETE  FROM SYCEDISV where Cpartcode ='"+Thisformset.FORM1.CBOTransactions.Value+"' AND CVERSION = '"+lcVersion+"' "
+  lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+ENDIF
+*lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+
+
+IF lnRes = 1
+
+  IF !EMPTY(lcFileHdr) AND USED(lcFileHdr+ "SQL")
+    SELECT (lcFileHdr+ "SQL")
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  lcFileHdr + '  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString(lcFileHdr)
+      lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+  ENDIF
+  
+  IF !EMPTY(lcFileDtl)  AND lnRes = 1 AND USED(lcFileDtl+ "SQL")
+    SELECT (lcFileDtl+ "SQL")
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  lcFileDtl + '  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString(lcFileDtl)
+      lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+  ENDIF
+  
+  IF lnRes = 1 AND USED('SYCEDISVSQL') AND !llsvinserted
+    SELECT SYCEDISVSQL
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCEDISV' + '  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCEDISV')
+      lnRes=SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    IF lnRes = 1
+    	llsvinserted = .T.
+    ENDIF
+  ENDIF
+  
+  IF lcEdiType = 'L' AND lnRes = 1 AND USED('SYCASNHDSQL')
+    SELECT SYCASNHDSQL
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCASNHD  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCASNHD')
+      lnRes = SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    IF lnRes = 1 AND USED('SYCASNDTSQL')
+    SELECT SYCASNDTSQL
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCASNDT : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCASNDT')
+      lnRes = SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    ENDIF
+  ENDIF
+  
+  IF lcEdiType = 'T' AND lnRes = 1 AND USED('SYCUPCHDSQL')
+    SELECT SYCUPCHDSQL
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCUPCHD  : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCUPCHD')
+      lnRes = SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    IF lnRes = 1 AND USED('SYCUPCDTSQL')
+    SELECT SYCUPCDTSQL
+    LOCATE
+    SCAN REST WHILE lnRes = 1
+      WAIT WINDOW  'SYCUPCDT : ' + STR(RECNO()) NOWAIT
+      SCATTER MEMVAR MEMO
+      lcSqlStatmnt = THISFORMSET.mBuildString('SYCUPCDT')
+      lnRes = SQLEXEC(THIS.lnHandlife,lcSqlStatmnt)
+    ENDSCAN
+    *lnTotalRes = IIF(lnRes = 1 ,lnTotalRes,lnRes) 
+    ENDIF
+  ENDIF
+  
+ENDIF
+IF lnRes = 1
+   =MESSAGEBOX('Upload Successfully          ',0+64, 'UpLoad Mappings')
+ELSE 
+  MESSAGEBOX("Couldn't Publish the New Map Records",0+16,'Error')
+ENDIF
+
+If Used(lcFileHdr+ "SQL")
+  	Use In (lcFileHdr+ "SQL")
+Endif
+If Used(lcFileDtl+ "SQL")
+  	Use In (lcFileDtl+ "SQL")
+Endif
+If Used('SYCASNHDSQL')
+  	Use In SYCASNHDSQL
+Endif
+If Used('SYCASNDTSQL')
+  	Use In SYCASNDTSQL
+Endif
+If Used('SYCUPCHDSQL')
+  	Use In SYCUPCHDSQL
+Endif
+If Used('SYCUPCDTSQL')
+  	Use In SYCUPCDTSQL
+Endif
+If Used('SYCEDISVSQL')
+  	Use In SYCEDISVSQL
+Endif
+
+RETURN IIF(lnRes = 1,.T.,.F.)
+
+*P20170806.0001,1 FODA 08/30/2017 Allow to upload map on SQL life [END]
+ENDPROC
+PROCEDURE Init
+PARAMETERS lcTracSysF ,lcServName ,lcDBasName ,lcUserName ,lcPassWord
+THISFORMSET.lcTracSysF = lcTracSysF
+THISFORMSET.lcServName = lcServName
+THISFORMSET.lcDBasName = lcDBasName
+THISFORMSET.lcUserName = lcUserName
+THISFORMSET.lcPassWord = lcPassWord
+
+IF !THISFORMSET.mLoadCursor()
+  RETURN .F.
+ENDIF
+THISFORMSET.CPDialogStatus = SET("CPDialog")
+THISFORMSET.OldSafety = SET('Safety')
+THISFORMSET.OldDeleteStatus = SET('DELETE')
+THISFORMSET.Form1.Caption =  THISFORMSET.Form1.Caption +" .............Connected To " + lcDBasName
+SET DELE ON
+SET SAFETY OFF
+SET CPDIALOG OFF
+
+THISFORMSET.FORM1.cboTransactions.ControlSource = "Partners.cPartCode"
+THISFORMSET.FORM1.Publsihbutton.Enabled = .F.
+
+
+ENDPROC
+PROCEDURE Unload
+IF PEMSTATUS(THIS, 'lnhand', 5)
+  IF VARTYPE(THIS.lnhand) = 'N' AND THIS.lnhand > 0
+    =SQLDISCONNECT(THIS.lnhand)
+    THIS.lnhand = -1
+  ENDIF
+ENDIF
+IF PEMSTATUS(THIS, 'lnhandlife', 5)
+  IF VARTYPE(THIS.lnhandlife) = 'N' AND THIS.lnhandlife > 0
+    =SQLDISCONNECT(THIS.lnhandlife)
+    THIS.lnhandlife = -1
+  ENDIF
+ENDIF
+ENDPROC
+PROCEDURE Destroy
+lcCpDialog = THISFORMSET.CPDialogStatus 
+lcSafety = THISFORMSET.OldSafety 
+lcDelete = THISFORMSET.OldDeleteStatus 
+
+SET DELE &lcDelete
+SET SAFETY &lcSafety
+SET CPDIALOG &lcCpDialog
+*CLEAR EVENTS
+ENDPROC
+
+======================================================================
+RECNO=34
+PARENT=Formset.Form1.GRDTRANACTIONS.Column9
+OBJNAME=Text1
+CLASS=textbox
+BASECLASS=textbox
+PROPERTIES=FontUnderline = .T.
+BorderStyle = 0
+Margin = 0
+Visible = .T.
+EnableHyperlinks = .T.
+ForeColor = 0,0,255
+BackColor = 255,255,255
+Name = "Text1"
+
+METHODS=PROCEDURE Click
+*FODA [Begin]
+IF !EMPTY(This.value)
+	sourcesafe=CREATEOBJECT("EDISOURCESAFE.SourceSafe")
+	  IF sourcesafe.Init('http://tf_server:8080/tfs/Aria-Fox', 'abdelrahman','aria_123', 'tf_server','EDI_GuideLines','$/EdiGuidelines/Guidelines','D:\EDI_GuideLines')
+	     	IF GetlatestVersionFile(ALLTRIM(This.value))
+	     		Messagebox('GuideLine Downloaded on path D:\EDI_GuideLines',0+64, 'Download GuideLine')
+				lcFile = 'Run explorer  "' + 'D:\EDI_GuideLines'+'"'
+				&lcfile.
+	        ELSE
+	        	MESSAGEBOX('Error while initialize source safe',0+16,'ERROR')
+	       	ENDIF
+	  ELSE
+	  	MESSAGEBOX('Error while initialize source safe',0+16,'ERROR')
+	  ENDIF
+	RELEASE sourcesafe
+ENDIF
+*FODA [END]
+ENDPROC
+PROCEDURE DblClick
+
+
+ENDPROC
+PROCEDURE Valid
+IF !ISNULL(this.Value) AND !EMPTY(this.Value) AND !FILE(ALLTRIM(this.Value))
+  This.Value = ''
+  Thisformset.form1.GRDTRANACTIONS.column10.command1.click  
+  Replace ledit WITH 'T'
+ENDIF 
+
+ENDPROC
+PROCEDURE InteractiveChange
+  Replace ledit WITH 'T'
+ENDPROC
+
+======================================================================

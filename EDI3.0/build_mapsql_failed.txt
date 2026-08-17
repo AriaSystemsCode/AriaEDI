@@ -1,0 +1,3 @@
+Error 1: File 'd:\aria\aria3edi\ariaedi\edi3.0\mapsql.pjx' does not exist.
+
+BUILD_MAPSQL:2

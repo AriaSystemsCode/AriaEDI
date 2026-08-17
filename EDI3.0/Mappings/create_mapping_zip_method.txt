@@ -1,0 +1,35 @@
+PROCEDURE CreateMappingZip
+LPARAMETERS tcFolder, tcMapSet
+LOCAL lcFolder, lcMapSet, lcZipFile, lcPattern, lcCommand, loShell, lnResult
+
+lcFolder = ADDBS(ALLTRIM(tcFolder))
+lcMapSet = ALLTRIM(tcMapSet)
+IF EMPTY(lcFolder) OR EMPTY(lcMapSet) OR !DIRECTORY(lcFolder)
+  RETURN 87
+ENDIF
+
+lcZipFile = lcFolder + lcMapSet + ".ZIP"
+lcPattern = "*." + lcMapSet
+IF FILE(lcZipFile)
+  ERASE (lcZipFile)
+ENDIF
+
+loShell = CREATEOBJECT("WScript.Shell")
+lcCommand = "%COMSPEC% /D /C tar.exe -a -c -f " + ;
+  CHR(34) + lcZipFile + CHR(34) + " -C " + ;
+  CHR(34) + lcFolder + CHR(34) + " " + CHR(34) + lcPattern + CHR(34)
+lnResult = loShell.Run(lcCommand, 0, .T.)
+
+IF lnResult <> 0 OR !FILE(lcZipFile)
+  lcCommand = "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command " + CHR(34) + ;
+    "Compress-Archive -LiteralPath (Get-ChildItem -LiteralPath '" + ;
+    STRTRAN(lcFolder, "'", "''") + "' -Filter '" + STRTRAN(lcPattern, "'", "''") + ;
+    "').FullName -DestinationPath '" + STRTRAN(lcZipFile, "'", "''") + "' -Force" + CHR(34)
+  lnResult = loShell.Run(lcCommand, 0, .T.)
+ENDIF
+
+IF lnResult = 0 AND FILE(lcZipFile)
+  RETURN 0
+ENDIF
+RETURN IIF(lnResult = 0, 1, lnResult)
+ENDPROC
