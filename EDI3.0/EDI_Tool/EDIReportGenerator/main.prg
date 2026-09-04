@@ -102,6 +102,8 @@ DEFINE CLASS frmReportGenerator AS Form
     BackColor = RGB(245, 247, 250)
     cSystemFilesPath = ""
     cLastOutputFolder = ""
+    nReportTotal = 0
+    nReportDone = 0
 
     ADD OBJECT lblCompany AS Label WITH ;
         Caption = "Company", Left = 24, Top = 25, Width = 90, Height = 22, FontBold = .T.
@@ -134,6 +136,12 @@ DEFINE CLASS frmReportGenerator AS Form
 
     ADD OBJECT cmdGenerate AS CommandButton WITH ;
         Caption = "Generate reports", Left = 340, Top = 330, Width = 150, Height = 38, Default = .T., FontBold = .T.
+    ADD OBJECT shpProgressTrack AS Shape WITH ;
+        Left = 24, Top = 306, Width = 586, Height = 12, BackColor = RGB(220,225,232), BorderStyle = 0
+    ADD OBJECT shpProgressFill AS Shape WITH ;
+        Left = 24, Top = 306, Width = 1, Height = 12, BackColor = RGB(40,130,210), BorderStyle = 0, Visible = .F.
+    ADD OBJECT lblProgress AS Label WITH ;
+        Caption = "", Left = 24, Top = 335, Width = 305, Height = 30, WordWrap = .T.
     ADD OBJECT cmdClose AS CommandButton WITH ;
         Caption = "Close", Left = 505, Top = 330, Width = 105, Height = 38, Cancel = .T.
     ADD OBJECT lblStatus AS Label WITH ;
@@ -247,6 +255,11 @@ DEFINE CLASS frmReportGenerator AS Form
         ENDIF
 
         THIS.cmdGenerate.Enabled = .F.
+        THIS.cmdClose.Enabled = .F.
+        THIS.nReportDone = 0
+        THIS.nReportTotal = THIS.chkRejected850.Value + THIS.chkOpen850.Value + ;
+            THIS.chkRejected860.Value + THIS.chkOpen860.Value + THIS.chkTempOrders.Value
+        THIS.UpdateProgress("Starting reports...")
         THIS.lblStatus.Caption = "Generating reports..."
         THISFORM.Refresh()
         lnGenerated = 0
@@ -256,29 +269,36 @@ DEFINE CLASS frmReportGenerator AS Form
             IF THIS.ExportEdiReport(lcDataDir, "850", "R", ldFrom, ldTo, ADDBS(lcOutputFolder) + "Rejected850.xls", @lcProblems)
                 lnGenerated = lnGenerated + 1
             ENDIF
+            THIS.ReportFinished()
         ENDIF
         IF THIS.chkOpen850.Value = 1
             IF THIS.ExportEdiReport(lcDataDir, "850", "", ldFrom, ldTo, ADDBS(lcOutputFolder) + "NotProssed850.xls", @lcProblems)
                 lnGenerated = lnGenerated + 1
             ENDIF
+            THIS.ReportFinished()
         ENDIF
         IF THIS.chkRejected860.Value = 1
             IF THIS.ExportEdiReport(lcDataDir, "860", "R", ldFrom, ldTo, ADDBS(lcOutputFolder) + "Rejected860.xls", @lcProblems)
                 lnGenerated = lnGenerated + 1
             ENDIF
+            THIS.ReportFinished()
         ENDIF
         IF THIS.chkOpen860.Value = 1
             IF THIS.ExportEdiReport(lcDataDir, "860", "", ldFrom, ldTo, ADDBS(lcOutputFolder) + "NotProssed860.xls", @lcProblems)
                 lnGenerated = lnGenerated + 1
             ENDIF
+            THIS.ReportFinished()
         ENDIF
         IF THIS.chkTempOrders.Value = 1
             IF THIS.ExportTempOrders(lcDataDir, ldFrom, ldTo, ADDBS(lcOutputFolder) + "TempOrders.xls", @lcProblems)
                 lnGenerated = lnGenerated + 1
             ENDIF
+            THIS.ReportFinished()
         ENDIF
 
         THIS.cmdGenerate.Enabled = .T.
+        THIS.cmdClose.Enabled = .T.
+        THIS.UpdateProgress(IIF(EMPTY(lcProblems), "Complete", "Finished with errors"))
         THIS.cLastOutputFolder = lcOutputFolder
         THIS.cmdCopyPath.Enabled = .T.
         THIS.lblStatus.Caption = TRANSFORM(lnGenerated) + " report(s) generated in " + lcOutputFolder
@@ -289,6 +309,20 @@ DEFINE CLASS frmReportGenerator AS Form
             MESSAGEBOX(TRANSFORM(lnGenerated) + " report(s) generated." + CHR(13) + CHR(13) + ;
                 "Problems:" + CHR(13) + lcProblems, 48, "EDI Report Generator")
         ENDIF
+    ENDPROC
+
+    PROCEDURE UpdateProgress
+        LPARAMETERS tcStage
+        THIS.shpProgressFill.Visible = THIS.nReportDone > 0
+        THIS.shpProgressFill.Width = MAX(1, INT(586 * THIS.nReportDone / MAX(1, THIS.nReportTotal)))
+        THIS.lblProgress.Caption = TRANSFORM(THIS.nReportDone) + "/" + ;
+            TRANSFORM(THIS.nReportTotal) + " processed - " + tcStage
+        THIS.Refresh()
+    ENDPROC
+
+    PROCEDURE ReportFinished
+        THIS.nReportDone = THIS.nReportDone + 1
+        THIS.UpdateProgress("Working...")
     ENDPROC
 
     PROCEDURE ResolveCompanyDataFolder
@@ -318,6 +352,7 @@ DEFINE CLASS frmReportGenerator AS Form
         LPARAMETERS tcDataDir, tcTransactionType, tcStatus, tdFrom, tdTo, tcOutput, tcProblems
         LOCAL lcTable, loError
         lcTable = ADDBS(tcDataDir) + "EDILIBDT.DBF"
+        THIS.UpdateProgress("Querying " + JUSTFNAME(tcOutput))
         IF NOT FILE(lcTable)
             tcProblems = tcProblems + "EDILIBDT.DBF not found for " + JUSTFNAME(tcOutput) + CHR(13)
             RETURN .F.
@@ -333,14 +368,20 @@ DEFINE CLASS frmReportGenerator AS Form
         TRY
             USE (lcTable) IN 0 SHARED ALIAS srcEdi
             IF EMPTY(tcStatus)
-                SELECT srcEdi.cFileCode, srcEdi.cPartCode, srcEdi.cEdiTranNo, srcEdi.cStatus, srcEdi.dDate, srcEdi.dAckDate ;
+                SELECT srcEdi.cFileCode, srcEdi.cPartCode, srcEdi.cEdiRef, ;
+                       PADR(IIF(EMPTY(srcEdi.cStatus), "Not Processed", IIF(srcEdi.cStatus == "R", "Rejected", srcEdi.cStatus)), 13) AS cStatus, ;
+                       IIF(EMPTY(srcEdi.dDate), srcEdi.dAckDate, srcEdi.dDate) AS dDate, ;
+                       IIF(EMPTY(srcEdi.dDate), srcEdi.dAckDate, srcEdi.dDate) AS dAckDate ;
                   FROM srcEdi ;
                  WHERE srcEdi.cEdiTrnTyp == m.tcTransactionType ;
                    AND BETWEEN(srcEdi.dAckDate, m.tdFrom, m.tdTo) ;
                    AND EMPTY(srcEdi.cStatus) ;
                   INTO CURSOR curReport READWRITE
             ELSE
-                SELECT srcEdi.cFileCode, srcEdi.cPartCode, srcEdi.cEdiTranNo, srcEdi.cStatus, srcEdi.dDate, srcEdi.dAckDate ;
+                SELECT srcEdi.cFileCode, srcEdi.cPartCode, srcEdi.cEdiRef, ;
+                       PADR(IIF(EMPTY(srcEdi.cStatus), "Not Processed", IIF(srcEdi.cStatus == "R", "Rejected", srcEdi.cStatus)), 13) AS cStatus, ;
+                       IIF(EMPTY(srcEdi.dDate), srcEdi.dAckDate, srcEdi.dDate) AS dDate, ;
+                       IIF(EMPTY(srcEdi.dDate), srcEdi.dAckDate, srcEdi.dDate) AS dAckDate ;
                   FROM srcEdi ;
                  WHERE srcEdi.cEdiTrnTyp == m.tcTransactionType ;
                    AND BETWEEN(srcEdi.dAckDate, m.tdFrom, m.tdTo) ;
@@ -370,6 +411,7 @@ DEFINE CLASS frmReportGenerator AS Form
         LPARAMETERS tcDataDir, tdFrom, tdTo, tcOutput, tcProblems
         LOCAL lcTable, loError
         lcTable = ADDBS(tcDataDir) + "ORDHDR.DBF"
+        THIS.UpdateProgress("Querying " + JUSTFNAME(tcOutput))
         IF NOT FILE(lcTable)
             tcProblems = tcProblems + "ORDHDR.DBF not found for " + JUSTFNAME(tcOutput) + CHR(13)
             RETURN .F.
@@ -425,6 +467,7 @@ DEFINE CLASS frmReportGenerator AS Form
     PROCEDURE ReplaceExcelHeaders
         LPARAMETERS tcOutput, tcHeaders, tcProblems
         LOCAL loExcel, loWorkbook, loSheet, loError, lnColumn, lnHeaderCount
+        THIS.UpdateProgress("Formatting " + JUSTFNAME(tcOutput))
         loExcel = .NULL.
         loWorkbook = .NULL.
 

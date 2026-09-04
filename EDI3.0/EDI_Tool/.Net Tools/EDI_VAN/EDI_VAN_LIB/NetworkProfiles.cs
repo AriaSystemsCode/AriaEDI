@@ -12,9 +12,8 @@ using System.Net;
 using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace EDI_VAN_LIB
 {
@@ -820,6 +819,11 @@ namespace EDI_VAN_LIB
                           response = clientx.GetAsync(requestURIs).Result;
                           dataObjects = response.Content.ReadAsStringAsync().Result;
 
+                          if (response.IsSuccessStatusCode && IsShopifyOrdersRequest(requestURIs))
+                          {
+                              dataObjects = EnrichShopifyOrdersWithCustomerData(clientx, dataObjects, requestURIs);
+                          }
+
 
 
                     }
@@ -961,6 +965,194 @@ namespace EDI_VAN_LIB
 
 
         }
+
+        private const int ShopifyGraphQlBatchSize = 100;
+
+        private static bool IsShopifyOrdersRequest(string requestUri)
+        {
+            return !String.IsNullOrEmpty(requestUri) &&
+                   requestUri.IndexOf("orders.json", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private string EnrichShopifyOrdersWithCustomerData(HttpClient client, string ordersJson, string requestUri)
+        {
+            JObject orderResponse = JObject.Parse(ordersJson);
+            JArray orders = orderResponse["orders"] as JArray;
+            if (orders == null || orders.Count == 0)
+            {
+                return ordersJson;
+            }
+
+            Dictionary<string, JObject> ordersByGraphQlId = new Dictionary<string, JObject>(StringComparer.OrdinalIgnoreCase);
+            foreach (JObject order in orders.OfType<JObject>())
+            {
+                // Always create the two output fields. Empty values intentionally flow to
+                // the existing controlled rejection path when Shopify cannot resolve them.
+                order["customer_type"] = "";
+                order["customer_code"] = "";
+
+                string graphQlId = GetShopifyOrderGraphQlId(order);
+                if (!String.IsNullOrEmpty(graphQlId))
+                {
+                    ordersByGraphQlId[graphQlId] = order;
+                }
+            }
+
+            if (ordersByGraphQlId.Count == 0)
+            {
+                return orderResponse.ToString(Newtonsoft.Json.Formatting.None);
+            }
+
+            string graphQlRequestUri = GetShopifyGraphQlRequestUri(requestUri);
+            List<string> graphQlIds = ordersByGraphQlId.Keys.ToList();
+            for (int offset = 0; offset < graphQlIds.Count; offset += ShopifyGraphQlBatchSize)
+            {
+                List<string> batchIds = graphQlIds.Skip(offset).Take(ShopifyGraphQlBatchSize).ToList();
+                JObject graphQlResponse = GetShopifyOrderPurchasingEntities(client, graphQlRequestUri, batchIds);
+                ApplyShopifyPurchasingEntities(ordersByGraphQlId, graphQlResponse);
+            }
+
+            return orderResponse.ToString(Newtonsoft.Json.Formatting.None);
+        }
+
+        private static string GetShopifyOrderGraphQlId(JObject order)
+        {
+            string graphQlId = Convert.ToString(order["admin_graphql_api_id"]);
+            if (!String.IsNullOrWhiteSpace(graphQlId))
+            {
+                return graphQlId.Trim();
+            }
+
+            string orderId = Convert.ToString(order["id"]);
+            return String.IsNullOrWhiteSpace(orderId) ? "" : "gid://shopify/Order/" + orderId.Trim();
+        }
+
+        private static string GetShopifyGraphQlRequestUri(string ordersRequestUri)
+        {
+            const string adminApiMarker = "/admin/api/";
+            const string defaultApiVersion = "2023-07";
+
+            string apiVersion = defaultApiVersion;
+            int markerIndex = ordersRequestUri.IndexOf(adminApiMarker, StringComparison.OrdinalIgnoreCase);
+            if (markerIndex >= 0)
+            {
+                int versionStart = markerIndex + adminApiMarker.Length;
+                int versionEnd = ordersRequestUri.IndexOf('/', versionStart);
+                if (versionEnd > versionStart)
+                {
+                    apiVersion = ordersRequestUri.Substring(versionStart, versionEnd - versionStart);
+                }
+            }
+
+            return adminApiMarker + apiVersion + "/graphql.json";
+        }
+
+        private static JObject GetShopifyOrderPurchasingEntities(HttpClient client, string graphQlRequestUri, IList<string> graphQlIds)
+        {
+            const string query = @"query GetOrderPurchasingEntities($ids: [ID!]!) {
+  nodes(ids: $ids) {
+    ... on Order {
+      id
+      legacyResourceId
+      purchasingEntity {
+        __typename
+        ... on Customer {
+          id
+          legacyResourceId
+        }
+        ... on PurchasingCompany {
+          company {
+            id
+            externalId
+          }
+          location {
+            id
+            externalId
+          }
+        }
+      }
+    }
+  }
+}";
+
+            JObject requestBody = new JObject(
+                new JProperty("query", query),
+                new JProperty("variables", new JObject(
+                    new JProperty("ids", new JArray(graphQlIds))
+                ))
+            );
+
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, graphQlRequestUri))
+            {
+                request.Content = new StringContent(requestBody.ToString(Newtonsoft.Json.Formatting.None), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.SendAsync(request).Result;
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new InvalidOperationException(
+                        "Shopify GraphQL customer lookup failed with HTTP " +
+                        (int)response.StatusCode + " (" + response.StatusCode + ").");
+                }
+
+                JObject graphQlResponse = JObject.Parse(responseBody);
+                JArray errors = graphQlResponse["errors"] as JArray;
+                if (errors != null && errors.Count > 0)
+                {
+                    string errorMessage = String.Join("; ", errors
+                        .Select(error => Convert.ToString(error["message"]))
+                        .Where(message => !String.IsNullOrWhiteSpace(message)));
+                    throw new InvalidOperationException("Shopify GraphQL customer lookup failed: " + errorMessage);
+                }
+
+                return graphQlResponse;
+            }
+        }
+
+        private static void ApplyShopifyPurchasingEntities(
+            IDictionary<string, JObject> ordersByGraphQlId,
+            JObject graphQlResponse)
+        {
+            JArray nodes = graphQlResponse.SelectToken("data.nodes") as JArray;
+            if (nodes == null)
+            {
+                throw new InvalidOperationException("Shopify GraphQL customer lookup did not return data.nodes.");
+            }
+
+            foreach (JObject node in nodes.OfType<JObject>())
+            {
+                string graphQlId = Convert.ToString(node["id"]);
+                JObject order;
+                if (String.IsNullOrWhiteSpace(graphQlId) || !ordersByGraphQlId.TryGetValue(graphQlId, out order))
+                {
+                    continue;
+                }
+
+                JObject purchasingEntity = node["purchasingEntity"] as JObject;
+                string purchasingEntityType = Convert.ToString(purchasingEntity == null ? null : purchasingEntity["__typename"]);
+
+                if (String.Equals(purchasingEntityType, "PurchasingCompany", StringComparison.OrdinalIgnoreCase))
+                {
+                    order["customer_type"] = "B2B";
+                    order["customer_code"] = Convert.ToString(purchasingEntity.SelectToken("company.externalId")) ?? "";
+                }
+                else
+                {
+                    string customerCode = Convert.ToString(purchasingEntity == null ? null : purchasingEntity["legacyResourceId"]);
+                    if (String.IsNullOrWhiteSpace(customerCode))
+                    {
+                        customerCode = Convert.ToString(order.SelectToken("customer.id"));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(customerCode))
+                    {
+                        order["customer_type"] = "B2C";
+                        order["customer_code"] = customerCode.Trim();
+                    }
+                }
+            }
+        }
+
         public void LoopOrdersSiiwii(string xmlString)
         {
             //string xmlString = @"[your XML string here]"; // Replace with your actual XML

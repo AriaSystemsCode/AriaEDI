@@ -17,3 +17,9 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_P
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.csproj.CoreCompileInputs.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Product_Reader.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\edi_van\bin\Debug\Shopify_Product_Reader.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.csproj.AssemblyReference.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.csproj.CoreCompileInputs.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify-Product-Reader\obj\Debug\Shopify_Product_Reader.pdb

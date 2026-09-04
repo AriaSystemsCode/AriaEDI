@@ -15,3 +15,12 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.exe
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Shopify_Converter_Cross_Ref.exe
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Shopify_Converter_Cross_Ref.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Newtonsoft.Json.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\bin\Debug\Newtonsoft.Json.xml
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.AssemblyReference.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_ref.csproj.CoreCompileInputs.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_.C93D86CA.Up2Date
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.exe
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Converter_cross_ref\obj\Debug\Shopify_Converter_Cross_Ref.pdb

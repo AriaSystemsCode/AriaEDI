@@ -1,5 +1,9 @@
 # EDI Report Generator (Visual FoxPro 9)
 
+The `cust_po` column in all four EDI reports comes from `EDILIBDT.CEDIREF`. Temp Orders continues to use `ORDHDR.CUSTPO`.
+
+For all four EDI exports, both `receive_date` and `processed_date` use `EDILIBDT.DDATE`, falling back to `DACKDATE` when `DDATE` is empty. If both dates are empty, both exported dates remain empty. The date-range filter still uses `DACKDATE`; Temp Orders is unchanged.
+
 Standalone VFP application for generating the five requested `.xls` reports.
 
 ## First run

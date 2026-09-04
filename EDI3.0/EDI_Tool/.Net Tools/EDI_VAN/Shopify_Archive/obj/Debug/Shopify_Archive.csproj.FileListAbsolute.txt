@@ -15,3 +15,9 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\bin\Debug\S
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csproj.CoreCompileInputs.cache
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.exe
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.exe
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\bin\Debug\Shopify_Archive.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csproj.AssemblyReference.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.csproj.CoreCompileInputs.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.exe
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\Shopify_Archive\obj\Debug\Shopify_Archive.pdb

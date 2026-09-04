@@ -53,3 +53,14 @@ D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_V
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CopyComplete
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
 D:\GitEDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\EDI_VAN_LIB.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\Newtonsoft.Json.xml
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\bin\Debug\WindowsLog.pdb
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.AssemblyReference.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.csproj.CoreCompileInputs.cache
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_.D8A34A9E.Up2Date
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.dll
+D:\Aria\Aria3EDI\AriaEDI\EDI3.0\EDI_Tool\.Net Tools\EDI_VAN\EDI_VAN_LIB\obj\Debug\EDI_VAN_LIB.pdb
