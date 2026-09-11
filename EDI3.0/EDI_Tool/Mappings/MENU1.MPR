@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/16/14              MENU1.MPR               16:57:22  
+*       * 09/11/26              MENU1.MPR               19:15:25  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (C) 2014 Company Name                         
+*       * Copyright (C) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -26,19 +26,21 @@
 SET SYSMENU TO
 SET SYSMENU AUTOMATIC
 
-DEFINE PAD _45x10ccnw OF _MSYSMENU PROMPT "File" COLOR SCHEME 3 ;
+DEFINE PAD _7k4159vy7 OF _MSYSMENU PROMPT "File" COLOR SCHEME 3 ;
 	KEY ALT+F, ""
-DEFINE PAD _45x10ccnx OF _MSYSMENU PROMPT "Transactions" COLOR SCHEME 3 ;
+DEFINE PAD _7k4159vy8 OF _MSYSMENU PROMPT "Transactions" COLOR SCHEME 3 ;
 	KEY ALT+T, ""
-ON PAD _45x10ccnw OF _MSYSMENU ACTIVATE POPUP file
-ON PAD _45x10ccnx OF _MSYSMENU ACTIVATE POPUP transactio
+ON PAD _7k4159vy7 OF _MSYSMENU ACTIVATE POPUP file
+ON PAD _7k4159vy8 OF _MSYSMENU ACTIVATE POPUP transactio
 
 DEFINE POPUP file MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF file PROMPT "\<Exit"
 ON SELECTION BAR 1 OF file quit
 
 DEFINE POPUP transactio MARGIN RELATIVE SHADOW COLOR SCHEME 4
-DEFINE BAR 1 OF transactio PROMPT "Generate Mapping EXE"
+DEFINE BAR 1 OF transactio PROMPT "Generate Mapping ZIP"
 DEFINE BAR 2 OF transactio PROMPT "Upload Mapping"
+DEFINE BAR 3 OF transactio PROMPT "Show Discriminant"
 ON SELECTION BAR 1 OF transactio DO FORM mapSql2 WITH ALLTRIM(lcTracSysF),ALLTRIM(lcServName),ALLTRIM(lcDBasName),ALLTRIM(lcUserName),ALLTRIM(lcPassWord)
 ON SELECTION BAR 2 OF transactio DO FORM mapSql WITH ALLTRIM(lcTracSysF),ALLTRIM(lcServName),ALLTRIM(lcDBasName),ALLTRIM(lcUserName),ALLTRIM(lcPassWord)
+ON SELECTION BAR 3 OF transactio DO FORM Discriminant WITH ALLTRIM(lcTracSysF),ALLTRIM(lcServName),ALLTRIM(lcDBasName),ALLTRIM(lcUserName),ALLTRIM(lcPassWord)

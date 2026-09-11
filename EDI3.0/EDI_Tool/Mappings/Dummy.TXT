@@ -1,0 +1,11 @@
+
+PKZIP (R)   FAST!   Create/Update Utility   Version 2.04g   02-01-93
+Copr. 1989-1993 PKWARE Inc.  All Rights Reserved.  Shareware Version
+PKZIP Reg. U.S. Pat. and Tm. Off.   Patent No. 5,051,745
+
+þ 80486 CPU detected.
+þ XMS version 2.00 detected.
+þ DPMI version 0.90 detected.
+þ Using Normal Compression.
+
+PKZIP: (E01) can't create: D:/EDIMAPPING/MAPPINGS/MAPPINGS/NOR.ZIP
