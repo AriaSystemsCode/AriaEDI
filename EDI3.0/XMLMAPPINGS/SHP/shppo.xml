@@ -348,6 +348,14 @@
 	</Map>
 	<Map>
 		<SrcTable>Order</SrcTable>
+		<SrcField>customer-code</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>BUYER</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
 		<SrcField>NOTE</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>HANDLING_INSTRUCTIONS</DestField>
