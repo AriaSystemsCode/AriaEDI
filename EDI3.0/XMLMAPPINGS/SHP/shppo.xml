@@ -195,6 +195,14 @@
 		<Condition></Condition>
 	</Map>
 	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>ship-to-location-code</SrcField>
+		<DestTable>PO_ADDRESS_T</DestTable>
+		<DestField>Location_Code</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
 		<SrcTable>Shipping-address</SrcTable>
 		<SrcField>Phone</SrcField>
 		<DestTable>PO_ADDRESS_T</DestTable>
@@ -351,6 +359,14 @@
 		<SrcField>customer-code</SrcField>
 		<DestTable>PO_Header_T</DestTable>
 		<DestField>BUYER</DestField>
+		<Fixed></Fixed>
+		<Condition></Condition>
+	</Map>
+	<Map>
+		<SrcTable>Order</SrcTable>
+		<SrcField>customer-type</SrcField>
+		<DestTable>PO_Header_T</DestTable>
+		<DestField>PO_TYPE</DestField>
 		<Fixed></Fixed>
 		<Condition></Condition>
 	</Map>

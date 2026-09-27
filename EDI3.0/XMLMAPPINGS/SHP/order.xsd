@@ -7,6 +7,14 @@
 				<xs:element name="id" type="xs:string" />
 				<xs:element name="email" type="xs:string" nillable="true" />
 				<xs:element name="closed-at" type="xs:string"  nillable="true" minOccurs="0"/>
+				<xs:element name="company" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:string" minOccurs="0" />
+							<xs:element name="location-id" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="created-at" type="xs:dateTime"  nillable="true" />
 				<xs:element name="updated-at" type="xs:dateTime"  nillable="true" />
 				<xs:element name="number" type="xs:integer"  nillable="true" />
@@ -540,26 +548,26 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="billing-address">
+				<xs:element name="billing-address" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="first-name" type="xs:string" />
-							<xs:element name="address1" type="xs:string" />
-							<xs:element name="phone" type="xs:string"  />
-							<xs:element name="city" type="xs:string" />
-							<xs:element name="zip" type="xs:string" />
-							<xs:element name="province" type="xs:string" />
-							<xs:element name="country" type="xs:string" />
-							<xs:element name="last-name" type="xs:string" />
-							<xs:element name="address2"  type="xs:string"/>
-							<xs:element name="company"  type="xs:string"/>
-							<xs:element name="latitude" type="xs:string" default="0" />
-							<xs:element name="longitude" type="xs:string" default="0" />
-							<xs:element name="name" type="xs:string" />
-							<xs:element name="country-code" type="xs:string" />
-							<xs:element name="province-code" type="xs:string" />
+							<xs:element name="first-name" type="xs:string" minOccurs="0" />
+							<xs:element name="address1" type="xs:string" minOccurs="0" />
+							<xs:element name="phone" type="xs:string" minOccurs="0" />
+							<xs:element name="city" type="xs:string" minOccurs="0" />
+							<xs:element name="zip" type="xs:string" minOccurs="0" />
+							<xs:element name="province" type="xs:string" minOccurs="0" />
+							<xs:element name="country" type="xs:string" minOccurs="0" />
+							<xs:element name="last-name" type="xs:string" minOccurs="0" />
+							<xs:element name="address2" type="xs:string" minOccurs="0" />
+							<xs:element name="company" type="xs:string" minOccurs="0" />
+							<xs:element name="latitude" type="xs:string" default="0" minOccurs="0" />
+							<xs:element name="longitude" type="xs:string" default="0" minOccurs="0" />
+							<xs:element name="name" type="xs:string" minOccurs="0" />
+							<xs:element name="country-code" type="xs:string" minOccurs="0" />
+							<xs:element name="province-code" type="xs:string" minOccurs="0" />
 						</xs:sequence>
-						<xs:attribute name="type" type="xs:string" use="required" />
+						<xs:attribute name="type" type="xs:string" use="optional" />
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="shipping-address">
@@ -581,7 +589,7 @@
 							<xs:element name="country-code" type="xs:string" />
 							<xs:element name="province-code" type="xs:string" />
 						</xs:sequence>
-						<xs:attribute name="type" type="xs:string" use="required" />
+						<xs:attribute name="type" type="xs:string" use="optional" />
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="client-details">
@@ -612,25 +620,25 @@
 						<xs:sequence>
 							<xs:element name="id" type="xs:string" />
 							<xs:element name="email" type="xs:string" />
-							<xs:element name="accepts-marketing" type="xs:boolean" />
+							<xs:element name="accepts-marketing" type="xs:boolean" minOccurs="0" />
 							<xs:element name="created-at" type="xs:dateTime" />
 							<xs:element name="updated-at" type="xs:dateTime" />
 							<xs:element name="first-name" type="xs:string" />
 							<xs:element name="last-name" type="xs:string" />
-							<xs:element name="orders-count" type="xs:string" />
+							<xs:element name="orders-count" type="xs:string" minOccurs="0" />
 							<xs:element name="state" type="xs:string" />
 							<xs:element name="total-spent" type="xs:decimal" default="0" />
-							<xs:element name="last-order-id" type="xs:string" />
+							<xs:element name="last-order-id" type="xs:string" minOccurs="0" />
 							<xs:element name="note" type="xs:string"/>
 							<xs:element name="verified-email" type="xs:boolean" />
 							<xs:element name="multipass-identifier" type="xs:string"  />
 							<xs:element name="tax-exempt" type="xs:boolean" />
 							<xs:element name="phone" type="xs:string"  />
 							<xs:element name="tags" type="xs:string"  />
-							<xs:element name="last-order-name" type="xs:string" />
+							<xs:element name="last-order-name" type="xs:string" minOccurs="0" />
 							<xs:element name="currency" type="xs:string" />
-							<xs:element name="accepts-marketing-updated-at" type="xs:dateTime" />
-							<xs:element name="marketing-opt-in-level" type="xs:string" />
+							<xs:element name="accepts-marketing-updated-at" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="marketing-opt-in-level" type="xs:string" minOccurs="0" />
 							<xs:element name="admin-graphql-api-id" type="xs:string" />
 							<xs:element name="default-address">
 								<xs:complexType>
@@ -658,6 +666,9 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+				<xs:element name="customer-type" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="customer-code" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="ship-to-location-code" type="xs:string" minOccurs="0" nillable="true" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

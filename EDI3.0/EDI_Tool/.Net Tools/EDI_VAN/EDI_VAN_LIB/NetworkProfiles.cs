@@ -986,10 +986,11 @@ namespace EDI_VAN_LIB
             Dictionary<string, JObject> ordersByGraphQlId = new Dictionary<string, JObject>(StringComparer.OrdinalIgnoreCase);
             foreach (JObject order in orders.OfType<JObject>())
             {
-                // Always create the two output fields. Empty values intentionally flow to
+                // Always create the output fields. Empty values intentionally flow to
                 // the existing controlled rejection path when Shopify cannot resolve them.
                 order["customer_type"] = "";
                 order["customer_code"] = "";
+                order["ship_to_location_code"] = "";
 
                 string graphQlId = GetShopifyOrderGraphQlId(order);
                 if (!String.IsNullOrEmpty(graphQlId))
@@ -1135,6 +1136,7 @@ namespace EDI_VAN_LIB
                 {
                     order["customer_type"] = "B2B";
                     order["customer_code"] = Convert.ToString(purchasingEntity.SelectToken("company.externalId")) ?? "";
+                    order["ship_to_location_code"] = (Convert.ToString(purchasingEntity.SelectToken("location.externalId")) ?? "").Trim();
                 }
                 else
                 {
