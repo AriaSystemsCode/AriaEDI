@@ -770,7 +770,8 @@ namespace Map
         /// <param name="dataset">dataset to convert</param>
         private void InsertDatasetToSQL(DataSet dataset)
         {
-            if (MainDestTable != null && MainDestTable.Trim() != "")
+            bool replaceShopifyOrders = IsShopifyPurchaseOrder(dataset);
+            if (!replaceShopifyOrders && MainDestTable != null && MainDestTable.Trim() != "")
             {
                 foreach (DataRow row in dataset.Tables[MainDestTable].Rows)
                 {
@@ -796,6 +797,14 @@ namespace Map
                         table.Columns[columnName].ExtendedProperties.Add("IsIdentity", true);
                     }
                 }
+            }
+            if (replaceShopifyOrders)
+            {
+                ReplaceShopifyPurchaseOrders(dataset);
+                return;
+            }
+            foreach (DataTable table in dataset.Tables)
+            {
                 foreach (DataRow row in table.Select(MainSourceWhere))
                 {
                     string insertcmd = GetInsertcommand(row);
@@ -804,6 +813,90 @@ namespace Map
                         ErrorMsg += "Failed :" + insertcmd + "\n";
                     }
                 }
+            }
+        }
+
+        // Shopify re-imports replace only the same partner/order in all mapped staging tables.
+        // Keep the legacy import path unchanged for other trading partners.
+        private bool IsShopifyPurchaseOrder(DataSet dataset)
+        {
+            if (!string.Equals(MainDestTable, "PO_HEADER_T", StringComparison.OrdinalIgnoreCase) ||
+                dataset.Tables[MainDestTable] == null)
+                return false;
+
+            DataTable headers = dataset.Tables[MainDestTable];
+            if (!headers.Columns.Contains("PARTNER_ID") || !headers.Columns.Contains("RETAILER_PO") || headers.Rows.Count == 0)
+                return false;
+
+            return headers.Rows.Cast<DataRow>().All(row =>
+                string.Equals(Convert.ToString(row["PARTNER_ID"]).Trim(), "Shopify", StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void ReplaceShopifyPurchaseOrders(DataSet dataset)
+        {
+            string[] deleteOrder = { "PO_MESSAGES_T", "PO_ADDRESS_T", "PO_TERMS_T", "PO_ITEMS_T", "PO_HEADER_T" };
+            HashSet<string> allowedTables = new HashSet<string>(deleteOrder, StringComparer.OrdinalIgnoreCase);
+            foreach (DataTable table in dataset.Tables)
+            {
+                if (!allowedTables.Contains(table.TableName) ||
+                    !table.Columns.Contains("PARTNER_ID") || !table.Columns.Contains("RETAILER_PO"))
+                    throw new InvalidOperationException("Unexpected Shopify purchase-order staging table: " + table.TableName);
+            }
+
+            DataRow[] headers = dataset.Tables[MainDestTable].Select(MainSourceWhere);
+            HashSet<string> orderKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (DataRow header in headers)
+            {
+                string orderNumber = Convert.ToString(header["RETAILER_PO"]).Trim();
+                if (orderNumber.Length == 0 || !orderKeys.Add(orderNumber))
+                    throw new InvalidOperationException("Shopify import has a blank or duplicate RETAILER_PO.");
+            }
+            if (orderKeys.Count == 0)
+                throw new InvalidOperationException("Shopify import has no selected purchase orders.");
+
+            foreach (DataTable table in dataset.Tables)
+                foreach (DataRow row in table.Select(MainSourceWhere))
+                    if (!string.Equals(Convert.ToString(row["PARTNER_ID"]).Trim(), "Shopify", StringComparison.OrdinalIgnoreCase) ||
+                        !orderKeys.Contains(Convert.ToString(row["RETAILER_PO"]).Trim()))
+                        throw new InvalidOperationException("Shopify staging row does not belong to a selected purchase order.");
+
+            connection.Open();
+            try
+            {
+                using (SqlTransaction transaction = connection.BeginTransaction(IsolationLevel.Serializable))
+                {
+                    try
+                    {
+                        foreach (string orderNumber in orderKeys)
+                            foreach (string tableName in deleteOrder)
+                                if (dataset.Tables.Contains(tableName))
+                                {
+                                    using (SqlCommand command = new SqlCommand(
+                                        "DELETE FROM [" + tableName + SqlTablesSuffix + "] WHERE [PARTNER_ID] = @partner AND [RETAILER_PO] = @order", connection, transaction))
+                                    {
+                                        command.Parameters.Add("@partner", SqlDbType.NVarChar).Value = "Shopify";
+                                        command.Parameters.Add("@order", SqlDbType.NVarChar).Value = orderNumber;
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+
+                        foreach (DataTable table in dataset.Tables)
+                            foreach (DataRow row in table.Select(MainSourceWhere))
+                                using (SqlCommand command = new SqlCommand(GetInsertcommand(row), connection, transaction))
+                                    command.ExecuteNonQuery();
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
